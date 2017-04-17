@@ -1,10 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F19069 `(v ~T0 @X0 1 tf1`ul ]
-"157 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18.h
-[v __delay `JF19069 ~T0 @X0 0 e ]
-[p i __delay ]
 [p mainexit ]
-"70 mcc_generated_files/mcc.h
+"73 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "39906 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [s S2571 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -26,7 +22,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC1 `Vb ~T0 @X0 0 e@31905 ]
 "42882
 [v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
-"42880
+"61 ax.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
+"42880 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
 "42878
 [v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
@@ -44,6 +42,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATB2 `Vb ~T0 @X0 0 e@31826 ]
 "42850
 [v _LATB3 `Vb ~T0 @X0 0 e@31827 ]
+"42884
+[v _LATD4 `Vb ~T0 @X0 0 e@31844 ]
+"78 ax.h
+[v _pingAX `(i ~T0 @X0 0 ef1`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16750,690 +16752,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f46k80.h: 46164: extern volatile __bit nTX8 @ (((unsigned) &TXSTA1)*8) + 6;
 [; ;pic18f46k80.h: 46166: extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 [; ;pic18f46k80.h: 46168: extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
-[; ;adc.h: 2008: union ADCResult
-[; ;adc.h: 2009: {
-[; ;adc.h: 2010: int lr;
-[; ;adc.h: 2011: char br[2];
-[; ;adc.h: 2012: };
-[; ;adc.h: 2014: char BusyADC (void);
-[; ;adc.h: 2016: void ConvertADC (void);
-[; ;adc.h: 2018: void CloseADC(void);
-[; ;adc.h: 2026: int ReadADC(void);
-[; ;adc.h: 2040: void OpenADC ( unsigned char ,
-[; ;adc.h: 2041: unsigned char ,
-[; ;adc.h: 2042: unsigned char );
-[; ;adc.h: 2084: void SetChanADC(unsigned char );
-[; ;adc.h: 2100: void SelChanConvADC( unsigned char );
-[; ;ancomp.h: 202: void Close_ancomp1( void );
-[; ;ancomp.h: 203: void Open_ancomp1(unsigned char config);
-[; ;ancomp.h: 204: void Close_ancomp2( void );
-[; ;ancomp.h: 205: void Open_ancomp2(unsigned char config);
-[; ;ancomp.h: 208: void Close_ancomp3( void );
-[; ;ancomp.h: 209: void Open_ancomp3(unsigned char config);
-[; ;spi.h: 584: void OpenSPI( unsigned char sync_mode,
-[; ;spi.h: 585: unsigned char bus_mode,
-[; ;spi.h: 586: unsigned char smp_phase );
-[; ;spi.h: 588: signed char WriteSPI( unsigned char data_out );
-[; ;spi.h: 590: void getsSPI( unsigned char *rdptr, unsigned char length );
-[; ;spi.h: 592: void putsSPI( unsigned char *wrptr );
-[; ;spi.h: 594: unsigned char ReadSPI( void );
-[; ;can2510.h: 414: void CAN2510Initialize(  unsigned int configuration,
-[; ;can2510.h: 415: unsigned char brp,
-[; ;can2510.h: 416: unsigned char interruptFlags,
-[; ;can2510.h: 417: unsigned char SPI_syncMode,
-[; ;can2510.h: 418: unsigned char SPI_busMode,
-[; ;can2510.h: 419: unsigned char SPI_smpPhase );
-[; ;can2510.h: 421: signed char CAN2510Init(  unsigned long BufferConfig,
-[; ;can2510.h: 422: unsigned long BitTimeConfig,
-[; ;can2510.h: 423: unsigned char interruptEnables,
-[; ;can2510.h: 424: unsigned char SPI_syncMode,
-[; ;can2510.h: 425: unsigned char SPI_busMode,
-[; ;can2510.h: 426: unsigned char SPI_smpPhase );
-[; ;can2510.h: 428: void CAN2510Enable( void );
-[; ;can2510.h: 430: void CAN2510Disable( void );
-[; ;can2510.h: 432: void CAN2510Reset( void );
-[; ;can2510.h: 434: void CAN2510SetMode(  unsigned char mode );
-[; ;can2510.h: 436: unsigned char CAN2510ReadMode( void );
-[; ;can2510.h: 438: unsigned char CAN2510ReadStatus( void );
-[; ;can2510.h: 440: unsigned char CAN2510ErrorState( void );
-[; ;can2510.h: 442: unsigned char CAN2510InterruptStatus( void );
-[; ;can2510.h: 444: void CAN2510InterruptEnable( unsigned char interruptFlags );
-[; ;can2510.h: 446: unsigned char CAN2510ByteRead(  unsigned char addr );
-[; ;can2510.h: 448: void CAN2510ByteWrite(  unsigned char addr,  unsigned char value );
-[; ;can2510.h: 450: void CAN2510SequentialRead(  unsigned char *DataArray,
-[; ;can2510.h: 451: unsigned char CAN2510addr,
-[; ;can2510.h: 452: unsigned char numbytes );
-[; ;can2510.h: 454: void CAN2510SequentialWrite(  unsigned char *DataArray,
-[; ;can2510.h: 455: unsigned char CAN2510addr,
-[; ;can2510.h: 456: unsigned char numbytes );
-[; ;can2510.h: 458: void CAN2510BitModify(  unsigned char address,
-[; ;can2510.h: 459: unsigned char mask,
-[; ;can2510.h: 460: unsigned char data );
-[; ;can2510.h: 462: void CAN2510SetSingleMaskStd(  unsigned char maskNum,  unsigned int mask );
-[; ;can2510.h: 464: void CAN2510SetSingleMaskXtd(  unsigned char maskNum,  unsigned long mask );
-[; ;can2510.h: 466: void CAN2510SetSingleFilterStd(  unsigned char filterNum,  unsigned int filter );
-[; ;can2510.h: 468: void CAN2510SetSingleFilterXtd(  unsigned char filterNum,  unsigned long filter );
-[; ;can2510.h: 470: signed char CAN2510SetMsgFilterStd(  unsigned char bufferNum,
-[; ;can2510.h: 471: unsigned int mask,
-[; ;can2510.h: 472: unsigned int *filters );
-[; ;can2510.h: 474: signed char CAN2510SetMsgFilterXtd(  unsigned char bufferNum,
-[; ;can2510.h: 475: unsigned long mask,
-[; ;can2510.h: 476: unsigned long *filters );
-[; ;can2510.h: 478: signed char CAN2510WriteStd(  unsigned int msgId,
-[; ;can2510.h: 479: unsigned char msgPriority,
-[; ;can2510.h: 480: unsigned char numBytes,
-[; ;can2510.h: 481: unsigned char *data );
-[; ;can2510.h: 483: signed char CAN2510WriteXtd(  unsigned long msgId,
-[; ;can2510.h: 484: unsigned char msgPriority,
-[; ;can2510.h: 485: unsigned char numBytes,
-[; ;can2510.h: 486: unsigned char *data );
-[; ;can2510.h: 488: void CAN2510LoadBufferStd(  unsigned char bufferNum,
-[; ;can2510.h: 489: unsigned int msgId,
-[; ;can2510.h: 490: unsigned char numBytes,
-[; ;can2510.h: 491: unsigned char *data );
-[; ;can2510.h: 493: void CAN2510LoadBufferXtd(  unsigned char bufferNum,
-[; ;can2510.h: 494: unsigned long msgId,
-[; ;can2510.h: 495: unsigned char numBytes,
-[; ;can2510.h: 496: unsigned char *data );
-[; ;can2510.h: 498: void CAN2510LoadRTRStd(  unsigned char bufferNum,
-[; ;can2510.h: 499: unsigned int msgId,
-[; ;can2510.h: 500: unsigned char numBytes );
-[; ;can2510.h: 502: void CAN2510LoadRTRXtd(  unsigned char bufferNum,
-[; ;can2510.h: 503: unsigned long msgId,
-[; ;can2510.h: 504: unsigned char numBytes );
-[; ;can2510.h: 506: void CAN2510SetBufferPriority(  unsigned char bufferNum,
-[; ;can2510.h: 507: unsigned char bufferPriority );
-[; ;can2510.h: 509: void CAN2510SendBuffer(  unsigned char bufferNumber );
-[; ;can2510.h: 511: signed char CAN2510WriteBuffer(  unsigned char bufferNum );
-[; ;can2510.h: 513: unsigned char CAN2510DataReady(  unsigned char bufferNum );
-[; ;can2510.h: 515: unsigned char CAN2510DataRead(  unsigned char bufferNum,
-[; ;can2510.h: 516: unsigned long *msgId,
-[; ;can2510.h: 517: unsigned char *numBytes,
-[; ;can2510.h: 518: unsigned char *data );
-[; ;capture.h: 64: union capstatus
-[; ;capture.h: 65: {
-[; ;capture.h: 73: struct
-[; ;capture.h: 74: {
-[; ;capture.h: 82: unsigned Cap2OVF:1;
-[; ;capture.h: 86: unsigned Cap3OVF:1;
-[; ;capture.h: 91: unsigned Cap4OVF:1;
-[; ;capture.h: 92: unsigned Cap5OVF:1;
-[; ;capture.h: 107: unsigned ECap1OVF:1;
-[; ;capture.h: 115: };
-[; ;capture.h: 117: unsigned :8;
-[; ;capture.h: 119: };
-[; ;capture.h: 121: extern union capstatus CapStatus;
-[; ;capture.h: 123: union CapResult
-[; ;capture.h: 124: {
-[; ;capture.h: 125: unsigned int lc;
-[; ;capture.h: 126: char bc[2];
-[; ;capture.h: 127: };
-[; ;capture.h: 484: void OpenCapture2 ( unsigned char config);
-[; ;capture.h: 485: unsigned int ReadCapture2 (void);
-[; ;capture.h: 486: void CloseCapture2 (void);
-[; ;capture.h: 495: void OpenCapture3 ( unsigned char config);
-[; ;capture.h: 496: unsigned int ReadCapture3 (void);
-[; ;capture.h: 497: void CloseCapture3 (void);
-[; ;capture.h: 507: void OpenCapture4 ( unsigned char config);
-[; ;capture.h: 508: unsigned int ReadCapture4 (void);
-[; ;capture.h: 509: void CloseCapture4 (void);
-[; ;capture.h: 511: void OpenCapture5 ( unsigned char config);
-[; ;capture.h: 512: unsigned int ReadCapture5 (void);
-[; ;capture.h: 513: void CloseCapture5 (void);
-[; ;capture.h: 568: void OpenECapture1 ( unsigned char config);
-[; ;capture.h: 569: unsigned int ReadECapture1 (void);
-[; ;capture.h: 570: void CloseECapture1 (void);
-[; ;compare.h: 392: void OpenCompare2(unsigned char config, unsigned int period);
-[; ;compare.h: 393: void CloseCompare2(void);
-[; ;compare.h: 397: void OpenCompare3(unsigned char config,unsigned int period);
-[; ;compare.h: 398: void CloseCompare3(void);
-[; ;compare.h: 403: void OpenCompare4(unsigned char config,unsigned int period);
-[; ;compare.h: 404: void CloseCompare4(void);
-[; ;compare.h: 406: void OpenCompare5(unsigned char config,unsigned int period);
-[; ;compare.h: 407: void CloseCompare5(void);
-[; ;compare.h: 433: void OpenECompare1(unsigned char config,unsigned int period);
-[; ;compare.h: 434: void CloseECompare1(void);
-[; ;ctmu.h: 374: void OpenCTMU(unsigned char config1,unsigned char config2,unsigned char config3);
-[; ;ctmu.h: 379: void CurrentControlCTMU(unsigned char config);
-[; ;ctmu.h: 380: void CloseCTMU(void);
-[; ;dpslp.h: 171: extern void ULPWakeUpEnable( void );
-[; ;EEP.h: 36: void Busy_eep ( void );
-[; ;EEP.h: 37: unsigned char Read_b_eep( unsigned int badd );
-[; ;EEP.h: 38: void Write_b_eep( unsigned int badd, unsigned char bdat );
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;GenericTypeDefs.h: 65: typedef enum _BOOL { FALSE = 0, TRUE } BOOL;
-[; ;GenericTypeDefs.h: 68: typedef enum _BIT { CLEAR = 0, SET } BIT;
-[; ;GenericTypeDefs.h: 75: typedef signed int INT;
-[; ;GenericTypeDefs.h: 76: typedef signed char INT8;
-[; ;GenericTypeDefs.h: 77: typedef signed short int INT16;
-[; ;GenericTypeDefs.h: 78: typedef signed long int INT32;
-[; ;GenericTypeDefs.h: 86: typedef unsigned int UINT;
-[; ;GenericTypeDefs.h: 87: typedef unsigned char UINT8;
-[; ;GenericTypeDefs.h: 88: typedef unsigned short int UINT16;
-[; ;GenericTypeDefs.h: 89: typedef unsigned long int UINT32;
-[; ;GenericTypeDefs.h: 95: typedef unsigned short long UINT24;
-[; ;GenericTypeDefs.h: 103: typedef union
-[; ;GenericTypeDefs.h: 104: {
-[; ;GenericTypeDefs.h: 105: UINT8 Val;
-[; ;GenericTypeDefs.h: 106: struct
-[; ;GenericTypeDefs.h: 107: {
-[; ;GenericTypeDefs.h: 108: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 109: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 110: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 111: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 112: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 113: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 114: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 115: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 116: } bits;
-[; ;GenericTypeDefs.h: 117: } UINT8_VAL, UINT8_BITS;
-[; ;GenericTypeDefs.h: 119: typedef union
-[; ;GenericTypeDefs.h: 120: {
-[; ;GenericTypeDefs.h: 121: UINT16 Val;
-[; ;GenericTypeDefs.h: 122: UINT8 v[2] ;
-[; ;GenericTypeDefs.h: 123: struct 
-[; ;GenericTypeDefs.h: 124: {
-[; ;GenericTypeDefs.h: 125: UINT8 LB;
-[; ;GenericTypeDefs.h: 126: UINT8 HB;
-[; ;GenericTypeDefs.h: 127: } byte;
-[; ;GenericTypeDefs.h: 128: struct 
-[; ;GenericTypeDefs.h: 129: {
-[; ;GenericTypeDefs.h: 130: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 131: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 132: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 133: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 134: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 135: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 136: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 137: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 138: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 139: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 140: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 141: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 142: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 143: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 144: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 145: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 146: } bits;
-[; ;GenericTypeDefs.h: 147: } UINT16_VAL, UINT16_BITS;
-[; ;GenericTypeDefs.h: 151: typedef union
-[; ;GenericTypeDefs.h: 152: {
-[; ;GenericTypeDefs.h: 153: UINT24 Val;
-[; ;GenericTypeDefs.h: 154: UINT8 v[3] ;
-[; ;GenericTypeDefs.h: 155: struct 
-[; ;GenericTypeDefs.h: 156: {
-[; ;GenericTypeDefs.h: 157: UINT8 LB;
-[; ;GenericTypeDefs.h: 158: UINT8 HB;
-[; ;GenericTypeDefs.h: 159: UINT8 UB;
-[; ;GenericTypeDefs.h: 160: } byte;
-[; ;GenericTypeDefs.h: 161: struct 
-[; ;GenericTypeDefs.h: 162: {
-[; ;GenericTypeDefs.h: 163: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 164: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 165: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 166: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 167: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 168: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 169: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 170: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 171: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 172: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 173: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 174: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 175: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 176: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 177: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 178: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 179: UINT8 b16:1;
-[; ;GenericTypeDefs.h: 180: UINT8 b17:1;
-[; ;GenericTypeDefs.h: 181: UINT8 b18:1;
-[; ;GenericTypeDefs.h: 182: UINT8 b19:1;
-[; ;GenericTypeDefs.h: 183: UINT8 b20:1;
-[; ;GenericTypeDefs.h: 184: UINT8 b21:1;
-[; ;GenericTypeDefs.h: 185: UINT8 b22:1;
-[; ;GenericTypeDefs.h: 186: UINT8 b23:1;
-[; ;GenericTypeDefs.h: 187: } bits;
-[; ;GenericTypeDefs.h: 188: } UINT24_VAL, UINT24_BITS;
-[; ;GenericTypeDefs.h: 191: typedef union
-[; ;GenericTypeDefs.h: 192: {
-[; ;GenericTypeDefs.h: 193: UINT32 Val;
-[; ;GenericTypeDefs.h: 194: UINT16 w[2] ;
-[; ;GenericTypeDefs.h: 195: UINT8 v[4] ;
-[; ;GenericTypeDefs.h: 196: struct 
-[; ;GenericTypeDefs.h: 197: {
-[; ;GenericTypeDefs.h: 198: UINT16 LW;
-[; ;GenericTypeDefs.h: 199: UINT16 HW;
-[; ;GenericTypeDefs.h: 200: } word;
-[; ;GenericTypeDefs.h: 201: struct 
-[; ;GenericTypeDefs.h: 202: {
-[; ;GenericTypeDefs.h: 203: UINT8 LB;
-[; ;GenericTypeDefs.h: 204: UINT8 HB;
-[; ;GenericTypeDefs.h: 205: UINT8 UB;
-[; ;GenericTypeDefs.h: 206: UINT8 MB;
-[; ;GenericTypeDefs.h: 207: } byte;
-[; ;GenericTypeDefs.h: 208: struct 
-[; ;GenericTypeDefs.h: 209: {
-[; ;GenericTypeDefs.h: 210: UINT16_VAL low;
-[; ;GenericTypeDefs.h: 211: UINT16_VAL high;
-[; ;GenericTypeDefs.h: 212: }wordUnion;
-[; ;GenericTypeDefs.h: 213: struct 
-[; ;GenericTypeDefs.h: 214: {
-[; ;GenericTypeDefs.h: 215: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 216: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 217: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 218: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 219: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 220: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 221: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 222: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 223: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 224: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 225: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 226: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 227: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 228: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 229: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 230: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 231: UINT8 b16:1;
-[; ;GenericTypeDefs.h: 232: UINT8 b17:1;
-[; ;GenericTypeDefs.h: 233: UINT8 b18:1;
-[; ;GenericTypeDefs.h: 234: UINT8 b19:1;
-[; ;GenericTypeDefs.h: 235: UINT8 b20:1;
-[; ;GenericTypeDefs.h: 236: UINT8 b21:1;
-[; ;GenericTypeDefs.h: 237: UINT8 b22:1;
-[; ;GenericTypeDefs.h: 238: UINT8 b23:1;
-[; ;GenericTypeDefs.h: 239: UINT8 b24:1;
-[; ;GenericTypeDefs.h: 240: UINT8 b25:1;
-[; ;GenericTypeDefs.h: 241: UINT8 b26:1;
-[; ;GenericTypeDefs.h: 242: UINT8 b27:1;
-[; ;GenericTypeDefs.h: 243: UINT8 b28:1;
-[; ;GenericTypeDefs.h: 244: UINT8 b29:1;
-[; ;GenericTypeDefs.h: 245: UINT8 b30:1;
-[; ;GenericTypeDefs.h: 246: UINT8 b31:1;
-[; ;GenericTypeDefs.h: 247: } bits;
-[; ;GenericTypeDefs.h: 248: } UINT32_VAL;
-[; ;GenericTypeDefs.h: 343: typedef void VOID;
-[; ;GenericTypeDefs.h: 345: typedef char CHAR8;
-[; ;GenericTypeDefs.h: 346: typedef unsigned char UCHAR8;
-[; ;GenericTypeDefs.h: 348: typedef unsigned char BYTE;
-[; ;GenericTypeDefs.h: 349: typedef unsigned short int WORD;
-[; ;GenericTypeDefs.h: 350: typedef unsigned long DWORD;
-[; ;GenericTypeDefs.h: 353: typedef unsigned long long QWORD;
-[; ;GenericTypeDefs.h: 354: typedef signed char CHAR;
-[; ;GenericTypeDefs.h: 355: typedef signed short int SHORT;
-[; ;GenericTypeDefs.h: 356: typedef signed long LONG;
-[; ;GenericTypeDefs.h: 359: typedef signed long long LONGLONG;
-[; ;GenericTypeDefs.h: 360: typedef union
-[; ;GenericTypeDefs.h: 361: {
-[; ;GenericTypeDefs.h: 362: BYTE Val;
-[; ;GenericTypeDefs.h: 363: struct 
-[; ;GenericTypeDefs.h: 364: {
-[; ;GenericTypeDefs.h: 365: BYTE b0:1;
-[; ;GenericTypeDefs.h: 366: BYTE b1:1;
-[; ;GenericTypeDefs.h: 367: BYTE b2:1;
-[; ;GenericTypeDefs.h: 368: BYTE b3:1;
-[; ;GenericTypeDefs.h: 369: BYTE b4:1;
-[; ;GenericTypeDefs.h: 370: BYTE b5:1;
-[; ;GenericTypeDefs.h: 371: BYTE b6:1;
-[; ;GenericTypeDefs.h: 372: BYTE b7:1;
-[; ;GenericTypeDefs.h: 373: } bits;
-[; ;GenericTypeDefs.h: 374: } BYTE_VAL, BYTE_BITS;
-[; ;GenericTypeDefs.h: 376: typedef union
-[; ;GenericTypeDefs.h: 377: {
-[; ;GenericTypeDefs.h: 378: WORD Val;
-[; ;GenericTypeDefs.h: 379: BYTE v[2] ;
-[; ;GenericTypeDefs.h: 380: struct 
-[; ;GenericTypeDefs.h: 381: {
-[; ;GenericTypeDefs.h: 382: BYTE LB;
-[; ;GenericTypeDefs.h: 383: BYTE HB;
-[; ;GenericTypeDefs.h: 384: } byte;
-[; ;GenericTypeDefs.h: 385: struct 
-[; ;GenericTypeDefs.h: 386: {
-[; ;GenericTypeDefs.h: 387: BYTE b0:1;
-[; ;GenericTypeDefs.h: 388: BYTE b1:1;
-[; ;GenericTypeDefs.h: 389: BYTE b2:1;
-[; ;GenericTypeDefs.h: 390: BYTE b3:1;
-[; ;GenericTypeDefs.h: 391: BYTE b4:1;
-[; ;GenericTypeDefs.h: 392: BYTE b5:1;
-[; ;GenericTypeDefs.h: 393: BYTE b6:1;
-[; ;GenericTypeDefs.h: 394: BYTE b7:1;
-[; ;GenericTypeDefs.h: 395: BYTE b8:1;
-[; ;GenericTypeDefs.h: 396: BYTE b9:1;
-[; ;GenericTypeDefs.h: 397: BYTE b10:1;
-[; ;GenericTypeDefs.h: 398: BYTE b11:1;
-[; ;GenericTypeDefs.h: 399: BYTE b12:1;
-[; ;GenericTypeDefs.h: 400: BYTE b13:1;
-[; ;GenericTypeDefs.h: 401: BYTE b14:1;
-[; ;GenericTypeDefs.h: 402: BYTE b15:1;
-[; ;GenericTypeDefs.h: 403: } bits;
-[; ;GenericTypeDefs.h: 404: } WORD_VAL, WORD_BITS;
-[; ;GenericTypeDefs.h: 406: typedef union
-[; ;GenericTypeDefs.h: 407: {
-[; ;GenericTypeDefs.h: 408: DWORD Val;
-[; ;GenericTypeDefs.h: 409: WORD w[2] ;
-[; ;GenericTypeDefs.h: 410: BYTE v[4] ;
-[; ;GenericTypeDefs.h: 411: struct 
-[; ;GenericTypeDefs.h: 412: {
-[; ;GenericTypeDefs.h: 413: WORD LW;
-[; ;GenericTypeDefs.h: 414: WORD HW;
-[; ;GenericTypeDefs.h: 415: } word;
-[; ;GenericTypeDefs.h: 416: struct 
-[; ;GenericTypeDefs.h: 417: {
-[; ;GenericTypeDefs.h: 418: BYTE LB;
-[; ;GenericTypeDefs.h: 419: BYTE HB;
-[; ;GenericTypeDefs.h: 420: BYTE UB;
-[; ;GenericTypeDefs.h: 421: BYTE MB;
-[; ;GenericTypeDefs.h: 422: } byte;
-[; ;GenericTypeDefs.h: 423: struct 
-[; ;GenericTypeDefs.h: 424: {
-[; ;GenericTypeDefs.h: 425: WORD_VAL low;
-[; ;GenericTypeDefs.h: 426: WORD_VAL high;
-[; ;GenericTypeDefs.h: 427: }wordUnion;
-[; ;GenericTypeDefs.h: 428: struct 
-[; ;GenericTypeDefs.h: 429: {
-[; ;GenericTypeDefs.h: 430: BYTE b0:1;
-[; ;GenericTypeDefs.h: 431: BYTE b1:1;
-[; ;GenericTypeDefs.h: 432: BYTE b2:1;
-[; ;GenericTypeDefs.h: 433: BYTE b3:1;
-[; ;GenericTypeDefs.h: 434: BYTE b4:1;
-[; ;GenericTypeDefs.h: 435: BYTE b5:1;
-[; ;GenericTypeDefs.h: 436: BYTE b6:1;
-[; ;GenericTypeDefs.h: 437: BYTE b7:1;
-[; ;GenericTypeDefs.h: 438: BYTE b8:1;
-[; ;GenericTypeDefs.h: 439: BYTE b9:1;
-[; ;GenericTypeDefs.h: 440: BYTE b10:1;
-[; ;GenericTypeDefs.h: 441: BYTE b11:1;
-[; ;GenericTypeDefs.h: 442: BYTE b12:1;
-[; ;GenericTypeDefs.h: 443: BYTE b13:1;
-[; ;GenericTypeDefs.h: 444: BYTE b14:1;
-[; ;GenericTypeDefs.h: 445: BYTE b15:1;
-[; ;GenericTypeDefs.h: 446: BYTE b16:1;
-[; ;GenericTypeDefs.h: 447: BYTE b17:1;
-[; ;GenericTypeDefs.h: 448: BYTE b18:1;
-[; ;GenericTypeDefs.h: 449: BYTE b19:1;
-[; ;GenericTypeDefs.h: 450: BYTE b20:1;
-[; ;GenericTypeDefs.h: 451: BYTE b21:1;
-[; ;GenericTypeDefs.h: 452: BYTE b22:1;
-[; ;GenericTypeDefs.h: 453: BYTE b23:1;
-[; ;GenericTypeDefs.h: 454: BYTE b24:1;
-[; ;GenericTypeDefs.h: 455: BYTE b25:1;
-[; ;GenericTypeDefs.h: 456: BYTE b26:1;
-[; ;GenericTypeDefs.h: 457: BYTE b27:1;
-[; ;GenericTypeDefs.h: 458: BYTE b28:1;
-[; ;GenericTypeDefs.h: 459: BYTE b29:1;
-[; ;GenericTypeDefs.h: 460: BYTE b30:1;
-[; ;GenericTypeDefs.h: 461: BYTE b31:1;
-[; ;GenericTypeDefs.h: 462: } bits;
-[; ;GenericTypeDefs.h: 463: } DWORD_VAL;
-[; ;GenericTypeDefs.h: 466: typedef union
-[; ;GenericTypeDefs.h: 467: {
-[; ;GenericTypeDefs.h: 468: QWORD Val;
-[; ;GenericTypeDefs.h: 469: DWORD d[2] ;
-[; ;GenericTypeDefs.h: 470: WORD w[4] ;
-[; ;GenericTypeDefs.h: 471: BYTE v[8] ;
-[; ;GenericTypeDefs.h: 472: struct 
-[; ;GenericTypeDefs.h: 473: {
-[; ;GenericTypeDefs.h: 474: DWORD LD;
-[; ;GenericTypeDefs.h: 475: DWORD HD;
-[; ;GenericTypeDefs.h: 476: } dword;
-[; ;GenericTypeDefs.h: 477: struct 
-[; ;GenericTypeDefs.h: 478: {
-[; ;GenericTypeDefs.h: 479: WORD LW;
-[; ;GenericTypeDefs.h: 480: WORD HW;
-[; ;GenericTypeDefs.h: 481: WORD UW;
-[; ;GenericTypeDefs.h: 482: WORD MW;
-[; ;GenericTypeDefs.h: 483: } word;
-[; ;GenericTypeDefs.h: 484: struct 
-[; ;GenericTypeDefs.h: 485: {
-[; ;GenericTypeDefs.h: 486: BYTE b0:1;
-[; ;GenericTypeDefs.h: 487: BYTE b1:1;
-[; ;GenericTypeDefs.h: 488: BYTE b2:1;
-[; ;GenericTypeDefs.h: 489: BYTE b3:1;
-[; ;GenericTypeDefs.h: 490: BYTE b4:1;
-[; ;GenericTypeDefs.h: 491: BYTE b5:1;
-[; ;GenericTypeDefs.h: 492: BYTE b6:1;
-[; ;GenericTypeDefs.h: 493: BYTE b7:1;
-[; ;GenericTypeDefs.h: 494: BYTE b8:1;
-[; ;GenericTypeDefs.h: 495: BYTE b9:1;
-[; ;GenericTypeDefs.h: 496: BYTE b10:1;
-[; ;GenericTypeDefs.h: 497: BYTE b11:1;
-[; ;GenericTypeDefs.h: 498: BYTE b12:1;
-[; ;GenericTypeDefs.h: 499: BYTE b13:1;
-[; ;GenericTypeDefs.h: 500: BYTE b14:1;
-[; ;GenericTypeDefs.h: 501: BYTE b15:1;
-[; ;GenericTypeDefs.h: 502: BYTE b16:1;
-[; ;GenericTypeDefs.h: 503: BYTE b17:1;
-[; ;GenericTypeDefs.h: 504: BYTE b18:1;
-[; ;GenericTypeDefs.h: 505: BYTE b19:1;
-[; ;GenericTypeDefs.h: 506: BYTE b20:1;
-[; ;GenericTypeDefs.h: 507: BYTE b21:1;
-[; ;GenericTypeDefs.h: 508: BYTE b22:1;
-[; ;GenericTypeDefs.h: 509: BYTE b23:1;
-[; ;GenericTypeDefs.h: 510: BYTE b24:1;
-[; ;GenericTypeDefs.h: 511: BYTE b25:1;
-[; ;GenericTypeDefs.h: 512: BYTE b26:1;
-[; ;GenericTypeDefs.h: 513: BYTE b27:1;
-[; ;GenericTypeDefs.h: 514: BYTE b28:1;
-[; ;GenericTypeDefs.h: 515: BYTE b29:1;
-[; ;GenericTypeDefs.h: 516: BYTE b30:1;
-[; ;GenericTypeDefs.h: 517: BYTE b31:1;
-[; ;GenericTypeDefs.h: 518: BYTE b32:1;
-[; ;GenericTypeDefs.h: 519: BYTE b33:1;
-[; ;GenericTypeDefs.h: 520: BYTE b34:1;
-[; ;GenericTypeDefs.h: 521: BYTE b35:1;
-[; ;GenericTypeDefs.h: 522: BYTE b36:1;
-[; ;GenericTypeDefs.h: 523: BYTE b37:1;
-[; ;GenericTypeDefs.h: 524: BYTE b38:1;
-[; ;GenericTypeDefs.h: 525: BYTE b39:1;
-[; ;GenericTypeDefs.h: 526: BYTE b40:1;
-[; ;GenericTypeDefs.h: 527: BYTE b41:1;
-[; ;GenericTypeDefs.h: 528: BYTE b42:1;
-[; ;GenericTypeDefs.h: 529: BYTE b43:1;
-[; ;GenericTypeDefs.h: 530: BYTE b44:1;
-[; ;GenericTypeDefs.h: 531: BYTE b45:1;
-[; ;GenericTypeDefs.h: 532: BYTE b46:1;
-[; ;GenericTypeDefs.h: 533: BYTE b47:1;
-[; ;GenericTypeDefs.h: 534: BYTE b48:1;
-[; ;GenericTypeDefs.h: 535: BYTE b49:1;
-[; ;GenericTypeDefs.h: 536: BYTE b50:1;
-[; ;GenericTypeDefs.h: 537: BYTE b51:1;
-[; ;GenericTypeDefs.h: 538: BYTE b52:1;
-[; ;GenericTypeDefs.h: 539: BYTE b53:1;
-[; ;GenericTypeDefs.h: 540: BYTE b54:1;
-[; ;GenericTypeDefs.h: 541: BYTE b55:1;
-[; ;GenericTypeDefs.h: 542: BYTE b56:1;
-[; ;GenericTypeDefs.h: 543: BYTE b57:1;
-[; ;GenericTypeDefs.h: 544: BYTE b58:1;
-[; ;GenericTypeDefs.h: 545: BYTE b59:1;
-[; ;GenericTypeDefs.h: 546: BYTE b60:1;
-[; ;GenericTypeDefs.h: 547: BYTE b61:1;
-[; ;GenericTypeDefs.h: 548: BYTE b62:1;
-[; ;GenericTypeDefs.h: 549: BYTE b63:1;
-[; ;GenericTypeDefs.h: 550: } bits;
-[; ;GenericTypeDefs.h: 551: } QWORD_VAL;
-[; ;flash.h: 113: extern void ReadFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
-[; ;flash.h: 120: extern void EraseFlash(unsigned long startaddr, unsigned long endaddr);
-[; ;flash.h: 122: extern void WriteBlockFlash(unsigned long startaddr, unsigned char num_blocks, unsigned char *flash_array);
-[; ;flash.h: 124: extern void WriteBytesFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
-[; ;i2c.h: 775: void IdleI2C( void );
-[; ;i2c.h: 777: void OpenI2C( unsigned char sync_mode, unsigned char slew );
-[; ;i2c.h: 779: signed char WriteI2C( unsigned char data_out );
-[; ;i2c.h: 781: signed char putsI2C( unsigned char *wrptr );
-[; ;i2c.h: 783: unsigned char ReadI2C( void );
-[; ;i2c.h: 785: void CloseI2C( void );
-[; ;i2c.h: 899: signed char WriteI2C( unsigned char data_out );
-[; ;i2c.h: 901: signed char getsI2C( unsigned char *rdptr, unsigned char length );
-[; ;i2c.h: 908: signed char EEAckPolling( unsigned char control );
-[; ;i2c.h: 910: signed char EEByteWrite( unsigned char control,
-[; ;i2c.h: 911: unsigned char address,
-[; ;i2c.h: 912: unsigned char data );
-[; ;i2c.h: 914: signed int EECurrentAddRead( unsigned char control );
-[; ;i2c.h: 916: signed char EEPageWrite( unsigned char control,
-[; ;i2c.h: 917: unsigned char address,
-[; ;i2c.h: 918: unsigned char *wrptr );
-[; ;i2c.h: 920: signed int EERandomRead( unsigned char control, unsigned char address );
-[; ;i2c.h: 922: signed char EESequentialRead( unsigned char control,
-[; ;i2c.h: 923: unsigned char address,
-[; ;i2c.h: 924: unsigned char *rdptr,
-[; ;i2c.h: 925: unsigned char length );
-[; ;mwire.h: 325: void OpenMwire( unsigned char sync_mode );
-[; ;mwire.h: 327: unsigned char ReadMwire( unsigned char high_byte,
-[; ;mwire.h: 328: unsigned char low_byte );
-[; ;mwire.h: 341: signed char WriteMwire( unsigned char data_out );
-[; ;mwire.h: 354: void getsMwire( unsigned char *rdptr, unsigned char length );
-[; ;portb.h: 126: void OpenPORTB( unsigned char config);
-[; ;portb.h: 176: void OpenRB0INT( unsigned char config);
-[; ;portb.h: 194: void OpenRB1INT( unsigned char config);
-[; ;portb.h: 211: void OpenRB2INT( unsigned char config);
-[; ;portb.h: 230: void OpenRB3INT( unsigned char config);
-[; ;pwm.h: 85: union PWMDC
-[; ;pwm.h: 86: {
-[; ;pwm.h: 87: unsigned int lpwm;
-[; ;pwm.h: 88: char bpwm[2];
-[; ;pwm.h: 89: };
-[; ;pwm.h: 467: void OpenPWM1 ( char period);
-[; ;pwm.h: 468: void SetDCPWM1 ( unsigned int duty_cycle);
-[; ;pwm.h: 477: void ClosePWM1 (void);
-[; ;pwm.h: 525: void OpenPWM2 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 526: void SetDCPWM2 ( unsigned int duty_cycle);
-[; ;pwm.h: 527: void ClosePWM2 (void);
-[; ;pwm.h: 529: void OpenPWM3 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 530: void SetDCPWM3 ( unsigned int duty_cycle);
-[; ;pwm.h: 531: void ClosePWM3 (void);
-[; ;pwm.h: 538: void OpenPWM4 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 539: void SetDCPWM4 ( unsigned int duty_cycle);
-[; ;pwm.h: 540: void ClosePWM4 (void);
-[; ;pwm.h: 542: void OpenPWM5 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 543: void SetDCPWM5 ( unsigned int duty_cycle);
-[; ;pwm.h: 544: void ClosePWM5 (void);
-[; ;pwm.h: 586: void OpenEPWM1( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 587: void SetDCEPWM1 ( unsigned int duty_cycle);
-[; ;pwm.h: 588: void SetOutputEPWM1 ( unsigned char output_config,
-[; ;pwm.h: 589: unsigned char pwm_mode);
-[; ;pwm.h: 590: void CloseEPWM1 (void);
-[; ;reset.h: 16: char isMCLR(void);
-[; ;reset.h: 17: void StatusReset(void);
-[; ;reset.h: 18: char isPOR(void);
-[; ;reset.h: 19: char isWU(void);
-[; ;reset.h: 22: char isBOR(void);
-[; ;reset.h: 26: char isWDTTO(void);
-[; ;reset.h: 27: char isWDTWU(void);
-[; ;reset.h: 31: char isLVD(void);
-[; ;rtcc.h: 687: void Open_RTCC(void);
-[; ;rtcc.h: 688: void Close_RTCC(void);
-[; ;rtcc.h: 689: unsigned char update_RTCC(void);
-[; ;sw_i2c.h: 97: void SWStopI2C ( void );
-[; ;sw_i2c.h: 98: void SWStartI2C ( void );
-[; ;sw_i2c.h: 99: void SWRestartI2C ( void );
-[; ;sw_i2c.h: 100: void SWStopI2C ( void );
-[; ;sw_i2c.h: 102: signed char SWAckI2C( void );
-[; ;sw_i2c.h: 103: signed char Clock_test( void );
-[; ;sw_i2c.h: 104: signed int SWReadI2C( void );
-[; ;sw_i2c.h: 105: signed char SWWriteI2C(  unsigned char data_out );
-[; ;sw_i2c.h: 106: signed char SWGetsI2C(  unsigned char *rdptr,  unsigned char length );
-[; ;sw_i2c.h: 107: signed char SWPutsI2C(  unsigned char *wrptr );
-[; ;sw_spi.h: 84: void OpenSWSPI(void);
-[; ;sw_spi.h: 87: char WriteSWSPI( char output);
-[; ;sw_spi.h: 90: void SetCSSWSPI(void);
-[; ;sw_spi.h: 93: void ClearCSSWSPI(void);
-[; ;sw_uart.h: 47: void OpenUART(void);
-[; ;sw_uart.h: 49: unsigned char ReadUART(void);
-[; ;sw_uart.h: 51: void WriteUART( unsigned char);
-[; ;sw_uart.h: 53: void getsUART( char *, unsigned char);
-[; ;sw_uart.h: 55: void putsUART( char *);
-[; ;sw_uart.h: 79: extern void DelayRXBitUART (void);
-[; ;sw_uart.h: 80: extern void DelayRXHalfBitUART(void);
-[; ;sw_uart.h: 81: extern void DelayTXBitUART (void);
-[; ;timers.h: 36: union Timers
-[; ;timers.h: 37: {
-[; ;timers.h: 38: unsigned int lt;
-[; ;timers.h: 39: char bt[2];
-[; ;timers.h: 40: };
-[; ;timers.h: 118: void OpenTimer0 ( unsigned char config);
-[; ;timers.h: 119: void CloseTimer0 (void);
-[; ;timers.h: 120: unsigned int ReadTimer0 (void);
-[; ;timers.h: 121: void WriteTimer0 ( unsigned int timer0);
-[; ;timers.h: 185: void OpenTimer1 ( unsigned char config, unsigned char config1);
-[; ;timers.h: 186: void CloseTimer1 (void);
-[; ;timers.h: 187: unsigned int ReadTimer1 (void);
-[; ;timers.h: 188: void WriteTimer1 ( unsigned int timer1);
-[; ;timers.h: 325: void OpenTimer2 ( unsigned char config);
-[; ;timers.h: 326: void CloseTimer2 (void);
-[; ;timers.h: 452: void OpenTimer3 ( unsigned char config, unsigned char config1);
-[; ;timers.h: 453: void CloseTimer3 (void);
-[; ;timers.h: 454: unsigned int ReadTimer3 (void);
-[; ;timers.h: 455: void WriteTimer3 ( unsigned int timer3);
-[; ;timers.h: 541: void OpenTimer4 ( unsigned char config);
-[; ;timers.h: 542: void CloseTimer4 (void);
-[; ;usart.h: 200: union USART1
-[; ;usart.h: 201: {
-[; ;usart.h: 202: unsigned char val;
-[; ;usart.h: 203: struct
-[; ;usart.h: 204: {
-[; ;usart.h: 205: unsigned RX_NINE:1;
-[; ;usart.h: 206: unsigned TX_NINE:1;
-[; ;usart.h: 207: unsigned FRAME_ERROR:1;
-[; ;usart.h: 208: unsigned OVERRUN_ERROR:1;
-[; ;usart.h: 209: unsigned fill:4;
-[; ;usart.h: 210: };
-[; ;usart.h: 211: };
-[; ;usart.h: 212: extern union USART1 USART1_Status;
-[; ;usart.h: 214: void Open1USART ( unsigned char config, unsigned int spbrg);
-[; ;usart.h: 244: char Read1USART (void);
-[; ;usart.h: 245: void Write1USART ( char data);
-[; ;usart.h: 246: void gets1USART ( char *buffer, unsigned char len);
-[; ;usart.h: 247: void puts1USART ( char *data);
-[; ;usart.h: 248: void putrs1USART ( const  char *data);
-[; ;usart.h: 305: union USART2
-[; ;usart.h: 306: {
-[; ;usart.h: 307: unsigned char val;
-[; ;usart.h: 308: struct
-[; ;usart.h: 309: {
-[; ;usart.h: 310: unsigned RX_NINE:1;
-[; ;usart.h: 311: unsigned TX_NINE:1;
-[; ;usart.h: 312: unsigned FRAME_ERROR:1;
-[; ;usart.h: 313: unsigned OVERRUN_ERROR:1;
-[; ;usart.h: 314: unsigned fill:4;
-[; ;usart.h: 315: };
-[; ;usart.h: 316: };
-[; ;usart.h: 317: extern union USART2 USART2_Status;
-[; ;usart.h: 318: void Open2USART ( unsigned char config, unsigned int spbrg);
-[; ;usart.h: 333: char Read2USART (void);
-[; ;usart.h: 334: void Write2USART ( char data);
-[; ;usart.h: 335: void gets2USART ( char *buffer, unsigned char len);
-[; ;usart.h: 336: void puts2USART ( char *data);
-[; ;usart.h: 337: void putrs2USART ( const  char *data);
-[; ;usart.h: 660: void baud1USART ( unsigned char baudconfig);
-[; ;usart.h: 665: void baud2USART ( unsigned char baudconfig);
-[; ;xlcd.h: 87: void OpenXLCD( unsigned char);
-[; ;xlcd.h: 92: void SetCGRamAddr( unsigned char);
-[; ;xlcd.h: 97: void SetDDRamAddr( unsigned char);
-[; ;xlcd.h: 102: unsigned char BusyXLCD(void);
-[; ;xlcd.h: 107: unsigned char ReadAddrXLCD(void);
-[; ;xlcd.h: 112: char ReadDataXLCD(void);
-[; ;xlcd.h: 117: void WriteCmdXLCD( unsigned char);
-[; ;xlcd.h: 122: void WriteDataXLCD( char);
-[; ;xlcd.h: 132: void putsXLCD( char *);
-[; ;xlcd.h: 137: void putrsXLCD(const char *);
-[; ;xlcd.h: 140: extern void DelayFor18TCY(void);
-[; ;xlcd.h: 141: extern void DelayPORXLCD(void);
-[; ;xlcd.h: 142: extern void DelayXLCD(void);
-[; ;delays.h: 13: void Delay1TCYx(unsigned char);
-[; ;delays.h: 19: void Delay10TCYx(unsigned char);
-[; ;delays.h: 25: void Delay100TCYx(unsigned char);
-[; ;delays.h: 31: void Delay1KTCYx(unsigned char);
-[; ;delays.h: 37: void Delay10KTCYx(unsigned char);
 [; ;pic18.h: 18: __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 [; ;pic18.h: 19: __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 [; ;pic18.h: 43: extern void __nop(void);
-[; ;pic18.h: 126: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
-[; ;pic18.h: 127: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
-[; ;pic18.h: 128: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 293: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -17465,6 +16790,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
 [; ;interrupt_manager.h: 121: void interrupt INTERRUPT_InterruptManager (void);
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 85: typedef enum
+[; ;adc.h: 86: {
+[; ;adc.h: 87: channel_CTMU = 0x1C,
+[; ;adc.h: 88: channel_Temp_diode = 0x1D,
+[; ;adc.h: 89: channel_Vdd_core = 0x1E,
+[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F,
+[; ;adc.h: 91: channel_AN6 = 0x06,
+[; ;adc.h: 92: channel_AN5 = 0x05,
+[; ;adc.h: 93: channel_AN0 = 0x00,
+[; ;adc.h: 94: channel_AN4 = 0x04,
+[; ;adc.h: 95: channel_AN3 = 0x03,
+[; ;adc.h: 96: channel_AN2 = 0x02,
+[; ;adc.h: 97: channel_AN1 = 0x01,
+[; ;adc.h: 98: channel_AN9 = 0x09,
+[; ;adc.h: 99: channel_AN8 = 0x08,
+[; ;adc.h: 100: channel_AN7 = 0x07
+[; ;adc.h: 101: } adc_channel_t;
+[; ;adc.h: 136: void ADC_Initialize(void);
+[; ;adc.h: 165: void ADC_StartConversion(adc_channel_t channel);
+[; ;adc.h: 197: bool ADC_IsConversionDone();
+[; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c.h: 78: typedef enum
 [; ;i2c.h: 79: {
 [; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
@@ -17481,383 +16831,385 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 94: void EUSART1_Initialize(void);
 [; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
 [; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;mcc.h: 70: void SYSTEM_Initialize(void);
-[; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
-"48 main.c
-[v _delay_ms `(v ~T0 @X0 1 ef1`i ]
-{
-[; ;main.c: 48: void delay_ms(int ms) {
-[e :U _delay_ms ]
-[v _ms `i ~T0 @X0 1 r1 ]
-[f ]
-[; ;main.c: 49: if (ms < 10) {
-"49
-[e $ ! < _ms -> 10 `i 2643  ]
-{
-[; ;main.c: 50: _delay((unsigned long)((10)*(16000000/4000.0)));
-"50
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"51
-}
-[; ;main.c: 51: } else {
-[e $U 2644  ]
-[e :U 2643 ]
-{
-"52
-[v _n `i ~T0 @X0 1 a ]
-[; ;main.c: 52: int n = ms / 10;
-[e = _n / _ms -> 10 `i ]
-[; ;main.c: 53: for (int i = 0; i < n; i++) {
-"53
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 2648  ]
-[e :U 2645 ]
-{
-[; ;main.c: 54: _delay((unsigned long)((10)*(16000000/4000.0)));
-"54
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"55
-}
-"53
-[e ++ _i -> 1 `i ]
-[e :U 2648 ]
-[e $ < _i _n 2645  ]
-[e :U 2646 ]
-"55
-}
-"56
-}
-[e :U 2644 ]
-[; ;main.c: 55: }
-[; ;main.c: 56: }
-[; ;main.c: 57: }
-"57
-[e :UE 2642 ]
-}
-"64
+[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
+[; ;eccp1.h: 79: {
+[; ;eccp1.h: 80: struct
+[; ;eccp1.h: 81: {
+[; ;eccp1.h: 82: uint8_t ccpr1l;
+[; ;eccp1.h: 83: uint8_t ccpr1h;
+[; ;eccp1.h: 84: };
+[; ;eccp1.h: 85: struct
+[; ;eccp1.h: 86: {
+[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
+[; ;eccp1.h: 88: };
+[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
+[; ;eccp1.h: 121: void ECCP1_Initialize(void);
+[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
+[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
+[; ;tmr1.h: 99: void TMR1_Initialize(void);
+[; ;tmr1.h: 128: void TMR1_StartTimer(void);
+[; ;tmr1.h: 160: void TMR1_StopTimer(void);
+[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
+[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
+[; ;tmr1.h: 270: void TMR1_Reload(void);
+[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
+[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
+[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
+[; ;mcc.h: 73: void SYSTEM_Initialize(void);
+[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
+[; ;ax.h: 61: void delay_ms(int ms);
+[; ;ax.h: 62: int getAddressSize(int address);
+[; ;ax.h: 66: void setLedOn(int led);
+[; ;ax.h: 70: void setLedOff(int led);
+[; ;ax.h: 75: int getADC(int adc);
+[; ;ax.h: 78: int pingAX(int id);
+[; ;ax.h: 80: int readAXData(int id, int address);
+[; ;ax.h: 81: int writeAXData(int id, int address, int data);
+[; ;ax.h: 84: void handleByteReceived(uint8_t data);
+[; ;ax.h: 86: uint8_t getByteToSend();
+"52 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 64: void main(void) {
+[; ;main.c: 52: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 66: SYSTEM_Initialize();
-"66
+[; ;main.c: 54: SYSTEM_Initialize();
+"54
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 85: (INTCONbits.GIE = 1);
-"85
+[; ;main.c: 73: (INTCONbits.GIE = 1);
+"73
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 88: (INTCONbits.PEIE = 1);
-"88
+[; ;main.c: 76: (INTCONbits.PEIE = 1);
+"76
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 99: do { TRISC0 = 0; } while(0);
-"99
-[e :U 2652 ]
+[; ;main.c: 87: do { TRISC0 = 0; } while(0);
+"87
+[e :U 2611 ]
 {
 [e = _TRISC0 -> -> 0 `i `b ]
 }
-[e :U 2651 ]
-[; ;main.c: 100: do { TRISC1 = 0; } while(0);
-"100
-[e :U 2655 ]
+[e :U 2610 ]
+[; ;main.c: 88: do { TRISC1 = 0; } while(0);
+"88
+[e :U 2614 ]
 {
 [e = _TRISC1 -> -> 0 `i `b ]
 }
-[e :U 2654 ]
-"101
+[e :U 2613 ]
+"89
 [v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 101: int delay = 10;
+[; ;main.c: 89: int delay = 10;
 [e = _delay -> 10 `i ]
-[; ;main.c: 102: for (int i = 0; i < 2; i++) {
-"102
+[; ;main.c: 90: for (int i = 0; i < 2; i++) {
+"90
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 2 `i 2656  ]
-[e $U 2657  ]
-[e :U 2656 ]
+[e $ < _i -> 2 `i 2615  ]
+[e $U 2616  ]
+[e :U 2615 ]
 {
-[; ;main.c: 104: do { LATD3 = 1; } while(0);
-"104
-[e :U 2661 ]
+[; ;main.c: 92: do { LATD3 = 1; } while(0);
+"92
+[e :U 2620 ]
 {
 [e = _LATD3 -> -> 1 `i `b ]
 }
-[e :U 2660 ]
-[; ;main.c: 105: delay_ms(delay);
-"105
+[e :U 2619 ]
+[; ;main.c: 93: delay_ms(delay);
+"93
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 106: do { LATD3 = 0; } while(0);
-"106
-[e :U 2664 ]
+[; ;main.c: 94: do { LATD3 = 0; } while(0);
+"94
+[e :U 2623 ]
 {
 [e = _LATD3 -> -> 0 `i `b ]
 }
-[e :U 2663 ]
-[; ;main.c: 107: do { LATD2 = 1; } while(0);
-"107
-[e :U 2667 ]
+[e :U 2622 ]
+[; ;main.c: 95: do { LATD2 = 1; } while(0);
+"95
+[e :U 2626 ]
 {
 [e = _LATD2 -> -> 1 `i `b ]
 }
-[e :U 2666 ]
-[; ;main.c: 108: delay_ms(delay);
-"108
+[e :U 2625 ]
+[; ;main.c: 96: delay_ms(delay);
+"96
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 109: do { LATD2 = 0; } while(0);
-"109
-[e :U 2670 ]
+[; ;main.c: 97: do { LATD2 = 0; } while(0);
+"97
+[e :U 2629 ]
 {
 [e = _LATD2 -> -> 0 `i `b ]
 }
-[e :U 2669 ]
-[; ;main.c: 110: do { LATD1 = 1; } while(0);
-"110
-[e :U 2673 ]
+[e :U 2628 ]
+[; ;main.c: 98: do { LATD1 = 1; } while(0);
+"98
+[e :U 2632 ]
 {
 [e = _LATD1 -> -> 1 `i `b ]
 }
-[e :U 2672 ]
-[; ;main.c: 111: delay_ms(delay);
-"111
+[e :U 2631 ]
+[; ;main.c: 99: delay_ms(delay);
+"99
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 112: do { LATD1 = 0; } while(0);
-"112
-[e :U 2676 ]
+[; ;main.c: 100: do { LATD1 = 0; } while(0);
+"100
+[e :U 2635 ]
 {
 [e = _LATD1 -> -> 0 `i `b ]
 }
-[e :U 2675 ]
-[; ;main.c: 113: do { LATD0 = 1; } while(0);
-"113
-[e :U 2679 ]
+[e :U 2634 ]
+[; ;main.c: 101: do { LATD0 = 1; } while(0);
+"101
+[e :U 2638 ]
 {
 [e = _LATD0 -> -> 1 `i `b ]
 }
-[e :U 2678 ]
-[; ;main.c: 114: delay_ms(delay);
-"114
+[e :U 2637 ]
+[; ;main.c: 102: delay_ms(delay);
+"102
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 115: do { LATD0 = 0; } while(0);
-"115
-[e :U 2682 ]
+[; ;main.c: 103: do { LATD0 = 0; } while(0);
+"103
+[e :U 2641 ]
 {
 [e = _LATD0 -> -> 0 `i `b ]
 }
-[e :U 2681 ]
-[; ;main.c: 116: do { LATC2 = 1; } while(0);
-"116
-[e :U 2685 ]
+[e :U 2640 ]
+[; ;main.c: 104: do { LATC2 = 1; } while(0);
+"104
+[e :U 2644 ]
 {
 [e = _LATC2 -> -> 1 `i `b ]
 }
-[e :U 2684 ]
-[; ;main.c: 117: delay_ms(delay);
-"117
+[e :U 2643 ]
+[; ;main.c: 105: delay_ms(delay);
+"105
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 118: do { LATC2 = 0; } while(0);
-"118
-[e :U 2688 ]
+[; ;main.c: 106: do { LATC2 = 0; } while(0);
+"106
+[e :U 2647 ]
 {
 [e = _LATC2 -> -> 0 `i `b ]
 }
-[e :U 2687 ]
-[; ;main.c: 119: do { LATC1 = 1; } while(0);
-"119
-[e :U 2691 ]
+[e :U 2646 ]
+[; ;main.c: 107: do { LATC1 = 1; } while(0);
+"107
+[e :U 2650 ]
 {
 [e = _LATC1 -> -> 1 `i `b ]
 }
-[e :U 2690 ]
-[; ;main.c: 120: delay_ms(delay);
-"120
+[e :U 2649 ]
+[; ;main.c: 108: delay_ms(delay);
+"108
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 121: do { LATC1 = 0; } while(0);
-"121
-[e :U 2694 ]
+[; ;main.c: 109: do { LATC1 = 0; } while(0);
+"109
+[e :U 2653 ]
 {
 [e = _LATC1 -> -> 0 `i `b ]
 }
-[e :U 2693 ]
-[; ;main.c: 122: do { LATC0 = 1; } while(0);
-"122
-[e :U 2697 ]
+[e :U 2652 ]
+[; ;main.c: 110: do { LATC0 = 1; } while(0);
+"110
+[e :U 2656 ]
 {
 [e = _LATC0 -> -> 1 `i `b ]
 }
-[e :U 2696 ]
-[; ;main.c: 123: delay_ms(delay);
-"123
+[e :U 2655 ]
+[; ;main.c: 111: delay_ms(delay);
+"111
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 124: do { LATC0 = 0; } while(0);
-"124
-[e :U 2700 ]
+[; ;main.c: 112: do { LATC0 = 0; } while(0);
+"112
+[e :U 2659 ]
 {
 [e = _LATC0 -> -> 0 `i `b ]
 }
-[e :U 2699 ]
-[; ;main.c: 125: do { LATB0 = 1; } while(0);
-"125
-[e :U 2703 ]
+[e :U 2658 ]
+[; ;main.c: 113: do { LATB0 = 1; } while(0);
+"113
+[e :U 2662 ]
 {
 [e = _LATB0 -> -> 1 `i `b ]
 }
-[e :U 2702 ]
-[; ;main.c: 126: delay_ms(delay);
-"126
+[e :U 2661 ]
+[; ;main.c: 114: delay_ms(delay);
+"114
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 127: do { LATB0 = 0; } while(0);
-"127
-[e :U 2706 ]
+[; ;main.c: 115: do { LATB0 = 0; } while(0);
+"115
+[e :U 2665 ]
 {
 [e = _LATB0 -> -> 0 `i `b ]
 }
-[e :U 2705 ]
-[; ;main.c: 128: do { LATB2 = 1; } while(0);
-"128
-[e :U 2709 ]
+[e :U 2664 ]
+[; ;main.c: 116: do { LATB2 = 1; } while(0);
+"116
+[e :U 2668 ]
 {
 [e = _LATB2 -> -> 1 `i `b ]
 }
-[e :U 2708 ]
-[; ;main.c: 129: delay_ms(delay);
-"129
+[e :U 2667 ]
+[; ;main.c: 117: delay_ms(delay);
+"117
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 130: do { LATB2 = 0; } while(0);
-"130
-[e :U 2712 ]
+[; ;main.c: 118: do { LATB2 = 0; } while(0);
+"118
+[e :U 2671 ]
 {
 [e = _LATB2 -> -> 0 `i `b ]
 }
-[e :U 2711 ]
-[; ;main.c: 131: do { LATB3 = 1; } while(0);
-"131
-[e :U 2715 ]
+[e :U 2670 ]
+[; ;main.c: 119: do { LATB3 = 1; } while(0);
+"119
+[e :U 2674 ]
 {
 [e = _LATB3 -> -> 1 `i `b ]
 }
-[e :U 2714 ]
-[; ;main.c: 132: delay_ms(delay);
-"132
+[e :U 2673 ]
+[; ;main.c: 120: delay_ms(delay);
+"120
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 133: do { LATB3 = 0; } while(0);
-"133
-[e :U 2718 ]
+[; ;main.c: 121: do { LATB3 = 0; } while(0);
+"121
+[e :U 2677 ]
 {
 [e = _LATB3 -> -> 0 `i `b ]
 }
-[e :U 2717 ]
-[; ;main.c: 134: delay_ms(delay);
-"134
+[e :U 2676 ]
+[; ;main.c: 122: delay_ms(delay);
+"122
 [e ( _delay_ms (1 _delay ]
-"136
+"124
 }
-"102
+"90
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 2 `i 2656  ]
-[e :U 2657 ]
-"136
+[e $ < _i -> 2 `i 2615  ]
+[e :U 2616 ]
+"124
 }
-[; ;main.c: 136: }
-[; ;main.c: 140: while (1) {
+[; ;main.c: 124: }
+[; ;main.c: 127: do { LATD4 = 0; } while(0);
+"127
+[e :U 2680 ]
+{
+[e = _LATD4 -> -> 0 `i `b ]
+}
+[e :U 2679 ]
+[; ;main.c: 128: while (1) {
+"128
+[e :U 2682 ]
+{
+[; ;main.c: 129: delay_ms(500);
+"129
+[e ( _delay_ms (1 -> 500 `i ]
+[; ;main.c: 130: do { LATB3 = 1; } while(0);
+"130
+[e :U 2686 ]
+{
+[e = _LATB3 -> -> 1 `i `b ]
+}
+[e :U 2685 ]
+[; ;main.c: 131: delay_ms(500);
+"131
+[e ( _delay_ms (1 -> 500 `i ]
+[; ;main.c: 133: do { LATB3 = 0; } while(0);
+"133
+[e :U 2689 ]
+{
+[e = _LATB3 -> -> 0 `i `b ]
+}
+[e :U 2688 ]
+"135
+}
+[e :U 2681 ]
+"128
+[e $U 2682  ]
+[e :U 2683 ]
+[; ;main.c: 135: }
+[; ;main.c: 138: while (1) {
+"138
+[e :U 2691 ]
+{
+[; ;main.c: 139: do { LATB3 = 1; } while(0);
+"139
+[e :U 2695 ]
+{
+[e = _LATB3 -> -> 1 `i `b ]
+}
+[e :U 2694 ]
+[; ;main.c: 140: delay_ms(100);
 "140
-[e :U 2720 ]
-{
-[; ;main.c: 141: do { LATD3 = 1; } while(0);
+[e ( _delay_ms (1 -> 100 `i ]
+[; ;main.c: 141: pingAX(2);
 "141
-[e :U 2724 ]
-{
-[e = _LATD3 -> -> 1 `i `b ]
-}
-[e :U 2723 ]
-[; ;main.c: 142: delay_ms(1000);
+[e ( _pingAX (1 -> 2 `i ]
+[; ;main.c: 142: do { LATB3 = 0; } while(0);
 "142
-[e ( _delay_ms (1 -> 1000 `i ]
-[; ;main.c: 143: do { LATD3 = 0; } while(0);
+[e :U 2698 ]
+{
+[e = _LATB3 -> -> 0 `i `b ]
+}
+[e :U 2697 ]
+[; ;main.c: 143: delay_ms(100);
 "143
-[e :U 2727 ]
+[e ( _delay_ms (1 -> 100 `i ]
+[; ;main.c: 145: do { LATB2 = 1; } while(0);
+"145
+[e :U 2701 ]
 {
-[e = _LATD3 -> -> 0 `i `b ]
+[e = _LATB2 -> -> 1 `i `b ]
 }
-[e :U 2726 ]
-[; ;main.c: 144: delay_ms(1000);
-"144
-[e ( _delay_ms (1 -> 1000 `i ]
-[; ;main.c: 151: do { LATD1 = 1; } while(0);
+[e :U 2700 ]
+[; ;main.c: 146: delay_ms(100);
+"146
+[e ( _delay_ms (1 -> 100 `i ]
+[; ;main.c: 147: pingAX(2);
+"147
+[e ( _pingAX (1 -> 2 `i ]
+[; ;main.c: 148: do { LATB2 = 0; } while(0);
+"148
+[e :U 2704 ]
+{
+[e = _LATB2 -> -> 0 `i `b ]
+}
+[e :U 2703 ]
+[; ;main.c: 149: delay_ms(100);
+"149
+[e ( _delay_ms (1 -> 100 `i ]
+[; ;main.c: 151: do { LATB0 = 1; } while(0);
 "151
-[e :U 2730 ]
+[e :U 2707 ]
 {
-[e = _LATD1 -> -> 1 `i `b ]
+[e = _LATB0 -> -> 1 `i `b ]
 }
-[e :U 2729 ]
-[; ;main.c: 153: do { LATD0 = 1; } while(0);
+[e :U 2706 ]
+[; ;main.c: 152: delay_ms(100);
+"152
+[e ( _delay_ms (1 -> 100 `i ]
+[; ;main.c: 153: pingAX(2);
 "153
-[e :U 2733 ]
-{
-[e = _LATD0 -> -> 1 `i `b ]
-}
-[e :U 2732 ]
-[; ;main.c: 155: do { LATC2 = 1; } while(0);
-"155
-[e :U 2736 ]
-{
-[e = _LATC2 -> -> 1 `i `b ]
-}
-[e :U 2735 ]
-[; ;main.c: 156: delay_ms(1000);
-"156
-[e ( _delay_ms (1 -> 1000 `i ]
-[; ;main.c: 157: do { LATD3 = 0; } while(0);
-"157
-[e :U 2739 ]
-{
-[e = _LATD3 -> -> 0 `i `b ]
-}
-[e :U 2738 ]
-[; ;main.c: 158: do { LATD2 = 0; } while(0);
-"158
-[e :U 2742 ]
-{
-[e = _LATD2 -> -> 0 `i `b ]
-}
-[e :U 2741 ]
-[; ;main.c: 159: do { LATD1 = 0; } while(0);
-"159
-[e :U 2745 ]
-{
-[e = _LATD1 -> -> 0 `i `b ]
-}
-[e :U 2744 ]
-[; ;main.c: 160: do { LATD0 = 0; } while(0);
-"160
-[e :U 2748 ]
-{
-[e = _LATD0 -> -> 0 `i `b ]
-}
-[e :U 2747 ]
-[; ;main.c: 161: do { LATC2 = 0; } while(0);
-"161
-[e :U 2751 ]
-{
-[e = _LATC2 -> -> 0 `i `b ]
-}
-[e :U 2750 ]
-[; ;main.c: 162: do { LATB0 = 0; } while(0);
-"162
-[e :U 2754 ]
+[e ( _pingAX (1 -> 2 `i ]
+[; ;main.c: 154: do { LATB0 = 0; } while(0);
+"154
+[e :U 2710 ]
 {
 [e = _LATB0 -> -> 0 `i `b ]
 }
-[e :U 2753 ]
-"164
+[e :U 2709 ]
+[; ;main.c: 155: delay_ms(100);
+"155
+[e ( _delay_ms (1 -> 100 `i ]
+"157
 }
-[e :U 2719 ]
-"140
-[e $U 2720  ]
-[e :U 2721 ]
-[; ;main.c: 164: }
-[; ;main.c: 165: }
-"165
-[e :UE 2649 ]
+[e :U 2690 ]
+"138
+[e $U 2691  ]
+[e :U 2692 ]
+[; ;main.c: 157: }
+[; ;main.c: 158: }
+"158
+[e :UE 2608 ]
 }

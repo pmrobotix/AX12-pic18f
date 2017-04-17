@@ -1,104 +1,65 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"109 mcc_generated_files/interrupt_manager.h
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
-"380 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"86 mcc_generated_files/mcc.h
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"113 mcc_generated_files/i2c.h
-[v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"121 mcc_generated_files/eccp1.h
-[v _ECCP1_Initialize `(v ~T0 @X0 0 ef ]
-"136 mcc_generated_files/adc.h
-[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
-"99 mcc_generated_files/tmr1.h
-[v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart1.h
-[v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart2.h
-[v _EUSART2_Initialize `(v ~T0 @X0 0 ef ]
-"38970 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"38899
-[v _OSCCON2 `Vuc ~T0 @X0 0 e@4050 ]
-"34156
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"34092
-[v _REFOCON `Vuc ~T0 @X0 0 e@3994 ]
-"49 mcc_generated_files/mcc.c
-[p x RETEN=OFF ]
-"50
-[p x INTOSCSEL=HIGH ]
-"51
-[p x SOSCSEL=DIG ]
-"52
-[p x XINST=OFF ]
-"55
-[p x FOSC=HS2 ]
-"56
-[p x PLLCFG=OFF ]
-"57
-[p x FCMEN=OFF ]
-"58
-[p x IESO=OFF ]
-"61
-[p x PWRTEN=OFF ]
-"62
-[p x BOREN=SBORDIS ]
-"63
-[p x BORV=3 ]
-"64
-[p x BORPWR=ZPBORMV ]
-"67
-[p x WDTEN=OFF ]
-"68
-[p x WDTPS=1048576 ]
-"71
-[p x CANMX=PORTB ]
-"72
-[p x MSSPMSK=MSK7 ]
-"73
-[p x MCLRE=ON ]
-"76
-[p x STVREN=ON ]
-"77
-[p x BBSIZ=BB2K ]
-"80
-[p x CP0=OFF ]
-"81
-[p x CP1=OFF ]
-"82
-[p x CP2=OFF ]
-"83
-[p x CP3=OFF ]
-"86
-[p x CPB=OFF ]
-"87
-[p x CPD=OFF ]
-"90
-[p x WRT0=OFF ]
-"91
-[p x WRT1=OFF ]
-"92
-[p x WRT2=OFF ]
-"93
-[p x WRT3=OFF ]
-"96
-[p x WRTC=OFF ]
-"97
-[p x WRTB=OFF ]
-"98
-[p x WRTD=OFF ]
-"101
-[p x EBTR0=OFF ]
-"102
-[p x EBTR1=OFF ]
-"103
-[p x EBTR2=OFF ]
-"104
-[p x EBTR3=OFF ]
-"107
-[p x EBTRB=OFF ]
+"38541 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
+"35305
+[v _T1GCON `Vuc ~T0 @X0 0 e@4010 ]
+"38669
+[v _TMR1H `Vuc ~T0 @X0 0 e@4047 ]
+"38650
+[v _TMR1L `Vuc ~T0 @X0 0 e@4046 ]
+"34372
+[s S2228 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2228 . TMR1IF TMR2IF TMR1GIF SSPIF TX1IF RC1IF ADIF PSPIF ]
+"34382
+[s S2229 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2229 . . TXIF RCIF ]
+"34371
+[u S2227 `S2228 1 `S2229 1 ]
+[n S2227 . . . ]
+"34388
+[v _PIR1bits `VS2227 ~T0 @X0 0 e@3998 ]
+"128 mcc_generated_files/tmr1.h
+[v _TMR1_StartTimer `(v ~T0 @X0 0 ef ]
+"38547 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[s S2477 :2 `uc 1 :1 `uc 1 ]
+[n S2477 . . NOT_T1SYNC ]
+"38551
+[s S2478 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S2478 . TMR1ON RD16 nT1SYNC SOSCEN T1CKPS TMR1CS ]
+"38559
+[s S2479 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2479 . . T1CKPS0 T1CKPS1 TMR1CS0 TMR1CS1 ]
+"38566
+[s S2480 :3 `uc 1 :1 `uc 1 ]
+[n S2480 . . T1OSCEN ]
+"38570
+[s S2481 :7 `uc 1 :1 `uc 1 ]
+[n S2481 . . T1RD16 ]
+"38546
+[u S2476 `S2477 1 `S2478 1 `S2479 1 `S2480 1 `S2481 1 ]
+[n S2476 . . . . . . ]
+"38575
+[v _T1CONbits `VS2476 ~T0 @X0 0 e@4045 ]
+"35311
+[s S2286 :3 `uc 1 :1 `uc 1 ]
+[n S2286 . . T1GGO_NOT_T1DONE ]
+"35315
+[s S2287 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2287 . T1GSS T1GVAL T1GGO_nT1DONE T1GSPM T1GTM T1GPOL TMR1GE ]
+"35324
+[s S2288 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2288 . T1GSS0 T1GSS1 . T1GGO ]
+"35330
+[s S2289 :3 `uc 1 :1 `uc 1 ]
+[n S2289 . . NOT_T1DONE ]
+"35334
+[s S2290 :3 `uc 1 :1 `uc 1 ]
+[n S2290 . . nT1DONE ]
+"35310
+[u S2285 `S2286 1 `S2287 1 `S2288 1 `S2289 1 `S2290 1 ]
+[n S2285 . . . . . . ]
+"35339
+[v _T1GCONbits `VS2285 ~T0 @X0 0 e@4010 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16811,7 +16772,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
+[; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -16840,65 +16801,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
-[; ;interrupt_manager.h: 121: void interrupt INTERRUPT_InterruptManager (void);
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 85: typedef enum
-[; ;adc.h: 86: {
-[; ;adc.h: 87: channel_CTMU = 0x1C,
-[; ;adc.h: 88: channel_Temp_diode = 0x1D,
-[; ;adc.h: 89: channel_Vdd_core = 0x1E,
-[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F,
-[; ;adc.h: 91: channel_AN6 = 0x06,
-[; ;adc.h: 92: channel_AN5 = 0x05,
-[; ;adc.h: 93: channel_AN0 = 0x00,
-[; ;adc.h: 94: channel_AN4 = 0x04,
-[; ;adc.h: 95: channel_AN3 = 0x03,
-[; ;adc.h: 96: channel_AN2 = 0x02,
-[; ;adc.h: 97: channel_AN1 = 0x01,
-[; ;adc.h: 98: channel_AN9 = 0x09,
-[; ;adc.h: 99: channel_AN8 = 0x08,
-[; ;adc.h: 100: channel_AN7 = 0x07
-[; ;adc.h: 101: } adc_channel_t;
-[; ;adc.h: 136: void ADC_Initialize(void);
-[; ;adc.h: 165: void ADC_StartConversion(adc_channel_t channel);
-[; ;adc.h: 197: bool ADC_IsConversionDone();
-[; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
-[; ;eusart2.h: 94: void EUSART2_Initialize(void);
-[; ;eusart2.h: 114: uint8_t EUSART2_Read(void);
-[; ;eusart2.h: 134: void EUSART2_Write(uint8_t txData);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
-[; ;eccp1.h: 79: {
-[; ;eccp1.h: 80: struct
-[; ;eccp1.h: 81: {
-[; ;eccp1.h: 82: uint8_t ccpr1l;
-[; ;eccp1.h: 83: uint8_t ccpr1h;
-[; ;eccp1.h: 84: };
-[; ;eccp1.h: 85: struct
-[; ;eccp1.h: 86: {
-[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
-[; ;eccp1.h: 88: };
-[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
-[; ;eccp1.h: 121: void ECCP1_Initialize(void);
-[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
-[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
 [; ;tmr1.h: 99: void TMR1_Initialize(void);
 [; ;tmr1.h: 128: void TMR1_StartTimer(void);
 [; ;tmr1.h: 160: void TMR1_StopTimer(void);
@@ -16908,64 +16810,209 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
 [; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
-"111 mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"56 mcc_generated_files/tmr1.c
+[v _timer1ReloadVal `Vui ~T0 @X0 1 e ]
+[; ;tmr1.c: 56: volatile uint16_t timer1ReloadVal;
+"62
+[v _TMR1_Initialize `(v ~T0 @X0 1 ef ]
+"63
 {
-[; ;mcc.c: 111: void SYSTEM_Initialize(void) {
-[e :U _SYSTEM_Initialize ]
+[; ;tmr1.c: 62: void TMR1_Initialize(void)
+[; ;tmr1.c: 63: {
+[e :U _TMR1_Initialize ]
 [f ]
-[; ;mcc.c: 113: INTERRUPT_Initialize();
-"113
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 114: PIN_MANAGER_Initialize();
-"114
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 115: OSCILLATOR_Initialize();
-"115
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 116: I2C_Initialize();
-"116
-[e ( _I2C_Initialize ..  ]
-[; ;mcc.c: 117: ECCP1_Initialize();
-"117
-[e ( _ECCP1_Initialize ..  ]
-[; ;mcc.c: 118: ADC_Initialize();
-"118
-[e ( _ADC_Initialize ..  ]
-[; ;mcc.c: 119: TMR1_Initialize();
-"119
-[e ( _TMR1_Initialize ..  ]
-[; ;mcc.c: 120: EUSART1_Initialize();
-"120
-[e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 121: EUSART2_Initialize();
-"121
-[e ( _EUSART2_Initialize ..  ]
-[; ;mcc.c: 122: }
-"122
+[; ;tmr1.c: 67: T1CON = 0x00;
+"67
+[e = _T1CON -> -> 0 `i `uc ]
+[; ;tmr1.c: 70: T1GCON = 0x00;
+"70
+[e = _T1GCON -> -> 0 `i `uc ]
+[; ;tmr1.c: 73: TMR1H = 0x00;
+"73
+[e = _TMR1H -> -> 0 `i `uc ]
+[; ;tmr1.c: 76: TMR1L = 0x00;
+"76
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;tmr1.c: 79: timer1ReloadVal=(TMR1H << 8) | TMR1L;
+"79
+[e = _timer1ReloadVal -> | << -> _TMR1H `i -> 8 `i -> _TMR1L `i `ui ]
+[; ;tmr1.c: 82: PIR1bits.TMR1IF = 0;
+"82
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;tmr1.c: 85: TMR1_StartTimer();
+"85
+[e ( _TMR1_StartTimer ..  ]
+[; ;tmr1.c: 86: }
+"86
+[e :UE 2605 ]
+}
+"88
+[v _TMR1_StartTimer `(v ~T0 @X0 1 ef ]
+"89
+{
+[; ;tmr1.c: 88: void TMR1_StartTimer(void)
+[; ;tmr1.c: 89: {
+[e :U _TMR1_StartTimer ]
+[f ]
+[; ;tmr1.c: 91: T1CONbits.TMR1ON = 1;
+"91
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+[; ;tmr1.c: 92: }
+"92
+[e :UE 2606 ]
+}
+"94
+[v _TMR1_StopTimer `(v ~T0 @X0 1 ef ]
+"95
+{
+[; ;tmr1.c: 94: void TMR1_StopTimer(void)
+[; ;tmr1.c: 95: {
+[e :U _TMR1_StopTimer ]
+[f ]
+[; ;tmr1.c: 97: T1CONbits.TMR1ON = 0;
+"97
+[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
+[; ;tmr1.c: 98: }
+"98
+[e :UE 2607 ]
+}
+"100
+[v _TMR1_ReadTimer `(ui ~T0 @X0 1 ef ]
+"101
+{
+[; ;tmr1.c: 100: uint16_t TMR1_ReadTimer(void)
+[; ;tmr1.c: 101: {
+[e :U _TMR1_ReadTimer ]
+[f ]
+"102
+[v _readVal `ui ~T0 @X0 1 a ]
+[; ;tmr1.c: 102: uint16_t readVal;
+[; ;tmr1.c: 104: readVal = (TMR1H << 8) | TMR1L;
+"104
+[e = _readVal -> | << -> _TMR1H `i -> 8 `i -> _TMR1L `i `ui ]
+[; ;tmr1.c: 106: return readVal;
+"106
+[e ) _readVal ]
+[e $UE 2608  ]
+[; ;tmr1.c: 107: }
+"107
 [e :UE 2608 ]
 }
-"124
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"109
+[v _TMR1_WriteTimer `(v ~T0 @X0 1 ef1`ui ]
+"110
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void) {
-[e :U _OSCILLATOR_Initialize ]
+[; ;tmr1.c: 109: void TMR1_WriteTimer(uint16_t timerVal)
+[; ;tmr1.c: 110: {
+[e :U _TMR1_WriteTimer ]
+"109
+[v _timerVal `ui ~T0 @X0 1 r1 ]
+"110
 [f ]
-[; ;mcc.c: 126: OSCCON = 0x60;
+[; ;tmr1.c: 111: if (T1CONbits.nT1SYNC == 1)
+"111
+[e $ ! == -> . . _T1CONbits 1 2 `i -> 1 `i 2610  ]
+[; ;tmr1.c: 112: {
+"112
+{
+[; ;tmr1.c: 114: T1CONbits.TMR1ON = 0;
+"114
+[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
+[; ;tmr1.c: 117: TMR1H = (timerVal >> 8);
+"117
+[e = _TMR1H -> >> _timerVal -> 8 `i `uc ]
+[; ;tmr1.c: 118: TMR1L = timerVal;
+"118
+[e = _TMR1L -> _timerVal `uc ]
+[; ;tmr1.c: 121: T1CONbits.TMR1ON =1;
+"121
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+"122
+}
+[; ;tmr1.c: 122: }
+[e $U 2611  ]
+"123
+[e :U 2610 ]
+[; ;tmr1.c: 123: else
+[; ;tmr1.c: 124: {
+"124
+{
+[; ;tmr1.c: 126: TMR1H = (timerVal >> 8);
 "126
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 128: OSCCON2 = 0x00;
+[e = _TMR1H -> >> _timerVal -> 8 `i `uc ]
+[; ;tmr1.c: 127: TMR1L = timerVal;
+"127
+[e = _TMR1L -> _timerVal `uc ]
 "128
-[e = _OSCCON2 -> -> 0 `i `uc ]
-[; ;mcc.c: 130: OSCTUNE = 0x00;
-"130
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 132: REFOCON = 0x00;
-"132
-[e = _REFOCON -> -> 0 `i `uc ]
-[; ;mcc.c: 135: }
-"135
+}
+[e :U 2611 ]
+[; ;tmr1.c: 128: }
+[; ;tmr1.c: 129: }
+"129
 [e :UE 2609 ]
+}
+"131
+[v _TMR1_Reload `(v ~T0 @X0 1 ef ]
+"132
+{
+[; ;tmr1.c: 131: void TMR1_Reload(void)
+[; ;tmr1.c: 132: {
+[e :U _TMR1_Reload ]
+[f ]
+[; ;tmr1.c: 134: TMR1H = (timer1ReloadVal >> 8);
+"134
+[e = _TMR1H -> >> _timer1ReloadVal -> 8 `i `uc ]
+[; ;tmr1.c: 135: TMR1L = timer1ReloadVal;
+"135
+[e = _TMR1L -> _timer1ReloadVal `uc ]
+[; ;tmr1.c: 136: }
+"136
+[e :UE 2612 ]
+}
+"138
+[v _TMR1_StartSinglePulseAcquisition `(v ~T0 @X0 1 ef ]
+"139
+{
+[; ;tmr1.c: 138: void TMR1_StartSinglePulseAcquisition(void)
+[; ;tmr1.c: 139: {
+[e :U _TMR1_StartSinglePulseAcquisition ]
+[f ]
+[; ;tmr1.c: 140: T1GCONbits.T1GGO = 1;
+"140
+[e = . . _T1GCONbits 2 3 -> -> 1 `i `uc ]
+[; ;tmr1.c: 141: }
+"141
+[e :UE 2613 ]
+}
+"143
+[v _TMR1_CheckGateValueStatus `(uc ~T0 @X0 1 ef ]
+"144
+{
+[; ;tmr1.c: 143: uint8_t TMR1_CheckGateValueStatus(void)
+[; ;tmr1.c: 144: {
+[e :U _TMR1_CheckGateValueStatus ]
+[f ]
+[; ;tmr1.c: 145: return (T1GCONbits.T1GVAL);
+"145
+[e ) . . _T1GCONbits 1 1 ]
+[e $UE 2614  ]
+[; ;tmr1.c: 146: }
+"146
+[e :UE 2614 ]
+}
+"148
+[v _TMR1_HasOverflowOccured `(uc ~T0 @X0 1 ef ]
+"149
+{
+[; ;tmr1.c: 148: bool TMR1_HasOverflowOccured(void)
+[; ;tmr1.c: 149: {
+[e :U _TMR1_HasOverflowOccured ]
+[f ]
+[; ;tmr1.c: 151: return(PIR1bits.TMR1IF);
+"151
+[e ) . . _PIR1bits 0 0 ]
+[e $UE 2615  ]
+[; ;tmr1.c: 152: }
+"152
+[e :UE 2615 ]
 }

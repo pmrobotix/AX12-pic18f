@@ -21080,7 +21080,8 @@ void I2C_ISR ( void );
 # 140
 extern volatile uint8_t I2C_slaveWriteData;
 
-# 62 "mcc_generated_files/../ax.h"
+# 61 "mcc_generated_files/../ax.h"
+void delay_ms(int ms);
 int getAddressSize(int address);
 
 
@@ -21100,7 +21101,7 @@ int getADC(int adc);
 int pingAX(int id);
 
 int readAXData(int id, int address);
-void writeAXData(int id, int address, int data);
+int writeAXData(int id, int address, int data);
 
 
 void handleByteReceived(uint8_t data);
@@ -21218,6 +21219,7 @@ slaveWriteType = SLAVE_NORMAL_DATA;
 break;
 
 case I2C_SLAVE_READ_REQUEST:
+delay_ms(500);
 SSPBUF = EEPROM_Buffer[eepromAddress++];
 if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 eepromAddress = 0;
@@ -21230,6 +21232,7 @@ default:;
 }
 
 }
+int c = 0;
 
 void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 uint8_t data;
@@ -21241,8 +21244,6 @@ break;
 
 
 case I2C_SLAVE_WRITE_COMPLETED:
-
-
 data = I2C_slaveWriteData;
 
 handleByteReceived(data);
@@ -21250,14 +21251,10 @@ handleByteReceived(data);
 break;
 
 case I2C_SLAVE_READ_REQUEST:
-data = 5;
-{
 
+data = getByteToSend();
 
-}
-
-SSPBUF = getByteToSend();
-
+SSPBUF = data;
 break;
 
 case I2C_SLAVE_READ_COMPLETED:

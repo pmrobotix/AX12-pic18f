@@ -3,6 +3,7 @@
  main.c  \
 mcc_generated_files/i2c.h  \
 mcc_generated_files/mcc.h  \
+ax.h  \
 mcc_generated_files/eusart1.h  \
 mcc_generated_files/eusart2.h  \
 mcc_generated_files/adc.h  \

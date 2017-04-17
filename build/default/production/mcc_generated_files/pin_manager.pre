@@ -20963,7 +20963,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 306 "mcc_generated_files/pin_manager.h"
+# 380 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
 # 49 "mcc_generated_files/pin_manager.c"
@@ -20974,8 +20974,8 @@ LATA = 0x0;
 LATE = 0x0;
 LATD = 0x0;
 LATC = 0x0;
-WPUB = 0xFF;
-TRISD = 0xB0;
+WPUB = 0xFE;
+TRISD = 0xA0;
 TRISE = 0x7;
 TRISB = 0xF2;
 TRISC = 0xB8;

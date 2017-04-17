@@ -1,11 +1,5 @@
 
-# 1 "mcc_generated_files/interrupt_manager.c"
-
-# 109 "mcc_generated_files/interrupt_manager.h"
-void INTERRUPT_Initialize (void);
-
-# 121
-void interrupt INTERRUPT_InterruptManager (void);
+# 1 "mcc_generated_files/adc.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -20969,9 +20963,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 380 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
 typedef signed char int8_t;
 
@@ -21102,127 +21093,71 @@ adc_result_t ADC_GetConversionResult(void);
 # 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
-typedef unsigned size_t;
-
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stddef.h"
-typedef int ptrdiff_t;
-
-# 78 "mcc_generated_files/i2c.h"
-typedef enum
-{
-I2C_SLAVE_WRITE_REQUEST,
-I2C_SLAVE_READ_REQUEST,
-I2C_SLAVE_WRITE_COMPLETED,
-I2C_SLAVE_READ_COMPLETED,
-} I2C_SLAVE_DRIVER_STATUS;
-
-# 113
-void I2C_Initialize(void);
-
-# 133
-void I2C_ISR ( void );
-
-# 140
-extern volatile uint8_t I2C_slaveWriteData;
-
-# 94 "mcc_generated_files/eusart2.h"
-void EUSART2_Initialize(void);
-
-# 114
-uint8_t EUSART2_Read(void);
-
-# 134
-void EUSART2_Write(uint8_t txData);
-
-# 94 "mcc_generated_files/eusart1.h"
-void EUSART1_Initialize(void);
-
-# 114
-uint8_t EUSART1_Read(void);
-
-# 134
-void EUSART1_Write(uint8_t txData);
-
-# 78 "mcc_generated_files/eccp1.h"
-typedef union CCPR1Reg_tag
-{
-struct
-{
-uint8_t ccpr1l;
-uint8_t ccpr1h;
-};
-struct
-{
-uint16_t ccpr1_16Bit;
-};
-} CCP_PERIOD_REG_T ;
-
-# 121
-void ECCP1_Initialize(void);
-
-# 148
-bool ECCP1_IsCapturedDataReady(void);
-
-# 178
-uint16_t ECCP1_CaptureRead(void);
-
-# 99 "mcc_generated_files/tmr1.h"
-void TMR1_Initialize(void);
-
-# 128
-void TMR1_StartTimer(void);
-
-# 160
-void TMR1_StopTimer(void);
-
-# 195
-uint16_t TMR1_ReadTimer(void);
-
-# 234
-void TMR1_WriteTimer(uint16_t timerVal);
-
-# 270
-void TMR1_Reload(void);
-
-# 309
-void TMR1_StartSinglePulseAcquisition(void);
-
-# 348
-uint8_t TMR1_CheckGateValueStatus(void);
-
-# 386
-bool TMR1_HasOverflowOccured(void);
-
-# 73 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-
-# 86
-void OSCILLATOR_Initialize(void);
-
-# 51 "mcc_generated_files/interrupt_manager.c"
-void INTERRUPT_Initialize (void)
+# 58 "mcc_generated_files/adc.c"
+void ADC_Initialize(void)
 {
 
-IPEN = 0;
 
 
+ADCON0 = 0x01;
 
 
-IPR1bits.SSPIP = 0;
+ADCON1 = 0x00;
+
+
+ADCON2 = 0x02;
+
+
+ADRESH = 0x00;
+
+
+ADRESL = 0x00;
 
 }
 
-void interrupt INTERRUPT_InterruptManager (void)
+void ADC_StartConversion(adc_channel_t channel)
 {
 
-if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
-{
-I2C_ISR();
+ADCON0bits.CHS = channel;
+
+
+ADCON0bits.ADON = 1;
+
+
+
+ADCON0bits.GO_nDONE = 1;
 }
-else
+
+bool ADC_IsConversionDone()
 {
 
+return (!ADCON0bits.GO_nDONE);
 }
+
+adc_result_t ADC_GetConversionResult(void)
+{
+
+return ((ADRESH << 8) + ADRESL);
+}
+
+adc_result_t ADC_GetConversion(adc_channel_t channel)
+{
+
+ADCON0bits.CHS = channel;
+
+
+ADCON0bits.ADON = 1;
+
+
+
+ADCON0bits.GO_nDONE = 1;
+
+
+while (ADCON0bits.GO_nDONE)
+{
+}
+
+
+return ((ADRESH << 8) + ADRESL);
 }
 

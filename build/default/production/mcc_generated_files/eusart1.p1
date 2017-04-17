@@ -16808,9 +16808,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.c: 63: RCSTA1 = 0x90;
 "63
 [e = _RCSTA1 -> -> 144 `i `uc ]
-[; ;eusart1.c: 66: TXSTA1 = 0x24;
+[; ;eusart1.c: 66: TXSTA1 = 0xA4;
 "66
-[e = _TXSTA1 -> -> 36 `i `uc ]
+[e = _TXSTA1 -> -> 164 `i `uc ]
 [; ;eusart1.c: 69: SPBRG1 = 0x03;
 "69
 [e = _SPBRG1 -> -> 3 `i `uc ]

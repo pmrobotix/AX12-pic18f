@@ -11,7 +11,7 @@ I2C_SLAVE_WRITE_COMPLETED 2
 I2C_SLAVE_READ_COMPLETED 3
 ]
 "166
-[e E18248 . `uc
+[e E18250 . `uc
 SLAVE_NORMAL_DATA 0
 SLAVE_DATA_ADDRESS 1
 ]
@@ -21,23 +21,57 @@ channel_CTMU 28
 channel_Temp_diode 29
 channel_Vdd_core 30
 channel_1_024V_bandgap 31
+channel_AN6 6
+channel_AN5 5
+channel_AN0 0
+channel_AN4 4
+channel_AN3 3
+channel_AN2 2
+channel_AN1 1
+channel_AN9 9
+channel_AN8 8
+channel_AN7 7
 ]
-"102 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
-[e E18243 . `uc
+"120 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
+[e E18245 . `uc
 channel_CTMU 28
 channel_Temp_diode 29
 channel_Vdd_core 30
 channel_1_024V_bandgap 31
+channel_AN6 6
+channel_AN5 5
+channel_AN0 0
+channel_AN4 4
+channel_AN3 3
+channel_AN2 2
+channel_AN1 1
+channel_AN9 9
+channel_AN8 8
+channel_AN7 7
 ]
-"25
+"11
+[v _delay_ms delay_ms `(v  1 e 1 0 ]
+"22
+[v _getAddressSize getAddressSize `(i  1 e 2 0 ]
+"43
 [v _setLedOn setLedOn `(v  1 e 1 0 ]
-"60
+"78
 [v _setLedOff setLedOff `(v  1 e 1 0 ]
-"101
+"119
 [v _getADC getADC `(i  1 e 2 0 ]
-"128
+"129
+[v _sendAX sendAX `(uc  1 e 1 0 ]
+[v i2_sendAX sendAX `(uc  1 e 1 0 ]
+"180
+[v _pingAX pingAX `(i  1 e 2 0 ]
+[v i2_pingAX pingAX `(i  1 e 2 0 ]
+"197
+[v _readAXData readAXData `(i  1 e 2 0 ]
+"224
+[v _writeAXData writeAXData `(i  1 e 2 0 ]
+"260
 [v _handleByteReceived handleByteReceived `(v  1 e 1 0 ]
-"187
+"291
 [v _getByteToSend getByteToSend `(uc  1 e 1 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -61,9 +95,7 @@ channel_1_024V_bandgap 31
 [v ___flmul __flmul `(d  1 e 3 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"48 C:\Users\Utilisateur\MPLABXProjects\AX1.X\main.c
-[v _delay_ms delay_ms `(v  1 e 1 0 ]
-"64
+"52 C:\Users\Utilisateur\MPLABXProjects\AX1.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "58 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -73,13 +105,19 @@ channel_1_024V_bandgap 31
 [v _ECCP1_Initialize ECCP1_Initialize `(v  1 e 1 0 ]
 "55 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/eusart1.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+"77
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+[v i2_EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"97
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+[v i2_EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
 "55 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/eusart2.c
 [v _EUSART2_Initialize EUSART2_Initialize `(v  1 e 1 0 ]
 "79 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/i2c.c
 [v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
 "99
 [v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
-"212
+"214
 [v _I2C_StatusCallback I2C_StatusCallback `(v  1 e 1 0 ]
 "51 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
@@ -87,7 +125,7 @@ channel_1_024V_bandgap 31
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 "111 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"125
+"124
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "49 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -95,21 +133,21 @@ channel_1_024V_bandgap 31
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
 "88
 [v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
-"118 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
+"250 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
 [v _readIndex readIndex `i  1 e 2 0 ]
-"119
+"251
 [v _currentCommand currentCommand `uc  1 e 1 0 ]
-"120
+"252
 [v _parameter1 parameter1 `uc  1 e 1 0 ]
-"121
+"253
 [v _parameter2 parameter2 `uc  1 e 1 0 ]
-"122
+"254
 [v _parameter3 parameter3 `uc  1 e 1 0 ]
-"124
+"256
 [v _nbBytesToSend nbBytesToSend `i  1 e 2 0 ]
-"125
+"257
 [v _bytesSent bytesSent `i  1 e 2 0 ]
-"126
+"258
 [v _dataToSend dataToSend `[32]uc  1 e 32 0 ]
 "29282 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [v _WPUB WPUB `VEuc  1 e 1 @3931 ]
@@ -169,17 +207,17 @@ channel_1_024V_bandgap 31
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "34018
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S951 . 1 `uc 1 C1TSEL 1 0 :1:0 
+[s S957 . 1 `uc 1 C1TSEL 1 0 :1:0 
 `uc 1 C2TSEL 1 0 :1:1 
 `uc 1 C3TSEL 1 0 :1:2 
 `uc 1 C4TSEL 1 0 :1:3 
 `uc 1 C5TSEL 1 0 :1:4 
 ]
 "34063
-[u S957 . 1 `S951 1 . 1 0 ]
+[u S963 . 1 `S957 1 . 1 0 ]
 "34063
 "34063
-[v _CCPTMRSbits CCPTMRSbits `VES957  1 e 1 @3993 ]
+[v _CCPTMRSbits CCPTMRSbits `VES963  1 e 1 @3993 ]
 "34092
 [v _REFOCON REFOCON `VEuc  1 e 1 @3994 ]
 "34156
@@ -222,7 +260,7 @@ channel_1_024V_bandgap 31
 "34388
 "34388
 [v _PIR1bits PIR1bits `VES287  1 e 1 @3998 ]
-[s S658 . 1 `uc 1 TMR1IP 1 0 :1:0 
+[s S664 . 1 `uc 1 TMR1IP 1 0 :1:0 
 `uc 1 TMR2IP 1 0 :1:1 
 `uc 1 TMR1GIP 1 0 :1:2 
 `uc 1 SSPIP 1 0 :1:3 
@@ -232,15 +270,15 @@ channel_1_024V_bandgap 31
 `uc 1 PSPIP 1 0 :1:7 
 ]
 "34464
-[s S667 . 1 `uc 1 . 1 0 :4:0 
+[s S673 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TXIP 1 0 :1:4 
 `uc 1 RCIP 1 0 :1:5 
 ]
 "34464
-[u S671 . 1 `S658 1 . 1 0 `S667 1 . 1 0 ]
+[u S677 . 1 `S664 1 . 1 0 `S673 1 . 1 0 ]
 "34464
 "34464
-[v _IPR1bits IPR1bits `VES671  1 e 1 @3999 ]
+[v _IPR1bits IPR1bits `VES677  1 e 1 @3999 ]
 [s S85 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP1IF 1 0 :1:1 
 `uc 1 CCP2IF 1 0 :1:2 
@@ -302,11 +340,11 @@ channel_1_024V_bandgap 31
 [v _BAUDCON1 BAUDCON1 `VEuc  1 e 1 @4007 ]
 "35305
 [v _T1GCON T1GCON `VEuc  1 e 1 @4010 ]
-[s S868 . 1 `uc 1 . 1 0 :3:0 
+[s S874 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 T1GGO_NOT_T1DONE 1 0 :1:3 
 ]
 "35339
-[s S871 . 1 `uc 1 T1GSS 1 0 :2:0 
+[s S877 . 1 `uc 1 T1GSS 1 0 :2:0 
 `uc 1 T1GVAL 1 0 :1:2 
 `uc 1 T1GGO_nT1DONE 1 0 :1:3 
 `uc 1 T1GSPM 1 0 :1:4 
@@ -315,24 +353,24 @@ channel_1_024V_bandgap 31
 `uc 1 TMR1GE 1 0 :1:7 
 ]
 "35339
-[s S879 . 1 `uc 1 T1GSS0 1 0 :1:0 
+[s S885 . 1 `uc 1 T1GSS0 1 0 :1:0 
 `uc 1 T1GSS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T1GGO 1 0 :1:3 
 ]
 "35339
-[s S884 . 1 `uc 1 . 1 0 :3:0 
+[s S890 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_T1DONE 1 0 :1:3 
 ]
 "35339
-[s S887 . 1 `uc 1 . 1 0 :3:0 
+[s S893 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 nT1DONE 1 0 :1:3 
 ]
 "35339
-[u S890 . 1 `S868 1 . 1 0 `S871 1 . 1 0 `S879 1 . 1 0 `S884 1 . 1 0 `S887 1 . 1 0 ]
+[u S896 . 1 `S874 1 . 1 0 `S877 1 . 1 0 `S885 1 . 1 0 `S890 1 . 1 0 `S893 1 . 1 0 ]
 "35339
 "35339
-[v _T1GCONbits T1GCONbits `VES890  1 e 1 @4010 ]
+[v _T1GCONbits T1GCONbits `VES896  1 e 1 @4010 ]
 "35408
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
 "35463
@@ -397,16 +435,16 @@ channel_1_024V_bandgap 31
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "37666
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S1019 . 1 `uc 1 . 1 0 :1:0 
+[s S1035 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "37711
-[s S1022 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1038 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "37711
-[s S1026 . 1 `uc 1 . 1 0 :1:0 
+[s S1042 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -415,30 +453,30 @@ channel_1_024V_bandgap 31
 `uc 1 CHS4 1 0 :1:6 
 ]
 "37711
-[s S1034 . 1 `uc 1 . 1 0 :1:0 
+[s S1050 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
 "37711
-[s S1037 . 1 `uc 1 . 1 0 :1:0 
+[s S1053 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
 "37711
-[s S1040 . 1 `uc 1 . 1 0 :1:0 
+[s S1056 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
 "37711
-[s S1043 . 1 `uc 1 . 1 0 :1:0 
+[s S1059 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
 "37711
-[s S1046 . 1 `uc 1 . 1 0 :1:0 
+[s S1062 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
 "37711
-[u S1049 . 1 `S1019 1 . 1 0 `S1022 1 . 1 0 `S1026 1 . 1 0 `S1034 1 . 1 0 `S1037 1 . 1 0 `S1040 1 . 1 0 `S1043 1 . 1 0 `S1046 1 . 1 0 ]
+[u S1065 . 1 `S1035 1 . 1 0 `S1038 1 . 1 0 `S1042 1 . 1 0 `S1050 1 . 1 0 `S1053 1 . 1 0 `S1056 1 . 1 0 `S1059 1 . 1 0 `S1062 1 . 1 0 ]
 "37711
 "37711
-[v _ADCON0bits ADCON0bits `VES1049  1 e 1 @4034 ]
+[v _ADCON0bits ADCON0bits `VES1065  1 e 1 @4034 ]
 "37796
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "37815
@@ -557,11 +595,11 @@ channel_1_024V_bandgap 31
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "38541
 [v _T1CON T1CON `VEuc  1 e 1 @4045 ]
-[s S817 . 1 `uc 1 . 1 0 :2:0 
+[s S823 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
 "38575
-[s S820 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S826 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 RD16 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 SOSCEN 1 0 :1:3 
@@ -569,25 +607,25 @@ channel_1_024V_bandgap 31
 `uc 1 TMR1CS 1 0 :2:6 
 ]
 "38575
-[s S827 . 1 `uc 1 . 1 0 :4:0 
+[s S833 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 T1CKPS0 1 0 :1:4 
 `uc 1 T1CKPS1 1 0 :1:5 
 `uc 1 TMR1CS0 1 0 :1:6 
 `uc 1 TMR1CS1 1 0 :1:7 
 ]
 "38575
-[s S833 . 1 `uc 1 . 1 0 :3:0 
+[s S839 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 T1OSCEN 1 0 :1:3 
 ]
 "38575
-[s S836 . 1 `uc 1 . 1 0 :7:0 
+[s S842 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 T1RD16 1 0 :1:7 
 ]
 "38575
-[u S839 . 1 `S817 1 . 1 0 `S820 1 . 1 0 `S827 1 . 1 0 `S833 1 . 1 0 `S836 1 . 1 0 ]
+[u S845 . 1 `S823 1 . 1 0 `S826 1 . 1 0 `S833 1 . 1 0 `S839 1 . 1 0 `S842 1 . 1 0 ]
 "38575
 "38575
-[v _T1CONbits T1CONbits `VES839  1 e 1 @4045 ]
+[v _T1CONbits T1CONbits `VES845  1 e 1 @4045 ]
 "38650
 [v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
 "38669
@@ -596,7 +634,7 @@ channel_1_024V_bandgap 31
 [v _OSCCON2 OSCCON2 `VEuc  1 e 1 @4050 ]
 "38970
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
-[s S688 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S694 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -606,7 +644,7 @@ channel_1_024V_bandgap 31
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "39932
-[s S697 . 1 `uc 1 . 1 0 :1:0 
+[s S703 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -616,15 +654,15 @@ channel_1_024V_bandgap 31
 `uc 1 GIE 1 0 :1:7 
 ]
 "39932
-[s S706 . 1 `uc 1 . 1 0 :6:0 
+[s S712 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
 "39932
-[u S710 . 1 `S688 1 . 1 0 `S697 1 . 1 0 `S706 1 . 1 0 ]
+[u S716 . 1 `S694 1 . 1 0 `S703 1 . 1 0 `S712 1 . 1 0 ]
 "39932
 "39932
-[v _INTCONbits INTCONbits `VES710  1 e 1 @4082 ]
+[v _INTCONbits INTCONbits `VES716  1 e 1 @4082 ]
 "42780
 "42780
 [v _IPEN IPEN `VEb  1 e 0 @32391 ]
@@ -648,6 +686,8 @@ channel_1_024V_bandgap 31
 [v _LATD2 LATD2 `VEb  1 e 0 @31842 ]
 "42882
 [v _LATD3 LATD3 `VEb  1 e 0 @31843 ]
+"42884
+[v _LATD4 LATD4 `VEb  1 e 0 @31844 ]
 "45288
 [v _TRISC0 TRISC0 `VEb  1 e 0 @31904 ]
 "45290
@@ -656,43 +696,99 @@ channel_1_024V_bandgap 31
 [v _I2C_slaveWriteData I2C_slaveWriteData `VEuc  1 e 1 0 ]
 "56 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/tmr1.c
 [v _timer1ReloadVal timer1ReloadVal `VEui  1 e 2 0 ]
-"64 C:\Users\Utilisateur\MPLABXProjects\AX1.X\main.c
+"52 C:\Users\Utilisateur\MPLABXProjects\AX1.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"102
-[v main@i i `i  1 a 2 44 ]
-"101
-[v main@delay delay `i  1 a 2 46 ]
-"165
+"90
+[v main@i i `i  1 a 2 90 ]
+"89
+[v main@delay delay `i  1 a 2 92 ]
+"158
 } 0
-"48
+"180 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
+[v _pingAX pingAX `(i  1 e 2 0 ]
+{
+"181
+[v pingAX@packet packet `[20]uc  1 a 20 62 ]
+"182
+[v pingAX@result result `[20]uc  1 a 20 42 ]
+"193
+[v pingAX@error error `i  1 a 2 88 ]
+"189
+[v pingAX@instruction instruction `i  1 a 2 86 ]
+"187
+[v pingAX@length length `i  1 a 2 84 ]
+"186
+[v pingAX@nbParameters nbParameters `i  1 a 2 82 ]
+"180
+[v pingAX@id id `i  1 p 2 39 ]
+"195
+} 0
+"129
+[v _sendAX sendAX `(uc  1 e 1 0 ]
+{
+"170
+[v sendAX@i_1227 i `i  1 a 2 36 ]
+"161
+[v sendAX@i_1224 i `i  1 a 2 32 ]
+"138
+[v sendAX@i_1221 i `i  1 a 2 30 ]
+"132
+[v sendAX@i i `i  1 a 2 28 ]
+"165
+[v sendAX@r0 r0 `i  1 a 2 34 ]
+"159
+[v sendAX@stop stop `i  1 a 2 26 ]
+"130
+[v sendAX@checksum checksum `uc  1 a 1 38 ]
+"129
+[v sendAX@buffer buffer `*.39uc  1 p 2 17 ]
+[v sendAX@packetSize packetSize `i  1 p 2 19 ]
+[v sendAX@result result `*.39uc  1 p 2 21 ]
+[v sendAX@parametersToRead parametersToRead `i  1 p 2 23 ]
+"178
+} 0
+"97 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/eusart1.c
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 16 ]
+"104
+} 0
+"77
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+{
+"95
+} 0
+"11 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
 [v _delay_ms delay_ms `(v  1 e 1 0 ]
 {
-"53
-[v delay_ms@i i `i  1 a 2 42 ]
-"52
-[v delay_ms@n n `i  1 a 2 40 ]
-"48
-[v delay_ms@ms ms `i  1 p 2 37 ]
-"57
+"16
+[v delay_ms@i i `i  1 a 2 29 ]
+"15
+[v delay_ms@n n `i  1 a 2 27 ]
+"11
+[v delay_ms@ms ms `i  1 p 2 24 ]
+"20
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
-[v ___awdiv@quotient quotient `i  1 a 2 35 ]
+[v ___awdiv@quotient quotient `i  1 a 2 22 ]
 "12
-[v ___awdiv@sign sign `uc  1 a 1 34 ]
-[v ___awdiv@counter counter `uc  1 a 1 33 ]
+[v ___awdiv@sign sign `uc  1 a 1 21 ]
+[v ___awdiv@counter counter `uc  1 a 1 20 ]
 "8
-[v ___awdiv@dividend dividend `i  1 p 2 29 ]
-[v ___awdiv@divisor divisor `i  1 p 2 31 ]
+[v ___awdiv@dividend dividend `i  1 p 2 16 ]
+[v ___awdiv@divisor divisor `i  1 p 2 18 ]
 "42
 } 0
 "111 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"123
+"122
 } 0
 "62 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/tmr1.c
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
@@ -709,10 +805,10 @@ channel_1_024V_bandgap 31
 {
 "67
 } 0
-"125 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/mcc.c
+"124 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"137
+"135
 } 0
 "51 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
@@ -753,52 +849,161 @@ channel_1_024V_bandgap 31
 [v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
 {
 "100
-[v I2C_ISR@i2c_data i2c_data `uc  1 a 1 14 ]
+[v I2C_ISR@i2c_data i2c_data `uc  1 a 1 93 ]
 "130
 } 0
-"212
+"214
 [v _I2C_StatusCallback I2C_StatusCallback `(v  1 e 1 0 ]
 {
 [v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E18217  1 a 1 wreg ]
-"213
-[v I2C_StatusCallback@data data `uc  1 a 1 13 ]
-"212
+"215
+[v I2C_StatusCallback@data data `uc  1 a 1 1 ]
+"214
 [v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E18217  1 a 1 wreg ]
-[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E18217  1 a 1 12 ]
-"247
+[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E18217  1 a 1 0 ]
+"243
 } 0
-"128 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
+"260 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
 [v _handleByteReceived handleByteReceived `(v  1 e 1 0 ]
 {
 [v handleByteReceived@data data `uc  1 a 1 wreg ]
-"140
-[v handleByteReceived@value value `i  1 a 2 9 ]
-"144
-[v handleByteReceived@xhigh xhigh `uc  1 a 1 8 ]
-"143
-[v handleByteReceived@xlow xlow `uc  1 a 1 7 ]
-"128
+"265
+[v handleByteReceived@i i `i  1 a 2 4 ]
+"260
 [v handleByteReceived@data data `uc  1 a 1 wreg ]
-[v handleByteReceived@data data `uc  1 a 1 11 ]
-"185
+[v handleByteReceived@data data `uc  1 a 1 6 ]
+"287
 } 0
-"25
+"43
 [v _setLedOn setLedOn `(v  1 e 1 0 ]
 {
 [v setLedOn@led led `i  1 p 2 0 ]
-"58
+"76
 } 0
-"60
+"78
 [v _setLedOff setLedOff `(v  1 e 1 0 ]
 {
 [v setLedOff@led led `i  1 p 2 0 ]
-"94
+"112
 } 0
-"101
+"291
+[v _getByteToSend getByteToSend `(uc  1 e 1 0 ]
+{
+"329
+[v getByteToSend@value_1279 value `i  1 a 2 91 ]
+"333
+[v getByteToSend@xhigh_1282 xhigh `uc  1 a 1 87 ]
+"332
+[v getByteToSend@xlow_1281 xlow `uc  1 a 1 86 ]
+"319
+[v getByteToSend@error_1277 error `i  1 a 2 82 ]
+"305
+[v getByteToSend@value value `i  1 a 2 89 ]
+"309
+[v getByteToSend@xhigh xhigh `uc  1 a 1 85 ]
+"308
+[v getByteToSend@xlow xlow `uc  1 a 1 84 ]
+"295
+[v getByteToSend@error error `i  1 a 2 80 ]
+"348
+[v getByteToSend@d d `uc  1 a 1 88 ]
+"359
+} 0
+"180
+[v i2_pingAX pingAX `(i  1 e 2 0 ]
+{
+[v i2pingAX@packet pingAX `[20]uc  1 a 20 46 ]
+[v i2pingAX@result pingAX `[20]uc  1 a 20 26 ]
+[v i2pingAX@error pingAX `i  1 a 2 72 ]
+[v i2pingAX@instruction pingAX `i  1 a 2 70 ]
+[v i2pingAX@length pingAX `i  1 a 2 68 ]
+[v i2pingAX@nbParameters pingAX `i  1 a 2 66 ]
+[v i2pingAX@id id `i  1 p 2 23 ]
+"195
+} 0
+"224
+[v _writeAXData writeAXData `(i  1 e 2 0 ]
+{
+"227
+[v writeAXData@packet packet `[20]uc  1 a 20 50 ]
+"228
+[v writeAXData@result result `[20]uc  1 a 20 30 ]
+"225
+[v writeAXData@size size `i  1 a 2 76 ]
+"245
+[v writeAXData@error error `i  1 a 2 74 ]
+"234
+[v writeAXData@instruction instruction `i  1 a 2 72 ]
+"232
+[v writeAXData@length length `i  1 a 2 70 ]
+"224
+[v writeAXData@id id `i  1 p 2 23 ]
+[v writeAXData@address address `i  1 p 2 25 ]
+[v writeAXData@data data `i  1 p 2 27 ]
+"247
+} 0
+"197
+[v _readAXData readAXData `(i  1 e 2 0 ]
+{
+"200
+[v readAXData@packet packet `[20]uc  1 a 20 51 ]
+"201
+[v readAXData@result result `[20]uc  1 a 20 29 ]
+"198
+[v readAXData@size size `i  1 a 2 77 ]
+"208
+[v readAXData@instruction instruction `i  1 a 2 75 ]
+"206
+[v readAXData@length length `i  1 a 2 73 ]
+"205
+[v readAXData@nbParameters nbParameters `i  1 a 2 71 ]
+"214
+[v readAXData@error error `i  1 a 2 49 ]
+"197
+[v readAXData@id id `i  1 p 2 23 ]
+[v readAXData@address address `i  1 p 2 25 ]
+"222
+} 0
+"129
+[v i2_sendAX sendAX `(uc  1 e 1 0 ]
+{
+[v i2sendAX@i_1227 sendAX `i  1 a 2 20 ]
+[v i2sendAX@r0 sendAX `i  1 a 2 18 ]
+[v i2sendAX@i_1224 sendAX `i  1 a 2 16 ]
+[v i2sendAX@i_1221 sendAX `i  1 a 2 14 ]
+[v i2sendAX@i sendAX `i  1 a 2 12 ]
+[v i2sendAX@stop sendAX `i  1 a 2 10 ]
+[v i2sendAX@checksum sendAX `uc  1 a 1 22 ]
+[v i2sendAX@buffer buffer `*.39uc  1 p 2 1 ]
+[v i2sendAX@packetSize packetSize `i  1 p 2 3 ]
+[v i2sendAX@result result `*.39uc  1 p 2 5 ]
+[v i2sendAX@parametersToRead parametersToRead `i  1 p 2 7 ]
+"178
+} 0
+"97 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/eusart1.c
+[v i2_EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v i2EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v i2EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v i2EUSART1_Write@txData txData `uc  1 a 1 0 ]
+"104
+} 0
+"77
+[v i2_EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+{
+"95
+} 0
+"22 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
+[v _getAddressSize getAddressSize `(i  1 e 2 0 ]
+{
+[v getAddressSize@address address `i  1 p 2 0 ]
+"41
+} 0
+"119
 [v _getADC getADC `(i  1 e 2 0 ]
 {
 [v getADC@adc adc `i  1 p 2 5 ]
-"103
+"121
 } 0
 "104 C:\Users\Utilisateur\MPLABXProjects\AX1.X\mcc_generated_files/adc.c
 [v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
@@ -808,11 +1013,4 @@ channel_1_024V_bandgap 31
 "107
 [v ADC_GetConversion@channel channel `E18216  1 a 1 4 ]
 "123
-} 0
-"187 C:\Users\Utilisateur\MPLABXProjects\AX1.X\ax.c
-[v _getByteToSend getByteToSend `(uc  1 e 1 0 ]
-{
-"192
-[v getByteToSend@d d `uc  1 a 1 1 ]
-"200
 } 0

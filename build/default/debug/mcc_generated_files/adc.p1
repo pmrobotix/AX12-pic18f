@@ -1,104 +1,46 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"109 mcc_generated_files/interrupt_manager.h
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
-"380 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"86 mcc_generated_files/mcc.h
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"113 mcc_generated_files/i2c.h
-[v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"121 mcc_generated_files/eccp1.h
-[v _ECCP1_Initialize `(v ~T0 @X0 0 ef ]
-"136 mcc_generated_files/adc.h
-[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
-"99 mcc_generated_files/tmr1.h
-[v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart1.h
-[v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart2.h
-[v _EUSART2_Initialize `(v ~T0 @X0 0 ef ]
-"38970 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"38899
-[v _OSCCON2 `Vuc ~T0 @X0 0 e@4050 ]
-"34156
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"34092
-[v _REFOCON `Vuc ~T0 @X0 0 e@3994 ]
-"49 mcc_generated_files/mcc.c
-[p x RETEN=OFF ]
-"50
-[p x INTOSCSEL=HIGH ]
-"51
-[p x SOSCSEL=DIG ]
-"52
-[p x XINST=OFF ]
-"55
-[p x FOSC=HS2 ]
-"56
-[p x PLLCFG=OFF ]
-"57
-[p x FCMEN=OFF ]
-"58
-[p x IESO=OFF ]
-"61
-[p x PWRTEN=OFF ]
-"62
-[p x BOREN=SBORDIS ]
-"63
-[p x BORV=3 ]
-"64
-[p x BORPWR=ZPBORMV ]
-"67
-[p x WDTEN=OFF ]
-"68
-[p x WDTPS=1048576 ]
-"71
-[p x CANMX=PORTB ]
-"72
-[p x MSSPMSK=MSK7 ]
-"73
-[p x MCLRE=ON ]
-"76
-[p x STVREN=ON ]
-"77
-[p x BBSIZ=BB2K ]
-"80
-[p x CP0=OFF ]
-"81
-[p x CP1=OFF ]
-"82
-[p x CP2=OFF ]
-"83
-[p x CP3=OFF ]
-"86
-[p x CPB=OFF ]
-"87
-[p x CPD=OFF ]
-"90
-[p x WRT0=OFF ]
-"91
-[p x WRT1=OFF ]
-"92
-[p x WRT2=OFF ]
-"93
-[p x WRT3=OFF ]
-"96
-[p x WRTC=OFF ]
-"97
-[p x WRTB=OFF ]
-"98
-[p x WRTD=OFF ]
-"101
-[p x EBTR0=OFF ]
-"102
-[p x EBTR1=OFF ]
-"103
-[p x EBTR2=OFF ]
-"104
-[p x EBTR3=OFF ]
-"107
-[p x EBTRB=OFF ]
+"37666 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
+"37557
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"37487
+[v _ADCON2 `Vuc ~T0 @X0 0 e@4032 ]
+"37815
+[v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
+"37796
+[v _ADRESL `Vuc ~T0 @X0 0 e@4035 ]
+"80 mcc_generated_files/adc.c
+[c E18216 28 29 30 31 6 5 0 4 3 2 1 9 8 7 .. ]
+[n E18216 . channel_CTMU channel_Temp_diode channel_Vdd_core channel_1_024V_bandgap channel_AN6 channel_AN5 channel_AN0 channel_AN4 channel_AN3 channel_AN2 channel_AN1 channel_AN9 channel_AN8 channel_AN7  ]
+"37672 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[s S2417 :1 `uc 1 :1 `uc 1 ]
+[n S2417 . . GO_NOT_DONE ]
+"37676
+[s S2418 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
+[n S2418 . ADON GO_nDONE CHS ]
+"37681
+[s S2419 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2419 . . DONE CHS0 CHS1 CHS2 CHS3 CHS4 ]
+"37690
+[s S2420 :1 `uc 1 :1 `uc 1 ]
+[n S2420 . . GO ]
+"37694
+[s S2421 :1 `uc 1 :1 `uc 1 ]
+[n S2421 . . NOT_DONE ]
+"37698
+[s S2422 :1 `uc 1 :1 `uc 1 ]
+[n S2422 . . nDONE ]
+"37702
+[s S2423 :1 `uc 1 :1 `uc 1 ]
+[n S2423 . . GODONE ]
+"37706
+[s S2424 :1 `uc 1 :1 `uc 1 ]
+[n S2424 . . GO_DONE ]
+"37671
+[u S2416 `S2417 1 `S2418 1 `S2419 1 `S2420 1 `S2421 1 `S2422 1 `S2423 1 `S2424 1 ]
+[n S2416 . . . . . . . . . ]
+"37711
+[v _ADCON0bits `VS2416 ~T0 @X0 0 e@4034 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16811,7 +16753,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -16841,8 +16782,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
-[; ;interrupt_manager.h: 121: void interrupt INTERRUPT_InterruptManager (void);
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 85: typedef enum
 [; ;adc.h: 86: {
@@ -16866,106 +16805,128 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 197: bool ADC_IsConversionDone();
 [; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
-[; ;eusart2.h: 94: void EUSART2_Initialize(void);
-[; ;eusart2.h: 114: uint8_t EUSART2_Read(void);
-[; ;eusart2.h: 134: void EUSART2_Write(uint8_t txData);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
-[; ;eccp1.h: 79: {
-[; ;eccp1.h: 80: struct
-[; ;eccp1.h: 81: {
-[; ;eccp1.h: 82: uint8_t ccpr1l;
-[; ;eccp1.h: 83: uint8_t ccpr1h;
-[; ;eccp1.h: 84: };
-[; ;eccp1.h: 85: struct
-[; ;eccp1.h: 86: {
-[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
-[; ;eccp1.h: 88: };
-[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
-[; ;eccp1.h: 121: void ECCP1_Initialize(void);
-[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
-[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
-[; ;tmr1.h: 99: void TMR1_Initialize(void);
-[; ;tmr1.h: 128: void TMR1_StartTimer(void);
-[; ;tmr1.h: 160: void TMR1_StopTimer(void);
-[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
-[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
-[; ;tmr1.h: 270: void TMR1_Reload(void);
-[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
-[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
-[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
-"111 mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"58 mcc_generated_files/adc.c
+[v _ADC_Initialize `(v ~T0 @X0 1 ef ]
+"59
 {
-[; ;mcc.c: 111: void SYSTEM_Initialize(void) {
-[e :U _SYSTEM_Initialize ]
+[; ;adc.c: 58: void ADC_Initialize(void)
+[; ;adc.c: 59: {
+[e :U _ADC_Initialize ]
 [f ]
-[; ;mcc.c: 113: INTERRUPT_Initialize();
-"113
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 114: PIN_MANAGER_Initialize();
-"114
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 115: OSCILLATOR_Initialize();
-"115
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 116: I2C_Initialize();
-"116
-[e ( _I2C_Initialize ..  ]
-[; ;mcc.c: 117: ECCP1_Initialize();
-"117
-[e ( _ECCP1_Initialize ..  ]
-[; ;mcc.c: 118: ADC_Initialize();
-"118
-[e ( _ADC_Initialize ..  ]
-[; ;mcc.c: 119: TMR1_Initialize();
-"119
-[e ( _TMR1_Initialize ..  ]
-[; ;mcc.c: 120: EUSART1_Initialize();
-"120
-[e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 121: EUSART2_Initialize();
-"121
-[e ( _EUSART2_Initialize ..  ]
-[; ;mcc.c: 122: }
-"122
+[; ;adc.c: 63: ADCON0 = 0x01;
+"63
+[e = _ADCON0 -> -> 1 `i `uc ]
+[; ;adc.c: 66: ADCON1 = 0x00;
+"66
+[e = _ADCON1 -> -> 0 `i `uc ]
+[; ;adc.c: 69: ADCON2 = 0x02;
+"69
+[e = _ADCON2 -> -> 2 `i `uc ]
+[; ;adc.c: 72: ADRESH = 0x00;
+"72
+[e = _ADRESH -> -> 0 `i `uc ]
+[; ;adc.c: 75: ADRESL = 0x00;
+"75
+[e = _ADRESL -> -> 0 `i `uc ]
+[; ;adc.c: 77: }
+"77
+[e :UE 2605 ]
+}
+"79
+[v _ADC_StartConversion `(v ~T0 @X0 1 ef1`E18216 ]
+"80
+{
+[; ;adc.c: 79: void ADC_StartConversion(adc_channel_t channel)
+[; ;adc.c: 80: {
+[e :U _ADC_StartConversion ]
+"79
+[v _channel `E18216 ~T0 @X0 1 r1 ]
+"80
+[f ]
+[; ;adc.c: 82: ADCON0bits.CHS = channel;
+"82
+[e = . . _ADCON0bits 1 2 -> _channel `uc ]
+[; ;adc.c: 85: ADCON0bits.ADON = 1;
+"85
+[e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
+[; ;adc.c: 89: ADCON0bits.GO_nDONE = 1;
+"89
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;adc.c: 90: }
+"90
+[e :UE 2606 ]
+}
+"92
+[v _ADC_IsConversionDone `(uc ~T0 @X0 1 ef ]
+"93
+{
+[; ;adc.c: 92: bool ADC_IsConversionDone()
+[; ;adc.c: 93: {
+[e :U _ADC_IsConversionDone ]
+[f ]
+[; ;adc.c: 95: return (!ADCON0bits.GO_nDONE);
+"95
+[e ) -> -> ! != -> . . _ADCON0bits 1 1 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+[e $UE 2607  ]
+[; ;adc.c: 96: }
+"96
+[e :UE 2607 ]
+}
+"98
+[v _ADC_GetConversionResult `(ui ~T0 @X0 1 ef ]
+"99
+{
+[; ;adc.c: 98: adc_result_t ADC_GetConversionResult(void)
+[; ;adc.c: 99: {
+[e :U _ADC_GetConversionResult ]
+[f ]
+[; ;adc.c: 101: return ((ADRESH << 8) + ADRESL);
+"101
+[e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
+[e $UE 2608  ]
+[; ;adc.c: 102: }
+"102
 [e :UE 2608 ]
 }
-"124
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"104
+[v _ADC_GetConversion `(ui ~T0 @X0 1 ef1`E18216 ]
+"105
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void) {
-[e :U _OSCILLATOR_Initialize ]
+[; ;adc.c: 104: adc_result_t ADC_GetConversion(adc_channel_t channel)
+[; ;adc.c: 105: {
+[e :U _ADC_GetConversion ]
+"104
+[v _channel `E18216 ~T0 @X0 1 r1 ]
+"105
 [f ]
-[; ;mcc.c: 126: OSCCON = 0x60;
-"126
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 128: OSCCON2 = 0x00;
-"128
-[e = _OSCCON2 -> -> 0 `i `uc ]
-[; ;mcc.c: 130: OSCTUNE = 0x00;
-"130
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 132: REFOCON = 0x00;
-"132
-[e = _REFOCON -> -> 0 `i `uc ]
-[; ;mcc.c: 135: }
-"135
+[; ;adc.c: 107: ADCON0bits.CHS = channel;
+"107
+[e = . . _ADCON0bits 1 2 -> _channel `uc ]
+[; ;adc.c: 110: ADCON0bits.ADON = 1;
+"110
+[e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
+[; ;adc.c: 114: ADCON0bits.GO_nDONE = 1;
+"114
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;adc.c: 117: while (ADCON0bits.GO_nDONE)
+"117
+[e $U 2610  ]
+[e :U 2611 ]
+[; ;adc.c: 118: {
+"118
+{
+"119
+}
+[e :U 2610 ]
+"117
+[e $ != -> . . _ADCON0bits 1 1 `i -> -> -> 0 `i `Vuc `i 2611  ]
+[e :U 2612 ]
+[; ;adc.c: 119: }
+[; ;adc.c: 122: return ((ADRESH << 8) + ADRESL);
+"122
+[e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
+[e $UE 2609  ]
+[; ;adc.c: 123: }
+"123
 [e :UE 2609 ]
 }

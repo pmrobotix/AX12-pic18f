@@ -91,7 +91,8 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 62 "ax.h"
+# 61 "ax.h"
+void delay_ms(int ms);
 int getAddressSize(int address);
 
 
@@ -111,7 +112,7 @@ int getADC(int adc);
 int pingAX(int id);
 
 int readAXData(int id, int address);
-void writeAXData(int id, int address, int data);
+int writeAXData(int id, int address, int data);
 
 
 void handleByteReceived(uint8_t data);
@@ -21080,7 +21081,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 306 "mcc_generated_files/pin_manager.h"
+# 380 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
@@ -21101,22 +21102,32 @@ typedef enum
 channel_CTMU = 0x1C,
 channel_Temp_diode = 0x1D,
 channel_Vdd_core = 0x1E,
-channel_1_024V_bandgap = 0x1F
+channel_1_024V_bandgap = 0x1F,
+channel_AN6 = 0x06,
+channel_AN5 = 0x05,
+channel_AN0 = 0x00,
+channel_AN4 = 0x04,
+channel_AN3 = 0x03,
+channel_AN2 = 0x02,
+channel_AN1 = 0x01,
+channel_AN9 = 0x09,
+channel_AN8 = 0x08,
+channel_AN7 = 0x07
 } adc_channel_t;
 
-# 126
+# 136
 void ADC_Initialize(void);
 
-# 155
+# 165
 void ADC_StartConversion(adc_channel_t channel);
 
-# 187
+# 197
 bool ADC_IsConversionDone();
 
-# 220
+# 230
 adc_result_t ADC_GetConversionResult(void);
 
-# 250
+# 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
@@ -21217,7 +21228,18 @@ void SYSTEM_Initialize(void);
 # 86
 void OSCILLATOR_Initialize(void);
 
-# 4 "ax.c"
+# 11 "ax.c"
+void delay_ms(int ms) {
+if (ms < 10) {
+_delay((unsigned long)((10)*(16000000/4000.0)));
+} else {
+int n = ms / 10;
+for (int i = 0; i < n; i++) {
+_delay((unsigned long)((10)*(16000000/4000.0)));
+}
+}
+}
+
 int getAddressSize(int address) {
 switch (address) {
 case 0:
@@ -21310,29 +21332,125 @@ break;
 
 }
 
-# 101
+# 119
 int getADC(int adc) {
 return ADC_GetConversion(adc);
 }
 
+# 129
+uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
+uint8_t checksum = 0;
+
+for (int i = 2; i < packetSize; i++) {
+checksum += buffer[i];
+}
+checksum = ~checksum;
+
+do { LATD4 = 1; } while(0);
+for (int i = 0; i < packetSize; i++) {
+EUSART1_Write(buffer[i]);
+}
+EUSART1_Write(checksum);
+_delay((unsigned long)((100)*(16000000/4000000.0)));
+do { LATD4 = 0; } while(0);
+
+# 159
+int stop = 6 + parametersToRead;
+
+for (int i = 0; i < stop; i++) {
+result[i] = 122;
+}
+
+int r0 = EUSART1_Read();
+while (r0 != 0xFF) {
+r0 = EUSART1_Read();
+}
+result[0] = r0;
+for (int i = 1; i < stop; i++) {
+result[i] = EUSART1_Read();
+}
+
+
+_delay((unsigned long)((200)*(16000000/4000000.0)));
+return result[4];
+
+}
+
 int pingAX(int id) {
-return 1;
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int nbParameters = 0;
+int length = nbParameters + 2;
+packet[3] = length;
+int instruction = 0x01;
+packet[4] = instruction;
+
+
+int error = sendAX(packet, 5, result, 0);
+return error;
 }
 
 int readAXData(int id, int address) {
-return 1;
+int size = getAddressSize(address);
+
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int nbParameters = 2;
+int length = nbParameters + 2;
+packet[3] = length;
+int instruction = 0x02;
+packet[4] = instruction;
+packet[5] = address;
+packet[6] = size;
+
+
+int error = sendAX(packet, 7, result, 1);
+if (size == 1) {
+
+return result[5];
+} else {
+
+return result[5] + result[6]*256;
+}
 }
 
-void writeAXData(int id, int address, int data) {
+int writeAXData(int id, int address, int data) {
+int size = getAddressSize(address);
 
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int length = size + 3;
+packet[3] = length;
+int instruction = 0x03;
+packet[4] = instruction;
+packet[5] = address;
+if (size == 1) {
+packet[6] = data;
+} else {
+packet[6] = data & 0xff;
+packet[7] = (data >> 8);
+}
+
+
+int error = sendAX(packet, 6 + size, result, 0);
+return error;
 }
 
 
 int readIndex = 0;
-uint8_t currentCommand;
-uint8_t parameter1;
-uint8_t parameter2;
-uint8_t parameter3;
+uint8_t currentCommand = -1;
+uint8_t parameter1 = 0;
+uint8_t parameter2 = 0;
+uint8_t parameter3 = 0;
 
 int nbBytesToSend = 0;
 int bytesSent = 0;
@@ -21342,72 +21460,99 @@ void handleByteReceived(uint8_t data) {
 if (readIndex == 0) {
 currentCommand = data;
 readIndex++;
+
+for (int i = 0; i < 32; i++) {
+dataToSend[i] = 66;
+}
 } else if (readIndex == 1) {
 parameter1 = data;
-readIndex = 0;
+readIndex++;
 if (currentCommand == 10) {
 setLedOn(parameter1);
+readIndex = 0;
 } else if (currentCommand == 11) {
 setLedOff(parameter1);
-} else if (currentCommand == 12) {
-int value = getADC(parameter1);
-bytesSent = 0;
-nbBytesToSend = 2;
-uint8_t xlow = value & 0xff;
-uint8_t xhigh = (value >> 8);
-dataToSend[0] = xlow;
-dataToSend[1] = xhigh;
-} else if (currentCommand == 20) {
-
-
-} else if (currentCommand == 21) {
-
-
-
-} else if (currentCommand == 22) {
-readIndex = 2;
-
-} else {
-
+readIndex = 0;
 }
 
 } else if (readIndex == 2) {
 parameter2 = data;
-if (currentCommand == 22) {
-
-
-
-} else {
-
-}
-
+readIndex++;
 } else if (readIndex == 3) {
 parameter3 = data;
-if (currentCommand == 22) {
-
-
-readIndex = 0;
-} else {
-
-}
-
-
-
+readIndex++;
 }
 
 }
+
+
 
 uint8_t getByteToSend() {
+
+
+if (currentCommand == 20) {
+int error = pingAX(parameter1);
+
+nbBytesToSend = 2;
+dataToSend[0] = error;
+dataToSend[1] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 21) {
+int value = readAXData(parameter1, parameter2);
+
+nbBytesToSend = 4;
+uint8_t xlow = value & 0xff;
+uint8_t xhigh = (value >> 8);
+dataToSend[0] = xlow;
+dataToSend[1] = 0;
+dataToSend[2] = xhigh;
+dataToSend[3] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 22) {
+int error = writeAXData(parameter1, parameter2, parameter3);
+
+nbBytesToSend = 2;
+dataToSend[0] = error;
+dataToSend[1] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 12) {
+int value = getADC(parameter1);
+
+nbBytesToSend = 4;
+uint8_t xlow = value & 0xff;
+uint8_t xhigh = (value >> 8);
+dataToSend[0] = xlow;
+dataToSend[1] = 0;
+dataToSend[2] = xhigh;
+dataToSend[3] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+}
 if (nbBytesToSend == 0) {
 
+readIndex = 0;
 return 0;
 }
 uint8_t d = dataToSend[bytesSent];
 bytesSent++;
-if (bytesSent >= nbBytesToSend) {
 
-return 0;
+if (bytesSent > nbBytesToSend) {
+
+readIndex = 0;
+return 111;
 }
+
 return d;
 
 }

@@ -16764,7 +16764,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 306: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -16800,13 +16800,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 87: channel_CTMU = 0x1C,
 [; ;adc.h: 88: channel_Temp_diode = 0x1D,
 [; ;adc.h: 89: channel_Vdd_core = 0x1E,
-[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F
-[; ;adc.h: 91: } adc_channel_t;
-[; ;adc.h: 126: void ADC_Initialize(void);
-[; ;adc.h: 155: void ADC_StartConversion(adc_channel_t channel);
-[; ;adc.h: 187: bool ADC_IsConversionDone();
-[; ;adc.h: 220: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 250: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F,
+[; ;adc.h: 91: channel_AN6 = 0x06,
+[; ;adc.h: 92: channel_AN5 = 0x05,
+[; ;adc.h: 93: channel_AN0 = 0x00,
+[; ;adc.h: 94: channel_AN4 = 0x04,
+[; ;adc.h: 95: channel_AN3 = 0x03,
+[; ;adc.h: 96: channel_AN2 = 0x02,
+[; ;adc.h: 97: channel_AN1 = 0x01,
+[; ;adc.h: 98: channel_AN9 = 0x09,
+[; ;adc.h: 99: channel_AN8 = 0x08,
+[; ;adc.h: 100: channel_AN7 = 0x07
+[; ;adc.h: 101: } adc_channel_t;
+[; ;adc.h: 136: void ADC_Initialize(void);
+[; ;adc.h: 165: void ADC_StartConversion(adc_channel_t channel);
+[; ;adc.h: 197: bool ADC_IsConversionDone();
+[; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c.h: 78: typedef enum

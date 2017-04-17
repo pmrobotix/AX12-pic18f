@@ -16733,7 +16733,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 306: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
 "49 mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
 "50
@@ -16757,12 +16757,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 55: LATC = 0x0;
 "55
 [e = _LATC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 56: WPUB = 0xFF;
+[; ;pin_manager.c: 56: WPUB = 0xFE;
 "56
-[e = _WPUB -> -> 255 `i `uc ]
-[; ;pin_manager.c: 57: TRISD = 0xB0;
+[e = _WPUB -> -> 254 `i `uc ]
+[; ;pin_manager.c: 57: TRISD = 0xA0;
 "57
-[e = _TRISD -> -> 176 `i `uc ]
+[e = _TRISD -> -> 160 `i `uc ]
 [; ;pin_manager.c: 58: TRISE = 0x7;
 "58
 [e = _TRISE -> -> 7 `i `uc ]

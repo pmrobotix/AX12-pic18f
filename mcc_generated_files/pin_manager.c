@@ -53,8 +53,8 @@ void PIN_MANAGER_Initialize(void)
     LATE = 0x0;
     LATD = 0x0;
     LATC = 0x0;
-    WPUB = 0xFF;
-    TRISD = 0xB0;
+    WPUB = 0xFE;
+    TRISD = 0xA0;
     TRISE = 0x7;
     TRISB = 0xF2;
     TRISC = 0xB8;

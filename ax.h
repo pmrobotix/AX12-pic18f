@@ -58,7 +58,7 @@ extern "C" {
 #define P_MOVING					46
 #define P_LOCK						47
 #define P_PUNCH						48
-
+void delay_ms(int ms);
     int getAddressSize(int address);
 
     // Set the led on
@@ -78,7 +78,7 @@ extern "C" {
     int pingAX(int id);
     
     int readAXData(int id, int address);
-    void writeAXData(int id, int address, int data);
+    int writeAXData(int id, int address, int data);
     
     // callback I2C
     void handleByteReceived(uint8_t data);

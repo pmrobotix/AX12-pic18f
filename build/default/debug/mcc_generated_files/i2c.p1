@@ -101,11 +101,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2131 . . . . . ]
 "32770
 [v _PORTCbits `VS2131 ~T0 @X0 0 e@3970 ]
-"110 mcc_generated_files/i2c.c
-[c E19105 0 1 2 3 .. ]
-[n E19105 . I2C_SLAVE_WRITE_REQUEST I2C_SLAVE_READ_REQUEST I2C_SLAVE_WRITE_COMPLETED I2C_SLAVE_READ_COMPLETED  ]
-"66
-[v _I2C_StatusCallback `(v ~T0 @X0 0 ef1`E19105 ]
+"111 mcc_generated_files/i2c.c
+[c E18217 0 1 2 3 .. ]
+[n E18217 . I2C_SLAVE_WRITE_REQUEST I2C_SLAVE_READ_REQUEST I2C_SLAVE_WRITE_COMPLETED I2C_SLAVE_READ_COMPLETED  ]
+"67
+[v _I2C_StatusCallback `(v ~T0 @X0 0 ef1`E18217 ]
 "37934 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [s S2433 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2433 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -117,9 +117,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2432 . . . ]
 "37948
 [v _SSPCON1bits `VS2432 ~T0 @X0 0 e@4038 ]
-"165 mcc_generated_files/i2c.c
-[c E19116 0 1 .. ]
-[n E19116 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
+"166 mcc_generated_files/i2c.c
+[c E18250 0 1 .. ]
+[n E18250 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
+"61 mcc_generated_files/../ax.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
+"84
+[v _handleByteReceived `(v ~T0 @X0 0 ef1`uc ]
+"86
+[v _getByteToSend `(uc ~T0 @X0 0 ef ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -16857,684 +16863,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f46k80.h: 46164: extern volatile __bit nTX8 @ (((unsigned) &TXSTA1)*8) + 6;
 [; ;pic18f46k80.h: 46166: extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 [; ;pic18f46k80.h: 46168: extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
-[; ;adc.h: 2008: union ADCResult
-[; ;adc.h: 2009: {
-[; ;adc.h: 2010: int lr;
-[; ;adc.h: 2011: char br[2];
-[; ;adc.h: 2012: };
-[; ;adc.h: 2014: char BusyADC (void);
-[; ;adc.h: 2016: void ConvertADC (void);
-[; ;adc.h: 2018: void CloseADC(void);
-[; ;adc.h: 2026: int ReadADC(void);
-[; ;adc.h: 2040: void OpenADC ( unsigned char ,
-[; ;adc.h: 2041: unsigned char ,
-[; ;adc.h: 2042: unsigned char );
-[; ;adc.h: 2084: void SetChanADC(unsigned char );
-[; ;adc.h: 2100: void SelChanConvADC( unsigned char );
-[; ;ancomp.h: 202: void Close_ancomp1( void );
-[; ;ancomp.h: 203: void Open_ancomp1(unsigned char config);
-[; ;ancomp.h: 204: void Close_ancomp2( void );
-[; ;ancomp.h: 205: void Open_ancomp2(unsigned char config);
-[; ;ancomp.h: 208: void Close_ancomp3( void );
-[; ;ancomp.h: 209: void Open_ancomp3(unsigned char config);
-[; ;spi.h: 584: void OpenSPI( unsigned char sync_mode,
-[; ;spi.h: 585: unsigned char bus_mode,
-[; ;spi.h: 586: unsigned char smp_phase );
-[; ;spi.h: 588: signed char WriteSPI( unsigned char data_out );
-[; ;spi.h: 590: void getsSPI( unsigned char *rdptr, unsigned char length );
-[; ;spi.h: 592: void putsSPI( unsigned char *wrptr );
-[; ;spi.h: 594: unsigned char ReadSPI( void );
-[; ;can2510.h: 414: void CAN2510Initialize(  unsigned int configuration,
-[; ;can2510.h: 415: unsigned char brp,
-[; ;can2510.h: 416: unsigned char interruptFlags,
-[; ;can2510.h: 417: unsigned char SPI_syncMode,
-[; ;can2510.h: 418: unsigned char SPI_busMode,
-[; ;can2510.h: 419: unsigned char SPI_smpPhase );
-[; ;can2510.h: 421: signed char CAN2510Init(  unsigned long BufferConfig,
-[; ;can2510.h: 422: unsigned long BitTimeConfig,
-[; ;can2510.h: 423: unsigned char interruptEnables,
-[; ;can2510.h: 424: unsigned char SPI_syncMode,
-[; ;can2510.h: 425: unsigned char SPI_busMode,
-[; ;can2510.h: 426: unsigned char SPI_smpPhase );
-[; ;can2510.h: 428: void CAN2510Enable( void );
-[; ;can2510.h: 430: void CAN2510Disable( void );
-[; ;can2510.h: 432: void CAN2510Reset( void );
-[; ;can2510.h: 434: void CAN2510SetMode(  unsigned char mode );
-[; ;can2510.h: 436: unsigned char CAN2510ReadMode( void );
-[; ;can2510.h: 438: unsigned char CAN2510ReadStatus( void );
-[; ;can2510.h: 440: unsigned char CAN2510ErrorState( void );
-[; ;can2510.h: 442: unsigned char CAN2510InterruptStatus( void );
-[; ;can2510.h: 444: void CAN2510InterruptEnable( unsigned char interruptFlags );
-[; ;can2510.h: 446: unsigned char CAN2510ByteRead(  unsigned char addr );
-[; ;can2510.h: 448: void CAN2510ByteWrite(  unsigned char addr,  unsigned char value );
-[; ;can2510.h: 450: void CAN2510SequentialRead(  unsigned char *DataArray,
-[; ;can2510.h: 451: unsigned char CAN2510addr,
-[; ;can2510.h: 452: unsigned char numbytes );
-[; ;can2510.h: 454: void CAN2510SequentialWrite(  unsigned char *DataArray,
-[; ;can2510.h: 455: unsigned char CAN2510addr,
-[; ;can2510.h: 456: unsigned char numbytes );
-[; ;can2510.h: 458: void CAN2510BitModify(  unsigned char address,
-[; ;can2510.h: 459: unsigned char mask,
-[; ;can2510.h: 460: unsigned char data );
-[; ;can2510.h: 462: void CAN2510SetSingleMaskStd(  unsigned char maskNum,  unsigned int mask );
-[; ;can2510.h: 464: void CAN2510SetSingleMaskXtd(  unsigned char maskNum,  unsigned long mask );
-[; ;can2510.h: 466: void CAN2510SetSingleFilterStd(  unsigned char filterNum,  unsigned int filter );
-[; ;can2510.h: 468: void CAN2510SetSingleFilterXtd(  unsigned char filterNum,  unsigned long filter );
-[; ;can2510.h: 470: signed char CAN2510SetMsgFilterStd(  unsigned char bufferNum,
-[; ;can2510.h: 471: unsigned int mask,
-[; ;can2510.h: 472: unsigned int *filters );
-[; ;can2510.h: 474: signed char CAN2510SetMsgFilterXtd(  unsigned char bufferNum,
-[; ;can2510.h: 475: unsigned long mask,
-[; ;can2510.h: 476: unsigned long *filters );
-[; ;can2510.h: 478: signed char CAN2510WriteStd(  unsigned int msgId,
-[; ;can2510.h: 479: unsigned char msgPriority,
-[; ;can2510.h: 480: unsigned char numBytes,
-[; ;can2510.h: 481: unsigned char *data );
-[; ;can2510.h: 483: signed char CAN2510WriteXtd(  unsigned long msgId,
-[; ;can2510.h: 484: unsigned char msgPriority,
-[; ;can2510.h: 485: unsigned char numBytes,
-[; ;can2510.h: 486: unsigned char *data );
-[; ;can2510.h: 488: void CAN2510LoadBufferStd(  unsigned char bufferNum,
-[; ;can2510.h: 489: unsigned int msgId,
-[; ;can2510.h: 490: unsigned char numBytes,
-[; ;can2510.h: 491: unsigned char *data );
-[; ;can2510.h: 493: void CAN2510LoadBufferXtd(  unsigned char bufferNum,
-[; ;can2510.h: 494: unsigned long msgId,
-[; ;can2510.h: 495: unsigned char numBytes,
-[; ;can2510.h: 496: unsigned char *data );
-[; ;can2510.h: 498: void CAN2510LoadRTRStd(  unsigned char bufferNum,
-[; ;can2510.h: 499: unsigned int msgId,
-[; ;can2510.h: 500: unsigned char numBytes );
-[; ;can2510.h: 502: void CAN2510LoadRTRXtd(  unsigned char bufferNum,
-[; ;can2510.h: 503: unsigned long msgId,
-[; ;can2510.h: 504: unsigned char numBytes );
-[; ;can2510.h: 506: void CAN2510SetBufferPriority(  unsigned char bufferNum,
-[; ;can2510.h: 507: unsigned char bufferPriority );
-[; ;can2510.h: 509: void CAN2510SendBuffer(  unsigned char bufferNumber );
-[; ;can2510.h: 511: signed char CAN2510WriteBuffer(  unsigned char bufferNum );
-[; ;can2510.h: 513: unsigned char CAN2510DataReady(  unsigned char bufferNum );
-[; ;can2510.h: 515: unsigned char CAN2510DataRead(  unsigned char bufferNum,
-[; ;can2510.h: 516: unsigned long *msgId,
-[; ;can2510.h: 517: unsigned char *numBytes,
-[; ;can2510.h: 518: unsigned char *data );
-[; ;capture.h: 64: union capstatus
-[; ;capture.h: 65: {
-[; ;capture.h: 73: struct
-[; ;capture.h: 74: {
-[; ;capture.h: 82: unsigned Cap2OVF:1;
-[; ;capture.h: 86: unsigned Cap3OVF:1;
-[; ;capture.h: 91: unsigned Cap4OVF:1;
-[; ;capture.h: 92: unsigned Cap5OVF:1;
-[; ;capture.h: 107: unsigned ECap1OVF:1;
-[; ;capture.h: 115: };
-[; ;capture.h: 117: unsigned :8;
-[; ;capture.h: 119: };
-[; ;capture.h: 121: extern union capstatus CapStatus;
-[; ;capture.h: 123: union CapResult
-[; ;capture.h: 124: {
-[; ;capture.h: 125: unsigned int lc;
-[; ;capture.h: 126: char bc[2];
-[; ;capture.h: 127: };
-[; ;capture.h: 484: void OpenCapture2 ( unsigned char config);
-[; ;capture.h: 485: unsigned int ReadCapture2 (void);
-[; ;capture.h: 486: void CloseCapture2 (void);
-[; ;capture.h: 495: void OpenCapture3 ( unsigned char config);
-[; ;capture.h: 496: unsigned int ReadCapture3 (void);
-[; ;capture.h: 497: void CloseCapture3 (void);
-[; ;capture.h: 507: void OpenCapture4 ( unsigned char config);
-[; ;capture.h: 508: unsigned int ReadCapture4 (void);
-[; ;capture.h: 509: void CloseCapture4 (void);
-[; ;capture.h: 511: void OpenCapture5 ( unsigned char config);
-[; ;capture.h: 512: unsigned int ReadCapture5 (void);
-[; ;capture.h: 513: void CloseCapture5 (void);
-[; ;capture.h: 568: void OpenECapture1 ( unsigned char config);
-[; ;capture.h: 569: unsigned int ReadECapture1 (void);
-[; ;capture.h: 570: void CloseECapture1 (void);
-[; ;compare.h: 392: void OpenCompare2(unsigned char config, unsigned int period);
-[; ;compare.h: 393: void CloseCompare2(void);
-[; ;compare.h: 397: void OpenCompare3(unsigned char config,unsigned int period);
-[; ;compare.h: 398: void CloseCompare3(void);
-[; ;compare.h: 403: void OpenCompare4(unsigned char config,unsigned int period);
-[; ;compare.h: 404: void CloseCompare4(void);
-[; ;compare.h: 406: void OpenCompare5(unsigned char config,unsigned int period);
-[; ;compare.h: 407: void CloseCompare5(void);
-[; ;compare.h: 433: void OpenECompare1(unsigned char config,unsigned int period);
-[; ;compare.h: 434: void CloseECompare1(void);
-[; ;ctmu.h: 374: void OpenCTMU(unsigned char config1,unsigned char config2,unsigned char config3);
-[; ;ctmu.h: 379: void CurrentControlCTMU(unsigned char config);
-[; ;ctmu.h: 380: void CloseCTMU(void);
-[; ;dpslp.h: 171: extern void ULPWakeUpEnable( void );
-[; ;EEP.h: 36: void Busy_eep ( void );
-[; ;EEP.h: 37: unsigned char Read_b_eep( unsigned int badd );
-[; ;EEP.h: 38: void Write_b_eep( unsigned int badd, unsigned char bdat );
-[; ;GenericTypeDefs.h: 65: typedef enum _BOOL { FALSE = 0, TRUE } BOOL;
-[; ;GenericTypeDefs.h: 68: typedef enum _BIT { CLEAR = 0, SET } BIT;
-[; ;GenericTypeDefs.h: 75: typedef signed int INT;
-[; ;GenericTypeDefs.h: 76: typedef signed char INT8;
-[; ;GenericTypeDefs.h: 77: typedef signed short int INT16;
-[; ;GenericTypeDefs.h: 78: typedef signed long int INT32;
-[; ;GenericTypeDefs.h: 86: typedef unsigned int UINT;
-[; ;GenericTypeDefs.h: 87: typedef unsigned char UINT8;
-[; ;GenericTypeDefs.h: 88: typedef unsigned short int UINT16;
-[; ;GenericTypeDefs.h: 89: typedef unsigned long int UINT32;
-[; ;GenericTypeDefs.h: 95: typedef unsigned short long UINT24;
-[; ;GenericTypeDefs.h: 103: typedef union
-[; ;GenericTypeDefs.h: 104: {
-[; ;GenericTypeDefs.h: 105: UINT8 Val;
-[; ;GenericTypeDefs.h: 106: struct
-[; ;GenericTypeDefs.h: 107: {
-[; ;GenericTypeDefs.h: 108: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 109: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 110: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 111: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 112: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 113: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 114: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 115: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 116: } bits;
-[; ;GenericTypeDefs.h: 117: } UINT8_VAL, UINT8_BITS;
-[; ;GenericTypeDefs.h: 119: typedef union
-[; ;GenericTypeDefs.h: 120: {
-[; ;GenericTypeDefs.h: 121: UINT16 Val;
-[; ;GenericTypeDefs.h: 122: UINT8 v[2] ;
-[; ;GenericTypeDefs.h: 123: struct 
-[; ;GenericTypeDefs.h: 124: {
-[; ;GenericTypeDefs.h: 125: UINT8 LB;
-[; ;GenericTypeDefs.h: 126: UINT8 HB;
-[; ;GenericTypeDefs.h: 127: } byte;
-[; ;GenericTypeDefs.h: 128: struct 
-[; ;GenericTypeDefs.h: 129: {
-[; ;GenericTypeDefs.h: 130: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 131: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 132: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 133: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 134: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 135: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 136: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 137: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 138: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 139: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 140: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 141: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 142: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 143: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 144: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 145: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 146: } bits;
-[; ;GenericTypeDefs.h: 147: } UINT16_VAL, UINT16_BITS;
-[; ;GenericTypeDefs.h: 151: typedef union
-[; ;GenericTypeDefs.h: 152: {
-[; ;GenericTypeDefs.h: 153: UINT24 Val;
-[; ;GenericTypeDefs.h: 154: UINT8 v[3] ;
-[; ;GenericTypeDefs.h: 155: struct 
-[; ;GenericTypeDefs.h: 156: {
-[; ;GenericTypeDefs.h: 157: UINT8 LB;
-[; ;GenericTypeDefs.h: 158: UINT8 HB;
-[; ;GenericTypeDefs.h: 159: UINT8 UB;
-[; ;GenericTypeDefs.h: 160: } byte;
-[; ;GenericTypeDefs.h: 161: struct 
-[; ;GenericTypeDefs.h: 162: {
-[; ;GenericTypeDefs.h: 163: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 164: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 165: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 166: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 167: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 168: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 169: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 170: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 171: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 172: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 173: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 174: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 175: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 176: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 177: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 178: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 179: UINT8 b16:1;
-[; ;GenericTypeDefs.h: 180: UINT8 b17:1;
-[; ;GenericTypeDefs.h: 181: UINT8 b18:1;
-[; ;GenericTypeDefs.h: 182: UINT8 b19:1;
-[; ;GenericTypeDefs.h: 183: UINT8 b20:1;
-[; ;GenericTypeDefs.h: 184: UINT8 b21:1;
-[; ;GenericTypeDefs.h: 185: UINT8 b22:1;
-[; ;GenericTypeDefs.h: 186: UINT8 b23:1;
-[; ;GenericTypeDefs.h: 187: } bits;
-[; ;GenericTypeDefs.h: 188: } UINT24_VAL, UINT24_BITS;
-[; ;GenericTypeDefs.h: 191: typedef union
-[; ;GenericTypeDefs.h: 192: {
-[; ;GenericTypeDefs.h: 193: UINT32 Val;
-[; ;GenericTypeDefs.h: 194: UINT16 w[2] ;
-[; ;GenericTypeDefs.h: 195: UINT8 v[4] ;
-[; ;GenericTypeDefs.h: 196: struct 
-[; ;GenericTypeDefs.h: 197: {
-[; ;GenericTypeDefs.h: 198: UINT16 LW;
-[; ;GenericTypeDefs.h: 199: UINT16 HW;
-[; ;GenericTypeDefs.h: 200: } word;
-[; ;GenericTypeDefs.h: 201: struct 
-[; ;GenericTypeDefs.h: 202: {
-[; ;GenericTypeDefs.h: 203: UINT8 LB;
-[; ;GenericTypeDefs.h: 204: UINT8 HB;
-[; ;GenericTypeDefs.h: 205: UINT8 UB;
-[; ;GenericTypeDefs.h: 206: UINT8 MB;
-[; ;GenericTypeDefs.h: 207: } byte;
-[; ;GenericTypeDefs.h: 208: struct 
-[; ;GenericTypeDefs.h: 209: {
-[; ;GenericTypeDefs.h: 210: UINT16_VAL low;
-[; ;GenericTypeDefs.h: 211: UINT16_VAL high;
-[; ;GenericTypeDefs.h: 212: }wordUnion;
-[; ;GenericTypeDefs.h: 213: struct 
-[; ;GenericTypeDefs.h: 214: {
-[; ;GenericTypeDefs.h: 215: UINT8 b0:1;
-[; ;GenericTypeDefs.h: 216: UINT8 b1:1;
-[; ;GenericTypeDefs.h: 217: UINT8 b2:1;
-[; ;GenericTypeDefs.h: 218: UINT8 b3:1;
-[; ;GenericTypeDefs.h: 219: UINT8 b4:1;
-[; ;GenericTypeDefs.h: 220: UINT8 b5:1;
-[; ;GenericTypeDefs.h: 221: UINT8 b6:1;
-[; ;GenericTypeDefs.h: 222: UINT8 b7:1;
-[; ;GenericTypeDefs.h: 223: UINT8 b8:1;
-[; ;GenericTypeDefs.h: 224: UINT8 b9:1;
-[; ;GenericTypeDefs.h: 225: UINT8 b10:1;
-[; ;GenericTypeDefs.h: 226: UINT8 b11:1;
-[; ;GenericTypeDefs.h: 227: UINT8 b12:1;
-[; ;GenericTypeDefs.h: 228: UINT8 b13:1;
-[; ;GenericTypeDefs.h: 229: UINT8 b14:1;
-[; ;GenericTypeDefs.h: 230: UINT8 b15:1;
-[; ;GenericTypeDefs.h: 231: UINT8 b16:1;
-[; ;GenericTypeDefs.h: 232: UINT8 b17:1;
-[; ;GenericTypeDefs.h: 233: UINT8 b18:1;
-[; ;GenericTypeDefs.h: 234: UINT8 b19:1;
-[; ;GenericTypeDefs.h: 235: UINT8 b20:1;
-[; ;GenericTypeDefs.h: 236: UINT8 b21:1;
-[; ;GenericTypeDefs.h: 237: UINT8 b22:1;
-[; ;GenericTypeDefs.h: 238: UINT8 b23:1;
-[; ;GenericTypeDefs.h: 239: UINT8 b24:1;
-[; ;GenericTypeDefs.h: 240: UINT8 b25:1;
-[; ;GenericTypeDefs.h: 241: UINT8 b26:1;
-[; ;GenericTypeDefs.h: 242: UINT8 b27:1;
-[; ;GenericTypeDefs.h: 243: UINT8 b28:1;
-[; ;GenericTypeDefs.h: 244: UINT8 b29:1;
-[; ;GenericTypeDefs.h: 245: UINT8 b30:1;
-[; ;GenericTypeDefs.h: 246: UINT8 b31:1;
-[; ;GenericTypeDefs.h: 247: } bits;
-[; ;GenericTypeDefs.h: 248: } UINT32_VAL;
-[; ;GenericTypeDefs.h: 343: typedef void VOID;
-[; ;GenericTypeDefs.h: 345: typedef char CHAR8;
-[; ;GenericTypeDefs.h: 346: typedef unsigned char UCHAR8;
-[; ;GenericTypeDefs.h: 348: typedef unsigned char BYTE;
-[; ;GenericTypeDefs.h: 349: typedef unsigned short int WORD;
-[; ;GenericTypeDefs.h: 350: typedef unsigned long DWORD;
-[; ;GenericTypeDefs.h: 353: typedef unsigned long long QWORD;
-[; ;GenericTypeDefs.h: 354: typedef signed char CHAR;
-[; ;GenericTypeDefs.h: 355: typedef signed short int SHORT;
-[; ;GenericTypeDefs.h: 356: typedef signed long LONG;
-[; ;GenericTypeDefs.h: 359: typedef signed long long LONGLONG;
-[; ;GenericTypeDefs.h: 360: typedef union
-[; ;GenericTypeDefs.h: 361: {
-[; ;GenericTypeDefs.h: 362: BYTE Val;
-[; ;GenericTypeDefs.h: 363: struct 
-[; ;GenericTypeDefs.h: 364: {
-[; ;GenericTypeDefs.h: 365: BYTE b0:1;
-[; ;GenericTypeDefs.h: 366: BYTE b1:1;
-[; ;GenericTypeDefs.h: 367: BYTE b2:1;
-[; ;GenericTypeDefs.h: 368: BYTE b3:1;
-[; ;GenericTypeDefs.h: 369: BYTE b4:1;
-[; ;GenericTypeDefs.h: 370: BYTE b5:1;
-[; ;GenericTypeDefs.h: 371: BYTE b6:1;
-[; ;GenericTypeDefs.h: 372: BYTE b7:1;
-[; ;GenericTypeDefs.h: 373: } bits;
-[; ;GenericTypeDefs.h: 374: } BYTE_VAL, BYTE_BITS;
-[; ;GenericTypeDefs.h: 376: typedef union
-[; ;GenericTypeDefs.h: 377: {
-[; ;GenericTypeDefs.h: 378: WORD Val;
-[; ;GenericTypeDefs.h: 379: BYTE v[2] ;
-[; ;GenericTypeDefs.h: 380: struct 
-[; ;GenericTypeDefs.h: 381: {
-[; ;GenericTypeDefs.h: 382: BYTE LB;
-[; ;GenericTypeDefs.h: 383: BYTE HB;
-[; ;GenericTypeDefs.h: 384: } byte;
-[; ;GenericTypeDefs.h: 385: struct 
-[; ;GenericTypeDefs.h: 386: {
-[; ;GenericTypeDefs.h: 387: BYTE b0:1;
-[; ;GenericTypeDefs.h: 388: BYTE b1:1;
-[; ;GenericTypeDefs.h: 389: BYTE b2:1;
-[; ;GenericTypeDefs.h: 390: BYTE b3:1;
-[; ;GenericTypeDefs.h: 391: BYTE b4:1;
-[; ;GenericTypeDefs.h: 392: BYTE b5:1;
-[; ;GenericTypeDefs.h: 393: BYTE b6:1;
-[; ;GenericTypeDefs.h: 394: BYTE b7:1;
-[; ;GenericTypeDefs.h: 395: BYTE b8:1;
-[; ;GenericTypeDefs.h: 396: BYTE b9:1;
-[; ;GenericTypeDefs.h: 397: BYTE b10:1;
-[; ;GenericTypeDefs.h: 398: BYTE b11:1;
-[; ;GenericTypeDefs.h: 399: BYTE b12:1;
-[; ;GenericTypeDefs.h: 400: BYTE b13:1;
-[; ;GenericTypeDefs.h: 401: BYTE b14:1;
-[; ;GenericTypeDefs.h: 402: BYTE b15:1;
-[; ;GenericTypeDefs.h: 403: } bits;
-[; ;GenericTypeDefs.h: 404: } WORD_VAL, WORD_BITS;
-[; ;GenericTypeDefs.h: 406: typedef union
-[; ;GenericTypeDefs.h: 407: {
-[; ;GenericTypeDefs.h: 408: DWORD Val;
-[; ;GenericTypeDefs.h: 409: WORD w[2] ;
-[; ;GenericTypeDefs.h: 410: BYTE v[4] ;
-[; ;GenericTypeDefs.h: 411: struct 
-[; ;GenericTypeDefs.h: 412: {
-[; ;GenericTypeDefs.h: 413: WORD LW;
-[; ;GenericTypeDefs.h: 414: WORD HW;
-[; ;GenericTypeDefs.h: 415: } word;
-[; ;GenericTypeDefs.h: 416: struct 
-[; ;GenericTypeDefs.h: 417: {
-[; ;GenericTypeDefs.h: 418: BYTE LB;
-[; ;GenericTypeDefs.h: 419: BYTE HB;
-[; ;GenericTypeDefs.h: 420: BYTE UB;
-[; ;GenericTypeDefs.h: 421: BYTE MB;
-[; ;GenericTypeDefs.h: 422: } byte;
-[; ;GenericTypeDefs.h: 423: struct 
-[; ;GenericTypeDefs.h: 424: {
-[; ;GenericTypeDefs.h: 425: WORD_VAL low;
-[; ;GenericTypeDefs.h: 426: WORD_VAL high;
-[; ;GenericTypeDefs.h: 427: }wordUnion;
-[; ;GenericTypeDefs.h: 428: struct 
-[; ;GenericTypeDefs.h: 429: {
-[; ;GenericTypeDefs.h: 430: BYTE b0:1;
-[; ;GenericTypeDefs.h: 431: BYTE b1:1;
-[; ;GenericTypeDefs.h: 432: BYTE b2:1;
-[; ;GenericTypeDefs.h: 433: BYTE b3:1;
-[; ;GenericTypeDefs.h: 434: BYTE b4:1;
-[; ;GenericTypeDefs.h: 435: BYTE b5:1;
-[; ;GenericTypeDefs.h: 436: BYTE b6:1;
-[; ;GenericTypeDefs.h: 437: BYTE b7:1;
-[; ;GenericTypeDefs.h: 438: BYTE b8:1;
-[; ;GenericTypeDefs.h: 439: BYTE b9:1;
-[; ;GenericTypeDefs.h: 440: BYTE b10:1;
-[; ;GenericTypeDefs.h: 441: BYTE b11:1;
-[; ;GenericTypeDefs.h: 442: BYTE b12:1;
-[; ;GenericTypeDefs.h: 443: BYTE b13:1;
-[; ;GenericTypeDefs.h: 444: BYTE b14:1;
-[; ;GenericTypeDefs.h: 445: BYTE b15:1;
-[; ;GenericTypeDefs.h: 446: BYTE b16:1;
-[; ;GenericTypeDefs.h: 447: BYTE b17:1;
-[; ;GenericTypeDefs.h: 448: BYTE b18:1;
-[; ;GenericTypeDefs.h: 449: BYTE b19:1;
-[; ;GenericTypeDefs.h: 450: BYTE b20:1;
-[; ;GenericTypeDefs.h: 451: BYTE b21:1;
-[; ;GenericTypeDefs.h: 452: BYTE b22:1;
-[; ;GenericTypeDefs.h: 453: BYTE b23:1;
-[; ;GenericTypeDefs.h: 454: BYTE b24:1;
-[; ;GenericTypeDefs.h: 455: BYTE b25:1;
-[; ;GenericTypeDefs.h: 456: BYTE b26:1;
-[; ;GenericTypeDefs.h: 457: BYTE b27:1;
-[; ;GenericTypeDefs.h: 458: BYTE b28:1;
-[; ;GenericTypeDefs.h: 459: BYTE b29:1;
-[; ;GenericTypeDefs.h: 460: BYTE b30:1;
-[; ;GenericTypeDefs.h: 461: BYTE b31:1;
-[; ;GenericTypeDefs.h: 462: } bits;
-[; ;GenericTypeDefs.h: 463: } DWORD_VAL;
-[; ;GenericTypeDefs.h: 466: typedef union
-[; ;GenericTypeDefs.h: 467: {
-[; ;GenericTypeDefs.h: 468: QWORD Val;
-[; ;GenericTypeDefs.h: 469: DWORD d[2] ;
-[; ;GenericTypeDefs.h: 470: WORD w[4] ;
-[; ;GenericTypeDefs.h: 471: BYTE v[8] ;
-[; ;GenericTypeDefs.h: 472: struct 
-[; ;GenericTypeDefs.h: 473: {
-[; ;GenericTypeDefs.h: 474: DWORD LD;
-[; ;GenericTypeDefs.h: 475: DWORD HD;
-[; ;GenericTypeDefs.h: 476: } dword;
-[; ;GenericTypeDefs.h: 477: struct 
-[; ;GenericTypeDefs.h: 478: {
-[; ;GenericTypeDefs.h: 479: WORD LW;
-[; ;GenericTypeDefs.h: 480: WORD HW;
-[; ;GenericTypeDefs.h: 481: WORD UW;
-[; ;GenericTypeDefs.h: 482: WORD MW;
-[; ;GenericTypeDefs.h: 483: } word;
-[; ;GenericTypeDefs.h: 484: struct 
-[; ;GenericTypeDefs.h: 485: {
-[; ;GenericTypeDefs.h: 486: BYTE b0:1;
-[; ;GenericTypeDefs.h: 487: BYTE b1:1;
-[; ;GenericTypeDefs.h: 488: BYTE b2:1;
-[; ;GenericTypeDefs.h: 489: BYTE b3:1;
-[; ;GenericTypeDefs.h: 490: BYTE b4:1;
-[; ;GenericTypeDefs.h: 491: BYTE b5:1;
-[; ;GenericTypeDefs.h: 492: BYTE b6:1;
-[; ;GenericTypeDefs.h: 493: BYTE b7:1;
-[; ;GenericTypeDefs.h: 494: BYTE b8:1;
-[; ;GenericTypeDefs.h: 495: BYTE b9:1;
-[; ;GenericTypeDefs.h: 496: BYTE b10:1;
-[; ;GenericTypeDefs.h: 497: BYTE b11:1;
-[; ;GenericTypeDefs.h: 498: BYTE b12:1;
-[; ;GenericTypeDefs.h: 499: BYTE b13:1;
-[; ;GenericTypeDefs.h: 500: BYTE b14:1;
-[; ;GenericTypeDefs.h: 501: BYTE b15:1;
-[; ;GenericTypeDefs.h: 502: BYTE b16:1;
-[; ;GenericTypeDefs.h: 503: BYTE b17:1;
-[; ;GenericTypeDefs.h: 504: BYTE b18:1;
-[; ;GenericTypeDefs.h: 505: BYTE b19:1;
-[; ;GenericTypeDefs.h: 506: BYTE b20:1;
-[; ;GenericTypeDefs.h: 507: BYTE b21:1;
-[; ;GenericTypeDefs.h: 508: BYTE b22:1;
-[; ;GenericTypeDefs.h: 509: BYTE b23:1;
-[; ;GenericTypeDefs.h: 510: BYTE b24:1;
-[; ;GenericTypeDefs.h: 511: BYTE b25:1;
-[; ;GenericTypeDefs.h: 512: BYTE b26:1;
-[; ;GenericTypeDefs.h: 513: BYTE b27:1;
-[; ;GenericTypeDefs.h: 514: BYTE b28:1;
-[; ;GenericTypeDefs.h: 515: BYTE b29:1;
-[; ;GenericTypeDefs.h: 516: BYTE b30:1;
-[; ;GenericTypeDefs.h: 517: BYTE b31:1;
-[; ;GenericTypeDefs.h: 518: BYTE b32:1;
-[; ;GenericTypeDefs.h: 519: BYTE b33:1;
-[; ;GenericTypeDefs.h: 520: BYTE b34:1;
-[; ;GenericTypeDefs.h: 521: BYTE b35:1;
-[; ;GenericTypeDefs.h: 522: BYTE b36:1;
-[; ;GenericTypeDefs.h: 523: BYTE b37:1;
-[; ;GenericTypeDefs.h: 524: BYTE b38:1;
-[; ;GenericTypeDefs.h: 525: BYTE b39:1;
-[; ;GenericTypeDefs.h: 526: BYTE b40:1;
-[; ;GenericTypeDefs.h: 527: BYTE b41:1;
-[; ;GenericTypeDefs.h: 528: BYTE b42:1;
-[; ;GenericTypeDefs.h: 529: BYTE b43:1;
-[; ;GenericTypeDefs.h: 530: BYTE b44:1;
-[; ;GenericTypeDefs.h: 531: BYTE b45:1;
-[; ;GenericTypeDefs.h: 532: BYTE b46:1;
-[; ;GenericTypeDefs.h: 533: BYTE b47:1;
-[; ;GenericTypeDefs.h: 534: BYTE b48:1;
-[; ;GenericTypeDefs.h: 535: BYTE b49:1;
-[; ;GenericTypeDefs.h: 536: BYTE b50:1;
-[; ;GenericTypeDefs.h: 537: BYTE b51:1;
-[; ;GenericTypeDefs.h: 538: BYTE b52:1;
-[; ;GenericTypeDefs.h: 539: BYTE b53:1;
-[; ;GenericTypeDefs.h: 540: BYTE b54:1;
-[; ;GenericTypeDefs.h: 541: BYTE b55:1;
-[; ;GenericTypeDefs.h: 542: BYTE b56:1;
-[; ;GenericTypeDefs.h: 543: BYTE b57:1;
-[; ;GenericTypeDefs.h: 544: BYTE b58:1;
-[; ;GenericTypeDefs.h: 545: BYTE b59:1;
-[; ;GenericTypeDefs.h: 546: BYTE b60:1;
-[; ;GenericTypeDefs.h: 547: BYTE b61:1;
-[; ;GenericTypeDefs.h: 548: BYTE b62:1;
-[; ;GenericTypeDefs.h: 549: BYTE b63:1;
-[; ;GenericTypeDefs.h: 550: } bits;
-[; ;GenericTypeDefs.h: 551: } QWORD_VAL;
-[; ;flash.h: 113: extern void ReadFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
-[; ;flash.h: 120: extern void EraseFlash(unsigned long startaddr, unsigned long endaddr);
-[; ;flash.h: 122: extern void WriteBlockFlash(unsigned long startaddr, unsigned char num_blocks, unsigned char *flash_array);
-[; ;flash.h: 124: extern void WriteBytesFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
-[; ;i2c.h: 775: void IdleI2C( void );
-[; ;i2c.h: 777: void OpenI2C( unsigned char sync_mode, unsigned char slew );
-[; ;i2c.h: 779: signed char WriteI2C( unsigned char data_out );
-[; ;i2c.h: 781: signed char putsI2C( unsigned char *wrptr );
-[; ;i2c.h: 783: unsigned char ReadI2C( void );
-[; ;i2c.h: 785: void CloseI2C( void );
-[; ;i2c.h: 899: signed char WriteI2C( unsigned char data_out );
-[; ;i2c.h: 901: signed char getsI2C( unsigned char *rdptr, unsigned char length );
-[; ;i2c.h: 908: signed char EEAckPolling( unsigned char control );
-[; ;i2c.h: 910: signed char EEByteWrite( unsigned char control,
-[; ;i2c.h: 911: unsigned char address,
-[; ;i2c.h: 912: unsigned char data );
-[; ;i2c.h: 914: signed int EECurrentAddRead( unsigned char control );
-[; ;i2c.h: 916: signed char EEPageWrite( unsigned char control,
-[; ;i2c.h: 917: unsigned char address,
-[; ;i2c.h: 918: unsigned char *wrptr );
-[; ;i2c.h: 920: signed int EERandomRead( unsigned char control, unsigned char address );
-[; ;i2c.h: 922: signed char EESequentialRead( unsigned char control,
-[; ;i2c.h: 923: unsigned char address,
-[; ;i2c.h: 924: unsigned char *rdptr,
-[; ;i2c.h: 925: unsigned char length );
-[; ;mwire.h: 325: void OpenMwire( unsigned char sync_mode );
-[; ;mwire.h: 327: unsigned char ReadMwire( unsigned char high_byte,
-[; ;mwire.h: 328: unsigned char low_byte );
-[; ;mwire.h: 341: signed char WriteMwire( unsigned char data_out );
-[; ;mwire.h: 354: void getsMwire( unsigned char *rdptr, unsigned char length );
-[; ;portb.h: 126: void OpenPORTB( unsigned char config);
-[; ;portb.h: 176: void OpenRB0INT( unsigned char config);
-[; ;portb.h: 194: void OpenRB1INT( unsigned char config);
-[; ;portb.h: 211: void OpenRB2INT( unsigned char config);
-[; ;portb.h: 230: void OpenRB3INT( unsigned char config);
-[; ;pwm.h: 85: union PWMDC
-[; ;pwm.h: 86: {
-[; ;pwm.h: 87: unsigned int lpwm;
-[; ;pwm.h: 88: char bpwm[2];
-[; ;pwm.h: 89: };
-[; ;pwm.h: 467: void OpenPWM1 ( char period);
-[; ;pwm.h: 468: void SetDCPWM1 ( unsigned int duty_cycle);
-[; ;pwm.h: 477: void ClosePWM1 (void);
-[; ;pwm.h: 525: void OpenPWM2 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 526: void SetDCPWM2 ( unsigned int duty_cycle);
-[; ;pwm.h: 527: void ClosePWM2 (void);
-[; ;pwm.h: 529: void OpenPWM3 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 530: void SetDCPWM3 ( unsigned int duty_cycle);
-[; ;pwm.h: 531: void ClosePWM3 (void);
-[; ;pwm.h: 538: void OpenPWM4 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 539: void SetDCPWM4 ( unsigned int duty_cycle);
-[; ;pwm.h: 540: void ClosePWM4 (void);
-[; ;pwm.h: 542: void OpenPWM5 ( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 543: void SetDCPWM5 ( unsigned int duty_cycle);
-[; ;pwm.h: 544: void ClosePWM5 (void);
-[; ;pwm.h: 586: void OpenEPWM1( unsigned char period, unsigned char timer_source );
-[; ;pwm.h: 587: void SetDCEPWM1 ( unsigned int duty_cycle);
-[; ;pwm.h: 588: void SetOutputEPWM1 ( unsigned char output_config,
-[; ;pwm.h: 589: unsigned char pwm_mode);
-[; ;pwm.h: 590: void CloseEPWM1 (void);
-[; ;reset.h: 16: char isMCLR(void);
-[; ;reset.h: 17: void StatusReset(void);
-[; ;reset.h: 18: char isPOR(void);
-[; ;reset.h: 19: char isWU(void);
-[; ;reset.h: 22: char isBOR(void);
-[; ;reset.h: 26: char isWDTTO(void);
-[; ;reset.h: 27: char isWDTWU(void);
-[; ;reset.h: 31: char isLVD(void);
-[; ;rtcc.h: 687: void Open_RTCC(void);
-[; ;rtcc.h: 688: void Close_RTCC(void);
-[; ;rtcc.h: 689: unsigned char update_RTCC(void);
-[; ;sw_i2c.h: 97: void SWStopI2C ( void );
-[; ;sw_i2c.h: 98: void SWStartI2C ( void );
-[; ;sw_i2c.h: 99: void SWRestartI2C ( void );
-[; ;sw_i2c.h: 100: void SWStopI2C ( void );
-[; ;sw_i2c.h: 102: signed char SWAckI2C( void );
-[; ;sw_i2c.h: 103: signed char Clock_test( void );
-[; ;sw_i2c.h: 104: signed int SWReadI2C( void );
-[; ;sw_i2c.h: 105: signed char SWWriteI2C(  unsigned char data_out );
-[; ;sw_i2c.h: 106: signed char SWGetsI2C(  unsigned char *rdptr,  unsigned char length );
-[; ;sw_i2c.h: 107: signed char SWPutsI2C(  unsigned char *wrptr );
-[; ;sw_spi.h: 84: void OpenSWSPI(void);
-[; ;sw_spi.h: 87: char WriteSWSPI( char output);
-[; ;sw_spi.h: 90: void SetCSSWSPI(void);
-[; ;sw_spi.h: 93: void ClearCSSWSPI(void);
-[; ;sw_uart.h: 47: void OpenUART(void);
-[; ;sw_uart.h: 49: unsigned char ReadUART(void);
-[; ;sw_uart.h: 51: void WriteUART( unsigned char);
-[; ;sw_uart.h: 53: void getsUART( char *, unsigned char);
-[; ;sw_uart.h: 55: void putsUART( char *);
-[; ;sw_uart.h: 79: extern void DelayRXBitUART (void);
-[; ;sw_uart.h: 80: extern void DelayRXHalfBitUART(void);
-[; ;sw_uart.h: 81: extern void DelayTXBitUART (void);
-[; ;timers.h: 36: union Timers
-[; ;timers.h: 37: {
-[; ;timers.h: 38: unsigned int lt;
-[; ;timers.h: 39: char bt[2];
-[; ;timers.h: 40: };
-[; ;timers.h: 118: void OpenTimer0 ( unsigned char config);
-[; ;timers.h: 119: void CloseTimer0 (void);
-[; ;timers.h: 120: unsigned int ReadTimer0 (void);
-[; ;timers.h: 121: void WriteTimer0 ( unsigned int timer0);
-[; ;timers.h: 185: void OpenTimer1 ( unsigned char config, unsigned char config1);
-[; ;timers.h: 186: void CloseTimer1 (void);
-[; ;timers.h: 187: unsigned int ReadTimer1 (void);
-[; ;timers.h: 188: void WriteTimer1 ( unsigned int timer1);
-[; ;timers.h: 325: void OpenTimer2 ( unsigned char config);
-[; ;timers.h: 326: void CloseTimer2 (void);
-[; ;timers.h: 452: void OpenTimer3 ( unsigned char config, unsigned char config1);
-[; ;timers.h: 453: void CloseTimer3 (void);
-[; ;timers.h: 454: unsigned int ReadTimer3 (void);
-[; ;timers.h: 455: void WriteTimer3 ( unsigned int timer3);
-[; ;timers.h: 541: void OpenTimer4 ( unsigned char config);
-[; ;timers.h: 542: void CloseTimer4 (void);
-[; ;usart.h: 200: union USART1
-[; ;usart.h: 201: {
-[; ;usart.h: 202: unsigned char val;
-[; ;usart.h: 203: struct
-[; ;usart.h: 204: {
-[; ;usart.h: 205: unsigned RX_NINE:1;
-[; ;usart.h: 206: unsigned TX_NINE:1;
-[; ;usart.h: 207: unsigned FRAME_ERROR:1;
-[; ;usart.h: 208: unsigned OVERRUN_ERROR:1;
-[; ;usart.h: 209: unsigned fill:4;
-[; ;usart.h: 210: };
-[; ;usart.h: 211: };
-[; ;usart.h: 212: extern union USART1 USART1_Status;
-[; ;usart.h: 214: void Open1USART ( unsigned char config, unsigned int spbrg);
-[; ;usart.h: 244: char Read1USART (void);
-[; ;usart.h: 245: void Write1USART ( char data);
-[; ;usart.h: 246: void gets1USART ( char *buffer, unsigned char len);
-[; ;usart.h: 247: void puts1USART ( char *data);
-[; ;usart.h: 248: void putrs1USART ( const  char *data);
-[; ;usart.h: 305: union USART2
-[; ;usart.h: 306: {
-[; ;usart.h: 307: unsigned char val;
-[; ;usart.h: 308: struct
-[; ;usart.h: 309: {
-[; ;usart.h: 310: unsigned RX_NINE:1;
-[; ;usart.h: 311: unsigned TX_NINE:1;
-[; ;usart.h: 312: unsigned FRAME_ERROR:1;
-[; ;usart.h: 313: unsigned OVERRUN_ERROR:1;
-[; ;usart.h: 314: unsigned fill:4;
-[; ;usart.h: 315: };
-[; ;usart.h: 316: };
-[; ;usart.h: 317: extern union USART2 USART2_Status;
-[; ;usart.h: 318: void Open2USART ( unsigned char config, unsigned int spbrg);
-[; ;usart.h: 333: char Read2USART (void);
-[; ;usart.h: 334: void Write2USART ( char data);
-[; ;usart.h: 335: void gets2USART ( char *buffer, unsigned char len);
-[; ;usart.h: 336: void puts2USART ( char *data);
-[; ;usart.h: 337: void putrs2USART ( const  char *data);
-[; ;usart.h: 660: void baud1USART ( unsigned char baudconfig);
-[; ;usart.h: 665: void baud2USART ( unsigned char baudconfig);
-[; ;xlcd.h: 87: void OpenXLCD( unsigned char);
-[; ;xlcd.h: 92: void SetCGRamAddr( unsigned char);
-[; ;xlcd.h: 97: void SetDDRamAddr( unsigned char);
-[; ;xlcd.h: 102: unsigned char BusyXLCD(void);
-[; ;xlcd.h: 107: unsigned char ReadAddrXLCD(void);
-[; ;xlcd.h: 112: char ReadDataXLCD(void);
-[; ;xlcd.h: 117: void WriteCmdXLCD( unsigned char);
-[; ;xlcd.h: 122: void WriteDataXLCD( char);
-[; ;xlcd.h: 132: void putsXLCD( char *);
-[; ;xlcd.h: 137: void putrsXLCD(const char *);
-[; ;xlcd.h: 140: extern void DelayFor18TCY(void);
-[; ;xlcd.h: 141: extern void DelayPORXLCD(void);
-[; ;xlcd.h: 142: extern void DelayXLCD(void);
-[; ;delays.h: 13: void Delay1TCYx(unsigned char);
-[; ;delays.h: 19: void Delay10TCYx(unsigned char);
-[; ;delays.h: 25: void Delay100TCYx(unsigned char);
-[; ;delays.h: 31: void Delay1KTCYx(unsigned char);
-[; ;delays.h: 37: void Delay10KTCYx(unsigned char);
 [; ;pic18.h: 18: __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 [; ;pic18.h: 19: __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 [; ;pic18.h: 43: extern void __nop(void);
-[; ;pic18.h: 126: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
-[; ;pic18.h: 127: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
-[; ;pic18.h: 128: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
@@ -17548,134 +16879,144 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.h: 113: void I2C_Initialize(void);
 [; ;i2c.h: 133: void I2C_ISR ( void );
 [; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
-[; ;i2c.c: 52: typedef enum {
-[; ;i2c.c: 53: SLAVE_NORMAL_DATA,
-[; ;i2c.c: 54: SLAVE_DATA_ADDRESS,
-[; ;i2c.c: 55: } SLAVE_WRITE_DATA_TYPE;
-"61 mcc_generated_files/i2c.c
+[; ;ax.h: 61: void delay_ms(int ms);
+[; ;ax.h: 62: int getAddressSize(int address);
+[; ;ax.h: 66: void setLedOn(int led);
+[; ;ax.h: 70: void setLedOff(int led);
+[; ;ax.h: 75: int getADC(int adc);
+[; ;ax.h: 78: int pingAX(int id);
+[; ;ax.h: 80: int readAXData(int id, int address);
+[; ;ax.h: 81: int writeAXData(int id, int address, int data);
+[; ;ax.h: 84: void handleByteReceived(uint8_t data);
+[; ;ax.h: 86: uint8_t getByteToSend();
+[; ;i2c.c: 53: typedef enum {
+[; ;i2c.c: 54: SLAVE_NORMAL_DATA,
+[; ;i2c.c: 55: SLAVE_DATA_ADDRESS,
+[; ;i2c.c: 56: } SLAVE_WRITE_DATA_TYPE;
+"62 mcc_generated_files/i2c.c
 [v _I2C_slaveWriteData `Vuc ~T0 @X0 1 e ]
 [i _I2C_slaveWriteData
 -> -> 85 `i `uc
 ]
-[; ;i2c.c: 61: volatile uint8_t I2C_slaveWriteData = 0x55;
-[; ;i2c.c: 66: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
-"78
+[; ;i2c.c: 62: volatile uint8_t I2C_slaveWriteData = 0x55;
+[; ;i2c.c: 67: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
+"79
 [v _I2C_Initialize `(v ~T0 @X0 1 ef ]
 {
-[; ;i2c.c: 78: void I2C_Initialize(void) {
+[; ;i2c.c: 79: void I2C_Initialize(void) {
 [e :U _I2C_Initialize ]
 [f ]
-[; ;i2c.c: 81: SSPSTAT = 0xC0;
-"81
+[; ;i2c.c: 82: SSPSTAT = 0xC0;
+"82
 [e = _SSPSTAT -> -> 192 `i `uc ]
-[; ;i2c.c: 83: SSPCON1 = 0x26;
-"83
+[; ;i2c.c: 84: SSPCON1 = 0x26;
+"84
 [e = _SSPCON1 -> -> 38 `i `uc ]
-[; ;i2c.c: 85: SSPCON2 = 0x00;
-"85
+[; ;i2c.c: 86: SSPCON2 = 0x00;
+"86
 [e = _SSPCON2 -> -> 0 `i `uc ]
-[; ;i2c.c: 87: SSPADD = (0x7F << 1);
-"87
+[; ;i2c.c: 88: SSPADD = (0x7F << 1);
+"88
 [e = _SSPADD -> << -> 127 `i -> 1 `i `uc ]
-[; ;i2c.c: 89: SSPADD = (0x08 << 1);
-"89
+[; ;i2c.c: 90: SSPADD = (0x08 << 1);
+"90
 [e = _SSPADD -> << -> 8 `i -> 1 `i `uc ]
-[; ;i2c.c: 92: PIR1bits.SSPIF = 0;
-"92
+[; ;i2c.c: 93: PIR1bits.SSPIF = 0;
+"93
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;i2c.c: 94: PIE1bits.SSPIE = 1;
-"94
+[; ;i2c.c: 95: PIE1bits.SSPIE = 1;
+"95
 [e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-[; ;i2c.c: 96: }
-"96
-[e :UE 2642 ]
+[; ;i2c.c: 97: }
+"97
+[e :UE 2605 ]
 }
-"98
+"99
 [v _I2C_ISR `(v ~T0 @X0 1 ef ]
 {
-[; ;i2c.c: 98: void I2C_ISR(void) {
+[; ;i2c.c: 99: void I2C_ISR(void) {
 [e :U _I2C_ISR ]
 [f ]
-"99
+"100
 [v _i2c_data `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 99: uint8_t i2c_data = 0x55;
+[; ;i2c.c: 100: uint8_t i2c_data = 0x55;
 [e = _i2c_data -> -> 85 `i `uc ]
-[; ;i2c.c: 105: PIR1bits.SSPIF = 0;
-"105
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;i2c.c: 106: i2c_data = SSPBUF;
+[; ;i2c.c: 106: PIR1bits.SSPIF = 0;
 "106
-[e = _i2c_data _SSPBUF ]
-[; ;i2c.c: 107: if (1 == SSPSTATbits.R_nW) {
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;i2c.c: 107: i2c_data = SSPBUF;
 "107
-[e $ ! == -> 1 `i -> . . _SSPSTATbits 2 2 `i 2644  ]
-{
-[; ;i2c.c: 108: if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
+[e = _i2c_data _SSPBUF ]
+[; ;i2c.c: 108: if (1 == SSPSTATbits.R_nW) {
 "108
-[e $ ! && == -> 1 `i -> . . _SSPSTATbits 2 5 `i == -> 1 `i -> . . _PORTCbits 0 4 `i 2645  ]
+[e $ ! == -> 1 `i -> . . _SSPSTATbits 2 2 `i 2607  ]
 {
-[; ;i2c.c: 110: I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
-"110
-[e ( _I2C_StatusCallback (1 . `E19105 3 ]
+[; ;i2c.c: 109: if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
+"109
+[e $ ! && == -> 1 `i -> . . _SSPSTATbits 2 5 `i == -> 1 `i -> . . _PORTCbits 0 4 `i 2608  ]
+{
+[; ;i2c.c: 111: I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
 "111
+[e ( _I2C_StatusCallback (1 . `E18217 3 ]
+"112
 }
-[; ;i2c.c: 111: } else {
-[e $U 2646  ]
-[e :U 2645 ]
+[; ;i2c.c: 112: } else {
+[e $U 2609  ]
+[e :U 2608 ]
 {
-[; ;i2c.c: 113: I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
-"113
-[e ( _I2C_StatusCallback (1 . `E19105 1 ]
+[; ;i2c.c: 114: I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
 "114
-}
-[e :U 2646 ]
+[e ( _I2C_StatusCallback (1 . `E18217 1 ]
 "115
 }
-[; ;i2c.c: 114: }
-[; ;i2c.c: 115: } else if (0 == SSPSTATbits.D_nA) {
-[e $U 2647  ]
-[e :U 2644 ]
-[e $ ! == -> 0 `i -> . . _SSPSTATbits 2 5 `i 2648  ]
+[e :U 2609 ]
+"116
+}
+[; ;i2c.c: 115: }
+[; ;i2c.c: 116: } else if (0 == SSPSTATbits.D_nA) {
+[e $U 2610  ]
+[e :U 2607 ]
+[e $ ! == -> 0 `i -> . . _SSPSTATbits 2 5 `i 2611  ]
 {
-[; ;i2c.c: 119: I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
-"119
-[e ( _I2C_StatusCallback (1 . `E19105 0 ]
+[; ;i2c.c: 120: I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
 "120
-}
-[; ;i2c.c: 120: } else {
-[e $U 2649  ]
-[e :U 2648 ]
-{
-[; ;i2c.c: 121: I2C_slaveWriteData = i2c_data;
+[e ( _I2C_StatusCallback (1 . `E18217 0 ]
 "121
-[e = _I2C_slaveWriteData _i2c_data ]
-[; ;i2c.c: 124: I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
-"124
-[e ( _I2C_StatusCallback (1 . `E19105 2 ]
-"125
 }
-[e :U 2649 ]
-[e :U 2647 ]
-[; ;i2c.c: 125: }
-[; ;i2c.c: 127: SSPCON1bits.CKP = 1;
-"127
-[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-[; ;i2c.c: 129: }
-"129
-[e :UE 2643 ]
-}
-"151
-[v _I2C_StatusCallbackOld `(v ~T0 @X0 1 ef1`E19105 ]
+[; ;i2c.c: 121: } else {
+[e $U 2612  ]
+[e :U 2611 ]
 {
-[; ;i2c.c: 151: void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
+[; ;i2c.c: 122: I2C_slaveWriteData = i2c_data;
+"122
+[e = _I2C_slaveWriteData _i2c_data ]
+[; ;i2c.c: 125: I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
+"125
+[e ( _I2C_StatusCallback (1 . `E18217 2 ]
+"126
+}
+[e :U 2612 ]
+[e :U 2610 ]
+[; ;i2c.c: 126: }
+[; ;i2c.c: 128: SSPCON1bits.CKP = 1;
+"128
+[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
+[; ;i2c.c: 130: }
+"130
+[e :UE 2606 ]
+}
+"152
+[v _I2C_StatusCallbackOld `(v ~T0 @X0 1 ef1`E18217 ]
+{
+[; ;i2c.c: 152: void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 [e :U _I2C_StatusCallbackOld ]
-[v _i2c_bus_state `E19105 ~T0 @X0 1 r1 ]
+[v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
 [f ]
-"153
-[v F19127 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
-[i F19127
-:U ..
 "154
+[v F18261 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
+[i F18261
+:U ..
+"155
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 2 `i `uc
@@ -17692,7 +17033,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 13 `i `uc
 -> -> 14 `i `uc
 -> -> 15 `i `uc
-"155
+"156
 -> -> 16 `i `uc
 -> -> 17 `i `uc
 -> -> 18 `i `uc
@@ -17709,7 +17050,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 29 `i `uc
 -> -> 30 `i `uc
 -> -> 31 `i `uc
-"156
+"157
 -> -> 32 `i `uc
 -> -> 33 `i `uc
 -> -> 34 `i `uc
@@ -17726,7 +17067,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 45 `i `uc
 -> -> 46 `i `uc
 -> -> 47 `i `uc
-"157
+"158
 -> -> 48 `i `uc
 -> -> 49 `i `uc
 -> -> 50 `i `uc
@@ -17743,7 +17084,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 61 `i `uc
 -> -> 62 `i `uc
 -> -> 63 `i `uc
-"158
+"159
 -> -> 64 `i `uc
 -> -> 65 `i `uc
 -> -> 66 `i `uc
@@ -17760,7 +17101,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 77 `i `uc
 -> -> 78 `i `uc
 -> -> 79 `i `uc
-"159
+"160
 -> -> 80 `i `uc
 -> -> 81 `i `uc
 -> -> 82 `i `uc
@@ -17777,7 +17118,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 93 `i `uc
 -> -> 94 `i `uc
 -> -> 95 `i `uc
-"160
+"161
 -> -> 96 `i `uc
 -> -> 97 `i `uc
 -> -> 98 `i `uc
@@ -17794,7 +17135,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 109 `i `uc
 -> -> 110 `i `uc
 -> -> 111 `i `uc
-"161
+"162
 -> -> 112 `i `uc
 -> -> 113 `i `uc
 -> -> 114 `i `uc
@@ -17813,201 +17154,213 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 127 `i `uc
 ..
 ]
-"164
-[v F19128 `uc ~T0 @X0 1 s eepromAddress ]
-[i F19128
+"165
+[v F18262 `uc ~T0 @X0 1 s eepromAddress ]
+[i F18262
 -> -> 0 `i `uc
 ]
-"165
-[v F19129 `uc ~T0 @X0 1 s slaveWriteType ]
-[i F19129
--> . `E19116 0 `uc
+"166
+[v F18263 `uc ~T0 @X0 1 s slaveWriteType ]
+[i F18263
+-> . `E18250 0 `uc
 ]
-[; ;i2c.c: 153: static uint8_t EEPROM_Buffer[] = {
-[; ;i2c.c: 154: 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-[; ;i2c.c: 155: 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-[; ;i2c.c: 156: 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
-[; ;i2c.c: 157: 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
-[; ;i2c.c: 158: 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
-[; ;i2c.c: 159: 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
-[; ;i2c.c: 160: 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
-[; ;i2c.c: 161: 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
-[; ;i2c.c: 162: };
-[; ;i2c.c: 164: static uint8_t eepromAddress = 0;
-[; ;i2c.c: 165: static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
-[; ;i2c.c: 168: switch (i2c_bus_state) {
-"168
-[e $U 2652  ]
-{
-[; ;i2c.c: 169: case I2C_SLAVE_WRITE_REQUEST:
+[; ;i2c.c: 154: static uint8_t EEPROM_Buffer[] = {
+[; ;i2c.c: 155: 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+[; ;i2c.c: 156: 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+[; ;i2c.c: 157: 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
+[; ;i2c.c: 158: 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
+[; ;i2c.c: 159: 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
+[; ;i2c.c: 160: 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
+[; ;i2c.c: 161: 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
+[; ;i2c.c: 162: 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
+[; ;i2c.c: 163: };
+[; ;i2c.c: 165: static uint8_t eepromAddress = 0;
+[; ;i2c.c: 166: static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
+[; ;i2c.c: 169: switch (i2c_bus_state) {
 "169
-[e :U 2653 ]
-[; ;i2c.c: 171: slaveWriteType = SLAVE_DATA_ADDRESS;
-"171
-[e = F19129 -> . `E19116 1 `uc ]
-[; ;i2c.c: 172: break;
+[e $U 2615  ]
+{
+[; ;i2c.c: 170: case I2C_SLAVE_WRITE_REQUEST:
+"170
+[e :U 2616 ]
+[; ;i2c.c: 172: slaveWriteType = SLAVE_DATA_ADDRESS;
 "172
-[e $U 2651  ]
-[; ;i2c.c: 175: case I2C_SLAVE_WRITE_COMPLETED:
-"175
-[e :U 2654 ]
-[; ;i2c.c: 177: switch (slaveWriteType) {
-"177
-[e $U 2656  ]
-{
-[; ;i2c.c: 178: case SLAVE_DATA_ADDRESS:
+[e = F18263 -> . `E18250 1 `uc ]
+[; ;i2c.c: 173: break;
+"173
+[e $U 2614  ]
+[; ;i2c.c: 176: case I2C_SLAVE_WRITE_COMPLETED:
+"176
+[e :U 2617 ]
+[; ;i2c.c: 178: switch (slaveWriteType) {
 "178
-[e :U 2657 ]
-[; ;i2c.c: 179: eepromAddress = I2C_slaveWriteData;
+[e $U 2619  ]
+{
+[; ;i2c.c: 179: case SLAVE_DATA_ADDRESS:
 "179
-[e = F19128 _I2C_slaveWriteData ]
-[; ;i2c.c: 180: break;
+[e :U 2620 ]
+[; ;i2c.c: 180: eepromAddress = I2C_slaveWriteData;
 "180
-[e $U 2655  ]
-[; ;i2c.c: 183: case SLAVE_NORMAL_DATA:
-"183
-[e :U 2658 ]
-[; ;i2c.c: 184: default:
+[e = F18262 _I2C_slaveWriteData ]
+[; ;i2c.c: 181: break;
+"181
+[e $U 2618  ]
+[; ;i2c.c: 184: case SLAVE_NORMAL_DATA:
 "184
-[e :U 2659 ]
-[; ;i2c.c: 186: EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
-"186
-[e = *U + &U F19127 * -> ++ F19128 -> -> 1 `i `uc `ux -> -> # *U &U F19127 `ui `ux _I2C_slaveWriteData ]
-[; ;i2c.c: 187: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
+[e :U 2621 ]
+[; ;i2c.c: 185: default:
+"185
+[e :U 2622 ]
+[; ;i2c.c: 187: EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
 "187
-[e $ ! <= -> # F19127 `ui -> F19128 `ui 2660  ]
-{
-[; ;i2c.c: 188: eepromAddress = 0;
+[e = *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux _I2C_slaveWriteData ]
+[; ;i2c.c: 188: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 "188
-[e = F19128 -> -> 0 `i `uc ]
+[e $ ! <= -> # F18261 `ui -> F18262 `ui 2623  ]
+{
+[; ;i2c.c: 189: eepromAddress = 0;
 "189
-}
-[e :U 2660 ]
-[; ;i2c.c: 189: }
-[; ;i2c.c: 190: break;
+[e = F18262 -> -> 0 `i `uc ]
 "190
-[e $U 2655  ]
-"192
 }
-[; ;i2c.c: 192: }
-[e $U 2655  ]
-"177
-[e :U 2656 ]
-[e [\ F19129 , $ -> . `E19116 1 `uc 2657
- , $ -> . `E19116 0 `uc 2658
- 2659 ]
-"192
-[e :U 2655 ]
-[; ;i2c.c: 194: slaveWriteType = SLAVE_NORMAL_DATA;
-"194
-[e = F19129 -> . `E19116 0 `uc ]
-[; ;i2c.c: 195: break;
+[e :U 2623 ]
+[; ;i2c.c: 190: }
+[; ;i2c.c: 191: break;
+"191
+[e $U 2618  ]
+"193
+}
+[; ;i2c.c: 193: }
+[e $U 2618  ]
+"178
+[e :U 2619 ]
+[e [\ F18263 , $ -> . `E18250 1 `uc 2620
+ , $ -> . `E18250 0 `uc 2621
+ 2622 ]
+"193
+[e :U 2618 ]
+[; ;i2c.c: 195: slaveWriteType = SLAVE_NORMAL_DATA;
 "195
-[e $U 2651  ]
-[; ;i2c.c: 197: case I2C_SLAVE_READ_REQUEST:
-"197
-[e :U 2661 ]
-[; ;i2c.c: 198: SSPBUF = EEPROM_Buffer[eepromAddress++];
+[e = F18263 -> . `E18250 0 `uc ]
+[; ;i2c.c: 196: break;
+"196
+[e $U 2614  ]
+[; ;i2c.c: 198: case I2C_SLAVE_READ_REQUEST:
 "198
-[e = _SSPBUF *U + &U F19127 * -> ++ F19128 -> -> 1 `i `uc `ux -> -> # *U &U F19127 `ui `ux ]
-[; ;i2c.c: 199: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
+[e :U 2624 ]
+[; ;i2c.c: 199: delay_ms(500);
 "199
-[e $ ! <= -> # F19127 `ui -> F19128 `ui 2662  ]
-{
-[; ;i2c.c: 200: eepromAddress = 0;
+[e ( _delay_ms (1 -> 500 `i ]
+[; ;i2c.c: 200: SSPBUF = EEPROM_Buffer[eepromAddress++];
 "200
-[e = F19128 -> -> 0 `i `uc ]
+[e = _SSPBUF *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux ]
+[; ;i2c.c: 201: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 "201
-}
-[e :U 2662 ]
-[; ;i2c.c: 201: }
-[; ;i2c.c: 202: break;
+[e $ ! <= -> # F18261 `ui -> F18262 `ui 2625  ]
+{
+[; ;i2c.c: 202: eepromAddress = 0;
 "202
-[e $U 2651  ]
-[; ;i2c.c: 204: case I2C_SLAVE_READ_COMPLETED:
+[e = F18262 -> -> 0 `i `uc ]
+"203
+}
+[e :U 2625 ]
+[; ;i2c.c: 203: }
+[; ;i2c.c: 204: break;
 "204
-[e :U 2663 ]
-[; ;i2c.c: 205: default:;
-"205
-[e :U 2664 ]
+[e $U 2614  ]
+[; ;i2c.c: 206: case I2C_SLAVE_READ_COMPLETED:
+"206
+[e :U 2626 ]
+[; ;i2c.c: 207: default:;
 "207
-}
-[; ;i2c.c: 207: }
-[e $U 2651  ]
-"168
-[e :U 2652 ]
-[e [\ _i2c_bus_state , $ . `E19105 0 2653
- , $ . `E19105 2 2654
- , $ . `E19105 1 2661
- , $ . `E19105 3 2663
- 2664 ]
-"207
-[e :U 2651 ]
-[; ;i2c.c: 209: }
+[e :U 2627 ]
 "209
-[e :UE 2650 ]
 }
+[; ;i2c.c: 209: }
+[e $U 2614  ]
+"169
+[e :U 2615 ]
+[e [\ _i2c_bus_state , $ . `E18217 0 2616
+ , $ . `E18217 2 2617
+ , $ . `E18217 1 2624
+ , $ . `E18217 3 2626
+ 2627 ]
+"209
+[e :U 2614 ]
+[; ;i2c.c: 211: }
 "211
-[v _I2C_StatusCallback `(v ~T0 @X0 1 ef1`E19105 ]
-{
-[; ;i2c.c: 211: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
-[e :U _I2C_StatusCallback ]
-[v _i2c_bus_state `E19105 ~T0 @X0 1 r1 ]
-[f ]
+[e :UE 2613 ]
+}
 "212
-[v _data `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 212: uint8_t data;
-[; ;i2c.c: 213: switch (i2c_bus_state) {
-"213
-[e $U 2667  ]
-{
-[; ;i2c.c: 214: case I2C_SLAVE_WRITE_REQUEST:
+[v _c `i ~T0 @X0 1 e ]
+[i _c
+-> 0 `i
+]
+[; ;i2c.c: 212: int c = 0;
 "214
-[e :U 2668 ]
-[; ;i2c.c: 217: break;
+[v _I2C_StatusCallback `(v ~T0 @X0 1 ef1`E18217 ]
+{
+[; ;i2c.c: 214: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
+[e :U _I2C_StatusCallback ]
+[v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
+[f ]
+"215
+[v _data `uc ~T0 @X0 1 a ]
+[; ;i2c.c: 215: uint8_t data;
+[; ;i2c.c: 216: switch (i2c_bus_state) {
+"216
+[e $U 2630  ]
+{
+[; ;i2c.c: 217: case I2C_SLAVE_WRITE_REQUEST:
 "217
-[e $U 2666  ]
-[; ;i2c.c: 220: case I2C_SLAVE_WRITE_COMPLETED:
+[e :U 2631 ]
+[; ;i2c.c: 220: break;
 "220
-[e :U 2669 ]
-[; ;i2c.c: 223: data = I2C_slaveWriteData;
+[e $U 2629  ]
+[; ;i2c.c: 223: case I2C_SLAVE_WRITE_COMPLETED:
 "223
+[e :U 2632 ]
+[; ;i2c.c: 224: data = I2C_slaveWriteData;
+"224
 [e = _data _I2C_slaveWriteData ]
+[; ;i2c.c: 226: handleByteReceived(data);
+"226
+[e ( _handleByteReceived (1 _data ]
 [; ;i2c.c: 228: break;
 "228
-[e $U 2666  ]
+[e $U 2629  ]
 [; ;i2c.c: 230: case I2C_SLAVE_READ_REQUEST:
 "230
-[e :U 2670 ]
-[; ;i2c.c: 231: data = 5;
-"231
-[e = _data -> -> 5 `i `uc ]
+[e :U 2633 ]
+[; ;i2c.c: 232: data = getByteToSend();
+"232
+[e = _data ( _getByteToSend ..  ]
 [; ;i2c.c: 234: SSPBUF = data;
 "234
 [e = _SSPBUF _data ]
-[; ;i2c.c: 236: break;
-"236
-[e $U 2666  ]
-[; ;i2c.c: 238: case I2C_SLAVE_READ_COMPLETED:
+[; ;i2c.c: 235: break;
+"235
+[e $U 2629  ]
+[; ;i2c.c: 237: case I2C_SLAVE_READ_COMPLETED:
+"237
+[e :U 2634 ]
+[; ;i2c.c: 238: default:;
 "238
-[e :U 2671 ]
-[; ;i2c.c: 239: default:;
-"239
-[e :U 2672 ]
-"241
+[e :U 2635 ]
+"240
 }
-[; ;i2c.c: 241: }
-[e $U 2666  ]
-"213
-[e :U 2667 ]
-[e [\ _i2c_bus_state , $ . `E19105 0 2668
- , $ . `E19105 2 2669
- , $ . `E19105 1 2670
- , $ . `E19105 3 2671
- 2672 ]
-"241
-[e :U 2666 ]
-[; ;i2c.c: 244: }
-"244
-[e :UE 2665 ]
+[; ;i2c.c: 240: }
+[e $U 2629  ]
+"216
+[e :U 2630 ]
+[e [\ _i2c_bus_state , $ . `E18217 0 2631
+ , $ . `E18217 2 2632
+ , $ . `E18217 1 2633
+ , $ . `E18217 3 2634
+ 2635 ]
+"240
+[e :U 2629 ]
+[; ;i2c.c: 243: }
+"243
+[e :UE 2628 ]
 }

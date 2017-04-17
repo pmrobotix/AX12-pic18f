@@ -1,104 +1,41 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"109 mcc_generated_files/interrupt_manager.h
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
-"380 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"86 mcc_generated_files/mcc.h
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"113 mcc_generated_files/i2c.h
-[v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"121 mcc_generated_files/eccp1.h
-[v _ECCP1_Initialize `(v ~T0 @X0 0 ef ]
-"136 mcc_generated_files/adc.h
-[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
-"99 mcc_generated_files/tmr1.h
-[v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart1.h
-[v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart2.h
-[v _EUSART2_Initialize `(v ~T0 @X0 0 ef ]
-"38970 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"38899
-[v _OSCCON2 `Vuc ~T0 @X0 0 e@4050 ]
-"34156
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"34092
-[v _REFOCON `Vuc ~T0 @X0 0 e@3994 ]
-"49 mcc_generated_files/mcc.c
-[p x RETEN=OFF ]
-"50
-[p x INTOSCSEL=HIGH ]
-"51
-[p x SOSCSEL=DIG ]
-"52
-[p x XINST=OFF ]
-"55
-[p x FOSC=HS2 ]
-"56
-[p x PLLCFG=OFF ]
-"57
-[p x FCMEN=OFF ]
-"58
-[p x IESO=OFF ]
-"61
-[p x PWRTEN=OFF ]
-"62
-[p x BOREN=SBORDIS ]
-"63
-[p x BORV=3 ]
-"64
-[p x BORPWR=ZPBORMV ]
-"67
-[p x WDTEN=OFF ]
-"68
-[p x WDTPS=1048576 ]
-"71
-[p x CANMX=PORTB ]
-"72
-[p x MSSPMSK=MSK7 ]
-"73
-[p x MCLRE=ON ]
-"76
-[p x STVREN=ON ]
-"77
-[p x BBSIZ=BB2K ]
-"80
-[p x CP0=OFF ]
-"81
-[p x CP1=OFF ]
-"82
-[p x CP2=OFF ]
-"83
-[p x CP3=OFF ]
+"37034 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _CCP1CON `Vuc ~T0 @X0 0 e@4027 ]
+"37231
+[v _CCPR1L `Vuc ~T0 @X0 0 e@4028 ]
+"37250
+[v _CCPR1H `Vuc ~T0 @X0 0 e@4029 ]
+"34055
+[s S2214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2214 . C1TSEL C2TSEL C3TSEL C4TSEL C5TSEL ]
+"34054
+[u S2213 `S2214 1 ]
+[n S2213 . . ]
+"34063
+[v _CCPTMRSbits `VS2213 ~T0 @X0 0 e@3993 ]
+"34781
+[s S2251 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2251 . . CCP1IF CCP2IF CTMUIF TX2IF RC2IF ]
+"34789
+[s S2252 :1 `uc 1 :1 `uc 1 ]
+[n S2252 . . RXBNIF ]
+"34793
+[s S2253 :4 `uc 1 :1 `uc 1 ]
+[n S2253 . . TXBNIF ]
+"34780
+[u S2250 `S2251 1 `S2252 1 `S2253 1 ]
+[n S2250 . . . . ]
+"34798
+[v _PIR3bits `VS2250 ~T0 @X0 0 e@4004 ]
+"81 mcc_generated_files/eccp1.h
+[s S2606 `uc 1 `uc 1 ]
+[n S2606 . ccpr1l ccpr1h ]
 "86
-[p x CPB=OFF ]
-"87
-[p x CPD=OFF ]
-"90
-[p x WRT0=OFF ]
-"91
-[p x WRT1=OFF ]
-"92
-[p x WRT2=OFF ]
-"93
-[p x WRT3=OFF ]
-"96
-[p x WRTC=OFF ]
-"97
-[p x WRTB=OFF ]
-"98
-[p x WRTD=OFF ]
-"101
-[p x EBTR0=OFF ]
-"102
-[p x EBTR1=OFF ]
-"103
-[p x EBTR2=OFF ]
-"104
-[p x EBTR3=OFF ]
-"107
-[p x EBTRB=OFF ]
+[s S2607 `ui 1 ]
+[n S2607 . ccpr1_16Bit ]
+"78
+[u S2605 `S2606 1 `S2607 1 ]
+[n S2605 CCPR1Reg_tag . . ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16811,7 +16748,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 157: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -16841,49 +16777,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
-[; ;interrupt_manager.h: 121: void interrupt INTERRUPT_InterruptManager (void);
-[; ;adc.h: 71: typedef uint16_t adc_result_t;
-[; ;adc.h: 85: typedef enum
-[; ;adc.h: 86: {
-[; ;adc.h: 87: channel_CTMU = 0x1C,
-[; ;adc.h: 88: channel_Temp_diode = 0x1D,
-[; ;adc.h: 89: channel_Vdd_core = 0x1E,
-[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F,
-[; ;adc.h: 91: channel_AN6 = 0x06,
-[; ;adc.h: 92: channel_AN5 = 0x05,
-[; ;adc.h: 93: channel_AN0 = 0x00,
-[; ;adc.h: 94: channel_AN4 = 0x04,
-[; ;adc.h: 95: channel_AN3 = 0x03,
-[; ;adc.h: 96: channel_AN2 = 0x02,
-[; ;adc.h: 97: channel_AN1 = 0x01,
-[; ;adc.h: 98: channel_AN9 = 0x09,
-[; ;adc.h: 99: channel_AN8 = 0x08,
-[; ;adc.h: 100: channel_AN7 = 0x07
-[; ;adc.h: 101: } adc_channel_t;
-[; ;adc.h: 136: void ADC_Initialize(void);
-[; ;adc.h: 165: void ADC_StartConversion(adc_channel_t channel);
-[; ;adc.h: 197: bool ADC_IsConversionDone();
-[; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
-[; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
-[; ;eusart2.h: 94: void EUSART2_Initialize(void);
-[; ;eusart2.h: 114: uint8_t EUSART2_Read(void);
-[; ;eusart2.h: 134: void EUSART2_Write(uint8_t txData);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
 [; ;eccp1.h: 78: typedef union CCPR1Reg_tag
 [; ;eccp1.h: 79: {
 [; ;eccp1.h: 80: struct
@@ -16899,73 +16792,68 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eccp1.h: 121: void ECCP1_Initialize(void);
 [; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
 [; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
-[; ;tmr1.h: 99: void TMR1_Initialize(void);
-[; ;tmr1.h: 128: void TMR1_StartTimer(void);
-[; ;tmr1.h: 160: void TMR1_StopTimer(void);
-[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
-[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
-[; ;tmr1.h: 270: void TMR1_Reload(void);
-[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
-[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
-[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
-"111 mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"57 mcc_generated_files/eccp1.c
+[v _ECCP1_Initialize `(v ~T0 @X0 1 ef ]
+"58
 {
-[; ;mcc.c: 111: void SYSTEM_Initialize(void) {
-[e :U _SYSTEM_Initialize ]
+[; ;eccp1.c: 57: void ECCP1_Initialize(void)
+[; ;eccp1.c: 58: {
+[e :U _ECCP1_Initialize ]
 [f ]
-[; ;mcc.c: 113: INTERRUPT_Initialize();
-"113
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 114: PIN_MANAGER_Initialize();
-"114
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 115: OSCILLATOR_Initialize();
-"115
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 116: I2C_Initialize();
-"116
-[e ( _I2C_Initialize ..  ]
-[; ;mcc.c: 117: ECCP1_Initialize();
-"117
-[e ( _ECCP1_Initialize ..  ]
-[; ;mcc.c: 118: ADC_Initialize();
-"118
-[e ( _ADC_Initialize ..  ]
-[; ;mcc.c: 119: TMR1_Initialize();
-"119
-[e ( _TMR1_Initialize ..  ]
-[; ;mcc.c: 120: EUSART1_Initialize();
-"120
-[e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 121: EUSART2_Initialize();
-"121
-[e ( _EUSART2_Initialize ..  ]
-[; ;mcc.c: 122: }
-"122
+[; ;eccp1.c: 62: CCP1CON = 0x00;
+"62
+[e = _CCP1CON -> -> 0 `i `uc ]
+[; ;eccp1.c: 65: CCPR1L = 0x00;
+"65
+[e = _CCPR1L -> -> 0 `i `uc ]
+[; ;eccp1.c: 68: CCPR1H = 0x00;
+"68
+[e = _CCPR1H -> -> 0 `i `uc ]
+[; ;eccp1.c: 71: CCPTMRSbits.C1TSEL = 0x0;
+"71
+[e = . . _CCPTMRSbits 0 0 -> -> 0 `i `uc ]
+[; ;eccp1.c: 72: }
+"72
 [e :UE 2608 ]
 }
-"124
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"74
+[v _ECCP1_IsCapturedDataReady `(uc ~T0 @X0 1 ef ]
+"75
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void) {
-[e :U _OSCILLATOR_Initialize ]
+[; ;eccp1.c: 74: bool ECCP1_IsCapturedDataReady(void)
+[; ;eccp1.c: 75: {
+[e :U _ECCP1_IsCapturedDataReady ]
 [f ]
-[; ;mcc.c: 126: OSCCON = 0x60;
-"126
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 128: OSCCON2 = 0x00;
-"128
-[e = _OSCCON2 -> -> 0 `i `uc ]
-[; ;mcc.c: 130: OSCTUNE = 0x00;
-"130
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 132: REFOCON = 0x00;
-"132
-[e = _REFOCON -> -> 0 `i `uc ]
-[; ;mcc.c: 135: }
-"135
+[; ;eccp1.c: 77: return (PIR3bits.CCP1IF);
+"77
+[e ) . . _PIR3bits 0 1 ]
+[e $UE 2609  ]
+[; ;eccp1.c: 78: }
+"78
 [e :UE 2609 ]
+}
+"80
+[v _ECCP1_CaptureRead `(ui ~T0 @X0 1 ef ]
+"81
+{
+[; ;eccp1.c: 80: uint16_t ECCP1_CaptureRead(void)
+[; ;eccp1.c: 81: {
+[e :U _ECCP1_CaptureRead ]
+[f ]
+"82
+[v _module `S2605 ~T0 @X0 1 a ]
+[; ;eccp1.c: 82: CCP_PERIOD_REG_T module;
+[; ;eccp1.c: 85: module.ccpr1l = CCPR1L;
+"85
+[e = . . _module 0 0 _CCPR1L ]
+[; ;eccp1.c: 86: module.ccpr1h = CCPR1H;
+"86
+[e = . . _module 0 1 _CCPR1H ]
+[; ;eccp1.c: 89: return module.ccpr1_16Bit;
+"89
+[e ) . . _module 1 0 ]
+[e $UE 2610  ]
+[; ;eccp1.c: 90: }
+"90
+[e :UE 2610 ]
 }

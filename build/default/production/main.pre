@@ -20963,7 +20963,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 306 "mcc_generated_files/pin_manager.h"
+# 380 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
@@ -21074,22 +21074,32 @@ typedef enum
 channel_CTMU = 0x1C,
 channel_Temp_diode = 0x1D,
 channel_Vdd_core = 0x1E,
-channel_1_024V_bandgap = 0x1F
+channel_1_024V_bandgap = 0x1F,
+channel_AN6 = 0x06,
+channel_AN5 = 0x05,
+channel_AN0 = 0x00,
+channel_AN4 = 0x04,
+channel_AN3 = 0x03,
+channel_AN2 = 0x02,
+channel_AN1 = 0x01,
+channel_AN9 = 0x09,
+channel_AN8 = 0x08,
+channel_AN7 = 0x07
 } adc_channel_t;
 
-# 126
+# 136
 void ADC_Initialize(void);
 
-# 155
+# 165
 void ADC_StartConversion(adc_channel_t channel);
 
-# 187
+# 197
 bool ADC_IsConversionDone();
 
-# 220
+# 230
 adc_result_t ADC_GetConversionResult(void);
 
-# 250
+# 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
@@ -21190,30 +21200,46 @@ void SYSTEM_Initialize(void);
 # 86
 void OSCILLATOR_Initialize(void);
 
-# 48 "main.c"
-void delay_ms(int ms) {
-if (ms < 10) {
-_delay((unsigned long)((10)*(16000000/4000.0)));
-} else {
-int n = ms / 10;
-for (int i = 0; i < n; i++) {
-_delay((unsigned long)((10)*(16000000/4000.0)));
-}
-}
-}
+# 61 "ax.h"
+void delay_ms(int ms);
+int getAddressSize(int address);
 
-# 64
+
+
+void setLedOn(int led);
+
+
+
+void setLedOff(int led);
+
+
+
+
+int getADC(int adc);
+
+
+int pingAX(int id);
+
+int readAXData(int id, int address);
+int writeAXData(int id, int address, int data);
+
+
+void handleByteReceived(uint8_t data);
+
+uint8_t getByteToSend();
+
+# 52 "main.c"
 void main(void) {
 
 SYSTEM_Initialize();
 
-# 85
+# 73
 (INTCONbits.GIE = 1);
 
 
 (INTCONbits.PEIE = 1);
 
-# 99
+# 87
 do { TRISC0 = 0; } while(0);
 do { TRISC1 = 0; } while(0);
 int delay = 10;
@@ -21254,26 +21280,35 @@ delay_ms(delay);
 }
 
 
+do { LATD4 = 0; } while(0);
+while (1) {
+delay_ms(500);
+do { LATB3 = 1; } while(0);
+delay_ms(500);
+
+do { LATB3 = 0; } while(0);
+
+}
+
 
 while (1) {
-do { LATD3 = 1; } while(0);
-delay_ms(1000);
-do { LATD3 = 0; } while(0);
-delay_ms(1000);
+do { LATB3 = 1; } while(0);
+delay_ms(100);
+pingAX(2);
+do { LATB3 = 0; } while(0);
+delay_ms(100);
 
-# 151
-do { LATD1 = 1; } while(0);
+do { LATB2 = 1; } while(0);
+delay_ms(100);
+pingAX(2);
+do { LATB2 = 0; } while(0);
+delay_ms(100);
 
-do { LATD0 = 1; } while(0);
-
-do { LATC2 = 1; } while(0);
-delay_ms(1000);
-do { LATD3 = 0; } while(0);
-do { LATD2 = 0; } while(0);
-do { LATD1 = 0; } while(0);
-do { LATD0 = 0; } while(0);
-do { LATC2 = 0; } while(0);
+do { LATB0 = 1; } while(0);
+delay_ms(100);
+pingAX(2);
 do { LATB0 = 0; } while(0);
+delay_ms(100);
 
 }
 }

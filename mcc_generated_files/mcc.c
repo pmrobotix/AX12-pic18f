@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.20
-*/
+ */
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,7 +41,7 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 // Configuration bits: selected in the GUI
 
@@ -108,9 +108,8 @@
 
 #include "mcc.h"
 
-void SYSTEM_Initialize(void)
-{
-    
+void SYSTEM_Initialize(void) {
+
     INTERRUPT_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
@@ -122,8 +121,7 @@ void SYSTEM_Initialize(void)
     EUSART2_Initialize();
 }
 
-void OSCILLATOR_Initialize(void)
-{
+void OSCILLATOR_Initialize(void) {
     // SCS FOSC; HFIOFS not stable; IDLEN disabled; IRCF 8MHz_HF; 
     OSCCON = 0x60;
     // SOSCGO disabled; MFIOSEL disabled; SOSCRUN disabled; MFIOFS not stable; 
@@ -133,9 +131,9 @@ void OSCILLATOR_Initialize(void)
     // ROSEL disabled; ROON disabled; ROSSLP disabled; RODIV Fosc; 
     REFOCON = 0x00;
     // Set the secondary oscillator
-    
+
 }
 
 /**
  End of File
-*/
+ */

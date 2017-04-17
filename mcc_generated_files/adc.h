@@ -87,7 +87,17 @@ typedef enum
     channel_CTMU =  0x1C,
     channel_Temp_diode =  0x1D,
     channel_Vdd_core =  0x1E,
-    channel_1_024V_bandgap =  0x1F
+    channel_1_024V_bandgap =  0x1F,
+    channel_AN6 =  0x06,
+    channel_AN5 =  0x05,
+    channel_AN0 =  0x00,
+    channel_AN4 =  0x04,
+    channel_AN3 =  0x03,
+    channel_AN2 =  0x02,
+    channel_AN1 =  0x01,
+    channel_AN9 =  0x09,
+    channel_AN8 =  0x08,
+    channel_AN7 =  0x07
 } adc_channel_t;
 
 /**

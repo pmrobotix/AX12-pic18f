@@ -44,19 +44,7 @@
  */
 
 #include "mcc_generated_files/mcc.h"
-
-void delay_ms(int ms) {
-    if (ms < 10) {
-        __delay_ms(10);
-    } else {
-        int n = ms / 10;
-        for (int i = 0; i < n; i++) {
-            __delay_ms(10);
-        }
-    }
-}
-
- 
+#include "ax.h"
 
 /*
                          Main application
@@ -92,10 +80,10 @@ void main(void) {
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
-    
 
-    
-    
+
+
+
     LED7_SetDigitalOutput();
     LED6_SetDigitalOutput();
     int delay = 10;
@@ -136,31 +124,36 @@ void main(void) {
     }
 
 
+    SET_TX_SetLow();
+    while (1) {
+        delay_ms(500);
+        LED10_SetHigh();
+        delay_ms(500);
+  //  pingAX(2);
+        LED10_SetLow();
+      //  delay_ms(1);
+    }
+
 
     while (1) {
-        LED1_SetHigh();
-        delay_ms(1000);
-        LED1_SetLow();
-        delay_ms(1000);
-       
-        //    int iReturnValue = Receive();
-         //   while (iReturnValue == -1) {
-          //      iReturnValue = Receive();
-          //  }
+        LED10_SetHigh();
+        delay_ms(100);
+        pingAX(2);
+        LED10_SetLow();
+        delay_ms(100);
 
-            LED3_SetHigh();
-            //WriteI2C(iReturnValue);
-            LED4_SetHigh();
+        LED9_SetHigh();
+        delay_ms(100);
+        pingAX(2);
+        LED9_SetLow();
+        delay_ms(100);
 
-            LED5_SetHigh();
-            delay_ms(1000);
-            LED1_SetLow();
-            LED2_SetLow();
-            LED3_SetLow();
-            LED4_SetLow();
-            LED5_SetLow();
-            LED8_SetLow();
-        
+        LED8_SetHigh();
+        delay_ms(100);
+        pingAX(2);
+        LED8_SetLow();
+        delay_ms(100);
+
     }
 }
 /**

@@ -1,11 +1,123 @@
 
-# 1 "mcc_generated_files/interrupt_manager.c"
+# 1 "ax.c"
 
-# 109 "mcc_generated_files/interrupt_manager.h"
-void INTERRUPT_Initialize (void);
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
 
 # 121
-void interrupt INTERRUPT_InterruptManager (void);
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 61 "ax.h"
+void delay_ms(int ms);
+int getAddressSize(int address);
+
+
+
+void setLedOn(int led);
+
+
+
+void setLedOff(int led);
+
+
+
+
+int getADC(int adc);
+
+
+int pingAX(int id);
+
+int readAXData(int id, int address);
+int writeAXData(int id, int address, int data);
+
+
+void handleByteReceived(uint8_t data);
+
+uint8_t getByteToSend();
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -20972,98 +21084,14 @@ extern __nonreentrant void _delay3(unsigned char);
 # 380 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
+
+# 109 "mcc_generated_files/interrupt_manager.h"
+void INTERRUPT_Initialize (void);
+
+# 121
+void interrupt INTERRUPT_InterruptManager (void);
 
 # 71 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
@@ -21200,29 +21228,331 @@ void SYSTEM_Initialize(void);
 # 86
 void OSCILLATOR_Initialize(void);
 
-# 51 "mcc_generated_files/interrupt_manager.c"
-void INTERRUPT_Initialize (void)
-{
-
-IPEN = 0;
-
-
-
-
-IPR1bits.SSPIP = 0;
-
+# 11 "ax.c"
+void delay_ms(int ms) {
+if (ms < 10) {
+_delay((unsigned long)((10)*(16000000/4000.0)));
+} else {
+int n = ms / 10;
+for (int i = 0; i < n; i++) {
+_delay((unsigned long)((10)*(16000000/4000.0)));
 }
-
-void interrupt INTERRUPT_InterruptManager (void)
-{
-
-if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
-{
-I2C_ISR();
-}
-else
-{
-
 }
 }
 
+int getAddressSize(int address) {
+switch (address) {
+case 0:
+case 6:
+case 8:
+case 14:
+case 20:
+case 22:
+case 30:
+case 32:
+case 34:
+case 36:
+case 38:
+case 40:
+case 48:
+return 2;
+default:
+return 1;
+}
+}
+
+void setLedOn(int led) {
+switch (led) {
+case 1:
+do { LATD3 = 1; } while(0);
+break;
+case 2:
+do { LATD2 = 1; } while(0);
+break;
+case 3:
+do { LATD1 = 1; } while(0);
+break;
+case 4:
+do { LATD0 = 1; } while(0);
+break;
+case 5:
+do { LATC2 = 1; } while(0);
+break;
+case 6:
+do { LATC1 = 1; } while(0);
+break;
+case 7:
+do { LATC0 = 1; } while(0);
+break;
+case 8:
+do { LATB0 = 1; } while(0);
+break;
+case 9:
+do { LATB2 = 1; } while(0);
+break;
+case 10:
+do { LATB3 = 1; } while(0);
+break;
+}
+}
+
+void setLedOff(int led) {
+switch (led) {
+case 1:
+do { LATD3 = 0; } while(0);
+break;
+case 2:
+do { LATD2 = 0; } while(0);
+break;
+case 3:
+do { LATD1 = 0; } while(0);
+break;
+case 4:
+do { LATD0 = 0; } while(0);
+break;
+case 5:
+do { LATC2 = 0; } while(0);
+break;
+case 6:
+do { LATC1 = 0; } while(0);
+break;
+case 7:
+do { LATC0 = 0; } while(0);
+break;
+case 8:
+do { LATB0 = 0; } while(0);
+break;
+case 9:
+do { LATB2 = 0; } while(0);
+break;
+case 10:
+do { LATB3 = 0; } while(0);
+break;
+}
+
+}
+
+# 119
+int getADC(int adc) {
+return ADC_GetConversion(adc);
+}
+
+uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
+uint8_t checksum = 0;
+
+for (int i = 2; i < packetSize; i++) {
+checksum += buffer[i];
+}
+checksum = ~checksum;
+
+do { LATD4 = 1; } while(0);
+for (int i = 0; i < packetSize; i++) {
+EUSART1_Write(buffer[i]);
+}
+EUSART1_Write(checksum);
+_delay((unsigned long)((100)*(16000000/4000000.0)));
+do { LATD4 = 0; } while(0);
+
+# 153
+int stop = 6 + parametersToRead;
+
+for (int i = 0; i < stop; i++) {
+result[i] = 122;
+}
+
+int r0 = EUSART1_Read();
+while (r0 != 0xFF) {
+r0 = EUSART1_Read();
+}
+result[0] = r0;
+for (int i = 1; i < stop; i++) {
+result[i] = EUSART1_Read();
+}
+
+
+_delay((unsigned long)((200)*(16000000/4000000.0)));
+return result[4];
+
+}
+
+int pingAX(int id) {
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int nbParameters = 0;
+int length = nbParameters + 2;
+packet[3] = length;
+int instruction = 0x01;
+packet[4] = instruction;
+
+
+int error = sendAX(packet, 5, result, 0);
+return error;
+}
+
+int readAXData(int id, int address) {
+int size = getAddressSize(address);
+
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int nbParameters = 2;
+int length = nbParameters + 2;
+packet[3] = length;
+int instruction = 0x02;
+packet[4] = instruction;
+packet[5] = address;
+packet[6] = size;
+
+
+int error = sendAX(packet, 7, result, 1);
+if (size == 1) {
+
+return result[5];
+} else {
+
+return result[5] + result[6]*256;
+}
+}
+
+int writeAXData(int id, int address, int data) {
+int size = getAddressSize(address);
+
+uint8_t packet[20];
+uint8_t result[20];
+packet[0] = 0xFF;
+packet[1] = 0xFF;
+packet[2] = id;
+int nbParameters = 0;
+int length = nbParameters + 2;
+packet[3] = length;
+int instruction = 0x03;
+packet[4] = instruction;
+packet[5] = address;
+if (size == 1) {
+packet[6] = data;
+} else {
+packet[6] = data & 0xff;
+packet[7] = (data >> 8);
+}
+
+
+int error = sendAX(packet, 6 + size, result, 0);
+return error;
+}
+
+
+int readIndex = 0;
+uint8_t currentCommand = -1;
+uint8_t parameter1 = 0;
+uint8_t parameter2 = 0;
+uint8_t parameter3 = 0;
+
+int nbBytesToSend = 0;
+int bytesSent = 0;
+uint8_t dataToSend[32];
+
+void handleByteReceived(uint8_t data) {
+if (readIndex == 0) {
+currentCommand = data;
+readIndex++;
+
+for (int i = 0; i < 32; i++) {
+dataToSend[i] = 66;
+}
+} else if (readIndex == 1) {
+parameter1 = data;
+readIndex++;
+if (currentCommand == 10) {
+setLedOn(parameter1);
+readIndex = 0;
+} else if (currentCommand == 11) {
+setLedOff(parameter1);
+readIndex = 0;
+}
+
+} else if (readIndex == 2) {
+parameter2 = data;
+readIndex++;
+} else if (readIndex == 3) {
+parameter3 = data;
+readIndex++;
+}
+
+}
+
+
+
+uint8_t getByteToSend() {
+
+
+if (currentCommand == 20) {
+int error = pingAX(parameter1);
+
+nbBytesToSend = 2;
+dataToSend[0] = error;
+dataToSend[1] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 21) {
+int value = readAXData(parameter1, parameter2);
+
+nbBytesToSend = 4;
+uint8_t xlow = value & 0xff;
+uint8_t xhigh = (value >> 8);
+dataToSend[0] = xlow;
+dataToSend[1] = 0;
+dataToSend[2] = xhigh;
+dataToSend[3] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 22) {
+int error = writeAXData(parameter1, parameter2, parameter3);
+
+nbBytesToSend = 2;
+dataToSend[0] = error;
+dataToSend[1] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+} else if (currentCommand == 12) {
+int value = getADC(parameter1);
+
+nbBytesToSend = 4;
+uint8_t xlow = value & 0xff;
+uint8_t xhigh = (value >> 8);
+dataToSend[0] = xlow;
+dataToSend[1] = 0;
+dataToSend[2] = xhigh;
+dataToSend[3] = 0;
+
+bytesSent = 0;
+currentCommand = -1;
+readIndex = 0;
+}
+if (nbBytesToSend == 0) {
+
+readIndex = 0;
+return 0;
+}
+uint8_t d = dataToSend[bytesSent];
+bytesSent++;
+
+if (bytesSent > nbBytesToSend) {
+
+readIndex = 0;
+return 111;
+}
+
+return d;
+
+}

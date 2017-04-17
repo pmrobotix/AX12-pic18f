@@ -78,6 +78,25 @@
 #define LED8_SetDigitalMode()   do { ANSEL10 = 0; } while(0)
 
 
+// get/set LED8 aliases
+#define LED8_TRIS               TRISB0
+#define LED8_LAT                LATB0
+#define LED8_PORT               RB0
+#define LED8_WPU                WPUB0
+#define LED8_ANS                ANSEL10
+#define LED8_SetHigh()    do { LATB0 = 1; } while(0)
+#define LED8_SetLow()   do { LATB0 = 0; } while(0)
+#define LED8_Toggle()   do { LATB0 = ~LATB0; } while(0)
+#define LED8_GetValue()         PORTBbits.RB0
+#define LED8_SetDigitalInput()    do { TRISB0 = 1; } while(0)
+#define LED8_SetDigitalOutput()   do { TRISB0 = 0; } while(0)
+
+#define LED8_SetPullup()    do { WPUB0 = 1; } while(0)
+#define LED8_ResetPullup()   do { WPUB0 = 0; } while(0)
+#define LED8_SetAnalogMode()   do { ANSEL10 = 1; } while(0)
+#define LED8_SetDigitalMode()   do { ANSEL10 = 0; } while(0)
+
+
 // get/set LED9 aliases
 #define LED9_TRIS               TRISB2
 #define LED9_LAT                LATB2
@@ -92,6 +111,22 @@
 
 #define LED9_SetPullup()    do { WPUB2 = 1; } while(0)
 #define LED9_ResetPullup()   do { WPUB2 = 0; } while(0)
+
+
+// get/set LED10 aliases
+#define LED10_TRIS               TRISB3
+#define LED10_LAT                LATB3
+#define LED10_PORT               RB3
+#define LED10_WPU                WPUB3
+#define LED10_SetHigh()    do { LATB3 = 1; } while(0)
+#define LED10_SetLow()   do { LATB3 = 0; } while(0)
+#define LED10_Toggle()   do { LATB3 = ~LATB3; } while(0)
+#define LED10_GetValue()         PORTBbits.RB3
+#define LED10_SetDigitalInput()    do { TRISB3 = 1; } while(0)
+#define LED10_SetDigitalOutput()   do { TRISB3 = 0; } while(0)
+
+#define LED10_SetPullup()    do { WPUB3 = 1; } while(0)
+#define LED10_ResetPullup()   do { WPUB3 = 0; } while(0)
 
 
 // get/set LED10 aliases
@@ -253,42 +288,81 @@
 
 
 
-// get/set LED1 aliases
-#define LED1_TRIS               TRISD3
-#define LED1_LAT                LATD3
-#define LED1_PORT               RD3
-#define LED1_SetHigh()    do { LATD3 = 1; } while(0)
-#define LED1_SetLow()   do { LATD3 = 0; } while(0)
-#define LED1_Toggle()   do { LATD3 = ~LATD3; } while(0)
-#define LED1_GetValue()         PORTDbits.RD3
-#define LED1_SetDigitalInput()    do { TRISD3 = 1; } while(0)
-#define LED1_SetDigitalOutput()   do { TRISD3 = 0; } while(0)
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
 
 
 
-// get/set LED1 aliases
-#define LED1_TRIS               TRISD3
-#define LED1_LAT                LATD3
-#define LED1_PORT               RD3
-#define LED1_SetHigh()    do { LATD3 = 1; } while(0)
-#define LED1_SetLow()   do { LATD3 = 0; } while(0)
-#define LED1_Toggle()   do { LATD3 = ~LATD3; } while(0)
-#define LED1_GetValue()         PORTDbits.RD3
-#define LED1_SetDigitalInput()    do { TRISD3 = 1; } while(0)
-#define LED1_SetDigitalOutput()   do { TRISD3 = 0; } while(0)
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
 
 
 
-// get/set LED1 aliases
-#define LED1_TRIS               TRISD3
-#define LED1_LAT                LATD3
-#define LED1_PORT               RD3
-#define LED1_SetHigh()    do { LATD3 = 1; } while(0)
-#define LED1_SetLow()   do { LATD3 = 0; } while(0)
-#define LED1_Toggle()   do { LATD3 = ~LATD3; } while(0)
-#define LED1_GetValue()         PORTDbits.RD3
-#define LED1_SetDigitalInput()    do { TRISD3 = 1; } while(0)
-#define LED1_SetDigitalOutput()   do { TRISD3 = 0; } while(0)
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
+
+
+
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
+
+
+
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
+
+
+
+// get/set SET_TX aliases
+#define SET_TX_TRIS               TRISD4
+#define SET_TX_LAT                LATD4
+#define SET_TX_PORT               RD4
+#define SET_TX_SetHigh()    do { LATD4 = 1; } while(0)
+#define SET_TX_SetLow()   do { LATD4 = 0; } while(0)
+#define SET_TX_Toggle()   do { LATD4 = ~LATD4; } while(0)
+#define SET_TX_GetValue()         PORTDbits.RD4
+#define SET_TX_SetDigitalInput()    do { TRISD4 = 1; } while(0)
+#define SET_TX_SetDigitalOutput()   do { TRISD4 = 0; } while(0)
 
 
 

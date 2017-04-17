@@ -1,104 +1,77 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"109 mcc_generated_files/interrupt_manager.h
-[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
-"380 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"86 mcc_generated_files/mcc.h
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"113 mcc_generated_files/i2c.h
-[v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"121 mcc_generated_files/eccp1.h
-[v _ECCP1_Initialize `(v ~T0 @X0 0 ef ]
-"136 mcc_generated_files/adc.h
-[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
-"99 mcc_generated_files/tmr1.h
-[v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart1.h
-[v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-"94 mcc_generated_files/eusart2.h
-[v _EUSART2_Initialize `(v ~T0 @X0 0 ef ]
-"38970 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"38899
-[v _OSCCON2 `Vuc ~T0 @X0 0 e@4050 ]
-"34156
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"34092
-[v _REFOCON `Vuc ~T0 @X0 0 e@3994 ]
-"49 mcc_generated_files/mcc.c
-[p x RETEN=OFF ]
-"50
-[p x INTOSCSEL=HIGH ]
-"51
-[p x SOSCSEL=DIG ]
-"52
-[p x XINST=OFF ]
-"55
-[p x FOSC=HS2 ]
-"56
-[p x PLLCFG=OFF ]
-"57
-[p x FCMEN=OFF ]
-"58
-[p x IESO=OFF ]
-"61
-[p x PWRTEN=OFF ]
-"62
-[p x BOREN=SBORDIS ]
-"63
-[p x BORV=3 ]
-"64
-[p x BORPWR=ZPBORMV ]
-"67
-[p x WDTEN=OFF ]
-"68
-[p x WDTPS=1048576 ]
-"71
-[p x CANMX=PORTB ]
-"72
-[p x MSSPMSK=MSK7 ]
-"73
-[p x MCLRE=ON ]
-"76
-[p x STVREN=ON ]
-"77
-[p x BBSIZ=BB2K ]
-"80
-[p x CP0=OFF ]
-"81
-[p x CP1=OFF ]
-"82
-[p x CP2=OFF ]
-"83
-[p x CP3=OFF ]
-"86
-[p x CPB=OFF ]
-"87
-[p x CPD=OFF ]
-"90
-[p x WRT0=OFF ]
-"91
-[p x WRT1=OFF ]
-"92
-[p x WRT2=OFF ]
-"93
-[p x WRT3=OFF ]
-"96
-[p x WRTC=OFF ]
-"97
-[p x WRTB=OFF ]
-"98
-[p x WRTD=OFF ]
-"101
-[p x EBTR0=OFF ]
-"102
-[p x EBTR1=OFF ]
-"103
-[p x EBTR2=OFF ]
-"104
-[p x EBTR3=OFF ]
-"107
-[p x EBTRB=OFF ]
+[v F18229 `(v ~T0 @X0 1 tf1`ul ]
+"157 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18.h
+[v __delay `JF18229 ~T0 @X0 0 e ]
+[p i __delay ]
+"42882 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
+"42880
+[v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
+"42878
+[v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
+"42876
+[v _LATD0 `Vb ~T0 @X0 0 e@31840 ]
+"42864
+[v _LATC2 `Vb ~T0 @X0 0 e@31834 ]
+"42862
+[v _LATC1 `Vb ~T0 @X0 0 e@31833 ]
+"42860
+[v _LATC0 `Vb ~T0 @X0 0 e@31832 ]
+"42844
+[v _LATB0 `Vb ~T0 @X0 0 e@31824 ]
+"42848
+[v _LATB2 `Vb ~T0 @X0 0 e@31826 ]
+"42850
+[v _LATB3 `Vb ~T0 @X0 0 e@31827 ]
+"120 ax.c
+[c E18245 28 29 30 31 6 5 0 4 3 2 1 9 8 7 .. ]
+[n E18245 . channel_CTMU channel_Temp_diode channel_Vdd_core channel_1_024V_bandgap channel_AN6 channel_AN5 channel_AN0 channel_AN4 channel_AN3 channel_AN2 channel_AN1 channel_AN9 channel_AN8 channel_AN7  ]
+"260 mcc_generated_files/adc.h
+[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E18245 ]
+"42884 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _LATD4 `Vb ~T0 @X0 0 e@31844 ]
+"134 mcc_generated_files/eusart1.h
+[v _EUSART1_Write `(v ~T0 @X0 0 ef1`uc ]
+"114
+[v _EUSART1_Read `(uc ~T0 @X0 0 ef ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;ax.h: 61: void delay_ms(int ms);
+[; ;ax.h: 62: int getAddressSize(int address);
+[; ;ax.h: 66: void setLedOn(int led);
+[; ;ax.h: 70: void setLedOff(int led);
+[; ;ax.h: 75: int getADC(int adc);
+[; ;ax.h: 78: int pingAX(int id);
+[; ;ax.h: 80: int readAXData(int id, int address);
+[; ;ax.h: 81: int writeAXData(int id, int address, int data);
+[; ;ax.h: 84: void handleByteReceived(uint8_t data);
+[; ;ax.h: 86: uint8_t getByteToSend();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16812,34 +16785,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 159: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 161: extern __nonreentrant void _delay3(unsigned char);
 [; ;pin_manager.h: 380: void PIN_MANAGER_Initialize (void);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
 [; ;interrupt_manager.h: 121: void interrupt INTERRUPT_InterruptManager (void);
@@ -16910,62 +16855,1221 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
 [; ;mcc.h: 73: void SYSTEM_Initialize(void);
 [; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
-"111 mcc_generated_files/mcc.c
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"11 ax.c
+[v _delay_ms `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;mcc.c: 111: void SYSTEM_Initialize(void) {
-[e :U _SYSTEM_Initialize ]
+[; ;ax.c: 11: void delay_ms(int ms) {
+[e :U _delay_ms ]
+[v _ms `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;mcc.c: 113: INTERRUPT_Initialize();
-"113
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 114: PIN_MANAGER_Initialize();
-"114
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 115: OSCILLATOR_Initialize();
-"115
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 116: I2C_Initialize();
-"116
-[e ( _I2C_Initialize ..  ]
-[; ;mcc.c: 117: ECCP1_Initialize();
-"117
-[e ( _ECCP1_Initialize ..  ]
-[; ;mcc.c: 118: ADC_Initialize();
-"118
-[e ( _ADC_Initialize ..  ]
-[; ;mcc.c: 119: TMR1_Initialize();
-"119
-[e ( _TMR1_Initialize ..  ]
-[; ;mcc.c: 120: EUSART1_Initialize();
-"120
-[e ( _EUSART1_Initialize ..  ]
-[; ;mcc.c: 121: EUSART2_Initialize();
-"121
-[e ( _EUSART2_Initialize ..  ]
-[; ;mcc.c: 122: }
-"122
+[; ;ax.c: 12: if (ms < 10) {
+"12
+[e $ ! < _ms -> 10 `i 2609  ]
+{
+[; ;ax.c: 13: _delay((unsigned long)((10)*(16000000/4000.0)));
+"13
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"14
+}
+[; ;ax.c: 14: } else {
+[e $U 2610  ]
+[e :U 2609 ]
+{
+"15
+[v _n `i ~T0 @X0 1 a ]
+[; ;ax.c: 15: int n = ms / 10;
+[e = _n / _ms -> 10 `i ]
+[; ;ax.c: 16: for (int i = 0; i < n; i++) {
+"16
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 2614  ]
+[e :U 2611 ]
+{
+[; ;ax.c: 17: _delay((unsigned long)((10)*(16000000/4000.0)));
+"17
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"18
+}
+"16
+[e ++ _i -> 1 `i ]
+[e :U 2614 ]
+[e $ < _i _n 2611  ]
+[e :U 2612 ]
+"18
+}
+"19
+}
+[e :U 2610 ]
+[; ;ax.c: 18: }
+[; ;ax.c: 19: }
+[; ;ax.c: 20: }
+"20
 [e :UE 2608 ]
 }
-"124
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"22
+[v _getAddressSize `(i ~T0 @X0 1 ef1`i ]
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void) {
-[e :U _OSCILLATOR_Initialize ]
+[; ;ax.c: 22: int getAddressSize(int address) {
+[e :U _getAddressSize ]
+[v _address `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;mcc.c: 126: OSCCON = 0x60;
+[; ;ax.c: 23: switch (address) {
+"23
+[e $U 2617  ]
+{
+[; ;ax.c: 24: case 0:
+"24
+[e :U 2618 ]
+"25
+[e :U 2619 ]
+"26
+[e :U 2620 ]
+"27
+[e :U 2621 ]
+"28
+[e :U 2622 ]
+"29
+[e :U 2623 ]
+"30
+[e :U 2624 ]
+"31
+[e :U 2625 ]
+"32
+[e :U 2626 ]
+"33
+[e :U 2627 ]
+"34
+[e :U 2628 ]
+"35
+[e :U 2629 ]
+"36
+[e :U 2630 ]
+[; ;ax.c: 25: case 6:
+[; ;ax.c: 26: case 8:
+[; ;ax.c: 27: case 14:
+[; ;ax.c: 28: case 20:
+[; ;ax.c: 29: case 22:
+[; ;ax.c: 30: case 30:
+[; ;ax.c: 31: case 32:
+[; ;ax.c: 32: case 34:
+[; ;ax.c: 33: case 36:
+[; ;ax.c: 34: case 38:
+[; ;ax.c: 35: case 40:
+[; ;ax.c: 36: case 48:
+[; ;ax.c: 37: return 2;
+"37
+[e ) -> 2 `i ]
+[e $UE 2615  ]
+[; ;ax.c: 38: default:
+"38
+[e :U 2631 ]
+[; ;ax.c: 39: return 1;
+"39
+[e ) -> 1 `i ]
+[e $UE 2615  ]
+"40
+}
+[; ;ax.c: 40: }
+[e $U 2616  ]
+"23
+[e :U 2617 ]
+[e [\ _address , $ -> 0 `i 2618
+ , $ -> 6 `i 2619
+ , $ -> 8 `i 2620
+ , $ -> 14 `i 2621
+ , $ -> 20 `i 2622
+ , $ -> 22 `i 2623
+ , $ -> 30 `i 2624
+ , $ -> 32 `i 2625
+ , $ -> 34 `i 2626
+ , $ -> 36 `i 2627
+ , $ -> 38 `i 2628
+ , $ -> 40 `i 2629
+ , $ -> 48 `i 2630
+ 2631 ]
+"40
+[e :U 2616 ]
+[; ;ax.c: 41: }
+"41
+[e :UE 2615 ]
+}
+"43
+[v _setLedOn `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;ax.c: 43: void setLedOn(int led) {
+[e :U _setLedOn ]
+[v _led `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;ax.c: 44: switch (led) {
+"44
+[e $U 2634  ]
+{
+[; ;ax.c: 45: case 1:
+"45
+[e :U 2635 ]
+[; ;ax.c: 46: do { LATD3 = 1; } while(0);
+"46
+[e :U 2638 ]
+{
+[e = _LATD3 -> -> 1 `i `b ]
+}
+[e :U 2637 ]
+[; ;ax.c: 47: break;
+"47
+[e $U 2633  ]
+[; ;ax.c: 48: case 2:
+"48
+[e :U 2639 ]
+[; ;ax.c: 49: do { LATD2 = 1; } while(0);
+"49
+[e :U 2642 ]
+{
+[e = _LATD2 -> -> 1 `i `b ]
+}
+[e :U 2641 ]
+[; ;ax.c: 50: break;
+"50
+[e $U 2633  ]
+[; ;ax.c: 51: case 3:
+"51
+[e :U 2643 ]
+[; ;ax.c: 52: do { LATD1 = 1; } while(0);
+"52
+[e :U 2646 ]
+{
+[e = _LATD1 -> -> 1 `i `b ]
+}
+[e :U 2645 ]
+[; ;ax.c: 53: break;
+"53
+[e $U 2633  ]
+[; ;ax.c: 54: case 4:
+"54
+[e :U 2647 ]
+[; ;ax.c: 55: do { LATD0 = 1; } while(0);
+"55
+[e :U 2650 ]
+{
+[e = _LATD0 -> -> 1 `i `b ]
+}
+[e :U 2649 ]
+[; ;ax.c: 56: break;
+"56
+[e $U 2633  ]
+[; ;ax.c: 57: case 5:
+"57
+[e :U 2651 ]
+[; ;ax.c: 58: do { LATC2 = 1; } while(0);
+"58
+[e :U 2654 ]
+{
+[e = _LATC2 -> -> 1 `i `b ]
+}
+[e :U 2653 ]
+[; ;ax.c: 59: break;
+"59
+[e $U 2633  ]
+[; ;ax.c: 60: case 6:
+"60
+[e :U 2655 ]
+[; ;ax.c: 61: do { LATC1 = 1; } while(0);
+"61
+[e :U 2658 ]
+{
+[e = _LATC1 -> -> 1 `i `b ]
+}
+[e :U 2657 ]
+[; ;ax.c: 62: break;
+"62
+[e $U 2633  ]
+[; ;ax.c: 63: case 7:
+"63
+[e :U 2659 ]
+[; ;ax.c: 64: do { LATC0 = 1; } while(0);
+"64
+[e :U 2662 ]
+{
+[e = _LATC0 -> -> 1 `i `b ]
+}
+[e :U 2661 ]
+[; ;ax.c: 65: break;
+"65
+[e $U 2633  ]
+[; ;ax.c: 66: case 8:
+"66
+[e :U 2663 ]
+[; ;ax.c: 67: do { LATB0 = 1; } while(0);
+"67
+[e :U 2666 ]
+{
+[e = _LATB0 -> -> 1 `i `b ]
+}
+[e :U 2665 ]
+[; ;ax.c: 68: break;
+"68
+[e $U 2633  ]
+[; ;ax.c: 69: case 9:
+"69
+[e :U 2667 ]
+[; ;ax.c: 70: do { LATB2 = 1; } while(0);
+"70
+[e :U 2670 ]
+{
+[e = _LATB2 -> -> 1 `i `b ]
+}
+[e :U 2669 ]
+[; ;ax.c: 71: break;
+"71
+[e $U 2633  ]
+[; ;ax.c: 72: case 10:
+"72
+[e :U 2671 ]
+[; ;ax.c: 73: do { LATB3 = 1; } while(0);
+"73
+[e :U 2674 ]
+{
+[e = _LATB3 -> -> 1 `i `b ]
+}
+[e :U 2673 ]
+[; ;ax.c: 74: break;
+"74
+[e $U 2633  ]
+"75
+}
+[; ;ax.c: 75: }
+[e $U 2633  ]
+"44
+[e :U 2634 ]
+[e [\ _led , $ -> 1 `i 2635
+ , $ -> 2 `i 2639
+ , $ -> 3 `i 2643
+ , $ -> 4 `i 2647
+ , $ -> 5 `i 2651
+ , $ -> 6 `i 2655
+ , $ -> 7 `i 2659
+ , $ -> 8 `i 2663
+ , $ -> 9 `i 2667
+ , $ -> 10 `i 2671
+ 2633 ]
+"75
+[e :U 2633 ]
+[; ;ax.c: 76: }
+"76
+[e :UE 2632 ]
+}
+"78
+[v _setLedOff `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;ax.c: 78: void setLedOff(int led) {
+[e :U _setLedOff ]
+[v _led `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;ax.c: 79: switch (led) {
+"79
+[e $U 2677  ]
+{
+[; ;ax.c: 80: case 1:
+"80
+[e :U 2678 ]
+[; ;ax.c: 81: do { LATD3 = 0; } while(0);
+"81
+[e :U 2681 ]
+{
+[e = _LATD3 -> -> 0 `i `b ]
+}
+[e :U 2680 ]
+[; ;ax.c: 82: break;
+"82
+[e $U 2676  ]
+[; ;ax.c: 83: case 2:
+"83
+[e :U 2682 ]
+[; ;ax.c: 84: do { LATD2 = 0; } while(0);
+"84
+[e :U 2685 ]
+{
+[e = _LATD2 -> -> 0 `i `b ]
+}
+[e :U 2684 ]
+[; ;ax.c: 85: break;
+"85
+[e $U 2676  ]
+[; ;ax.c: 86: case 3:
+"86
+[e :U 2686 ]
+[; ;ax.c: 87: do { LATD1 = 0; } while(0);
+"87
+[e :U 2689 ]
+{
+[e = _LATD1 -> -> 0 `i `b ]
+}
+[e :U 2688 ]
+[; ;ax.c: 88: break;
+"88
+[e $U 2676  ]
+[; ;ax.c: 89: case 4:
+"89
+[e :U 2690 ]
+[; ;ax.c: 90: do { LATD0 = 0; } while(0);
+"90
+[e :U 2693 ]
+{
+[e = _LATD0 -> -> 0 `i `b ]
+}
+[e :U 2692 ]
+[; ;ax.c: 91: break;
+"91
+[e $U 2676  ]
+[; ;ax.c: 92: case 5:
+"92
+[e :U 2694 ]
+[; ;ax.c: 93: do { LATC2 = 0; } while(0);
+"93
+[e :U 2697 ]
+{
+[e = _LATC2 -> -> 0 `i `b ]
+}
+[e :U 2696 ]
+[; ;ax.c: 94: break;
+"94
+[e $U 2676  ]
+[; ;ax.c: 95: case 6:
+"95
+[e :U 2698 ]
+[; ;ax.c: 96: do { LATC1 = 0; } while(0);
+"96
+[e :U 2701 ]
+{
+[e = _LATC1 -> -> 0 `i `b ]
+}
+[e :U 2700 ]
+[; ;ax.c: 97: break;
+"97
+[e $U 2676  ]
+[; ;ax.c: 98: case 7:
+"98
+[e :U 2702 ]
+[; ;ax.c: 99: do { LATC0 = 0; } while(0);
+"99
+[e :U 2705 ]
+{
+[e = _LATC0 -> -> 0 `i `b ]
+}
+[e :U 2704 ]
+[; ;ax.c: 100: break;
+"100
+[e $U 2676  ]
+[; ;ax.c: 101: case 8:
+"101
+[e :U 2706 ]
+[; ;ax.c: 102: do { LATB0 = 0; } while(0);
+"102
+[e :U 2709 ]
+{
+[e = _LATB0 -> -> 0 `i `b ]
+}
+[e :U 2708 ]
+[; ;ax.c: 103: break;
+"103
+[e $U 2676  ]
+[; ;ax.c: 104: case 9:
+"104
+[e :U 2710 ]
+[; ;ax.c: 105: do { LATB2 = 0; } while(0);
+"105
+[e :U 2713 ]
+{
+[e = _LATB2 -> -> 0 `i `b ]
+}
+[e :U 2712 ]
+[; ;ax.c: 106: break;
+"106
+[e $U 2676  ]
+[; ;ax.c: 107: case 10:
+"107
+[e :U 2714 ]
+[; ;ax.c: 108: do { LATB3 = 0; } while(0);
+"108
+[e :U 2717 ]
+{
+[e = _LATB3 -> -> 0 `i `b ]
+}
+[e :U 2716 ]
+[; ;ax.c: 109: break;
+"109
+[e $U 2676  ]
+"110
+}
+[; ;ax.c: 110: }
+[e $U 2676  ]
+"79
+[e :U 2677 ]
+[e [\ _led , $ -> 1 `i 2678
+ , $ -> 2 `i 2682
+ , $ -> 3 `i 2686
+ , $ -> 4 `i 2690
+ , $ -> 5 `i 2694
+ , $ -> 6 `i 2698
+ , $ -> 7 `i 2702
+ , $ -> 8 `i 2706
+ , $ -> 9 `i 2710
+ , $ -> 10 `i 2714
+ 2676 ]
+"110
+[e :U 2676 ]
+[; ;ax.c: 112: }
+"112
+[e :UE 2675 ]
+}
+"119
+[v _getADC `(i ~T0 @X0 1 ef1`i ]
+{
+[; ;ax.c: 119: int getADC(int adc) {
+[e :U _getADC ]
+[v _adc `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;ax.c: 120: return ADC_GetConversion(adc);
+"120
+[e ) -> ( _ADC_GetConversion (1 -> _adc `E18245 `i ]
+[e $UE 2718  ]
+[; ;ax.c: 121: }
+"121
+[e :UE 2718 ]
+}
+"123
+[v _sendAX `(uc ~T0 @X0 1 ef4`*uc`i`*uc`i ]
+{
+[; ;ax.c: 123: uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
+[e :U _sendAX ]
+[v _buffer `*uc ~T0 @X0 1 r1 ]
+[v _packetSize `i ~T0 @X0 1 r2 ]
+[v _result `*uc ~T0 @X0 1 r3 ]
+[v _parametersToRead `i ~T0 @X0 1 r4 ]
+[f ]
+"124
+[v _checksum `uc ~T0 @X0 1 a ]
+[; ;ax.c: 124: uint8_t checksum = 0;
+[e = _checksum -> -> 0 `i `uc ]
+[; ;ax.c: 126: for (int i = 2; i < packetSize; i++) {
 "126
-[e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 128: OSCCON2 = 0x00;
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 2 `i ]
+[e $U 2723  ]
+[e :U 2720 ]
+{
+[; ;ax.c: 127: checksum += buffer[i];
+"127
+[e =+ _checksum *U + _buffer * -> _i `x -> -> # *U _buffer `i `x ]
 "128
-[e = _OSCCON2 -> -> 0 `i `uc ]
-[; ;mcc.c: 130: OSCTUNE = 0x00;
-"130
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 132: REFOCON = 0x00;
+}
+"126
+[e ++ _i -> 1 `i ]
+[e :U 2723 ]
+[e $ < _i _packetSize 2720  ]
+[e :U 2721 ]
+"128
+}
+[; ;ax.c: 128: }
+[; ;ax.c: 129: checksum = ~checksum;
+"129
+[e = _checksum -> ~ -> _checksum `i `uc ]
+[; ;ax.c: 131: do { LATD4 = 1; } while(0);
+"131
+[e :U 2726 ]
+{
+[e = _LATD4 -> -> 1 `i `b ]
+}
+[e :U 2725 ]
+[; ;ax.c: 132: for (int i = 0; i < packetSize; i++) {
 "132
-[e = _REFOCON -> -> 0 `i `uc ]
-[; ;mcc.c: 135: }
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 2730  ]
+[e :U 2727 ]
+{
+[; ;ax.c: 133: EUSART1_Write(buffer[i]);
+"133
+[e ( _EUSART1_Write (1 *U + _buffer * -> _i `x -> -> # *U _buffer `i `x ]
+"134
+}
+"132
+[e ++ _i -> 1 `i ]
+[e :U 2730 ]
+[e $ < _i _packetSize 2727  ]
+[e :U 2728 ]
+"134
+}
+[; ;ax.c: 134: }
+[; ;ax.c: 135: EUSART1_Write(checksum);
 "135
-[e :UE 2609 ]
+[e ( _EUSART1_Write (1 _checksum ]
+[; ;ax.c: 136: _delay((unsigned long)((100)*(16000000/4000000.0)));
+"136
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[; ;ax.c: 137: do { LATD4 = 0; } while(0);
+"137
+[e :U 2733 ]
+{
+[e = _LATD4 -> -> 0 `i `b ]
+}
+[e :U 2732 ]
+"153
+[v _stop `i ~T0 @X0 1 a ]
+[; ;ax.c: 153: int stop = 6 + parametersToRead;
+[e = _stop + -> 6 `i _parametersToRead ]
+[; ;ax.c: 155: for (int i = 0; i < stop; i++) {
+"155
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 2737  ]
+[e :U 2734 ]
+{
+[; ;ax.c: 156: result[i] = 122;
+"156
+[e = *U + _result * -> _i `x -> -> # *U _result `i `x -> -> 122 `i `uc ]
+"157
+}
+"155
+[e ++ _i -> 1 `i ]
+[e :U 2737 ]
+[e $ < _i _stop 2734  ]
+[e :U 2735 ]
+"157
+}
+"159
+[v _r0 `i ~T0 @X0 1 a ]
+[; ;ax.c: 157: }
+[; ;ax.c: 159: int r0 = EUSART1_Read();
+[e = _r0 -> ( _EUSART1_Read ..  `i ]
+[; ;ax.c: 160: while (r0 != 0xFF) {
+"160
+[e $U 2738  ]
+[e :U 2739 ]
+{
+[; ;ax.c: 161: r0 = EUSART1_Read();
+"161
+[e = _r0 -> ( _EUSART1_Read ..  `i ]
+"162
+}
+[e :U 2738 ]
+"160
+[e $ != _r0 -> 255 `i 2739  ]
+[e :U 2740 ]
+[; ;ax.c: 162: }
+[; ;ax.c: 163: result[0] = r0;
+"163
+[e = *U + _result * -> -> 0 `i `x -> -> # *U _result `i `x -> _r0 `uc ]
+[; ;ax.c: 164: for (int i = 1; i < stop; i++) {
+"164
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 1 `i ]
+[e $U 2744  ]
+[e :U 2741 ]
+{
+[; ;ax.c: 165: result[i] = EUSART1_Read();
+"165
+[e = *U + _result * -> _i `x -> -> # *U _result `i `x ( _EUSART1_Read ..  ]
+"166
+}
+"164
+[e ++ _i -> 1 `i ]
+[e :U 2744 ]
+[e $ < _i _stop 2741  ]
+[e :U 2742 ]
+"166
+}
+[; ;ax.c: 166: }
+[; ;ax.c: 169: _delay((unsigned long)((200)*(16000000/4000000.0)));
+"169
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[; ;ax.c: 170: return result[4];
+"170
+[e ) *U + _result * -> -> 4 `i `x -> -> # *U _result `i `x ]
+[e $UE 2719  ]
+[; ;ax.c: 172: }
+"172
+[e :UE 2719 ]
+}
+"174
+[v _pingAX `(i ~T0 @X0 1 ef1`i ]
+{
+[; ;ax.c: 174: int pingAX(int id) {
+[e :U _pingAX ]
+[v _id `i ~T0 @X0 1 r1 ]
+[f ]
+"175
+[v _packet `uc ~T0 @X0 -> 20 `i a ]
+"176
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 175: uint8_t packet[20];
+[; ;ax.c: 176: uint8_t result[20];
+[; ;ax.c: 177: packet[0] = 0xFF;
+"177
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 178: packet[1] = 0xFF;
+"178
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 179: packet[2] = id;
+"179
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"180
+[v _nbParameters `i ~T0 @X0 1 a ]
+[; ;ax.c: 180: int nbParameters = 0;
+[e = _nbParameters -> 0 `i ]
+"181
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 181: int length = nbParameters + 2;
+[e = _length + _nbParameters -> 2 `i ]
+[; ;ax.c: 182: packet[3] = length;
+"182
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"183
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 183: int instruction = 0x01;
+[e = _instruction -> 1 `i ]
+[; ;ax.c: 184: packet[4] = instruction;
+"184
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+"187
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 187: int error = sendAX(packet, 5, result, 0);
+[e = _error -> ( _sendAX (4 , , , &U _packet -> 5 `i &U _result -> 0 `i `i ]
+[; ;ax.c: 188: return error;
+"188
+[e ) _error ]
+[e $UE 2745  ]
+[; ;ax.c: 189: }
+"189
+[e :UE 2745 ]
+}
+"191
+[v _readAXData `(i ~T0 @X0 1 ef2`i`i ]
+{
+[; ;ax.c: 191: int readAXData(int id, int address) {
+[e :U _readAXData ]
+[v _id `i ~T0 @X0 1 r1 ]
+[v _address `i ~T0 @X0 1 r2 ]
+[f ]
+"192
+[v _size `i ~T0 @X0 1 a ]
+[; ;ax.c: 192: int size = getAddressSize(address);
+[e = _size ( _getAddressSize (1 _address ]
+"194
+[v _packet `uc ~T0 @X0 -> 20 `i a ]
+"195
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 194: uint8_t packet[20];
+[; ;ax.c: 195: uint8_t result[20];
+[; ;ax.c: 196: packet[0] = 0xFF;
+"196
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 197: packet[1] = 0xFF;
+"197
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 198: packet[2] = id;
+"198
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"199
+[v _nbParameters `i ~T0 @X0 1 a ]
+[; ;ax.c: 199: int nbParameters = 2;
+[e = _nbParameters -> 2 `i ]
+"200
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 200: int length = nbParameters + 2;
+[e = _length + _nbParameters -> 2 `i ]
+[; ;ax.c: 201: packet[3] = length;
+"201
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"202
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 202: int instruction = 0x02;
+[e = _instruction -> 2 `i ]
+[; ;ax.c: 203: packet[4] = instruction;
+"203
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+[; ;ax.c: 204: packet[5] = address;
+"204
+[e = *U + &U _packet * -> -> -> 5 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _address `uc ]
+[; ;ax.c: 205: packet[6] = size;
+"205
+[e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _size `uc ]
+"208
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 208: int error = sendAX(packet, 7, result, 1);
+[e = _error -> ( _sendAX (4 , , , &U _packet -> 7 `i &U _result -> 1 `i `i ]
+[; ;ax.c: 209: if (size == 1) {
+"209
+[e $ ! == _size -> 1 `i 2747  ]
+{
+[; ;ax.c: 211: return result[5];
+"211
+[e ) -> *U + &U _result * -> -> -> 5 `i `ui `ux -> -> # *U &U _result `ui `ux `i ]
+[e $UE 2746  ]
+"212
+}
+[; ;ax.c: 212: } else {
+[e $U 2748  ]
+[e :U 2747 ]
+{
+[; ;ax.c: 214: return result[5] + result[6]*256;
+"214
+[e ) + -> *U + &U _result * -> -> -> 5 `i `ui `ux -> -> # *U &U _result `ui `ux `i * -> *U + &U _result * -> -> -> 6 `i `ui `ux -> -> # *U &U _result `ui `ux `i -> 256 `i ]
+[e $UE 2746  ]
+"215
+}
+[e :U 2748 ]
+[; ;ax.c: 215: }
+[; ;ax.c: 216: }
+"216
+[e :UE 2746 ]
+}
+"218
+[v _writeAXData `(i ~T0 @X0 1 ef3`i`i`i ]
+{
+[; ;ax.c: 218: int writeAXData(int id, int address, int data) {
+[e :U _writeAXData ]
+[v _id `i ~T0 @X0 1 r1 ]
+[v _address `i ~T0 @X0 1 r2 ]
+[v _data `i ~T0 @X0 1 r3 ]
+[f ]
+"219
+[v _size `i ~T0 @X0 1 a ]
+[; ;ax.c: 219: int size = getAddressSize(address);
+[e = _size ( _getAddressSize (1 _address ]
+"221
+[v _packet `uc ~T0 @X0 -> 20 `i a ]
+"222
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 221: uint8_t packet[20];
+[; ;ax.c: 222: uint8_t result[20];
+[; ;ax.c: 223: packet[0] = 0xFF;
+"223
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 224: packet[1] = 0xFF;
+"224
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 225: packet[2] = id;
+"225
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"226
+[v _nbParameters `i ~T0 @X0 1 a ]
+[; ;ax.c: 226: int nbParameters = 0;
+[e = _nbParameters -> 0 `i ]
+"227
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 227: int length = nbParameters + 2;
+[e = _length + _nbParameters -> 2 `i ]
+[; ;ax.c: 228: packet[3] = length;
+"228
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"229
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 229: int instruction = 0x03;
+[e = _instruction -> 3 `i ]
+[; ;ax.c: 230: packet[4] = instruction;
+"230
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+[; ;ax.c: 231: packet[5] = address;
+"231
+[e = *U + &U _packet * -> -> -> 5 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _address `uc ]
+[; ;ax.c: 232: if (size == 1) {
+"232
+[e $ ! == _size -> 1 `i 2750  ]
+{
+[; ;ax.c: 233: packet[6] = data;
+"233
+[e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _data `uc ]
+"234
+}
+[; ;ax.c: 234: } else {
+[e $U 2751  ]
+[e :U 2750 ]
+{
+[; ;ax.c: 235: packet[6] = data & 0xff;
+"235
+[e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> & _data -> 255 `i `uc ]
+[; ;ax.c: 236: packet[7] = (data >> 8);
+"236
+[e = *U + &U _packet * -> -> -> 7 `i `ui `ux -> -> # *U &U _packet `ui `ux -> >> _data -> 8 `i `uc ]
+"237
+}
+[e :U 2751 ]
+"240
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 237: }
+[; ;ax.c: 240: int error = sendAX(packet, 6 + size, result, 0);
+[e = _error -> ( _sendAX (4 , , , &U _packet + -> 6 `i _size &U _result -> 0 `i `i ]
+[; ;ax.c: 241: return error;
+"241
+[e ) _error ]
+[e $UE 2749  ]
+[; ;ax.c: 242: }
+"242
+[e :UE 2749 ]
+}
+"245
+[v _readIndex `i ~T0 @X0 1 e ]
+[i _readIndex
+-> 0 `i
+]
+[; ;ax.c: 245: int readIndex = 0;
+"246
+[v _currentCommand `uc ~T0 @X0 1 e ]
+[i _currentCommand
+-> -U -> 1 `i `uc
+]
+[; ;ax.c: 246: uint8_t currentCommand = -1;
+"247
+[v _parameter1 `uc ~T0 @X0 1 e ]
+[i _parameter1
+-> -> 0 `i `uc
+]
+[; ;ax.c: 247: uint8_t parameter1 = 0;
+"248
+[v _parameter2 `uc ~T0 @X0 1 e ]
+[i _parameter2
+-> -> 0 `i `uc
+]
+[; ;ax.c: 248: uint8_t parameter2 = 0;
+"249
+[v _parameter3 `uc ~T0 @X0 1 e ]
+[i _parameter3
+-> -> 0 `i `uc
+]
+[; ;ax.c: 249: uint8_t parameter3 = 0;
+"251
+[v _nbBytesToSend `i ~T0 @X0 1 e ]
+[i _nbBytesToSend
+-> 0 `i
+]
+[; ;ax.c: 251: int nbBytesToSend = 0;
+"252
+[v _bytesSent `i ~T0 @X0 1 e ]
+[i _bytesSent
+-> 0 `i
+]
+[; ;ax.c: 252: int bytesSent = 0;
+"253
+[v _dataToSend `uc ~T0 @X0 -> 32 `i e ]
+[; ;ax.c: 253: uint8_t dataToSend[32];
+"255
+[v _handleByteReceived `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;ax.c: 255: void handleByteReceived(uint8_t data) {
+[e :U _handleByteReceived ]
+[v _data `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;ax.c: 256: if (readIndex == 0) {
+"256
+[e $ ! == _readIndex -> 0 `i 2753  ]
+{
+[; ;ax.c: 257: currentCommand = data;
+"257
+[e = _currentCommand _data ]
+[; ;ax.c: 258: readIndex++;
+"258
+[e ++ _readIndex -> 1 `i ]
+[; ;ax.c: 260: for (int i = 0; i < 32; i++) {
+"260
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 32 `i 2754  ]
+[e $U 2755  ]
+[e :U 2754 ]
+{
+[; ;ax.c: 261: dataToSend[i] = 66;
+"261
+[e = *U + &U _dataToSend * -> -> _i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 66 `i `uc ]
+"262
+}
+"260
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 32 `i 2754  ]
+[e :U 2755 ]
+"262
+}
+"263
+}
+[; ;ax.c: 262: }
+[; ;ax.c: 263: } else if (readIndex == 1) {
+[e $U 2757  ]
+[e :U 2753 ]
+[e $ ! == _readIndex -> 1 `i 2758  ]
+{
+[; ;ax.c: 264: parameter1 = data;
+"264
+[e = _parameter1 _data ]
+[; ;ax.c: 265: readIndex++;
+"265
+[e ++ _readIndex -> 1 `i ]
+[; ;ax.c: 266: if (currentCommand == 10) {
+"266
+[e $ ! == -> _currentCommand `i -> 10 `i 2759  ]
+{
+[; ;ax.c: 267: setLedOn(parameter1);
+"267
+[e ( _setLedOn (1 -> _parameter1 `i ]
+[; ;ax.c: 268: readIndex = 0;
+"268
+[e = _readIndex -> 0 `i ]
+"269
+}
+[; ;ax.c: 269: } else if (currentCommand == 11) {
+[e $U 2760  ]
+[e :U 2759 ]
+[e $ ! == -> _currentCommand `i -> 11 `i 2761  ]
+{
+[; ;ax.c: 270: setLedOff(parameter1);
+"270
+[e ( _setLedOff (1 -> _parameter1 `i ]
+[; ;ax.c: 271: readIndex = 0;
+"271
+[e = _readIndex -> 0 `i ]
+"272
+}
+[e :U 2761 ]
+"274
+[e :U 2760 ]
+}
+[; ;ax.c: 272: }
+[; ;ax.c: 274: } else if (readIndex == 2) {
+[e $U 2762  ]
+[e :U 2758 ]
+[e $ ! == _readIndex -> 2 `i 2763  ]
+{
+[; ;ax.c: 275: parameter2 = data;
+"275
+[e = _parameter2 _data ]
+[; ;ax.c: 276: readIndex++;
+"276
+[e ++ _readIndex -> 1 `i ]
+"277
+}
+[; ;ax.c: 277: } else if (readIndex == 3) {
+[e $U 2764  ]
+[e :U 2763 ]
+[e $ ! == _readIndex -> 3 `i 2765  ]
+{
+[; ;ax.c: 278: parameter3 = data;
+"278
+[e = _parameter3 _data ]
+[; ;ax.c: 279: readIndex++;
+"279
+[e ++ _readIndex -> 1 `i ]
+"280
+}
+[e :U 2765 ]
+"282
+[e :U 2764 ]
+[e :U 2762 ]
+[e :U 2757 ]
+[; ;ax.c: 280: }
+[; ;ax.c: 282: }
+[e :UE 2752 ]
+}
+"286
+[v _getByteToSend `(uc ~T0 @X0 1 ef ]
+{
+[; ;ax.c: 286: uint8_t getByteToSend() {
+[e :U _getByteToSend ]
+[f ]
+[; ;ax.c: 289: if (currentCommand == 20) {
+"289
+[e $ ! == -> _currentCommand `i -> 20 `i 2767  ]
+{
+"290
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 290: int error = pingAX(parameter1);
+[e = _error ( _pingAX (1 -> _parameter1 `i ]
+[; ;ax.c: 292: nbBytesToSend = 2;
+"292
+[e = _nbBytesToSend -> 2 `i ]
+[; ;ax.c: 293: dataToSend[0] = error;
+"293
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> _error `uc ]
+[; ;ax.c: 294: dataToSend[1] = 0;
+"294
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 296: bytesSent = 0;
+"296
+[e = _bytesSent -> 0 `i ]
+[; ;ax.c: 297: currentCommand = -1;
+"297
+[e = _currentCommand -> -U -> 1 `i `uc ]
+[; ;ax.c: 298: readIndex = 0;
+"298
+[e = _readIndex -> 0 `i ]
+"299
+}
+[; ;ax.c: 299: } else if (currentCommand == 21) {
+[e $U 2768  ]
+[e :U 2767 ]
+[e $ ! == -> _currentCommand `i -> 21 `i 2769  ]
+{
+"300
+[v _value `i ~T0 @X0 1 a ]
+[; ;ax.c: 300: int value = readAXData(parameter1, parameter2);
+[e = _value ( _readAXData (2 , -> _parameter1 `i -> _parameter2 `i ]
+[; ;ax.c: 302: nbBytesToSend = 4;
+"302
+[e = _nbBytesToSend -> 4 `i ]
+"303
+[v _xlow `uc ~T0 @X0 1 a ]
+[; ;ax.c: 303: uint8_t xlow = value & 0xff;
+[e = _xlow -> & _value -> 255 `i `uc ]
+"304
+[v _xhigh `uc ~T0 @X0 1 a ]
+[; ;ax.c: 304: uint8_t xhigh = (value >> 8);
+[e = _xhigh -> >> _value -> 8 `i `uc ]
+[; ;ax.c: 305: dataToSend[0] = xlow;
+"305
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
+[; ;ax.c: 306: dataToSend[1] = 0;
+"306
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 307: dataToSend[2] = xhigh;
+"307
+[e = *U + &U _dataToSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
+[; ;ax.c: 308: dataToSend[3] = 0;
+"308
+[e = *U + &U _dataToSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 310: bytesSent = 0;
+"310
+[e = _bytesSent -> 0 `i ]
+[; ;ax.c: 311: currentCommand = -1;
+"311
+[e = _currentCommand -> -U -> 1 `i `uc ]
+[; ;ax.c: 312: readIndex = 0;
+"312
+[e = _readIndex -> 0 `i ]
+"313
+}
+[; ;ax.c: 313: } else if (currentCommand == 22) {
+[e $U 2770  ]
+[e :U 2769 ]
+[e $ ! == -> _currentCommand `i -> 22 `i 2771  ]
+{
+"314
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 314: int error = writeAXData(parameter1, parameter2, parameter3);
+[e = _error ( _writeAXData (3 , , -> _parameter1 `i -> _parameter2 `i -> _parameter3 `i ]
+[; ;ax.c: 316: nbBytesToSend = 2;
+"316
+[e = _nbBytesToSend -> 2 `i ]
+[; ;ax.c: 317: dataToSend[0] = error;
+"317
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> _error `uc ]
+[; ;ax.c: 318: dataToSend[1] = 0;
+"318
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 320: bytesSent = 0;
+"320
+[e = _bytesSent -> 0 `i ]
+[; ;ax.c: 321: currentCommand = -1;
+"321
+[e = _currentCommand -> -U -> 1 `i `uc ]
+[; ;ax.c: 322: readIndex = 0;
+"322
+[e = _readIndex -> 0 `i ]
+"323
+}
+[; ;ax.c: 323: } else if (currentCommand == 12) {
+[e $U 2772  ]
+[e :U 2771 ]
+[e $ ! == -> _currentCommand `i -> 12 `i 2773  ]
+{
+"324
+[v _value `i ~T0 @X0 1 a ]
+[; ;ax.c: 324: int value = getADC(parameter1);
+[e = _value ( _getADC (1 -> _parameter1 `i ]
+[; ;ax.c: 326: nbBytesToSend = 4;
+"326
+[e = _nbBytesToSend -> 4 `i ]
+"327
+[v _xlow `uc ~T0 @X0 1 a ]
+[; ;ax.c: 327: uint8_t xlow = value & 0xff;
+[e = _xlow -> & _value -> 255 `i `uc ]
+"328
+[v _xhigh `uc ~T0 @X0 1 a ]
+[; ;ax.c: 328: uint8_t xhigh = (value >> 8);
+[e = _xhigh -> >> _value -> 8 `i `uc ]
+[; ;ax.c: 329: dataToSend[0] = xlow;
+"329
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
+[; ;ax.c: 330: dataToSend[1] = 0;
+"330
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 331: dataToSend[2] = xhigh;
+"331
+[e = *U + &U _dataToSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
+[; ;ax.c: 332: dataToSend[3] = 0;
+"332
+[e = *U + &U _dataToSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[; ;ax.c: 334: bytesSent = 0;
+"334
+[e = _bytesSent -> 0 `i ]
+[; ;ax.c: 335: currentCommand = -1;
+"335
+[e = _currentCommand -> -U -> 1 `i `uc ]
+[; ;ax.c: 336: readIndex = 0;
+"336
+[e = _readIndex -> 0 `i ]
+"337
+}
+[e :U 2773 ]
+"338
+[e :U 2772 ]
+[e :U 2770 ]
+[e :U 2768 ]
+[; ;ax.c: 337: }
+[; ;ax.c: 338: if (nbBytesToSend == 0) {
+[e $ ! == _nbBytesToSend -> 0 `i 2774  ]
+{
+[; ;ax.c: 340: readIndex = 0;
+"340
+[e = _readIndex -> 0 `i ]
+[; ;ax.c: 341: return 0;
+"341
+[e ) -> -> 0 `i `uc ]
+[e $UE 2766  ]
+"342
+}
+[e :U 2774 ]
+"343
+[v _d `uc ~T0 @X0 1 a ]
+[; ;ax.c: 342: }
+[; ;ax.c: 343: uint8_t d = dataToSend[bytesSent];
+[e = _d *U + &U _dataToSend * -> -> _bytesSent `ui `ux -> -> # *U &U _dataToSend `ui `ux ]
+[; ;ax.c: 344: bytesSent++;
+"344
+[e ++ _bytesSent -> 1 `i ]
+[; ;ax.c: 346: if (bytesSent > nbBytesToSend) {
+"346
+[e $ ! > _bytesSent _nbBytesToSend 2775  ]
+{
+[; ;ax.c: 348: readIndex = 0;
+"348
+[e = _readIndex -> 0 `i ]
+[; ;ax.c: 349: return 111;
+"349
+[e ) -> -> 111 `i `uc ]
+[e $UE 2766  ]
+"350
+}
+[e :U 2775 ]
+[; ;ax.c: 350: }
+[; ;ax.c: 352: return d;
+"352
+[e ) _d ]
+[e $UE 2766  ]
+[; ;ax.c: 354: }
+"354
+[e :UE 2766 ]
 }

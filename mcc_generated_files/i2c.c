@@ -81,7 +81,7 @@ void I2C_Initialize(void) {
     // R_nW write_noTX; P stopbit_notdetected; S startbit_notdetected; BF RCinprocess_TXcomplete; SMP Standard Speed; UA dontupdate; CKE enabled; D_nA lastbyte_address; 
     SSPSTAT = 0xC0;
     // SSPEN enabled; WCOL no_collision; CKP disabled; SSPM 7 Bit Polling; SSPOV no_overflow; 
-    SSPCON1 = 0x26;
+    SSPCON1 = 0x26; //0x26;
     // ACKEN disabled; GCEN disabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; ACKSTAT received; SEN disabled; 
     SSPCON2 = 0x00;
     // 
@@ -196,6 +196,7 @@ void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
             break;
 
         case I2C_SLAVE_READ_REQUEST:
+            delay_ms(500);
             SSPBUF = EEPROM_Buffer[eepromAddress++];
             if (sizeof (EEPROM_Buffer) <= eepromAddress) {
                 eepromAddress = 0; // wrap to start of eeprom page
@@ -208,9 +209,10 @@ void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
     } // end switch(i2c_bus_state)
 
 }
+int c = 0;
 
 void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
-    uint8_t data; 
+    uint8_t data;
     switch (i2c_bus_state) {
         case I2C_SLAVE_WRITE_REQUEST:
             // the master will be sending the eeprom address next
@@ -219,8 +221,6 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 
 
         case I2C_SLAVE_WRITE_COMPLETED:
-
-
             data = I2C_slaveWriteData;
             // data contient ce que la master envoi dans son write
             handleByteReceived(data);
@@ -228,14 +228,10 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
             break;
 
         case I2C_SLAVE_READ_REQUEST:
-            data = 5;
-            {
-            
-            
-            }
+            // timer, si timer fini -> SSPBUF=-1
+            data = getByteToSend();
             // envoi data au master
-            SSPBUF = getByteToSend();
-
+            SSPBUF = data;
             break;
 
         case I2C_SLAVE_READ_COMPLETED:

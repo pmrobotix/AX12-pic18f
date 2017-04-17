@@ -1,6 +1,6 @@
- build/default/debug/main.d  \
- build/default/debug/main.p1:  \
- main.c  \
+ build/default/debug/ax.d  \
+ build/default/debug/ax.p1:  \
+ ax.c  \
 mcc_generated_files/i2c.h  \
 mcc_generated_files/mcc.h  \
 ax.h  \

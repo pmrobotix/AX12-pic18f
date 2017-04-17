@@ -118,9 +118,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "37948
 [v _SSPCON1bits `VS2432 ~T0 @X0 0 e@4038 ]
 "166 mcc_generated_files/i2c.c
-[c E18248 0 1 .. ]
-[n E18248 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
-"84 mcc_generated_files/../ax.h
+[c E18250 0 1 .. ]
+[n E18250 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
+"61 mcc_generated_files/../ax.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
+"84
 [v _handleByteReceived `(v ~T0 @X0 0 ef1`uc ]
 "86
 [v _getByteToSend `(uc ~T0 @X0 0 ef ]
@@ -16877,13 +16879,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.h: 113: void I2C_Initialize(void);
 [; ;i2c.h: 133: void I2C_ISR ( void );
 [; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
+[; ;ax.h: 61: void delay_ms(int ms);
 [; ;ax.h: 62: int getAddressSize(int address);
 [; ;ax.h: 66: void setLedOn(int led);
 [; ;ax.h: 70: void setLedOff(int led);
 [; ;ax.h: 75: int getADC(int adc);
 [; ;ax.h: 78: int pingAX(int id);
 [; ;ax.h: 80: int readAXData(int id, int address);
-[; ;ax.h: 81: void writeAXData(int id, int address, int data);
+[; ;ax.h: 81: int writeAXData(int id, int address, int data);
 [; ;ax.h: 84: void handleByteReceived(uint8_t data);
 [; ;ax.h: 86: uint8_t getByteToSend();
 [; ;i2c.c: 53: typedef enum {
@@ -17010,8 +17013,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
 [f ]
 "154
-[v F18259 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
-[i F18259
+[v F18261 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
+[i F18261
 :U ..
 "155
 -> -> 0 `i `uc
@@ -17152,14 +17155,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 "165
-[v F18260 `uc ~T0 @X0 1 s eepromAddress ]
-[i F18260
+[v F18262 `uc ~T0 @X0 1 s eepromAddress ]
+[i F18262
 -> -> 0 `i `uc
 ]
 "166
-[v F18261 `uc ~T0 @X0 1 s slaveWriteType ]
-[i F18261
--> . `E18248 0 `uc
+[v F18263 `uc ~T0 @X0 1 s slaveWriteType ]
+[i F18263
+-> . `E18250 0 `uc
 ]
 [; ;i2c.c: 154: static uint8_t EEPROM_Buffer[] = {
 [; ;i2c.c: 155: 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
@@ -17182,7 +17185,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 2616 ]
 [; ;i2c.c: 172: slaveWriteType = SLAVE_DATA_ADDRESS;
 "172
-[e = F18261 -> . `E18248 1 `uc ]
+[e = F18263 -> . `E18250 1 `uc ]
 [; ;i2c.c: 173: break;
 "173
 [e $U 2614  ]
@@ -17198,7 +17201,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 2620 ]
 [; ;i2c.c: 180: eepromAddress = I2C_slaveWriteData;
 "180
-[e = F18260 _I2C_slaveWriteData ]
+[e = F18262 _I2C_slaveWriteData ]
 [; ;i2c.c: 181: break;
 "181
 [e $U 2618  ]
@@ -17210,14 +17213,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 2622 ]
 [; ;i2c.c: 187: EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
 "187
-[e = *U + &U F18259 * -> ++ F18260 -> -> 1 `i `uc `ux -> -> # *U &U F18259 `ui `ux _I2C_slaveWriteData ]
+[e = *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux _I2C_slaveWriteData ]
 [; ;i2c.c: 188: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 "188
-[e $ ! <= -> # F18259 `ui -> F18260 `ui 2623  ]
+[e $ ! <= -> # F18261 `ui -> F18262 `ui 2623  ]
 {
 [; ;i2c.c: 189: eepromAddress = 0;
 "189
-[e = F18260 -> -> 0 `i `uc ]
+[e = F18262 -> -> 0 `i `uc ]
 "190
 }
 [e :U 2623 ]
@@ -17231,46 +17234,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 2618  ]
 "178
 [e :U 2619 ]
-[e [\ F18261 , $ -> . `E18248 1 `uc 2620
- , $ -> . `E18248 0 `uc 2621
+[e [\ F18263 , $ -> . `E18250 1 `uc 2620
+ , $ -> . `E18250 0 `uc 2621
  2622 ]
 "193
 [e :U 2618 ]
 [; ;i2c.c: 195: slaveWriteType = SLAVE_NORMAL_DATA;
 "195
-[e = F18261 -> . `E18248 0 `uc ]
+[e = F18263 -> . `E18250 0 `uc ]
 [; ;i2c.c: 196: break;
 "196
 [e $U 2614  ]
 [; ;i2c.c: 198: case I2C_SLAVE_READ_REQUEST:
 "198
 [e :U 2624 ]
-[; ;i2c.c: 199: SSPBUF = EEPROM_Buffer[eepromAddress++];
+[; ;i2c.c: 199: delay_ms(500);
 "199
-[e = _SSPBUF *U + &U F18259 * -> ++ F18260 -> -> 1 `i `uc `ux -> -> # *U &U F18259 `ui `ux ]
-[; ;i2c.c: 200: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
+[e ( _delay_ms (1 -> 500 `i ]
+[; ;i2c.c: 200: SSPBUF = EEPROM_Buffer[eepromAddress++];
 "200
-[e $ ! <= -> # F18259 `ui -> F18260 `ui 2625  ]
-{
-[; ;i2c.c: 201: eepromAddress = 0;
+[e = _SSPBUF *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux ]
+[; ;i2c.c: 201: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 "201
-[e = F18260 -> -> 0 `i `uc ]
+[e $ ! <= -> # F18261 `ui -> F18262 `ui 2625  ]
+{
+[; ;i2c.c: 202: eepromAddress = 0;
 "202
+[e = F18262 -> -> 0 `i `uc ]
+"203
 }
 [e :U 2625 ]
-[; ;i2c.c: 202: }
-[; ;i2c.c: 203: break;
-"203
+[; ;i2c.c: 203: }
+[; ;i2c.c: 204: break;
+"204
 [e $U 2614  ]
-[; ;i2c.c: 205: case I2C_SLAVE_READ_COMPLETED:
-"205
-[e :U 2626 ]
-[; ;i2c.c: 206: default:;
+[; ;i2c.c: 206: case I2C_SLAVE_READ_COMPLETED:
 "206
+[e :U 2626 ]
+[; ;i2c.c: 207: default:;
+"207
 [e :U 2627 ]
-"208
+"209
 }
-[; ;i2c.c: 208: }
+[; ;i2c.c: 209: }
 [e $U 2614  ]
 "169
 [e :U 2615 ]
@@ -17279,34 +17285,40 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E18217 1 2624
  , $ . `E18217 3 2626
  2627 ]
-"208
+"209
 [e :U 2614 ]
-[; ;i2c.c: 210: }
-"210
+[; ;i2c.c: 211: }
+"211
 [e :UE 2613 ]
 }
 "212
+[v _c `i ~T0 @X0 1 e ]
+[i _c
+-> 0 `i
+]
+[; ;i2c.c: 212: int c = 0;
+"214
 [v _I2C_StatusCallback `(v ~T0 @X0 1 ef1`E18217 ]
 {
-[; ;i2c.c: 212: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
+[; ;i2c.c: 214: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 [e :U _I2C_StatusCallback ]
 [v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
 [f ]
-"213
+"215
 [v _data `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 213: uint8_t data;
-[; ;i2c.c: 214: switch (i2c_bus_state) {
-"214
+[; ;i2c.c: 215: uint8_t data;
+[; ;i2c.c: 216: switch (i2c_bus_state) {
+"216
 [e $U 2630  ]
 {
-[; ;i2c.c: 215: case I2C_SLAVE_WRITE_REQUEST:
-"215
+[; ;i2c.c: 217: case I2C_SLAVE_WRITE_REQUEST:
+"217
 [e :U 2631 ]
-[; ;i2c.c: 218: break;
-"218
+[; ;i2c.c: 220: break;
+"220
 [e $U 2629  ]
-[; ;i2c.c: 221: case I2C_SLAVE_WRITE_COMPLETED:
-"221
+[; ;i2c.c: 223: case I2C_SLAVE_WRITE_COMPLETED:
+"223
 [e :U 2632 ]
 [; ;i2c.c: 224: data = I2C_slaveWriteData;
 "224
@@ -17320,41 +17332,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 230: case I2C_SLAVE_READ_REQUEST:
 "230
 [e :U 2633 ]
-[; ;i2c.c: 231: data = 5;
-"231
-[e = _data -> -> 5 `i `uc ]
-[; ;i2c.c: 232: {
+[; ;i2c.c: 232: data = getByteToSend();
 "232
-{
+[e = _data ( _getByteToSend ..  ]
+[; ;i2c.c: 234: SSPBUF = data;
+"234
+[e = _SSPBUF _data ]
+[; ;i2c.c: 235: break;
 "235
-}
-[; ;i2c.c: 235: }
-[; ;i2c.c: 237: SSPBUF = getByteToSend();
+[e $U 2629  ]
+[; ;i2c.c: 237: case I2C_SLAVE_READ_COMPLETED:
 "237
-[e = _SSPBUF ( _getByteToSend ..  ]
-[; ;i2c.c: 239: break;
-"239
-[e $U 2629  ]
-[; ;i2c.c: 241: case I2C_SLAVE_READ_COMPLETED:
-"241
 [e :U 2634 ]
-[; ;i2c.c: 242: default:;
-"242
+[; ;i2c.c: 238: default:;
+"238
 [e :U 2635 ]
-"244
+"240
 }
-[; ;i2c.c: 244: }
+[; ;i2c.c: 240: }
 [e $U 2629  ]
-"214
+"216
 [e :U 2630 ]
 [e [\ _i2c_bus_state , $ . `E18217 0 2631
  , $ . `E18217 2 2632
  , $ . `E18217 1 2633
  , $ . `E18217 3 2634
  2635 ]
-"244
+"240
 [e :U 2629 ]
-[; ;i2c.c: 247: }
-"247
+[; ;i2c.c: 243: }
+"243
 [e :UE 2628 ]
 }

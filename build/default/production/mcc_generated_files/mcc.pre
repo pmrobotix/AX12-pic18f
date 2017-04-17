@@ -21025,7 +21025,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 306 "mcc_generated_files/pin_manager.h"
+# 380 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdint.h"
@@ -21136,22 +21136,32 @@ typedef enum
 channel_CTMU = 0x1C,
 channel_Temp_diode = 0x1D,
 channel_Vdd_core = 0x1E,
-channel_1_024V_bandgap = 0x1F
+channel_1_024V_bandgap = 0x1F,
+channel_AN6 = 0x06,
+channel_AN5 = 0x05,
+channel_AN0 = 0x00,
+channel_AN4 = 0x04,
+channel_AN3 = 0x03,
+channel_AN2 = 0x02,
+channel_AN1 = 0x01,
+channel_AN9 = 0x09,
+channel_AN8 = 0x08,
+channel_AN7 = 0x07
 } adc_channel_t;
 
-# 126
+# 136
 void ADC_Initialize(void);
 
-# 155
+# 165
 void ADC_StartConversion(adc_channel_t channel);
 
-# 187
+# 197
 bool ADC_IsConversionDone();
 
-# 220
+# 230
 adc_result_t ADC_GetConversionResult(void);
 
-# 250
+# 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
@@ -21253,8 +21263,7 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 
 # 111 "mcc_generated_files/mcc.c"
-void SYSTEM_Initialize(void)
-{
+void SYSTEM_Initialize(void) {
 
 INTERRUPT_Initialize();
 PIN_MANAGER_Initialize();
@@ -21267,8 +21276,7 @@ EUSART1_Initialize();
 EUSART2_Initialize();
 }
 
-void OSCILLATOR_Initialize(void)
-{
+void OSCILLATOR_Initialize(void) {
 
 OSCCON = 0x60;
 
