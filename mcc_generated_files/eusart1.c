@@ -66,7 +66,7 @@ void EUSART1_Initialize(void)
     TXSTA1 = 0xA4;
 
     // Baud Rate = 1000000; 
-    SPBRG1 = 0x03;
+    SPBRG1 = 0x0F;
 
     // Baud Rate = 1000000; 
     SPBRGH1 = 0x00;

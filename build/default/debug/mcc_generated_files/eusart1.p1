@@ -16811,9 +16811,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.c: 66: TXSTA1 = 0xA4;
 "66
 [e = _TXSTA1 -> -> 164 `i `uc ]
-[; ;eusart1.c: 69: SPBRG1 = 0x03;
+[; ;eusart1.c: 69: SPBRG1 = 0x0F;
 "69
-[e = _SPBRG1 -> -> 3 `i `uc ]
+[e = _SPBRG1 -> -> 15 `i `uc ]
 [; ;eusart1.c: 72: SPBRGH1 = 0x00;
 "72
 [e = _SPBRGH1 -> -> 0 `i `uc ]

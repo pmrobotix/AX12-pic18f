@@ -48,6 +48,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2227 . . . ]
 "34388
 [v _PIR1bits `VS2227 ~T0 @X0 0 e@3998 ]
+"276 mcc_generated_files/adc.h
+[v _ADC_ISR `(v ~T0 @X0 0 ef ]
 "133 mcc_generated_files/i2c.h
 [v _I2C_ISR `(v ~T0 @X0 0 ef ]
 [; ;interrupt_manager.h: 109: void INTERRUPT_Initialize (void);
@@ -16817,6 +16819,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 197: bool ADC_IsConversionDone();
 [; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 276: void ADC_ISR(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c.h: 78: typedef enum
@@ -16835,21 +16838,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 94: void EUSART1_Initialize(void);
 [; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
 [; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
-[; ;eccp1.h: 79: {
-[; ;eccp1.h: 80: struct
-[; ;eccp1.h: 81: {
-[; ;eccp1.h: 82: uint8_t ccpr1l;
-[; ;eccp1.h: 83: uint8_t ccpr1h;
-[; ;eccp1.h: 84: };
-[; ;eccp1.h: 85: struct
-[; ;eccp1.h: 86: {
-[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
-[; ;eccp1.h: 88: };
-[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
-[; ;eccp1.h: 121: void ECCP1_Initialize(void);
-[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
-[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
 [; ;tmr1.h: 99: void TMR1_Initialize(void);
 [; ;tmr1.h: 128: void TMR1_StartTimer(void);
 [; ;tmr1.h: 160: void TMR1_StopTimer(void);
@@ -16859,8 +16847,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
 [; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 72: void SYSTEM_Initialize(void);
+[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
 "51 mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_Initialize `(v ~T0 @X0 1 ef ]
 "52
@@ -16872,46 +16860,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt_manager.c: 54: IPEN = 0;
 "54
 [e = _IPEN -> -> 0 `i `b ]
-[; ;interrupt_manager.c: 59: IPR1bits.SSPIP = 0;
+[; ;interrupt_manager.c: 59: IPR1bits.ADIP = 0;
 "59
+[e = . . _IPR1bits 0 6 -> -> 0 `i `uc ]
+[; ;interrupt_manager.c: 62: IPR1bits.SSPIP = 0;
+"62
 [e = . . _IPR1bits 0 3 -> -> 0 `i `uc ]
-[; ;interrupt_manager.c: 61: }
-"61
-[e :UE 2608 ]
+[; ;interrupt_manager.c: 64: }
+"64
+[e :UE 2605 ]
 }
 [v F5 `(v ~T0 @X0 1 tf ]
-"63
-[v _INTERRUPT_InterruptManager `IF5 ~T0 @X0 1 e ]
-"64
-{
-[; ;interrupt_manager.c: 63: void interrupt INTERRUPT_InterruptManager (void)
-[; ;interrupt_manager.c: 64: {
-[e :U _INTERRUPT_InterruptManager ]
-[f ]
-[; ;interrupt_manager.c: 66: if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
 "66
-[e $ ! && && == -> . . _INTCONbits 1 6 `i -> 1 `i == -> . . _PIE1bits 0 3 `i -> 1 `i == -> . . _PIR1bits 0 3 `i -> 1 `i 2610  ]
-[; ;interrupt_manager.c: 67: {
+[v _INTERRUPT_InterruptManager `IF5 ~T0 @X0 1 e ]
 "67
 {
-[; ;interrupt_manager.c: 68: I2C_ISR();
-"68
-[e ( _I2C_ISR ..  ]
+[; ;interrupt_manager.c: 66: void interrupt INTERRUPT_InterruptManager (void)
+[; ;interrupt_manager.c: 67: {
+[e :U _INTERRUPT_InterruptManager ]
+[f ]
+[; ;interrupt_manager.c: 69: if(INTCONbits.PEIE == 1 && PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1)
 "69
-}
-[; ;interrupt_manager.c: 69: }
-[e $U 2611  ]
+[e $ ! && && == -> . . _INTCONbits 1 6 `i -> 1 `i == -> . . _PIE1bits 0 6 `i -> 1 `i == -> . . _PIR1bits 0 6 `i -> 1 `i 2607  ]
+[; ;interrupt_manager.c: 70: {
 "70
-[e :U 2610 ]
-[; ;interrupt_manager.c: 70: else
-[; ;interrupt_manager.c: 71: {
-"71
 {
-"73
+[; ;interrupt_manager.c: 71: ADC_ISR();
+"71
+[e ( _ADC_ISR ..  ]
+"72
 }
-[e :U 2611 ]
-[; ;interrupt_manager.c: 73: }
-[; ;interrupt_manager.c: 74: }
+[e :U 2607 ]
+[; ;interrupt_manager.c: 72: }
+[; ;interrupt_manager.c: 73: if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
+"73
+[e $ ! && && == -> . . _INTCONbits 1 6 `i -> 1 `i == -> . . _PIE1bits 0 3 `i -> 1 `i == -> . . _PIR1bits 0 3 `i -> 1 `i 2608  ]
+[; ;interrupt_manager.c: 74: {
 "74
-[e :UE 2609 ]
+{
+[; ;interrupt_manager.c: 75: I2C_ISR();
+"75
+[e ( _I2C_ISR ..  ]
+"76
+}
+[e :U 2608 ]
+[; ;interrupt_manager.c: 76: }
+[; ;interrupt_manager.c: 77: }
+"77
+[e :UE 2606 ]
 }

@@ -1,8 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"73 mcc_generated_files/mcc.h
+"72 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"39906 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+"42882 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+[v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
+"39906
 [s S2571 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2571 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "39916
@@ -16,21 +18,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2570 . . . . ]
 "39932
 [v _INTCONbits `VS2570 ~T0 @X0 0 e@4082 ]
-"45288
-[v _TRISC0 `Vb ~T0 @X0 0 e@31904 ]
-"45290
-[v _TRISC1 `Vb ~T0 @X0 0 e@31905 ]
-"42882
-[v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
-"61 ax.h
-[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
-"42880 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
+"42880
 [v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
 "42878
 [v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
 "42876
 [v _LATD0 `Vb ~T0 @X0 0 e@31840 ]
-"42864
+"65 ax.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
+"42864 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [v _LATC2 `Vb ~T0 @X0 0 e@31834 ]
 "42862
 [v _LATC1 `Vb ~T0 @X0 0 e@31833 ]
@@ -44,8 +40,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATB3 `Vb ~T0 @X0 0 e@31827 ]
 "42884
 [v _LATD4 `Vb ~T0 @X0 0 e@31844 ]
-"78 ax.h
-[v _pingAX `(i ~T0 @X0 0 ef1`i ]
+"137 main.c
+[c E18223 28 29 30 31 6 5 0 4 3 2 1 9 8 7 .. ]
+[n E18223 . channel_CTMU channel_Temp_diode channel_Vdd_core channel_1_024V_bandgap channel_AN6 channel_AN5 channel_AN0 channel_AN4 channel_AN3 channel_AN2 channel_AN1 channel_AN9 channel_AN8 channel_AN7  ]
+"260 mcc_generated_files/adc.h
+[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E18223 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16813,6 +16812,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 197: bool ADC_IsConversionDone();
 [; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 276: void ADC_ISR(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c.h: 78: typedef enum
@@ -16831,21 +16831,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 94: void EUSART1_Initialize(void);
 [; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
 [; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
-[; ;eccp1.h: 79: {
-[; ;eccp1.h: 80: struct
-[; ;eccp1.h: 81: {
-[; ;eccp1.h: 82: uint8_t ccpr1l;
-[; ;eccp1.h: 83: uint8_t ccpr1h;
-[; ;eccp1.h: 84: };
-[; ;eccp1.h: 85: struct
-[; ;eccp1.h: 86: {
-[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
-[; ;eccp1.h: 88: };
-[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
-[; ;eccp1.h: 121: void ECCP1_Initialize(void);
-[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
-[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
 [; ;tmr1.h: 99: void TMR1_Initialize(void);
 [; ;tmr1.h: 128: void TMR1_StartTimer(void);
 [; ;tmr1.h: 160: void TMR1_StopTimer(void);
@@ -16855,361 +16840,358 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
 [; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
-[; ;ax.h: 61: void delay_ms(int ms);
-[; ;ax.h: 62: int getAddressSize(int address);
-[; ;ax.h: 66: void setLedOn(int led);
-[; ;ax.h: 70: void setLedOff(int led);
-[; ;ax.h: 75: int getADC(int adc);
-[; ;ax.h: 78: int pingAX(int id);
-[; ;ax.h: 80: int readAXData(int id, int address);
-[; ;ax.h: 81: int writeAXData(int id, int address, int data);
-[; ;ax.h: 84: void handleByteReceived(uint8_t data);
-[; ;ax.h: 86: uint8_t getByteToSend();
+[; ;mcc.h: 72: void SYSTEM_Initialize(void);
+[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
+"63 ax.h
+[v _adc_values `Vui ~T0 @X0 -> 10 `i e ]
+[; ;ax.h: 63: volatile adc_result_t adc_values[10];
+[; ;ax.h: 65: void delay_ms(int ms);
+[; ;ax.h: 66: int getAddressSize(int address);
+[; ;ax.h: 70: void setLedOn(int led);
+[; ;ax.h: 74: void setLedOff(int led);
+[; ;ax.h: 79: int getADC(int adc);
+[; ;ax.h: 82: int pingAX(int id);
+[; ;ax.h: 84: int readAXData(int id, int address);
+[; ;ax.h: 85: int writeAXData(int id, int address, int data);
+[; ;ax.h: 88: void handleByteReceived(uint8_t data);
+[; ;ax.h: 90: uint8_t getByteToSend();
 "52 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [; ;main.c: 52: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 54: SYSTEM_Initialize();
+[; ;main.c: 53: for (int adc = 0; adc < 10; adc++) {
+"53
+{
+[v _adc `i ~T0 @X0 1 a ]
+[e = _adc -> 0 `i ]
+[e $ < _adc -> 10 `i 2606  ]
+[e $U 2607  ]
+[e :U 2606 ]
+{
+[; ;main.c: 54: adc_values[adc] = 0;
 "54
+[e = *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux -> -> 0 `i `ui ]
+"55
+}
+"53
+[e ++ _adc -> 1 `i ]
+[e $ < _adc -> 10 `i 2606  ]
+[e :U 2607 ]
+"55
+}
+[; ;main.c: 55: }
+[; ;main.c: 58: SYSTEM_Initialize();
+"58
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 73: (INTCONbits.GIE = 1);
-"73
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 76: (INTCONbits.PEIE = 1);
-"76
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 87: do { TRISC0 = 0; } while(0);
-"87
+[; ;main.c: 59: do { LATD3 = 1; } while(0);
+"59
 [e :U 2611 ]
-{
-[e = _TRISC0 -> -> 0 `i `b ]
-}
-[e :U 2610 ]
-[; ;main.c: 88: do { TRISC1 = 0; } while(0);
-"88
-[e :U 2614 ]
-{
-[e = _TRISC1 -> -> 0 `i `b ]
-}
-[e :U 2613 ]
-"89
-[v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 89: int delay = 10;
-[e = _delay -> 10 `i ]
-[; ;main.c: 90: for (int i = 0; i < 2; i++) {
-"90
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 2 `i 2615  ]
-[e $U 2616  ]
-[e :U 2615 ]
-{
-[; ;main.c: 92: do { LATD3 = 1; } while(0);
-"92
-[e :U 2620 ]
 {
 [e = _LATD3 -> -> 1 `i `b ]
 }
-[e :U 2619 ]
-[; ;main.c: 93: delay_ms(delay);
-"93
-[e ( _delay_ms (1 _delay ]
-[; ;main.c: 94: do { LATD3 = 0; } while(0);
-"94
-[e :U 2623 ]
-{
-[e = _LATD3 -> -> 0 `i `b ]
-}
-[e :U 2622 ]
-[; ;main.c: 95: do { LATD2 = 1; } while(0);
-"95
-[e :U 2626 ]
+[e :U 2610 ]
+[; ;main.c: 77: (INTCONbits.GIE = 1);
+"77
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 78: do { LATD2 = 1; } while(0);
+"78
+[e :U 2614 ]
 {
 [e = _LATD2 -> -> 1 `i `b ]
 }
-[e :U 2625 ]
-[; ;main.c: 96: delay_ms(delay);
-"96
-[e ( _delay_ms (1 _delay ]
-[; ;main.c: 97: do { LATD2 = 0; } while(0);
-"97
-[e :U 2629 ]
-{
-[e = _LATD2 -> -> 0 `i `b ]
-}
-[e :U 2628 ]
-[; ;main.c: 98: do { LATD1 = 1; } while(0);
-"98
-[e :U 2632 ]
+[e :U 2613 ]
+[; ;main.c: 80: (INTCONbits.PEIE = 1);
+"80
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+"91
+[v _delay `i ~T0 @X0 1 a ]
+[; ;main.c: 91: int delay = 10;
+[e = _delay -> 10 `i ]
+[; ;main.c: 92: do { LATD1 = 1; } while(0);
+"92
+[e :U 2617 ]
 {
 [e = _LATD1 -> -> 1 `i `b ]
 }
-[e :U 2631 ]
-[; ;main.c: 99: delay_ms(delay);
-"99
-[e ( _delay_ms (1 _delay ]
-[; ;main.c: 100: do { LATD1 = 0; } while(0);
-"100
-[e :U 2635 ]
-{
-[e = _LATD1 -> -> 0 `i `b ]
-}
-[e :U 2634 ]
-[; ;main.c: 101: do { LATD0 = 1; } while(0);
-"101
-[e :U 2638 ]
+[e :U 2616 ]
+[; ;main.c: 93: do { LATD0 = 1; } while(0);
+"93
+[e :U 2620 ]
 {
 [e = _LATD0 -> -> 1 `i `b ]
 }
-[e :U 2637 ]
-[; ;main.c: 102: delay_ms(delay);
-"102
+[e :U 2619 ]
+[; ;main.c: 94: for (int i = 0; i < 2; i++) {
+"94
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 2 `i 2621  ]
+[e $U 2622  ]
+[e :U 2621 ]
+{
+[; ;main.c: 96: do { LATD3 = 1; } while(0);
+"96
+[e :U 2626 ]
+{
+[e = _LATD3 -> -> 1 `i `b ]
+}
+[e :U 2625 ]
+[; ;main.c: 97: delay_ms(delay);
+"97
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 103: do { LATD0 = 0; } while(0);
+[; ;main.c: 98: do { LATD3 = 0; } while(0);
+"98
+[e :U 2629 ]
+{
+[e = _LATD3 -> -> 0 `i `b ]
+}
+[e :U 2628 ]
+[; ;main.c: 99: do { LATD2 = 1; } while(0);
+"99
+[e :U 2632 ]
+{
+[e = _LATD2 -> -> 1 `i `b ]
+}
+[e :U 2631 ]
+[; ;main.c: 100: delay_ms(delay);
+"100
+[e ( _delay_ms (1 _delay ]
+[; ;main.c: 101: do { LATD2 = 0; } while(0);
+"101
+[e :U 2635 ]
+{
+[e = _LATD2 -> -> 0 `i `b ]
+}
+[e :U 2634 ]
+[; ;main.c: 102: do { LATD1 = 1; } while(0);
+"102
+[e :U 2638 ]
+{
+[e = _LATD1 -> -> 1 `i `b ]
+}
+[e :U 2637 ]
+[; ;main.c: 103: delay_ms(delay);
 "103
+[e ( _delay_ms (1 _delay ]
+[; ;main.c: 104: do { LATD1 = 0; } while(0);
+"104
 [e :U 2641 ]
+{
+[e = _LATD1 -> -> 0 `i `b ]
+}
+[e :U 2640 ]
+[; ;main.c: 105: do { LATD0 = 1; } while(0);
+"105
+[e :U 2644 ]
+{
+[e = _LATD0 -> -> 1 `i `b ]
+}
+[e :U 2643 ]
+[; ;main.c: 106: delay_ms(delay);
+"106
+[e ( _delay_ms (1 _delay ]
+[; ;main.c: 107: do { LATD0 = 0; } while(0);
+"107
+[e :U 2647 ]
 {
 [e = _LATD0 -> -> 0 `i `b ]
 }
-[e :U 2640 ]
-[; ;main.c: 104: do { LATC2 = 1; } while(0);
-"104
-[e :U 2644 ]
+[e :U 2646 ]
+[; ;main.c: 108: do { LATC2 = 1; } while(0);
+"108
+[e :U 2650 ]
 {
 [e = _LATC2 -> -> 1 `i `b ]
 }
-[e :U 2643 ]
-[; ;main.c: 105: delay_ms(delay);
-"105
+[e :U 2649 ]
+[; ;main.c: 109: delay_ms(delay);
+"109
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 106: do { LATC2 = 0; } while(0);
-"106
-[e :U 2647 ]
+[; ;main.c: 110: do { LATC2 = 0; } while(0);
+"110
+[e :U 2653 ]
 {
 [e = _LATC2 -> -> 0 `i `b ]
 }
-[e :U 2646 ]
-[; ;main.c: 107: do { LATC1 = 1; } while(0);
-"107
-[e :U 2650 ]
+[e :U 2652 ]
+[; ;main.c: 111: do { LATC1 = 1; } while(0);
+"111
+[e :U 2656 ]
 {
 [e = _LATC1 -> -> 1 `i `b ]
 }
-[e :U 2649 ]
-[; ;main.c: 108: delay_ms(delay);
-"108
+[e :U 2655 ]
+[; ;main.c: 112: delay_ms(delay);
+"112
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 109: do { LATC1 = 0; } while(0);
-"109
-[e :U 2653 ]
+[; ;main.c: 113: do { LATC1 = 0; } while(0);
+"113
+[e :U 2659 ]
 {
 [e = _LATC1 -> -> 0 `i `b ]
 }
-[e :U 2652 ]
-[; ;main.c: 110: do { LATC0 = 1; } while(0);
-"110
-[e :U 2656 ]
+[e :U 2658 ]
+[; ;main.c: 114: do { LATC0 = 1; } while(0);
+"114
+[e :U 2662 ]
 {
 [e = _LATC0 -> -> 1 `i `b ]
 }
-[e :U 2655 ]
-[; ;main.c: 111: delay_ms(delay);
-"111
+[e :U 2661 ]
+[; ;main.c: 115: delay_ms(delay);
+"115
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 112: do { LATC0 = 0; } while(0);
-"112
-[e :U 2659 ]
+[; ;main.c: 116: do { LATC0 = 0; } while(0);
+"116
+[e :U 2665 ]
 {
 [e = _LATC0 -> -> 0 `i `b ]
 }
-[e :U 2658 ]
-[; ;main.c: 113: do { LATB0 = 1; } while(0);
-"113
-[e :U 2662 ]
+[e :U 2664 ]
+[; ;main.c: 117: do { LATB0 = 1; } while(0);
+"117
+[e :U 2668 ]
 {
 [e = _LATB0 -> -> 1 `i `b ]
 }
-[e :U 2661 ]
-[; ;main.c: 114: delay_ms(delay);
-"114
+[e :U 2667 ]
+[; ;main.c: 118: delay_ms(delay);
+"118
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 115: do { LATB0 = 0; } while(0);
-"115
-[e :U 2665 ]
+[; ;main.c: 119: do { LATB0 = 0; } while(0);
+"119
+[e :U 2671 ]
 {
 [e = _LATB0 -> -> 0 `i `b ]
 }
-[e :U 2664 ]
-[; ;main.c: 116: do { LATB2 = 1; } while(0);
-"116
-[e :U 2668 ]
+[e :U 2670 ]
+[; ;main.c: 120: do { LATB2 = 1; } while(0);
+"120
+[e :U 2674 ]
 {
 [e = _LATB2 -> -> 1 `i `b ]
 }
-[e :U 2667 ]
-[; ;main.c: 117: delay_ms(delay);
-"117
+[e :U 2673 ]
+[; ;main.c: 121: delay_ms(delay);
+"121
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 118: do { LATB2 = 0; } while(0);
-"118
-[e :U 2671 ]
+[; ;main.c: 122: do { LATB2 = 0; } while(0);
+"122
+[e :U 2677 ]
 {
 [e = _LATB2 -> -> 0 `i `b ]
 }
-[e :U 2670 ]
-[; ;main.c: 119: do { LATB3 = 1; } while(0);
-"119
-[e :U 2674 ]
+[e :U 2676 ]
+[; ;main.c: 123: do { LATB3 = 1; } while(0);
+"123
+[e :U 2680 ]
 {
 [e = _LATB3 -> -> 1 `i `b ]
 }
-[e :U 2673 ]
-[; ;main.c: 120: delay_ms(delay);
-"120
+[e :U 2679 ]
+[; ;main.c: 124: delay_ms(delay);
+"124
 [e ( _delay_ms (1 _delay ]
-[; ;main.c: 121: do { LATB3 = 0; } while(0);
-"121
-[e :U 2677 ]
+[; ;main.c: 125: do { LATB3 = 0; } while(0);
+"125
+[e :U 2683 ]
 {
 [e = _LATB3 -> -> 0 `i `b ]
 }
-[e :U 2676 ]
-[; ;main.c: 122: delay_ms(delay);
-"122
+[e :U 2682 ]
+[; ;main.c: 126: delay_ms(delay);
+"126
 [e ( _delay_ms (1 _delay ]
-"124
+"128
 }
-"90
+"94
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 2 `i 2615  ]
-[e :U 2616 ]
-"124
+[e $ < _i -> 2 `i 2621  ]
+[e :U 2622 ]
+"128
 }
-[; ;main.c: 124: }
-[; ;main.c: 127: do { LATD4 = 0; } while(0);
-"127
-[e :U 2680 ]
+[; ;main.c: 128: }
+[; ;main.c: 131: do { LATD4 = 0; } while(0);
+"131
+[e :U 2686 ]
 {
 [e = _LATD4 -> -> 0 `i `b ]
 }
-[e :U 2679 ]
-[; ;main.c: 128: while (1) {
-"128
-[e :U 2682 ]
-{
-[; ;main.c: 129: delay_ms(500);
-"129
-[e ( _delay_ms (1 -> 500 `i ]
-[; ;main.c: 130: do { LATB3 = 1; } while(0);
-"130
-[e :U 2686 ]
-{
-[e = _LATB3 -> -> 1 `i `b ]
-}
 [e :U 2685 ]
-[; ;main.c: 131: delay_ms(500);
-"131
-[e ( _delay_ms (1 -> 500 `i ]
-[; ;main.c: 133: do { LATB3 = 0; } while(0);
-"133
-[e :U 2689 ]
-{
-[e = _LATB3 -> -> 0 `i `b ]
-}
+[; ;main.c: 132: while (1) {
+"132
 [e :U 2688 ]
-"135
-}
-[e :U 2681 ]
-"128
-[e $U 2682  ]
-[e :U 2683 ]
-[; ;main.c: 135: }
-[; ;main.c: 138: while (1) {
-"138
-[e :U 2691 ]
 {
-[; ;main.c: 139: do { LATB3 = 1; } while(0);
-"139
-[e :U 2695 ]
+[; ;main.c: 133: do { LATB3 = 1; } while(0);
+"133
+[e :U 2692 ]
 {
 [e = _LATB3 -> -> 1 `i `b ]
 }
-[e :U 2694 ]
-[; ;main.c: 140: delay_ms(100);
+[e :U 2691 ]
+[; ;main.c: 134: for (int i = 0; i < 50; i++) {
+"134
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 50 `i 2693  ]
+[e $U 2694  ]
+[e :U 2693 ]
+{
+[; ;main.c: 136: for (int adc = 0; adc < 10; adc++) {
+"136
+{
+[v _adc `i ~T0 @X0 1 a ]
+[e = _adc -> 0 `i ]
+[e $ < _adc -> 10 `i 2696  ]
+[e $U 2697  ]
+[e :U 2696 ]
+{
+[; ;main.c: 137: adc_values[adc] = ADC_GetConversion(adc);
+"137
+[e = *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux ( _ADC_GetConversion (1 -> _adc `E18223 ]
+"138
+}
+"136
+[e ++ _adc -> 1 `i ]
+[e $ < _adc -> 10 `i 2696  ]
+[e :U 2697 ]
+"138
+}
+[; ;main.c: 138: }
+[; ;main.c: 139: delay_ms(10);
+"139
+[e ( _delay_ms (1 -> 10 `i ]
 "140
-[e ( _delay_ms (1 -> 100 `i ]
-[; ;main.c: 141: pingAX(2);
-"141
-[e ( _pingAX (1 -> 2 `i ]
+}
+"134
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 50 `i 2693  ]
+[e :U 2694 ]
+"140
+}
+[; ;main.c: 140: }
 [; ;main.c: 142: do { LATB3 = 0; } while(0);
 "142
-[e :U 2698 ]
+[e :U 2701 ]
 {
 [e = _LATB3 -> -> 0 `i `b ]
 }
-[e :U 2697 ]
-[; ;main.c: 143: delay_ms(100);
-"143
-[e ( _delay_ms (1 -> 100 `i ]
-[; ;main.c: 145: do { LATB2 = 1; } while(0);
-"145
-[e :U 2701 ]
-{
-[e = _LATB2 -> -> 1 `i `b ]
-}
 [e :U 2700 ]
-[; ;main.c: 146: delay_ms(100);
-"146
-[e ( _delay_ms (1 -> 100 `i ]
-[; ;main.c: 147: pingAX(2);
-"147
-[e ( _pingAX (1 -> 2 `i ]
-[; ;main.c: 148: do { LATB2 = 0; } while(0);
+[; ;main.c: 143: delay_ms(500);
+"143
+[e ( _delay_ms (1 -> 500 `i ]
+"144
+}
+[e :U 2687 ]
+"132
+[e $U 2688  ]
+[e :U 2689 ]
+[; ;main.c: 144: }
+[; ;main.c: 148: }
 "148
-[e :U 2704 ]
-{
-[e = _LATB2 -> -> 0 `i `b ]
-}
-[e :U 2703 ]
-[; ;main.c: 149: delay_ms(100);
-"149
-[e ( _delay_ms (1 -> 100 `i ]
-[; ;main.c: 151: do { LATB0 = 1; } while(0);
-"151
-[e :U 2707 ]
-{
-[e = _LATB0 -> -> 1 `i `b ]
-}
-[e :U 2706 ]
-[; ;main.c: 152: delay_ms(100);
-"152
-[e ( _delay_ms (1 -> 100 `i ]
-[; ;main.c: 153: pingAX(2);
-"153
-[e ( _pingAX (1 -> 2 `i ]
-[; ;main.c: 154: do { LATB0 = 0; } while(0);
-"154
-[e :U 2710 ]
-{
-[e = _LATB0 -> -> 0 `i `b ]
-}
-[e :U 2709 ]
-[; ;main.c: 155: delay_ms(100);
-"155
-[e ( _delay_ms (1 -> 100 `i ]
-"157
-}
-[e :U 2690 ]
-"138
-[e $U 2691  ]
-[e :U 2692 ]
-[; ;main.c: 157: }
-[; ;main.c: 158: }
-"158
-[e :UE 2608 ]
+[e :UE 2605 ]
 }

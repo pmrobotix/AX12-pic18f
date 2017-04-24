@@ -55,6 +55,9 @@ void  INTERRUPT_Initialize (void)
 
     // Clear peripheral interrupt priority bits (default reset value)
 
+    // ADI
+    IPR1bits.ADIP = 0;
+
     // SSPI
     IPR1bits.SSPIP = 0;
 
@@ -63,13 +66,13 @@ void  INTERRUPT_Initialize (void)
 void interrupt INTERRUPT_InterruptManager (void)
 {
    // interrupt handler
+    if(INTCONbits.PEIE == 1 && PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1)
+    {
+        ADC_ISR();
+    }
     if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
     {
         I2C_ISR();
-    }
-    else
-    {
-        //Unhandled Interrupt
     }
 }
 

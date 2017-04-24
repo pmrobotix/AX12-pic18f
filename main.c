@@ -50,9 +50,13 @@
                          Main application
  */
 void main(void) {
+    for (int adc = 0; adc < 10; adc++) {
+        adc_values[adc] = 0;
+    }
+
     // Initialize the device
     SYSTEM_Initialize();
-
+    LED1_SetHigh();
     // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts
     // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global and Peripheral Interrupts
     // Use the following macros to:
@@ -71,10 +75,10 @@ void main(void) {
 
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
-
+    LED2_SetHigh();
     // Enable the Peripheral Interrupts
     INTERRUPT_PeripheralInterruptEnable();
-
+    //  LED3_SetHigh();
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
 
@@ -84,9 +88,9 @@ void main(void) {
 
 
 
-    LED7_SetDigitalOutput();
-    LED6_SetDigitalOutput();
     int delay = 10;
+    LED3_SetHigh();
+    LED4_SetHigh();
     for (int i = 0; i < 2; i++) {
         // Add your application code
         LED1_SetHigh();
@@ -126,35 +130,21 @@ void main(void) {
 
     SET_TX_SetLow();
     while (1) {
-        delay_ms(500);
         LED10_SetHigh();
-        delay_ms(500);
-  //  pingAX(2);
+        for (int i = 0; i < 50; i++) {
+            // read all ADC
+            for (int adc = 0; adc < 10; adc++) {
+                adc_values[adc] = ADC_GetConversion(adc);
+            }
+            delay_ms(10);
+        }
+
         LED10_SetLow();
-      //  delay_ms(1);
+        delay_ms(500);
     }
 
 
-    while (1) {
-        LED10_SetHigh();
-        delay_ms(100);
-        pingAX(2);
-        LED10_SetLow();
-        delay_ms(100);
 
-        LED9_SetHigh();
-        delay_ms(100);
-        pingAX(2);
-        LED9_SetLow();
-        delay_ms(100);
-
-        LED8_SetHigh();
-        delay_ms(100);
-        pingAX(2);
-        LED8_SetLow();
-        delay_ms(100);
-
-    }
 }
 /**
  End of File

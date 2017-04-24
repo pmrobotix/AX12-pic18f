@@ -91,34 +91,6 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 61 "ax.h"
-void delay_ms(int ms);
-int getAddressSize(int address);
-
-
-
-void setLedOn(int led);
-
-
-
-void setLedOff(int led);
-
-
-
-
-int getADC(int adc);
-
-
-int pingAX(int id);
-
-int readAXData(int id, int address);
-int writeAXData(int id, int address, int data);
-
-
-void handleByteReceived(uint8_t data);
-
-uint8_t getByteToSend();
-
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -21081,17 +21053,8 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 380 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
-
-# 109 "mcc_generated_files/interrupt_manager.h"
-void INTERRUPT_Initialize (void);
-
-# 121
-void interrupt INTERRUPT_InterruptManager (void);
 
 # 71 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
@@ -21129,6 +21092,48 @@ adc_result_t ADC_GetConversionResult(void);
 
 # 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+
+# 276
+void ADC_ISR(void);
+
+# 63 "ax.h"
+volatile adc_result_t adc_values[10];
+
+void delay_ms(int ms);
+int getAddressSize(int address);
+
+
+
+void setLedOn(int led);
+
+
+
+void setLedOff(int led);
+
+
+
+
+int getADC(int adc);
+
+
+int pingAX(int id);
+
+int readAXData(int id, int address);
+int writeAXData(int id, int address, int data);
+
+
+void handleByteReceived(uint8_t data);
+
+uint8_t getByteToSend();
+
+# 380 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+
+# 109 "mcc_generated_files/interrupt_manager.h"
+void INTERRUPT_Initialize (void);
+
+# 121
+void interrupt INTERRUPT_InterruptManager (void);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
 typedef unsigned size_t;
@@ -21172,29 +21177,6 @@ uint8_t EUSART1_Read(void);
 # 134
 void EUSART1_Write(uint8_t txData);
 
-# 78 "mcc_generated_files/eccp1.h"
-typedef union CCPR1Reg_tag
-{
-struct
-{
-uint8_t ccpr1l;
-uint8_t ccpr1h;
-};
-struct
-{
-uint16_t ccpr1_16Bit;
-};
-} CCP_PERIOD_REG_T ;
-
-# 121
-void ECCP1_Initialize(void);
-
-# 148
-bool ECCP1_IsCapturedDataReady(void);
-
-# 178
-uint16_t ECCP1_CaptureRead(void);
-
 # 99 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
 
@@ -21222,20 +21204,20 @@ uint8_t TMR1_CheckGateValueStatus(void);
 # 386
 bool TMR1_HasOverflowOccured(void);
 
-# 73 "mcc_generated_files/mcc.h"
+# 72 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 86
+# 85
 void OSCILLATOR_Initialize(void);
 
-# 11 "ax.c"
+# 13 "ax.c"
 void delay_ms(int ms) {
 if (ms < 10) {
-_delay((unsigned long)((10)*(16000000/4000.0)));
+_delay((unsigned long)((10)*(64000000/4000.0)));
 } else {
 int n = ms / 10;
 for (int i = 0; i < n; i++) {
-_delay((unsigned long)((10)*(16000000/4000.0)));
+_delay((unsigned long)((10)*(64000000/4000.0)));
 }
 }
 }
@@ -21332,12 +21314,12 @@ break;
 
 }
 
-# 119
+# 121
 int getADC(int adc) {
 return ADC_GetConversion(adc);
 }
 
-# 129
+# 131
 uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
 uint8_t checksum = 0;
 
@@ -21351,10 +21333,10 @@ for (int i = 0; i < packetSize; i++) {
 EUSART1_Write(buffer[i]);
 }
 EUSART1_Write(checksum);
-_delay((unsigned long)((100)*(16000000/4000000.0)));
+_delay((unsigned long)((100)*(64000000/4000000.0)));
 do { LATD4 = 0; } while(0);
 
-# 159
+# 161
 int stop = 6 + parametersToRead;
 
 for (int i = 0; i < stop; i++) {
@@ -21371,7 +21353,7 @@ result[i] = EUSART1_Read();
 }
 
 
-_delay((unsigned long)((200)*(16000000/4000000.0)));
+_delay((unsigned long)((200)*(64000000/4000000.0)));
 return result[4];
 
 }
@@ -21446,15 +21428,18 @@ return error;
 }
 
 
-int readIndex = 0;
-uint8_t currentCommand = -1;
-uint8_t parameter1 = 0;
-uint8_t parameter2 = 0;
-uint8_t parameter3 = 0;
+volatile int readIndex = 0;
+volatile uint8_t currentCommand = -1;
+volatile uint8_t parameter1 = 0;
+volatile uint8_t parameter2 = 0;
+volatile uint8_t parameter3 = 0;
+volatile uint8_t parameter4 = 0;
+volatile uint8_t parameter5 = 0;
+volatile uint8_t parameter6 = 0;
 
-int nbBytesToSend = 0;
-int bytesSent = 0;
-uint8_t dataToSend[32];
+volatile int nbBytesToSend = 0;
+volatile int bytesSent = 0;
+volatile uint8_t dataToSend[32];
 
 void handleByteReceived(uint8_t data) {
 if (readIndex == 0) {
@@ -21481,11 +21466,34 @@ readIndex++;
 } else if (readIndex == 3) {
 parameter3 = data;
 readIndex++;
+} else if (readIndex == 4) {
+parameter4 = data;
+readIndex++;
+} else if (readIndex == 5) {
+parameter5 = data;
+readIndex++;
+} else if (readIndex == 6) {
+parameter6 = data;
+readIndex++;
+} else {
+readIndex++;
 }
 
 }
 
 
+
+void clearState() {
+bytesSent = 0;
+currentCommand = -1;
+parameter1 = 0;
+parameter2 = 0;
+parameter3 = 0;
+parameter4 = 0;
+parameter5 = 0;
+parameter6 = 0;
+readIndex = 0;
+}
 
 uint8_t getByteToSend() {
 
@@ -21497,9 +21505,7 @@ nbBytesToSend = 2;
 dataToSend[0] = error;
 dataToSend[1] = 0;
 
-bytesSent = 0;
-currentCommand = -1;
-readIndex = 0;
+clearState();
 } else if (currentCommand == 21) {
 int value = readAXData(parameter1, parameter2);
 
@@ -21511,9 +21517,7 @@ dataToSend[1] = 0;
 dataToSend[2] = xhigh;
 dataToSend[3] = 0;
 
-bytesSent = 0;
-currentCommand = -1;
-readIndex = 0;
+clearState();
 } else if (currentCommand == 22) {
 int error = writeAXData(parameter1, parameter2, parameter3);
 
@@ -21521,27 +21525,26 @@ nbBytesToSend = 2;
 dataToSend[0] = error;
 dataToSend[1] = 0;
 
-bytesSent = 0;
-currentCommand = -1;
-readIndex = 0;
+clearState();
 } else if (currentCommand == 12) {
-int value = getADC(parameter1);
+int value = adc_values[parameter1];
 
-nbBytesToSend = 4;
+nbBytesToSend = 6;
 uint8_t xlow = value & 0xff;
 uint8_t xhigh = (value >> 8);
 dataToSend[0] = xlow;
-dataToSend[1] = 0;
+dataToSend[1] = xhigh;
 dataToSend[2] = xhigh;
-dataToSend[3] = 0;
+dataToSend[3] = xhigh;
+dataToSend[4] = xhigh;
+dataToSend[5] = 5;
 
-bytesSent = 0;
-currentCommand = -1;
-readIndex = 0;
+
+clearState();
 }
 if (nbBytesToSend == 0) {
 
-readIndex = 0;
+clearState();
 return 0;
 }
 uint8_t d = dataToSend[bytesSent];
@@ -21549,7 +21552,7 @@ bytesSent++;
 
 if (bytesSent > nbBytesToSend) {
 
-readIndex = 0;
+clearState();
 return 111;
 }
 

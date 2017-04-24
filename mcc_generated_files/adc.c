@@ -62,11 +62,11 @@ void ADC_Initialize(void)
     // GO_nDONE stop; ADON enabled; CHS AN0; 
     ADCON0 = 0x01;
     
-    // TRIGSEL ECCP1; VNCFG AVSS; VCFG AVDD; CHSN AVss; 
-    ADCON1 = 0x00;
+    // TRIGSEL Timer1; VNCFG AVSS; VCFG AVDD; CHSN AVss; 
+    ADCON1 = 0x80;
     
-    // ADFM Left; ACQT 16_Tad; ADCS FOSC/32; 
-    ADCON2 = 0x32;
+    // ADFM Left; ACQT 4_Tad; ADCS FOSC/64; 
+    ADCON2 = 0x16;
     
     // ADRESH 0; 
     ADRESH = 0x00;
@@ -74,6 +74,8 @@ void ADC_Initialize(void)
     // ADRESL 0; 
     ADRESL = 0x00;
     
+    // Enabling ADC interrupt.
+    PIE1bits.ADIE = 1;
 }
 
 void ADC_StartConversion(adc_channel_t channel)
@@ -120,6 +122,12 @@ adc_result_t ADC_GetConversion(adc_channel_t channel)
     
     // Conversion finished, return the result
     return ((ADRESH << 8) + ADRESL);
+}
+
+void ADC_ISR(void)
+{
+    // Clear the ADC interrupt flag
+    PIR1bits.ADIF = 0;
 }
 /**
  End of File

@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.20
- */
+*/
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,7 +41,7 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
- */
+*/
 
 // Configuration bits: selected in the GUI
 
@@ -53,7 +53,7 @@
 
 // CONFIG1H
 #pragma config FOSC = HS2    // Oscillator->HS oscillator (High power, 16 MHz - 25 MHz)
-#pragma config PLLCFG = OFF    // PLL x4 Enable bit->Disabled
+#pragma config PLLCFG = ON    // PLL x4 Enable bit->Enabled
 #pragma config FCMEN = OFF    // Fail-Safe Clock Monitor->Disabled
 #pragma config IESO = OFF    // Internal External Oscillator Switch Over Mode->Disabled
 
@@ -108,20 +108,21 @@
 
 #include "mcc.h"
 
-void SYSTEM_Initialize(void) {
-
+void SYSTEM_Initialize(void)
+{
+    
     INTERRUPT_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     I2C_Initialize();
-    ECCP1_Initialize();
     ADC_Initialize();
     TMR1_Initialize();
     EUSART1_Initialize();
     EUSART2_Initialize();
 }
 
-void OSCILLATOR_Initialize(void) {
+void OSCILLATOR_Initialize(void)
+{
     // SCS FOSC; HFIOFS not stable; IDLEN disabled; IRCF 8MHz_HF; 
     OSCCON = 0x60;
     // SOSCGO disabled; MFIOSEL disabled; SOSCRUN disabled; MFIOFS not stable; 
@@ -131,9 +132,9 @@ void OSCILLATOR_Initialize(void) {
     // ROSEL disabled; ROON disabled; ROSSLP disabled; RODIV Fosc; 
     REFOCON = 0x00;
     // Set the secondary oscillator
-
+    
 }
 
 /**
  End of File
- */
+*/

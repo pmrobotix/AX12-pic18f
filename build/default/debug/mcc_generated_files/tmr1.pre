@@ -21092,16 +21092,16 @@ void TMR1_Initialize(void)
 
 
 
-T1CON = 0x00;
+T1CON = 0x30;
 
 
 T1GCON = 0x00;
 
 
-TMR1H = 0x00;
+TMR1H = 0xF8;
 
 
-TMR1L = 0x00;
+TMR1L = 0x30;
 
 
 timer1ReloadVal=(TMR1H << 8) | TMR1L;

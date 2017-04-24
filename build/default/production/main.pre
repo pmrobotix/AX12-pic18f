@@ -21102,6 +21102,9 @@ adc_result_t ADC_GetConversionResult(void);
 # 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
+# 276
+void ADC_ISR(void);
+
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -21144,29 +21147,6 @@ uint8_t EUSART1_Read(void);
 # 134
 void EUSART1_Write(uint8_t txData);
 
-# 78 "mcc_generated_files/eccp1.h"
-typedef union CCPR1Reg_tag
-{
-struct
-{
-uint8_t ccpr1l;
-uint8_t ccpr1h;
-};
-struct
-{
-uint16_t ccpr1_16Bit;
-};
-} CCP_PERIOD_REG_T ;
-
-# 121
-void ECCP1_Initialize(void);
-
-# 148
-bool ECCP1_IsCapturedDataReady(void);
-
-# 178
-uint16_t ECCP1_CaptureRead(void);
-
 # 99 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
 
@@ -21194,13 +21174,15 @@ uint8_t TMR1_CheckGateValueStatus(void);
 # 386
 bool TMR1_HasOverflowOccured(void);
 
-# 73 "mcc_generated_files/mcc.h"
+# 72 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 86
+# 85
 void OSCILLATOR_Initialize(void);
 
-# 61 "ax.h"
+# 63 "ax.h"
+volatile adc_result_t adc_values[10];
+
 void delay_ms(int ms);
 int getAddressSize(int address);
 
@@ -21230,19 +21212,24 @@ uint8_t getByteToSend();
 
 # 52 "main.c"
 void main(void) {
+for (int adc = 0; adc < 10; adc++) {
+adc_values[adc] = 0;
+}
+
 
 SYSTEM_Initialize();
+do { LATD3 = 1; } while(0);
 
-# 73
+# 77
 (INTCONbits.GIE = 1);
-
+do { LATD2 = 1; } while(0);
 
 (INTCONbits.PEIE = 1);
 
-# 87
-do { TRISC0 = 0; } while(0);
-do { TRISC1 = 0; } while(0);
+# 91
 int delay = 10;
+do { LATD1 = 1; } while(0);
+do { LATD0 = 1; } while(0);
 for (int i = 0; i < 2; i++) {
 
 do { LATD3 = 1; } while(0);
@@ -21282,34 +21269,20 @@ delay_ms(delay);
 
 do { LATD4 = 0; } while(0);
 while (1) {
-delay_ms(500);
 do { LATB3 = 1; } while(0);
-delay_ms(500);
+for (int i = 0; i < 50; i++) {
+
+for (int adc = 0; adc < 10; adc++) {
+adc_values[adc] = ADC_GetConversion(adc);
+}
+delay_ms(10);
+}
 
 do { LATB3 = 0; } while(0);
-
+delay_ms(500);
 }
 
 
-while (1) {
-do { LATB3 = 1; } while(0);
-delay_ms(100);
-pingAX(2);
-do { LATB3 = 0; } while(0);
-delay_ms(100);
 
-do { LATB2 = 1; } while(0);
-delay_ms(100);
-pingAX(2);
-do { LATB2 = 0; } while(0);
-delay_ms(100);
-
-do { LATB0 = 1; } while(0);
-delay_ms(100);
-pingAX(2);
-do { LATB0 = 0; } while(0);
-delay_ms(100);
-
-}
 }
 

@@ -21102,6 +21102,9 @@ adc_result_t ADC_GetConversionResult(void);
 # 260
 adc_result_t ADC_GetConversion(adc_channel_t channel);
 
+# 276
+void ADC_ISR(void);
+
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -21144,29 +21147,6 @@ uint8_t EUSART1_Read(void);
 # 134
 void EUSART1_Write(uint8_t txData);
 
-# 78 "mcc_generated_files/eccp1.h"
-typedef union CCPR1Reg_tag
-{
-struct
-{
-uint8_t ccpr1l;
-uint8_t ccpr1h;
-};
-struct
-{
-uint16_t ccpr1_16Bit;
-};
-} CCP_PERIOD_REG_T ;
-
-# 121
-void ECCP1_Initialize(void);
-
-# 148
-bool ECCP1_IsCapturedDataReady(void);
-
-# 178
-uint16_t ECCP1_CaptureRead(void);
-
 # 99 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
 
@@ -21194,10 +21174,10 @@ uint8_t TMR1_CheckGateValueStatus(void);
 # 386
 bool TMR1_HasOverflowOccured(void);
 
-# 73 "mcc_generated_files/mcc.h"
+# 72 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 86
+# 85
 void OSCILLATOR_Initialize(void);
 
 # 51 "mcc_generated_files/interrupt_manager.c"
@@ -21209,6 +21189,9 @@ IPEN = 0;
 
 
 
+IPR1bits.ADIP = 0;
+
+
 IPR1bits.SSPIP = 0;
 
 }
@@ -21216,13 +21199,13 @@ IPR1bits.SSPIP = 0;
 void interrupt INTERRUPT_InterruptManager (void)
 {
 
+if(INTCONbits.PEIE == 1 && PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1)
+{
+ADC_ISR();
+}
 if(INTCONbits.PEIE == 1 && PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1)
 {
 I2C_ISR();
-}
-else
-{
-
 }
 }
 

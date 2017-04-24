@@ -1,6 +1,8 @@
 #include "ax.h"
 #include "mcc_generated_files/mcc.h"
 
+
+
 // PINGNo action. Used for obtaining a Status Packet (0 parameter)
 #define AX_CMD_PING   0x01
 // Reading values in the Control Table (2 parameters)
@@ -247,15 +249,18 @@ int writeAXData(int id, int address, int data) {
 }
 
 
-int readIndex = 0;
-uint8_t currentCommand = -1;
-uint8_t parameter1 = 0;
-uint8_t parameter2 = 0;
-uint8_t parameter3 = 0;
+volatile int readIndex = 0;
+volatile uint8_t currentCommand = -1;
+volatile uint8_t parameter1 = 0;
+volatile uint8_t parameter2 = 0;
+volatile uint8_t parameter3 = 0;
+volatile uint8_t parameter4 = 0;
+volatile uint8_t parameter5 = 0;
+volatile uint8_t parameter6 = 0;
 // callback I2C
-int nbBytesToSend = 0;
-int bytesSent = 0;
-uint8_t dataToSend[32];
+volatile int nbBytesToSend = 0;
+volatile int bytesSent = 0;
+volatile uint8_t dataToSend[32];
 
 void handleByteReceived(uint8_t data) {
     if (readIndex == 0) {
@@ -282,13 +287,36 @@ void handleByteReceived(uint8_t data) {
     } else if (readIndex == 3) {
         parameter3 = data;
         readIndex++;
+    } else if (readIndex == 4) {
+        parameter4 = data;
+        readIndex++;
+    } else if (readIndex == 5) {
+        parameter5 = data;
+        readIndex++;
+    } else if (readIndex == 6) {
+        parameter6 = data;
+        readIndex++;
+    } else {
+        readIndex++;
     }
 
 }
 // Le read côté master est bloquant
 // Un read (1byte) côté master, appel 2 fois getByteToSend(), et retourne la premiere valeur
 
-uint8_t getByteToSend() {
+void clearState() {
+    bytesSent = 0;
+    currentCommand = -1;
+    parameter1 = 0;
+    parameter2 = 0;
+    parameter3 = 0;
+    parameter4 = 0;
+    parameter5 = 0;
+    parameter6 = 0;
+    readIndex = 0;
+}
+
+uint8_t getByteToSend(uint8_t i2c_data_received) {
 
 
     if (currentCommand == CMD_PING_AX) {
@@ -298,9 +326,7 @@ uint8_t getByteToSend() {
         dataToSend[0] = error;
         dataToSend[1] = 0;
         //
-        bytesSent = 0;
-        currentCommand = -1;
-        readIndex = 0;
+        clearState();
     } else if (currentCommand == CMD_READ_AX) {
         int value = readAXData(parameter1, parameter2);
         //
@@ -312,9 +338,7 @@ uint8_t getByteToSend() {
         dataToSend[2] = xhigh;
         dataToSend[3] = 0;
         //
-        bytesSent = 0;
-        currentCommand = -1;
-        readIndex = 0;
+        clearState();
     } else if (currentCommand == CMD_WRITE_AX) {
         int error = writeAXData(parameter1, parameter2, parameter3);
         //
@@ -322,27 +346,26 @@ uint8_t getByteToSend() {
         dataToSend[0] = error;
         dataToSend[1] = 0;
         //
-        bytesSent = 0;
-        currentCommand = -1;
-        readIndex = 0;
+        clearState();
     } else if (currentCommand == CMD_GET_ADC) {
-        int value = getADC(parameter1);
+        int value =    adc_values[parameter1];
         //
-        nbBytesToSend = 4;
+        nbBytesToSend = 6;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
-        dataToSend[1] = 0;
+        dataToSend[1] = xhigh;
         dataToSend[2] = xhigh;
-        dataToSend[3] = 0;
+        dataToSend[3] = xhigh; // correspond au 2eme byte lu... humm...WTF
+        dataToSend[4] = xhigh; // celui correspond aussi 2eme byte lu... dans les premieres lectures
+        dataToSend[5] = 5;
+
         //
-        bytesSent = 0;
-        currentCommand = -1;
-        readIndex = 0;
+        clearState();
     }
     if (nbBytesToSend == 0) {
         // oups..
-        readIndex = 0;
+        clearState();
         return 0;
     }
     uint8_t d = dataToSend[bytesSent];
@@ -350,7 +373,7 @@ uint8_t getByteToSend() {
 
     if (bytesSent > nbBytesToSend) {
         // Too much read!!!!!!
-        readIndex = 0;
+        clearState();
         return 111;
     }
 

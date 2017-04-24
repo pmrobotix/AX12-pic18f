@@ -8,6 +8,7 @@
 #ifndef AX_H
 #define	AX_H
 #include <stdint.h>
+#include "mcc_generated_files/adc.h"
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -58,7 +59,10 @@ extern "C" {
 #define P_MOVING					46
 #define P_LOCK						47
 #define P_PUNCH						48
-void delay_ms(int ms);
+
+    volatile adc_result_t adc_values[10];
+
+    void delay_ms(int ms);
     int getAddressSize(int address);
 
     // Set the led on
@@ -73,18 +77,18 @@ void delay_ms(int ms);
     // @param led :  0 - 9
     // @returns value : 0 - 4095
     int getADC(int adc);
-    
-    
+
+
     int pingAX(int id);
-    
+
     int readAXData(int id, int address);
     int writeAXData(int id, int address, int data);
-    
+
     // callback I2C
-    void handleByteReceived(uint8_t data);
-    
-    uint8_t getByteToSend();
-    
+    void handleByteReceived(uint8_t i2c_data_received);
+
+    uint8_t getByteToSend(uint8_t i2c_data_received);
+
 #ifdef	__cplusplus
 }
 #endif

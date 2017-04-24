@@ -78,12 +78,12 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
  */
 void I2C_Initialize(void) {
     // initialize the hardware
-    // R_nW write_noTX; P stopbit_notdetected; S startbit_notdetected; BF RCinprocess_TXcomplete; SMP Standard Speed; UA dontupdate; CKE enabled; D_nA lastbyte_address; 
-    SSPSTAT = 0xC0;
-    // SSPEN enabled; WCOL no_collision; CKP disabled; SSPM 7 Bit Polling; SSPOV no_overflow; 
-    SSPCON1 = 0x26; //0x26;
-    // ACKEN disabled; GCEN disabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; ACKSTAT received; SEN disabled; 
-    SSPCON2 = 0x00;
+    // R_nW write_noTX; P stopbit_notdetected; S startbit_notdetected; BF RCinprocess_TXcomplete; SMP High Speed; UA dontupdate; CKE disabled; D_nA lastbyte_address; 
+    SSPSTAT = 0x00;
+    // SSPEN enabled; WCOL no_collision; CKP enabled; SSPM 7 Bit; SSPOV no_overflow; 
+    SSPCON1 = 0x3E;
+    // ACKEN disabled; GCEN disabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; ACKSTAT received; SEN enabled; 
+    SSPCON2 = 0x01;
     // 
     SSPADD = (I2C_SLAVE_MASK << 1); // adjust UI mask for R/nW bit            
     // SSPADD 8; 
@@ -97,150 +97,32 @@ void I2C_Initialize(void) {
 }
 
 void I2C_ISR(void) {
-    uint8_t i2c_data = 0x55;
+
 
 
     // NOTE: The slave driver will always acknowledge
     //       any address match.
-
+    if (SSPSTATbits.BF == 0) {
+        return;
+    }
     PIR1bits.SSPIF = 0; // clear the slave interrupt flag
-    i2c_data = SSPBUF; // read SSPBUF to clear BF
+    uint8_t i2c_data_received = SSPBUF; // read SSPBUF to clear BF
     if (1 == SSPSTATbits.R_nW) {
         if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
             // callback routine can perform any post-read processing
             I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
         } else {
-            // callback routine should write data into SSPBUF
-            I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
+            uint8_t i2c_data_tosend = getByteToSend(i2c_data_received);
+            // envoi data au master
+            SSPBUF = i2c_data_tosend;
         }
-    } else if (0 == SSPSTATbits.D_nA) {
-        // this is an I2C address
+    } else if (1 == SSPSTATbits.D_nA) {
+        // R_nW =0  D_nA=1
+        handleByteReceived(i2c_data_received);
 
-        // callback routine should prepare to receive data from the master
-        I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
-    } else {
-        I2C_slaveWriteData = i2c_data;
-
-        // callback routine should process I2C_slaveWriteData from the master
-        I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
     }
 
     SSPCON1bits.CKP = 1; // release SCL
 
 } // end I2C_ISR()
-
-/**
-
-    Example implementation of the callback
-
-    This slave driver emulates an EEPROM Device.
-    Sequential reads from the EEPROM will return data at the next
-    EEPROM address.
-
-    Random access reads can be performed by writing a single byte
-    EEPROM address, followed by 1 or more reads.
-
-    Random access writes can be performed by writing a single byte
-    EEPROM address, followed by 1 or more writes.
-
-    Every read or write will increment the internal EEPROM address.
-
-    When the end of the EEPROM is reached, the EEPROM address will
-    continue from the start of the EEPROM.
- */
-
-void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
-    //toto
-    static uint8_t EEPROM_Buffer[] = {
-        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-        0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-        0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
-        0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
-        0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
-        0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
-        0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
-        0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
-    };
-
-    static uint8_t eepromAddress = 0;
-    static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
-
-
-    switch (i2c_bus_state) {
-        case I2C_SLAVE_WRITE_REQUEST:
-            // the master will be sending the eeprom address next
-            slaveWriteType = SLAVE_DATA_ADDRESS;
-            break;
-
-
-        case I2C_SLAVE_WRITE_COMPLETED:
-
-            switch (slaveWriteType) {
-                case SLAVE_DATA_ADDRESS:
-                    eepromAddress = I2C_slaveWriteData;
-                    break;
-
-
-                case SLAVE_NORMAL_DATA:
-                default:
-                    // the master has written data to store in the eeprom
-                    EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
-                    if (sizeof (EEPROM_Buffer) <= eepromAddress) {
-                        eepromAddress = 0; // wrap to start of eeprom page
-                    }
-                    break;
-
-            } // end switch(slaveWriteType)
-
-            slaveWriteType = SLAVE_NORMAL_DATA;
-            break;
-
-        case I2C_SLAVE_READ_REQUEST:
-            delay_ms(500);
-            SSPBUF = EEPROM_Buffer[eepromAddress++];
-            if (sizeof (EEPROM_Buffer) <= eepromAddress) {
-                eepromAddress = 0; // wrap to start of eeprom page
-            }
-            break;
-
-        case I2C_SLAVE_READ_COMPLETED:
-        default:;
-
-    } // end switch(i2c_bus_state)
-
-}
-int c = 0;
-
-void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
-    uint8_t data;
-    switch (i2c_bus_state) {
-        case I2C_SLAVE_WRITE_REQUEST:
-            // the master will be sending the eeprom address next
-            //  slaveWriteType = SLAVE_DATA_ADDRESS;
-            break;
-
-
-        case I2C_SLAVE_WRITE_COMPLETED:
-            data = I2C_slaveWriteData;
-            // data contient ce que la master envoi dans son write
-            handleByteReceived(data);
-            //
-            break;
-
-        case I2C_SLAVE_READ_REQUEST:
-            // timer, si timer fini -> SSPBUF=-1
-            data = getByteToSend();
-            // envoi data au master
-            SSPBUF = data;
-            break;
-
-        case I2C_SLAVE_READ_COMPLETED:
-        default:;
-
-    } // end switch(i2c_bus_state)
-
-
-}
-
-
 

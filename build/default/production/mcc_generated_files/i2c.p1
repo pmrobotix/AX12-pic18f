@@ -29,8 +29,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2224 . . . ]
 "34312
 [v _PIE1bits `VS2224 ~T0 @X0 0 e@3997 ]
-"38308
-[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
 "38003
 [s S2436 :2 `uc 1 :1 `uc 1 ]
 [n S2436 . . R_NOT_W ]
@@ -84,6 +82,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2435 . . . . . . . . . . . . . . . . . ]
 "38085
 [v _SSPSTATbits `VS2435 ~T0 @X0 0 e@4039 ]
+"38308
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
 "32747
 [s S2132 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2132 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
@@ -101,11 +101,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2131 . . . . . ]
 "32770
 [v _PORTCbits `VS2131 ~T0 @X0 0 e@3970 ]
-"111 mcc_generated_files/i2c.c
+"113 mcc_generated_files/i2c.c
 [c E18217 0 1 2 3 .. ]
 [n E18217 . I2C_SLAVE_WRITE_REQUEST I2C_SLAVE_READ_REQUEST I2C_SLAVE_WRITE_COMPLETED I2C_SLAVE_READ_COMPLETED  ]
 "67
 [v _I2C_StatusCallback `(v ~T0 @X0 0 ef1`E18217 ]
+"88 mcc_generated_files/../ax.h
+[v _handleByteReceived `(v ~T0 @X0 0 ef1`uc ]
 "37934 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f46k80.h
 [s S2433 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2433 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -117,14 +119,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2432 . . . ]
 "37948
 [v _SSPCON1bits `VS2432 ~T0 @X0 0 e@4038 ]
-"166 mcc_generated_files/i2c.c
-[c E18250 0 1 .. ]
-[n E18250 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
-"61 mcc_generated_files/../ax.h
-[v _delay_ms `(v ~T0 @X0 0 ef1`i ]
-"84
-[v _handleByteReceived `(v ~T0 @X0 0 ef1`uc ]
-"86
+"162 mcc_generated_files/i2c.c
+[c E18279 0 1 .. ]
+[n E18279 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS  ]
+"90 mcc_generated_files/../ax.h
 [v _getByteToSend `(uc ~T0 @X0 0 ef ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
@@ -16879,16 +16877,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.h: 113: void I2C_Initialize(void);
 [; ;i2c.h: 133: void I2C_ISR ( void );
 [; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
-[; ;ax.h: 61: void delay_ms(int ms);
-[; ;ax.h: 62: int getAddressSize(int address);
-[; ;ax.h: 66: void setLedOn(int led);
-[; ;ax.h: 70: void setLedOff(int led);
-[; ;ax.h: 75: int getADC(int adc);
-[; ;ax.h: 78: int pingAX(int id);
-[; ;ax.h: 80: int readAXData(int id, int address);
-[; ;ax.h: 81: int writeAXData(int id, int address, int data);
-[; ;ax.h: 84: void handleByteReceived(uint8_t data);
-[; ;ax.h: 86: uint8_t getByteToSend();
+[; ;adc.h: 71: typedef uint16_t adc_result_t;
+[; ;adc.h: 85: typedef enum
+[; ;adc.h: 86: {
+[; ;adc.h: 87: channel_CTMU = 0x1C,
+[; ;adc.h: 88: channel_Temp_diode = 0x1D,
+[; ;adc.h: 89: channel_Vdd_core = 0x1E,
+[; ;adc.h: 90: channel_1_024V_bandgap = 0x1F,
+[; ;adc.h: 91: channel_AN6 = 0x06,
+[; ;adc.h: 92: channel_AN5 = 0x05,
+[; ;adc.h: 93: channel_AN0 = 0x00,
+[; ;adc.h: 94: channel_AN4 = 0x04,
+[; ;adc.h: 95: channel_AN3 = 0x03,
+[; ;adc.h: 96: channel_AN2 = 0x02,
+[; ;adc.h: 97: channel_AN1 = 0x01,
+[; ;adc.h: 98: channel_AN9 = 0x09,
+[; ;adc.h: 99: channel_AN8 = 0x08,
+[; ;adc.h: 100: channel_AN7 = 0x07
+[; ;adc.h: 101: } adc_channel_t;
+[; ;adc.h: 136: void ADC_Initialize(void);
+[; ;adc.h: 165: void ADC_StartConversion(adc_channel_t channel);
+[; ;adc.h: 197: bool ADC_IsConversionDone();
+[; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 276: void ADC_ISR(void);
+"63 mcc_generated_files/../ax.h
+[v _adc_values `Vui ~T0 @X0 -> 10 `i e ]
+[; ;ax.h: 63: volatile adc_result_t adc_values[10];
+[; ;ax.h: 65: void delay_ms(int ms);
+[; ;ax.h: 66: int getAddressSize(int address);
+[; ;ax.h: 70: void setLedOn(int led);
+[; ;ax.h: 74: void setLedOff(int led);
+[; ;ax.h: 79: int getADC(int adc);
+[; ;ax.h: 82: int pingAX(int id);
+[; ;ax.h: 84: int readAXData(int id, int address);
+[; ;ax.h: 85: int writeAXData(int id, int address, int data);
+[; ;ax.h: 88: void handleByteReceived(uint8_t data);
+[; ;ax.h: 90: uint8_t getByteToSend();
 [; ;i2c.c: 53: typedef enum {
 [; ;i2c.c: 54: SLAVE_NORMAL_DATA,
 [; ;i2c.c: 55: SLAVE_DATA_ADDRESS,
@@ -16906,15 +16931,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 79: void I2C_Initialize(void) {
 [e :U _I2C_Initialize ]
 [f ]
-[; ;i2c.c: 82: SSPSTAT = 0xC0;
+[; ;i2c.c: 82: SSPSTAT = 0x00;
 "82
-[e = _SSPSTAT -> -> 192 `i `uc ]
-[; ;i2c.c: 84: SSPCON1 = 0x26;
+[e = _SSPSTAT -> -> 0 `i `uc ]
+[; ;i2c.c: 84: SSPCON1 = 0x3E;
 "84
-[e = _SSPCON1 -> -> 38 `i `uc ]
-[; ;i2c.c: 86: SSPCON2 = 0x00;
+[e = _SSPCON1 -> -> 62 `i `uc ]
+[; ;i2c.c: 86: SSPCON2 = 0x01;
 "86
-[e = _SSPCON2 -> -> 0 `i `uc ]
+[e = _SSPCON2 -> -> 1 `i `uc ]
 [; ;i2c.c: 88: SSPADD = (0x7F << 1);
 "88
 [e = _SSPADD -> << -> 127 `i -> 1 `i `uc ]
@@ -16937,86 +16962,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 99: void I2C_ISR(void) {
 [e :U _I2C_ISR ]
 [f ]
-"100
-[v _i2c_data `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 100: uint8_t i2c_data = 0x55;
-[e = _i2c_data -> -> 85 `i `uc ]
-[; ;i2c.c: 106: PIR1bits.SSPIF = 0;
+[; ;i2c.c: 105: if (SSPSTATbits.BF == 0) {
+"105
+[e $ ! == -> . . _SSPSTATbits 2 0 `i -> 0 `i 2607  ]
+{
+[; ;i2c.c: 106: return;
 "106
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;i2c.c: 107: i2c_data = SSPBUF;
+[e $UE 2606  ]
 "107
-[e = _i2c_data _SSPBUF ]
-[; ;i2c.c: 108: if (1 == SSPSTATbits.R_nW) {
-"108
-[e $ ! == -> 1 `i -> . . _SSPSTATbits 2 2 `i 2607  ]
-{
-[; ;i2c.c: 109: if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
-"109
-[e $ ! && == -> 1 `i -> . . _SSPSTATbits 2 5 `i == -> 1 `i -> . . _PORTCbits 0 4 `i 2608  ]
-{
-[; ;i2c.c: 111: I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
-"111
-[e ( _I2C_StatusCallback (1 . `E18217 3 ]
-"112
 }
-[; ;i2c.c: 112: } else {
-[e $U 2609  ]
-[e :U 2608 ]
-{
-[; ;i2c.c: 114: I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
-"114
-[e ( _I2C_StatusCallback (1 . `E18217 1 ]
-"115
-}
-[e :U 2609 ]
-"116
-}
-[; ;i2c.c: 115: }
-[; ;i2c.c: 116: } else if (0 == SSPSTATbits.D_nA) {
-[e $U 2610  ]
 [e :U 2607 ]
-[e $ ! == -> 0 `i -> . . _SSPSTATbits 2 5 `i 2611  ]
+[; ;i2c.c: 107: }
+[; ;i2c.c: 108: PIR1bits.SSPIF = 0;
+"108
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"109
+[v _i2c_data `uc ~T0 @X0 1 a ]
+[; ;i2c.c: 109: uint8_t i2c_data = SSPBUF;
+[e = _i2c_data _SSPBUF ]
+[; ;i2c.c: 110: if (1 == SSPSTATbits.R_nW) {
+"110
+[e $ ! == -> 1 `i -> . . _SSPSTATbits 2 2 `i 2608  ]
 {
-[; ;i2c.c: 120: I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
-"120
-[e ( _I2C_StatusCallback (1 . `E18217 0 ]
-"121
+[; ;i2c.c: 111: if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
+"111
+[e $ ! && == -> 1 `i -> . . _SSPSTATbits 2 5 `i == -> 1 `i -> . . _PORTCbits 0 4 `i 2609  ]
+{
+[; ;i2c.c: 113: I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
+"113
+[e ( _I2C_StatusCallback (1 . `E18217 3 ]
+"114
 }
-[; ;i2c.c: 121: } else {
-[e $U 2612  ]
-[e :U 2611 ]
+[; ;i2c.c: 114: } else {
+[e $U 2610  ]
+[e :U 2609 ]
 {
-[; ;i2c.c: 122: I2C_slaveWriteData = i2c_data;
+[; ;i2c.c: 116: I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
+"116
+[e ( _I2C_StatusCallback (1 . `E18217 1 ]
+"117
+}
+[e :U 2610 ]
+"118
+}
+[; ;i2c.c: 117: }
+[; ;i2c.c: 118: } else if (1 == SSPSTATbits.D_nA) {
+[e $U 2611  ]
+[e :U 2608 ]
+[e $ ! == -> 1 `i -> . . _SSPSTATbits 2 5 `i 2612  ]
+{
+[; ;i2c.c: 120: handleByteReceived(i2c_data);
+"120
+[e ( _handleByteReceived (1 _i2c_data ]
 "122
-[e = _I2C_slaveWriteData _i2c_data ]
-[; ;i2c.c: 125: I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
-"125
-[e ( _I2C_StatusCallback (1 . `E18217 2 ]
-"126
 }
 [e :U 2612 ]
-[e :U 2610 ]
-[; ;i2c.c: 126: }
-[; ;i2c.c: 128: SSPCON1bits.CKP = 1;
-"128
+"124
+[e :U 2611 ]
+[; ;i2c.c: 122: }
+[; ;i2c.c: 124: SSPCON1bits.CKP = 1;
 [e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
-[; ;i2c.c: 130: }
-"130
+[; ;i2c.c: 126: }
+"126
 [e :UE 2606 ]
 }
-"152
+"148
 [v _I2C_StatusCallbackOld `(v ~T0 @X0 1 ef1`E18217 ]
 {
-[; ;i2c.c: 152: void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
+[; ;i2c.c: 148: void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 [e :U _I2C_StatusCallbackOld ]
 [v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
 [f ]
-"154
-[v F18261 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
-[i F18261
+"150
+[v F18290 `uc ~T0 @X0 -> 0 `x s EEPROM_Buffer ]
+[i F18290
 :U ..
-"155
+"151
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 2 `i `uc
@@ -17033,7 +17054,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 13 `i `uc
 -> -> 14 `i `uc
 -> -> 15 `i `uc
-"156
+"152
 -> -> 16 `i `uc
 -> -> 17 `i `uc
 -> -> 18 `i `uc
@@ -17050,7 +17071,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 29 `i `uc
 -> -> 30 `i `uc
 -> -> 31 `i `uc
-"157
+"153
 -> -> 32 `i `uc
 -> -> 33 `i `uc
 -> -> 34 `i `uc
@@ -17067,7 +17088,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 45 `i `uc
 -> -> 46 `i `uc
 -> -> 47 `i `uc
-"158
+"154
 -> -> 48 `i `uc
 -> -> 49 `i `uc
 -> -> 50 `i `uc
@@ -17084,7 +17105,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 61 `i `uc
 -> -> 62 `i `uc
 -> -> 63 `i `uc
-"159
+"155
 -> -> 64 `i `uc
 -> -> 65 `i `uc
 -> -> 66 `i `uc
@@ -17101,7 +17122,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 77 `i `uc
 -> -> 78 `i `uc
 -> -> 79 `i `uc
-"160
+"156
 -> -> 80 `i `uc
 -> -> 81 `i `uc
 -> -> 82 `i `uc
@@ -17118,7 +17139,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 93 `i `uc
 -> -> 94 `i `uc
 -> -> 95 `i `uc
-"161
+"157
 -> -> 96 `i `uc
 -> -> 97 `i `uc
 -> -> 98 `i `uc
@@ -17135,7 +17156,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 109 `i `uc
 -> -> 110 `i `uc
 -> -> 111 `i `uc
-"162
+"158
 -> -> 112 `i `uc
 -> -> 113 `i `uc
 -> -> 114 `i `uc
@@ -17154,213 +17175,224 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 127 `i `uc
 ..
 ]
-"165
-[v F18262 `uc ~T0 @X0 1 s eepromAddress ]
-[i F18262
+"161
+[v F18291 `uc ~T0 @X0 1 s eepromAddress ]
+[i F18291
 -> -> 0 `i `uc
 ]
-"166
-[v F18263 `uc ~T0 @X0 1 s slaveWriteType ]
-[i F18263
--> . `E18250 0 `uc
+"162
+[v F18292 `uc ~T0 @X0 1 s slaveWriteType ]
+[i F18292
+-> . `E18279 0 `uc
 ]
-[; ;i2c.c: 154: static uint8_t EEPROM_Buffer[] = {
-[; ;i2c.c: 155: 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-[; ;i2c.c: 156: 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-[; ;i2c.c: 157: 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
-[; ;i2c.c: 158: 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
-[; ;i2c.c: 159: 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
-[; ;i2c.c: 160: 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
-[; ;i2c.c: 161: 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
-[; ;i2c.c: 162: 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
-[; ;i2c.c: 163: };
-[; ;i2c.c: 165: static uint8_t eepromAddress = 0;
-[; ;i2c.c: 166: static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
-[; ;i2c.c: 169: switch (i2c_bus_state) {
-"169
+[; ;i2c.c: 150: static uint8_t EEPROM_Buffer[] = {
+[; ;i2c.c: 151: 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+[; ;i2c.c: 152: 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+[; ;i2c.c: 153: 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
+[; ;i2c.c: 154: 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
+[; ;i2c.c: 155: 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
+[; ;i2c.c: 156: 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
+[; ;i2c.c: 157: 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
+[; ;i2c.c: 158: 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
+[; ;i2c.c: 159: };
+[; ;i2c.c: 161: static uint8_t eepromAddress = 0;
+[; ;i2c.c: 162: static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
+[; ;i2c.c: 165: switch (i2c_bus_state) {
+"165
 [e $U 2615  ]
 {
-[; ;i2c.c: 170: case I2C_SLAVE_WRITE_REQUEST:
-"170
+[; ;i2c.c: 166: case I2C_SLAVE_WRITE_REQUEST:
+"166
 [e :U 2616 ]
-[; ;i2c.c: 172: slaveWriteType = SLAVE_DATA_ADDRESS;
-"172
-[e = F18263 -> . `E18250 1 `uc ]
-[; ;i2c.c: 173: break;
-"173
+[; ;i2c.c: 168: slaveWriteType = SLAVE_DATA_ADDRESS;
+"168
+[e = F18292 -> . `E18279 1 `uc ]
+[; ;i2c.c: 169: break;
+"169
 [e $U 2614  ]
-[; ;i2c.c: 176: case I2C_SLAVE_WRITE_COMPLETED:
-"176
+[; ;i2c.c: 172: case I2C_SLAVE_WRITE_COMPLETED:
+"172
 [e :U 2617 ]
-[; ;i2c.c: 178: switch (slaveWriteType) {
-"178
+[; ;i2c.c: 174: switch (slaveWriteType) {
+"174
 [e $U 2619  ]
 {
-[; ;i2c.c: 179: case SLAVE_DATA_ADDRESS:
-"179
+[; ;i2c.c: 175: case SLAVE_DATA_ADDRESS:
+"175
 [e :U 2620 ]
-[; ;i2c.c: 180: eepromAddress = I2C_slaveWriteData;
-"180
-[e = F18262 _I2C_slaveWriteData ]
-[; ;i2c.c: 181: break;
-"181
+[; ;i2c.c: 176: eepromAddress = I2C_slaveWriteData;
+"176
+[e = F18291 _I2C_slaveWriteData ]
+[; ;i2c.c: 177: break;
+"177
 [e $U 2618  ]
-[; ;i2c.c: 184: case SLAVE_NORMAL_DATA:
-"184
+[; ;i2c.c: 180: case SLAVE_NORMAL_DATA:
+"180
 [e :U 2621 ]
-[; ;i2c.c: 185: default:
-"185
+[; ;i2c.c: 181: default:
+"181
 [e :U 2622 ]
-[; ;i2c.c: 187: EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
-"187
-[e = *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux _I2C_slaveWriteData ]
-[; ;i2c.c: 188: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
-"188
-[e $ ! <= -> # F18261 `ui -> F18262 `ui 2623  ]
+[; ;i2c.c: 183: EEPROM_Buffer[eepromAddress++] = I2C_slaveWriteData;
+"183
+[e = *U + &U F18290 * -> ++ F18291 -> -> 1 `i `uc `ux -> -> # *U &U F18290 `ui `ux _I2C_slaveWriteData ]
+[; ;i2c.c: 184: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
+"184
+[e $ ! <= -> # F18290 `ui -> F18291 `ui 2623  ]
 {
-[; ;i2c.c: 189: eepromAddress = 0;
-"189
-[e = F18262 -> -> 0 `i `uc ]
-"190
+[; ;i2c.c: 185: eepromAddress = 0;
+"185
+[e = F18291 -> -> 0 `i `uc ]
+"186
 }
 [e :U 2623 ]
-[; ;i2c.c: 190: }
-[; ;i2c.c: 191: break;
-"191
+[; ;i2c.c: 186: }
+[; ;i2c.c: 187: break;
+"187
 [e $U 2618  ]
-"193
+"189
 }
-[; ;i2c.c: 193: }
+[; ;i2c.c: 189: }
 [e $U 2618  ]
-"178
+"174
 [e :U 2619 ]
-[e [\ F18263 , $ -> . `E18250 1 `uc 2620
- , $ -> . `E18250 0 `uc 2621
+[e [\ F18292 , $ -> . `E18279 1 `uc 2620
+ , $ -> . `E18279 0 `uc 2621
  2622 ]
-"193
+"189
 [e :U 2618 ]
-[; ;i2c.c: 195: slaveWriteType = SLAVE_NORMAL_DATA;
-"195
-[e = F18263 -> . `E18250 0 `uc ]
-[; ;i2c.c: 196: break;
-"196
+[; ;i2c.c: 191: slaveWriteType = SLAVE_NORMAL_DATA;
+"191
+[e = F18292 -> . `E18279 0 `uc ]
+[; ;i2c.c: 192: break;
+"192
 [e $U 2614  ]
-[; ;i2c.c: 198: case I2C_SLAVE_READ_REQUEST:
-"198
+[; ;i2c.c: 194: case I2C_SLAVE_READ_REQUEST:
+"194
 [e :U 2624 ]
-[; ;i2c.c: 199: delay_ms(500);
-"199
-[e ( _delay_ms (1 -> 500 `i ]
-[; ;i2c.c: 200: SSPBUF = EEPROM_Buffer[eepromAddress++];
-"200
-[e = _SSPBUF *U + &U F18261 * -> ++ F18262 -> -> 1 `i `uc `ux -> -> # *U &U F18261 `ui `ux ]
-[; ;i2c.c: 201: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
-"201
-[e $ ! <= -> # F18261 `ui -> F18262 `ui 2625  ]
+[; ;i2c.c: 195: SSPBUF = EEPROM_Buffer[eepromAddress++];
+"195
+[e = _SSPBUF *U + &U F18290 * -> ++ F18291 -> -> 1 `i `uc `ux -> -> # *U &U F18290 `ui `ux ]
+[; ;i2c.c: 196: if (sizeof (EEPROM_Buffer) <= eepromAddress) {
+"196
+[e $ ! <= -> # F18290 `ui -> F18291 `ui 2625  ]
 {
-[; ;i2c.c: 202: eepromAddress = 0;
-"202
-[e = F18262 -> -> 0 `i `uc ]
-"203
+[; ;i2c.c: 197: eepromAddress = 0;
+"197
+[e = F18291 -> -> 0 `i `uc ]
+"198
 }
 [e :U 2625 ]
-[; ;i2c.c: 203: }
-[; ;i2c.c: 204: break;
-"204
+[; ;i2c.c: 198: }
+[; ;i2c.c: 199: break;
+"199
 [e $U 2614  ]
-[; ;i2c.c: 206: case I2C_SLAVE_READ_COMPLETED:
-"206
+[; ;i2c.c: 201: case I2C_SLAVE_READ_COMPLETED:
+"201
 [e :U 2626 ]
-[; ;i2c.c: 207: default:;
-"207
+[; ;i2c.c: 202: default:;
+"202
 [e :U 2627 ]
-"209
+"204
 }
-[; ;i2c.c: 209: }
+[; ;i2c.c: 204: }
 [e $U 2614  ]
-"169
+"165
 [e :U 2615 ]
 [e [\ _i2c_bus_state , $ . `E18217 0 2616
  , $ . `E18217 2 2617
  , $ . `E18217 1 2624
  , $ . `E18217 3 2626
  2627 ]
-"209
+"204
 [e :U 2614 ]
-[; ;i2c.c: 211: }
-"211
+[; ;i2c.c: 206: }
+"206
 [e :UE 2613 ]
 }
-"212
+"207
 [v _c `i ~T0 @X0 1 e ]
 [i _c
 -> 0 `i
 ]
-[; ;i2c.c: 212: int c = 0;
-"214
+[; ;i2c.c: 207: int c = 0;
+"209
 [v _I2C_StatusCallback `(v ~T0 @X0 1 ef1`E18217 ]
 {
-[; ;i2c.c: 214: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
+[; ;i2c.c: 209: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 [e :U _I2C_StatusCallback ]
 [v _i2c_bus_state `E18217 ~T0 @X0 1 r1 ]
 [f ]
-"215
+"210
 [v _data `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 215: uint8_t data;
-[; ;i2c.c: 216: switch (i2c_bus_state) {
-"216
+[; ;i2c.c: 210: uint8_t data;
+[; ;i2c.c: 211: switch (i2c_bus_state) {
+"211
 [e $U 2630  ]
 {
-[; ;i2c.c: 217: case I2C_SLAVE_WRITE_REQUEST:
-"217
+[; ;i2c.c: 212: case I2C_SLAVE_WRITE_REQUEST:
+"212
 [e :U 2631 ]
-[; ;i2c.c: 220: break;
-"220
-[e $U 2629  ]
-[; ;i2c.c: 223: case I2C_SLAVE_WRITE_COMPLETED:
-"223
-[e :U 2632 ]
-[; ;i2c.c: 224: data = I2C_slaveWriteData;
-"224
-[e = _data _I2C_slaveWriteData ]
-[; ;i2c.c: 226: handleByteReceived(data);
-"226
-[e ( _handleByteReceived (1 _data ]
-[; ;i2c.c: 228: break;
-"228
-[e $U 2629  ]
-[; ;i2c.c: 230: case I2C_SLAVE_READ_REQUEST:
-"230
-[e :U 2633 ]
-[; ;i2c.c: 232: data = getByteToSend();
-"232
-[e = _data ( _getByteToSend ..  ]
-[; ;i2c.c: 234: SSPBUF = data;
-"234
-[e = _SSPBUF _data ]
-[; ;i2c.c: 235: break;
-"235
-[e $U 2629  ]
-[; ;i2c.c: 237: case I2C_SLAVE_READ_COMPLETED:
-"237
-[e :U 2634 ]
-[; ;i2c.c: 238: default:;
-"238
-[e :U 2635 ]
-"240
-}
-[; ;i2c.c: 240: }
-[e $U 2629  ]
+[; ;i2c.c: 215: c = 2;
+"215
+[e = _c -> 2 `i ]
+[; ;i2c.c: 216: break;
 "216
+[e $U 2629  ]
+[; ;i2c.c: 219: case I2C_SLAVE_WRITE_COMPLETED:
+"219
+[e :U 2632 ]
+[; ;i2c.c: 220: data = I2C_slaveWriteData;
+"220
+[e = _data _I2C_slaveWriteData ]
+[; ;i2c.c: 222: if (c == 2) {
+"222
+[e $ ! == _c -> 2 `i 2633  ]
+{
+[; ;i2c.c: 223: handleByteReceived(data);
+"223
+[e ( _handleByteReceived (1 _data ]
+[; ;i2c.c: 224: c = 0;
+"224
+[e = _c -> 0 `i ]
+"225
+}
+[e :U 2633 ]
+[; ;i2c.c: 225: }
+[; ;i2c.c: 227: break;
+"227
+[e $U 2629  ]
+[; ;i2c.c: 229: case I2C_SLAVE_READ_REQUEST:
+"229
+[e :U 2634 ]
+[; ;i2c.c: 231: data = getByteToSend();
+"231
+[e = _data ( _getByteToSend ..  ]
+[; ;i2c.c: 233: SSPBUF = data;
+"233
+[e = _SSPBUF _data ]
+[; ;i2c.c: 234: break;
+"234
+[e $U 2629  ]
+[; ;i2c.c: 236: case I2C_SLAVE_READ_COMPLETED:
+"236
+[e :U 2635 ]
+[; ;i2c.c: 237: default:;
+"237
+[e :U 2636 ]
+"239
+}
+[; ;i2c.c: 239: }
+[e $U 2629  ]
+"211
 [e :U 2630 ]
 [e [\ _i2c_bus_state , $ . `E18217 0 2631
  , $ . `E18217 2 2632
- , $ . `E18217 1 2633
- , $ . `E18217 3 2634
- 2635 ]
-"240
+ , $ . `E18217 1 2634
+ , $ . `E18217 3 2635
+ 2636 ]
+"239
 [e :U 2629 ]
-[; ;i2c.c: 243: }
-"243
+[; ;i2c.c: 242: }
+"242
 [e :UE 2628 ]
 }

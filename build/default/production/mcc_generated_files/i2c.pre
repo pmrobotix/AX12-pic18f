@@ -21080,7 +21080,49 @@ void I2C_ISR ( void );
 # 140
 extern volatile uint8_t I2C_slaveWriteData;
 
-# 61 "mcc_generated_files/../ax.h"
+# 71 "mcc_generated_files/../mcc_generated_files/adc.h"
+typedef uint16_t adc_result_t;
+
+# 85
+typedef enum
+{
+channel_CTMU = 0x1C,
+channel_Temp_diode = 0x1D,
+channel_Vdd_core = 0x1E,
+channel_1_024V_bandgap = 0x1F,
+channel_AN6 = 0x06,
+channel_AN5 = 0x05,
+channel_AN0 = 0x00,
+channel_AN4 = 0x04,
+channel_AN3 = 0x03,
+channel_AN2 = 0x02,
+channel_AN1 = 0x01,
+channel_AN9 = 0x09,
+channel_AN8 = 0x08,
+channel_AN7 = 0x07
+} adc_channel_t;
+
+# 136
+void ADC_Initialize(void);
+
+# 165
+void ADC_StartConversion(adc_channel_t channel);
+
+# 197
+bool ADC_IsConversionDone();
+
+# 230
+adc_result_t ADC_GetConversionResult(void);
+
+# 260
+adc_result_t ADC_GetConversion(adc_channel_t channel);
+
+# 276
+void ADC_ISR(void);
+
+# 63 "mcc_generated_files/../ax.h"
+volatile adc_result_t adc_values[10];
+
 void delay_ms(int ms);
 int getAddressSize(int address);
 
@@ -21124,11 +21166,11 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
 void I2C_Initialize(void) {
 
 
-SSPSTAT = 0xC0;
+SSPSTAT = 0x00;
 
-SSPCON1 = 0x26;
+SSPCON1 = 0x3E;
 
-SSPCON2 = 0x00;
+SSPCON2 = 0x01;
 
 SSPADD = (0x7F << 1);
 
@@ -21142,11 +21184,13 @@ PIE1bits.SSPIE = 1;
 }
 
 void I2C_ISR(void) {
-uint8_t i2c_data = 0x55;
 
-# 106
+# 105
+if (SSPSTATbits.BF == 0) {
+return;
+}
 PIR1bits.SSPIF = 0;
-i2c_data = SSPBUF;
+uint8_t i2c_data = SSPBUF;
 if (1 == SSPSTATbits.R_nW) {
 if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
 
@@ -21155,23 +21199,17 @@ I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
 
 I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
 }
-} else if (0 == SSPSTATbits.D_nA) {
+} else if (1 == SSPSTATbits.D_nA) {
 
+handleByteReceived(i2c_data);
 
-
-I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
-} else {
-I2C_slaveWriteData = i2c_data;
-
-
-I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
 }
 
 SSPCON1bits.CKP = 1;
 
 }
 
-# 152
+# 148
 void I2C_StatusCallbackOld(I2C_SLAVE_DRIVER_STATUS i2c_bus_state) {
 
 static uint8_t EEPROM_Buffer[] = {
@@ -21219,7 +21257,6 @@ slaveWriteType = SLAVE_NORMAL_DATA;
 break;
 
 case I2C_SLAVE_READ_REQUEST:
-delay_ms(500);
 SSPBUF = EEPROM_Buffer[eepromAddress++];
 if (sizeof (EEPROM_Buffer) <= eepromAddress) {
 eepromAddress = 0;
@@ -21240,13 +21277,17 @@ switch (i2c_bus_state) {
 case I2C_SLAVE_WRITE_REQUEST:
 
 
+c = 2;
 break;
 
 
 case I2C_SLAVE_WRITE_COMPLETED:
 data = I2C_slaveWriteData;
 
+if (c == 2) {
 handleByteReceived(data);
+c = 0;
+}
 
 break;
 

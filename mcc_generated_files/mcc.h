@@ -54,10 +54,9 @@
 #include "i2c.h"
 #include "eusart2.h"
 #include "eusart1.h"
-#include "eccp1.h"
 #include "tmr1.h"
 
-#define _XTAL_FREQ  16000000
+#define _XTAL_FREQ  64000000
 
 /**
  * @Param

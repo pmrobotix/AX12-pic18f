@@ -3,12 +3,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
 "380 mcc_generated_files/pin_manager.h
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"86 mcc_generated_files/mcc.h
+"85 mcc_generated_files/mcc.h
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
 "113 mcc_generated_files/i2c.h
 [v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"121 mcc_generated_files/eccp1.h
-[v _ECCP1_Initialize `(v ~T0 @X0 0 ef ]
 "136 mcc_generated_files/adc.h
 [v _ADC_Initialize `(v ~T0 @X0 0 ef ]
 "99 mcc_generated_files/tmr1.h
@@ -36,7 +34,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "55
 [p x FOSC=HS2 ]
 "56
-[p x PLLCFG=OFF ]
+[p x PLLCFG=ON ]
 "57
 [p x FCMEN=OFF ]
 "58
@@ -16866,6 +16864,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 197: bool ADC_IsConversionDone();
 [; ;adc.h: 230: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 260: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 276: void ADC_ISR(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c.h: 78: typedef enum
@@ -16884,21 +16883,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.h: 94: void EUSART1_Initialize(void);
 [; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
 [; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;eccp1.h: 78: typedef union CCPR1Reg_tag
-[; ;eccp1.h: 79: {
-[; ;eccp1.h: 80: struct
-[; ;eccp1.h: 81: {
-[; ;eccp1.h: 82: uint8_t ccpr1l;
-[; ;eccp1.h: 83: uint8_t ccpr1h;
-[; ;eccp1.h: 84: };
-[; ;eccp1.h: 85: struct
-[; ;eccp1.h: 86: {
-[; ;eccp1.h: 87: uint16_t ccpr1_16Bit;
-[; ;eccp1.h: 88: };
-[; ;eccp1.h: 89: } CCP_PERIOD_REG_T ;
-[; ;eccp1.h: 121: void ECCP1_Initialize(void);
-[; ;eccp1.h: 148: bool ECCP1_IsCapturedDataReady(void);
-[; ;eccp1.h: 178: uint16_t ECCP1_CaptureRead(void);
 [; ;tmr1.h: 99: void TMR1_Initialize(void);
 [; ;tmr1.h: 128: void TMR1_StartTimer(void);
 [; ;tmr1.h: 160: void TMR1_StopTimer(void);
@@ -16908,29 +16892,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
 [; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;mcc.h: 73: void SYSTEM_Initialize(void);
-[; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 72: void SYSTEM_Initialize(void);
+[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
 "111 mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"112
 {
-[; ;mcc.c: 111: void SYSTEM_Initialize(void) {
+[; ;mcc.c: 111: void SYSTEM_Initialize(void)
+[; ;mcc.c: 112: {
 [e :U _SYSTEM_Initialize ]
 [f ]
-[; ;mcc.c: 113: INTERRUPT_Initialize();
-"113
-[e ( _INTERRUPT_Initialize ..  ]
-[; ;mcc.c: 114: PIN_MANAGER_Initialize();
+[; ;mcc.c: 114: INTERRUPT_Initialize();
 "114
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 115: OSCILLATOR_Initialize();
+[e ( _INTERRUPT_Initialize ..  ]
+[; ;mcc.c: 115: PIN_MANAGER_Initialize();
 "115
-[e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 116: I2C_Initialize();
+[e ( _PIN_MANAGER_Initialize ..  ]
+[; ;mcc.c: 116: OSCILLATOR_Initialize();
 "116
-[e ( _I2C_Initialize ..  ]
-[; ;mcc.c: 117: ECCP1_Initialize();
+[e ( _OSCILLATOR_Initialize ..  ]
+[; ;mcc.c: 117: I2C_Initialize();
 "117
-[e ( _ECCP1_Initialize ..  ]
+[e ( _I2C_Initialize ..  ]
 [; ;mcc.c: 118: ADC_Initialize();
 "118
 [e ( _ADC_Initialize ..  ]
@@ -16945,27 +16928,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _EUSART2_Initialize ..  ]
 [; ;mcc.c: 122: }
 "122
-[e :UE 2608 ]
+[e :UE 2605 ]
 }
 "124
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"125
 {
-[; ;mcc.c: 124: void OSCILLATOR_Initialize(void) {
+[; ;mcc.c: 124: void OSCILLATOR_Initialize(void)
+[; ;mcc.c: 125: {
 [e :U _OSCILLATOR_Initialize ]
 [f ]
-[; ;mcc.c: 126: OSCCON = 0x60;
-"126
+[; ;mcc.c: 127: OSCCON = 0x60;
+"127
 [e = _OSCCON -> -> 96 `i `uc ]
-[; ;mcc.c: 128: OSCCON2 = 0x00;
-"128
+[; ;mcc.c: 129: OSCCON2 = 0x00;
+"129
 [e = _OSCCON2 -> -> 0 `i `uc ]
-[; ;mcc.c: 130: OSCTUNE = 0x00;
-"130
+[; ;mcc.c: 131: OSCTUNE = 0x00;
+"131
 [e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 132: REFOCON = 0x00;
-"132
+[; ;mcc.c: 133: REFOCON = 0x00;
+"133
 [e = _REFOCON -> -> 0 `i `uc ]
-[; ;mcc.c: 135: }
-"135
-[e :UE 2609 ]
+[; ;mcc.c: 136: }
+"136
+[e :UE 2606 ]
 }
