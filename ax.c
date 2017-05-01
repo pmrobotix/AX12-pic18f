@@ -263,7 +263,7 @@ volatile int bytesSent = 0;
 volatile uint8_t dataToSend[32];
 
 void handleByteReceived(uint8_t data) {
-    printf("handleByteReceived readIndex:%d -> %d\r\n", readIndex, data);
+    //  printf("handleByteReceived readIndex:%d -> %d\r\n", readIndex, data);
     if (readIndex == 0) {
         currentCommand = data;
         readIndex++;
@@ -318,7 +318,7 @@ void clearState() {
 }
 
 uint8_t getByteToSend(uint8_t i2c_data_received) {
-    printf("getByteToSend bytesSent:%d data_received:%d \r\n",bytesSent,i2c_data_received);
+    //  printf("getByteToSend bytesSent:%d data_received:%d \r\n",bytesSent,i2c_data_received);
 
     if (currentCommand == CMD_PING_AX) {
         int error = pingAX(parameter1);
@@ -329,15 +329,15 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         //
         clearState();
     } else if (currentCommand == CMD_READ_AX) {
+        //   printf("read AX %d %d\r\n",parameter1, parameter2);
         int value = readAXData(parameter1, parameter2);
         //
-        nbBytesToSend = 4;
+        nbBytesToSend = 2;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
-        dataToSend[1] = 0;
-        dataToSend[2] = xhigh;
-        dataToSend[3] = 0;
+        dataToSend[1] = xhigh;
+
         //
         clearState();
     } else if (currentCommand == CMD_WRITE_AX) {
@@ -349,18 +349,18 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         //
         clearState();
     } else if (currentCommand == CMD_GET_ADC) {
-       
+
         //
-         adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
-                printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
-         int value = adc_values[parameter1];
+        adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
+        //        printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
+        int value = adc_values[parameter1];
         //
         nbBytesToSend = 2;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
         dataToSend[1] = xhigh;
-        
+
 
         //
         clearState();

@@ -45,8 +45,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EUSART1_Write `(v ~T0 @X0 0 ef1`uc ]
 "114
 [v _EUSART1_Read `(uc ~T0 @X0 0 ef ]
-"195 C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -14673,9 +14671,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _handleByteReceived ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;ax.c: 266: printf("handleByteReceived readIndex:%d -> %d\r\n", readIndex, data);
-"266
-[e ( _printf , , (. :s 1C _readIndex -> _data `i ]
 [; ;ax.c: 267: if (readIndex == 0) {
 "267
 [e $ ! == _readIndex -> 0 `i 1683  ]
@@ -14880,9 +14875,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _getByteToSend ]
 [v _i2c_data_received `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;ax.c: 321: printf("getByteToSend bytesSent:%d data_received:%d \r\n",bytesSent,i2c_data_received);
-"321
-[e ( _printf , , (. :s 2C _bytesSent -> _i2c_data_received `i ]
 [; ;ax.c: 323: if (currentCommand == 20) {
 "323
 [e $ ! == -> _currentCommand `i -> 20 `i 1705  ]
@@ -14910,33 +14902,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 1705 ]
 [e $ ! == -> _currentCommand `i -> 21 `i 1707  ]
 {
-"332
+"333
 [v _value `i ~T0 @X0 1 a ]
-[; ;ax.c: 332: int value = readAXData(parameter1, parameter2);
+[; ;ax.c: 333: int value = readAXData(parameter1, parameter2);
 [e = _value ( _readAXData (2 , -> _parameter1 `i -> _parameter2 `i ]
-[; ;ax.c: 334: nbBytesToSend = 4;
-"334
-[e = _nbBytesToSend -> 4 `i ]
+[; ;ax.c: 335: nbBytesToSend = 2;
 "335
-[v _xlow `uc ~T0 @X0 1 a ]
-[; ;ax.c: 335: uint8_t xlow = value & 0xff;
-[e = _xlow -> & _value -> 255 `i `uc ]
+[e = _nbBytesToSend -> 2 `i ]
 "336
-[v _xhigh `uc ~T0 @X0 1 a ]
-[; ;ax.c: 336: uint8_t xhigh = (value >> 8);
-[e = _xhigh -> >> _value -> 8 `i `uc ]
-[; ;ax.c: 337: dataToSend[0] = xlow;
+[v _xlow `uc ~T0 @X0 1 a ]
+[; ;ax.c: 336: uint8_t xlow = value & 0xff;
+[e = _xlow -> & _value -> 255 `i `uc ]
 "337
-[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
-[; ;ax.c: 338: dataToSend[1] = 0;
+[v _xhigh `uc ~T0 @X0 1 a ]
+[; ;ax.c: 337: uint8_t xhigh = (value >> 8);
+[e = _xhigh -> >> _value -> 8 `i `uc ]
+[; ;ax.c: 338: dataToSend[0] = xlow;
 "338
-[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
-[; ;ax.c: 339: dataToSend[2] = xhigh;
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
+[; ;ax.c: 339: dataToSend[1] = xhigh;
 "339
-[e = *U + &U _dataToSend * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
-[; ;ax.c: 340: dataToSend[3] = 0;
-"340
-[e = *U + &U _dataToSend * -> -> -> 3 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
 [; ;ax.c: 342: clearState();
 "342
 [e ( _clearState ..  ]
@@ -14973,9 +14959,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ax.c: 354: adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
 "354
 [e = *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux / ( _ADC_GetConversion (1 -> _parameter1 `E15092 -> -> 16 `i `ui ]
-[; ;ax.c: 355: printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
-"355
-[e ( _printf , , (. :s 3C -> _parameter1 `i *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux ]
 "356
 [v _value `i ~T0 @X0 1 a ]
 [; ;ax.c: 356: int value = adc_values[parameter1];
@@ -15052,7 +15035,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 "384
 [e :UE 1704 ]
 }
-[p f _printf 8388752 ]
-[a 3C 65 68 67 32 37 100 32 58 32 37 108 100 13 10 0 ]
-[a 1C 104 97 110 100 108 101 66 121 116 101 82 101 99 101 105 118 101 100 32 114 101 97 100 73 110 100 101 120 58 37 100 32 45 62 32 37 100 13 10 0 ]
-[a 2C 103 101 116 66 121 116 101 84 111 83 101 110 100 32 98 121 116 101 115 83 101 110 116 58 37 100 32 100 97 116 97 95 114 101 99 101 105 118 101 100 58 37 100 32 13 10 0 ]
