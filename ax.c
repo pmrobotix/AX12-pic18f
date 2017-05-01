@@ -263,6 +263,7 @@ volatile int bytesSent = 0;
 volatile uint8_t dataToSend[32];
 
 void handleByteReceived(uint8_t data) {
+    printf("handleByteReceived readIndex:%d -> %d\r\n", readIndex, data);
     if (readIndex == 0) {
         currentCommand = data;
         readIndex++;
@@ -317,7 +318,7 @@ void clearState() {
 }
 
 uint8_t getByteToSend(uint8_t i2c_data_received) {
-
+    printf("getByteToSend bytesSent:%d data_received:%d \r\n",bytesSent,i2c_data_received);
 
     if (currentCommand == CMD_PING_AX) {
         int error = pingAX(parameter1);
@@ -348,17 +349,18 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         //
         clearState();
     } else if (currentCommand == CMD_GET_ADC) {
-        int value =    adc_values[parameter1];
+       
         //
-        nbBytesToSend = 6;
+         adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
+                printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
+         int value = adc_values[parameter1];
+        //
+        nbBytesToSend = 2;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
         dataToSend[1] = xhigh;
-        dataToSend[2] = xhigh;
-        dataToSend[3] = xhigh; // correspond au 2eme byte lu... humm...WTF
-        dataToSend[4] = xhigh; // celui correspond aussi 2eme byte lu... dans les premieres lectures
-        dataToSend[5] = 5;
+        
 
         //
         clearState();

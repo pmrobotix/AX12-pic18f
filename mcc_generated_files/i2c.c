@@ -46,7 +46,7 @@
 
 #include "i2c.h"
 #include "../ax.h"
-
+#include <stdio.h>
 #define I2C_SLAVE_ADDRESS 0x08 
 #define I2C_SLAVE_MASK    0x7F
 
@@ -95,8 +95,79 @@ void I2C_Initialize(void) {
     PIE1bits.SSPIE = 1;
 
 }
+unsigned char junk = 0;
+unsigned int index_i2c = 0;
+unsigned char first = 1;
 
 void I2C_ISR(void) {
+    if (SSPSTATbits.BF == 0 && SSPSTATbits.BF == 0) {
+
+        SSPIF = 0;
+        return;
+    }
+    // printf("SSPIF %d, SSPSTATbits.R_nW %d, SSPSTATbits.D_nA %d\r\n",SSPIF,SSPSTATbits.R_nW,SSPSTATbits.D_nA);
+    if (SSPIF) // check to see if SSP interrupt
+    {
+        if (SSPSTATbits.R_nW) // Master read (R_nW = 1)
+        {
+            if (!SSPSTATbits.D_nA) // Last byte was an address (D_nA = 0)
+            {
+                SSPBUF = getByteToSend(index_i2c);
+                index_i2c++;
+                SSPCON1bits.CKP = 1; // Release CLK
+            }
+            if (SSPSTATbits.D_nA) // Last byte was data (D_nA = 1)
+            {
+                SSPBUF = getByteToSend(index_i2c);
+                index_i2c++;
+                SSPCON1bits.CKP = 1; // Release CLK
+            }
+
+        }
+        if (!SSPSTATbits.R_nW) //  Master write (R_nW = 0)
+        {
+            if (!SSPSTATbits.D_nA) // Last byte was an address (D_nA = 0)
+            {
+                first = 1; //last byte was address, next will be data location
+                junk = SSPBUF; // read buffer to clear BF
+               // handleByteReceived(junk);
+                SSPCON1bits.CKP = 1; // Release CLK
+            }
+            if (SSPSTATbits.D_nA) // Last byte was data (D_nA = 1)
+            {
+                if (first) {
+                    index_i2c = SSPBUF; // load index with array location
+                    handleByteReceived(index_i2c);
+                    first = 0; // now clear this since we have 
+                }//location to read from/write to
+
+                else {
+                    //out of range of array
+                    handleByteReceived(SSPBUF); //load array with data
+
+                }
+                if (SSPCON1bits.WCOL) // Did a write collision occur?
+                {
+                    SSPCON1bits.WCOL = 0; //  clear WCOL
+                    junk = SSPBUF; // dummy read to clear BF bit
+                    handleByteReceived(junk);
+                }
+                SSPCON1bits.CKP = 1; // Release CLK
+            }
+        }
+    }
+    if (BCLIF) // Did a bus collision occur?
+    {
+        printf("collide\r\n");
+        junk = SSPBUF; // dummy read SSPBUF to clear BF bit
+        BCLIF = 0; // clear bus collision Int Flag bit
+        SSPCON1bits.CKP = 1; // Release CLK
+    }
+    SSPIF = 0; // clear SSPIF flag bit
+
+}
+
+void I2C_ISR_bad(void) {
 
 
 
@@ -110,7 +181,7 @@ void I2C_ISR(void) {
     if (1 == SSPSTATbits.R_nW) {
         if ((1 == SSPSTATbits.D_nA) && (1 == PORTCbits.RC4)) {
             // callback routine can perform any post-read processing
-            I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
+            //    I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
         } else {
             uint8_t i2c_data_tosend = getByteToSend(i2c_data_received);
             // envoi data au master

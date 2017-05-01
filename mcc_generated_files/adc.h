@@ -13,12 +13,12 @@
   @Description
     This header file provides APIs for driver for ADC.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -87,17 +87,7 @@ typedef enum
     channel_CTMU =  0x1C,
     channel_Temp_diode =  0x1D,
     channel_Vdd_core =  0x1E,
-    channel_1_024V_bandgap =  0x1F,
-    channel_AN6 =  0x06,
-    channel_AN5 =  0x05,
-    channel_AN0 =  0x00,
-    channel_AN4 =  0x04,
-    channel_AN3 =  0x03,
-    channel_AN2 =  0x02,
-    channel_AN1 =  0x01,
-    channel_AN9 =  0x09,
-    channel_AN8 =  0x08,
-    channel_AN7 =  0x07
+    channel_1_024V_bandgap =  0x1F
 } adc_channel_t;
 
 /**

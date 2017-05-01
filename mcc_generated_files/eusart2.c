@@ -13,12 +13,12 @@
   @Description
     This header file provides implementations for driver APIs for EUSART2.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -56,20 +56,20 @@ void EUSART2_Initialize(void)
 {
     // Set the EUSART2 module to the options selected in the user interface.
 
-    // ABDOVF no_overflow; TXCKP async_noninverted_sync_fallingedge; BRG16 16bit_generator; WUE disabled; ABDEN disabled; RXDTP not_inverted; 
-    BAUDCON2 = 0x08;
+    // ABDOVF no_overflow; TXCKP async_inverted_sync_risingedge; BRG16 16bit_generator; WUE disabled; ABDEN disabled; RXDTP not_inverted; 
+    BAUDCON2 = 0x18;
 
     // SPEN enabled; RX9 8-bit; CREN enabled; ADDEN disabled; SREN disabled; 
     RCSTA2 = 0x90;
 
-    // TRMT TSR_empty; TX9 8-bit; TX9D 0; SENDB sync_break_complete; TXEN enabled; SYNC asynchronous; BRGH hi_speed; CSRC slave_mode; 
-    TXSTA2 = 0x26;
+    // TRMT TSR_empty; TX9 8-bit; TX9D 0; SENDB sync_break_complete; TXEN enabled; SYNC asynchronous; BRGH hi_speed; CSRC master_mode; 
+    TXSTA2 = 0xA6;
 
-    // Baud Rate = 9600; 
-    SPBRG2 = 0x82;
+    // Baud Rate = 115200; 
+    SPBRG2 = 0x8A;
 
-    // Baud Rate = 9600; 
-    SPBRGH2 = 0x06;
+    // Baud Rate = 115200; 
+    SPBRGH2 = 0x00;
 
 }
 
@@ -77,7 +77,6 @@ void EUSART2_Initialize(void)
 uint8_t EUSART2_Read(void)
 {
 
-   RCSTA2bits.SREN = 1;
     while(!PIR3bits.RC2IF)
     {
     }
@@ -101,6 +100,16 @@ void EUSART2_Write(uint8_t txData)
     }
 
     TXREG2 = txData;    // Write the data byte to the USART.
+}
+
+char getch(void)
+{
+    return EUSART2_Read();
+}
+
+void putch(char txData)
+{
+    EUSART2_Write(txData);
 }
 /**
   End of File

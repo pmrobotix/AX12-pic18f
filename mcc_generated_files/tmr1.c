@@ -13,12 +13,12 @@
   @Description
     This source file provides APIs for TMR1.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -54,6 +54,7 @@
   Section: Global Variables Definitions
 */
 volatile uint16_t timer1ReloadVal;
+void (*TMR1_InterruptHandler)(void);
 
 /**
   Section: TMR1 APIs
@@ -66,7 +67,7 @@ void TMR1_Initialize(void)
     //T1CKPS 1:8; RD16 disabled; SOSCEN disabled; nT1SYNC synchronize; TMR1CS FOSC/4; TMR1ON off; 
     T1CON = 0x30;
 
-    //T1GSS T1G; TMR1GE disabled; T1GTM disabled; T1GPOL low; T1GGO done; T1GSPM disabled; T1GVAL disabled; 
+    //T1GSS T1G_pin; TMR1GE disabled; T1GTM disabled; T1GPOL low; T1GGO done; T1GSPM disabled; 
     T1GCON = 0x00;
 
     //TMR1H 248; 

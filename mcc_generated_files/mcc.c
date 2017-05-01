@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -110,7 +110,7 @@
 
 void SYSTEM_Initialize(void)
 {
-    
+
     INTERRUPT_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
@@ -125,15 +125,14 @@ void OSCILLATOR_Initialize(void)
 {
     // SCS FOSC; HFIOFS not stable; IDLEN disabled; IRCF 8MHz_HF; 
     OSCCON = 0x60;
-    // SOSCGO disabled; MFIOSEL disabled; SOSCRUN disabled; MFIOFS not stable; 
+    // SOSCGO disabled; MFIOSEL disabled; SOSCDRV Low Power; 
     OSCCON2 = 0x00;
     // INTSRC INTRC; PLLEN disabled; TUN 0; 
     OSCTUNE = 0x00;
-    // ROSEL disabled; ROON disabled; ROSSLP disabled; RODIV Fosc; 
+    // ROSEL System Clock(FOSC); ROON disabled; ROSSLP Disabled in Sleep mode; RODIV Fosc; 
     REFOCON = 0x00;
-    // Set the secondary oscillator
-    
 }
+
 
 /**
  End of File

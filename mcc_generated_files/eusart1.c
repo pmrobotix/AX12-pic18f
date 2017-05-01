@@ -13,12 +13,12 @@
   @Description
     This header file provides implementations for driver APIs for EUSART1.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -77,7 +77,6 @@ void EUSART1_Initialize(void)
 uint8_t EUSART1_Read(void)
 {
 
-   RCSTA1bits.SREN = 1;
     while(!PIR1bits.RC1IF)
     {
     }

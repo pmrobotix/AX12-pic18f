@@ -13,12 +13,12 @@
   Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 
     Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
@@ -45,24 +45,49 @@
 
 #include <xc.h>
 #include "pin_manager.h"
+#include "stdbool.h"
+
 
 void PIN_MANAGER_Initialize(void)
 {
-    LATB = 0x0;
-    LATA = 0x0;
-    LATE = 0x0;
-    LATD = 0x0;
-    LATC = 0x0;
-    WPUB = 0xFE;
-    TRISD = 0xA0;
-    TRISE = 0x7;
+    /**
+    LATx registers
+    */   
+    LATE = 0x00;    
+    LATD = 0x00;    
+    LATA = 0x00;    
+    LATB = 0x00;    
+    LATC = 0x00;    
+
+    /**
+    TRISx registers
+    */    
+    TRISE = 0x07;
+    TRISA = 0xEF;
     TRISB = 0xF2;
     TRISC = 0xB8;
-    TRISA = 0xEF;
+    TRISD = 0xA0;
+
+    /**
+    ANSELx registers
+    */   
+    ANCON0 = 0xFF;
+    ANCON1 = 0x7B;
+
+    /**
+    WPUx registers
+    */ 
+    WPUB = 0xFE;
 
     
 
 
+   
+    
+}       
+
+void PIN_MANAGER_IOC(void)
+{   
 
 }
 

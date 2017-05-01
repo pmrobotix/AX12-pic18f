@@ -1,5 +1,5 @@
 /**
-  @Generated Interrupt Manager File
+  Generated Interrupt Manager Source File
 
   @Company:
     Microchip Technology Inc.
@@ -15,12 +15,12 @@
     For individual peripheral handlers please see the peripheral driver for
     all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 3.16
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
-        MPLAB             :  MPLAB X 3.20
+        MPLAB             :  MPLAB X 3.40
 */
 
 /*
@@ -51,21 +51,12 @@
 void  INTERRUPT_Initialize (void)
 {
     // Disable Interrupt Priority Vectors (16CXXX Compatibility Mode)
-    IPEN = 0;
-
-    // Clear peripheral interrupt priority bits (default reset value)
-
-    // ADI
-    IPR1bits.ADIP = 0;
-
-    // SSPI
-    IPR1bits.SSPIP = 0;
-
+    RCONbits.IPEN = 0;
 }
 
 void interrupt INTERRUPT_InterruptManager (void)
 {
-   // interrupt handler
+    // interrupt handler
     if(INTCONbits.PEIE == 1 && PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1)
     {
         ADC_ISR();
@@ -75,7 +66,6 @@ void interrupt INTERRUPT_InterruptManager (void)
         I2C_ISR();
     }
 }
-
 /**
  End of File
 */
