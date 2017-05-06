@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC18F46K80
         Driver Version    :  1.02
     The generated drivers are tested against the following:
@@ -131,6 +131,8 @@ void OSCILLATOR_Initialize(void)
     OSCTUNE = 0x00;
     // ROSEL System Clock(FOSC); ROON disabled; ROSSLP Disabled in Sleep mode; RODIV Fosc; 
     REFOCON = 0x00;
+    // Set the secondary oscillator
+    
 }
 
 

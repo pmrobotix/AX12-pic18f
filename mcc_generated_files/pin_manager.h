@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC18F46K80
         Version           :  1.01
     The generated drivers are tested against the following:
@@ -277,57 +277,45 @@
 #define LED4_TRIS               TRISDbits.TRISD0
 #define LED4_LAT                LATDbits.LATD0
 #define LED4_PORT               PORTDbits.RD0
-#define LED4_ANS                ANCON1bits.ANSEL11
 #define LED4_SetHigh()            do { LATDbits.LATD0 = 1; } while(0)
 #define LED4_SetLow()             do { LATDbits.LATD0 = 0; } while(0)
 #define LED4_Toggle()             do { LATDbits.LATD0 = ~LATDbits.LATD0; } while(0)
 #define LED4_GetValue()           PORTDbits.RD0
 #define LED4_SetDigitalInput()    do { TRISDbits.TRISD0 = 1; } while(0)
 #define LED4_SetDigitalOutput()   do { TRISDbits.TRISD0 = 0; } while(0)
-#define LED4_SetAnalogMode()  do { ANCON1bits.ANSEL11 = 1; } while(0)
-#define LED4_SetDigitalMode() do { ANCON1bits.ANSEL11 = 0; } while(0)
 
 // get/set LED3 aliases
 #define LED3_TRIS               TRISDbits.TRISD1
 #define LED3_LAT                LATDbits.LATD1
 #define LED3_PORT               PORTDbits.RD1
-#define LED3_ANS                ANCON1bits.ANSEL12
 #define LED3_SetHigh()            do { LATDbits.LATD1 = 1; } while(0)
 #define LED3_SetLow()             do { LATDbits.LATD1 = 0; } while(0)
 #define LED3_Toggle()             do { LATDbits.LATD1 = ~LATDbits.LATD1; } while(0)
 #define LED3_GetValue()           PORTDbits.RD1
 #define LED3_SetDigitalInput()    do { TRISDbits.TRISD1 = 1; } while(0)
 #define LED3_SetDigitalOutput()   do { TRISDbits.TRISD1 = 0; } while(0)
-#define LED3_SetAnalogMode()  do { ANCON1bits.ANSEL12 = 1; } while(0)
-#define LED3_SetDigitalMode() do { ANCON1bits.ANSEL12 = 0; } while(0)
 
 // get/set LED2 aliases
 #define LED2_TRIS               TRISDbits.TRISD2
 #define LED2_LAT                LATDbits.LATD2
 #define LED2_PORT               PORTDbits.RD2
-#define LED2_ANS                ANCON1bits.ANSEL13
 #define LED2_SetHigh()            do { LATDbits.LATD2 = 1; } while(0)
 #define LED2_SetLow()             do { LATDbits.LATD2 = 0; } while(0)
 #define LED2_Toggle()             do { LATDbits.LATD2 = ~LATDbits.LATD2; } while(0)
 #define LED2_GetValue()           PORTDbits.RD2
 #define LED2_SetDigitalInput()    do { TRISDbits.TRISD2 = 1; } while(0)
 #define LED2_SetDigitalOutput()   do { TRISDbits.TRISD2 = 0; } while(0)
-#define LED2_SetAnalogMode()  do { ANCON1bits.ANSEL13 = 1; } while(0)
-#define LED2_SetDigitalMode() do { ANCON1bits.ANSEL13 = 0; } while(0)
 
 // get/set LED1 aliases
 #define LED1_TRIS               TRISDbits.TRISD3
 #define LED1_LAT                LATDbits.LATD3
 #define LED1_PORT               PORTDbits.RD3
-#define LED1_ANS                ANCON1bits.ANSEL14
 #define LED1_SetHigh()            do { LATDbits.LATD3 = 1; } while(0)
 #define LED1_SetLow()             do { LATDbits.LATD3 = 0; } while(0)
 #define LED1_Toggle()             do { LATDbits.LATD3 = ~LATDbits.LATD3; } while(0)
 #define LED1_GetValue()           PORTDbits.RD3
 #define LED1_SetDigitalInput()    do { TRISDbits.TRISD3 = 1; } while(0)
 #define LED1_SetDigitalOutput()   do { TRISDbits.TRISD3 = 0; } while(0)
-#define LED1_SetAnalogMode()  do { ANCON1bits.ANSEL14 = 1; } while(0)
-#define LED1_SetDigitalMode() do { ANCON1bits.ANSEL14 = 0; } while(0)
 
 // get/set SET_TX aliases
 #define SET_TX_TRIS               TRISDbits.TRISD4
@@ -388,15 +376,12 @@
 #define channel_AN7_TRIS               TRISEbits.TRISE2
 #define channel_AN7_LAT                LATEbits.LATE2
 #define channel_AN7_PORT               PORTEbits.RE2
-#define channel_AN7_ANS                ANCON0bits.ANSEL7
 #define channel_AN7_SetHigh()            do { LATEbits.LATE2 = 1; } while(0)
 #define channel_AN7_SetLow()             do { LATEbits.LATE2 = 0; } while(0)
 #define channel_AN7_Toggle()             do { LATEbits.LATE2 = ~LATEbits.LATE2; } while(0)
 #define channel_AN7_GetValue()           PORTEbits.RE2
 #define channel_AN7_SetDigitalInput()    do { TRISEbits.TRISE2 = 1; } while(0)
 #define channel_AN7_SetDigitalOutput()   do { TRISEbits.TRISE2 = 0; } while(0)
-#define channel_AN7_SetAnalogMode()  do { ANCON0bits.ANSEL7 = 1; } while(0)
-#define channel_AN7_SetDigitalMode() do { ANCON0bits.ANSEL7 = 0; } while(0)
 
 /**
    @Param

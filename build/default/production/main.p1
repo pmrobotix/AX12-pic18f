@@ -53,11 +53,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1158 . . . ]
 "30293
 [v _LATBbits `VS1158 ~T0 @X0 0 e@3978 ]
-"139 main.c
-[c E15101 28 29 30 31 .. ]
-[n E15101 . channel_CTMU channel_Temp_diode channel_Vdd_core channel_1_024V_bandgap  ]
+"140 main.c
+[c E15132 28 29 30 31 .. ]
+[n E15132 . channel_CTMU channel_Temp_diode channel_Vdd_core channel_1_024V_bandgap  ]
 "250 mcc_generated_files/adc.h
-[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E15101 ]
+[v _ADC_GetConversion `(ui ~T0 @X0 0 ef1`E15132 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13642,8 +13642,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 411: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 423: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 396: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 408: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -13675,6 +13675,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 122: void INTERRUPT_Initialize (void);
+[; ;tmr1.h: 99: void TMR1_Initialize(void);
+[; ;tmr1.h: 128: void TMR1_StartTimer(void);
+[; ;tmr1.h: 160: void TMR1_StopTimer(void);
+[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
+[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
+[; ;tmr1.h: 270: void TMR1_Reload(void);
+[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
+[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
+[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;i2c.h: 78: typedef enum
+[; ;i2c.h: 79: {
+[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
+[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
+[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
+[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
+[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
+[; ;i2c.h: 113: void I2C_Initialize(void);
+[; ;i2c.h: 133: void I2C_ISR ( void );
+[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 85: typedef enum
 [; ;adc.h: 86: {
@@ -13689,19 +13710,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 220: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 250: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;adc.h: 266: void ADC_ISR(void);
-[; ;tmr1.h: 99: void TMR1_Initialize(void);
-[; ;tmr1.h: 128: void TMR1_StartTimer(void);
-[; ;tmr1.h: 160: void TMR1_StopTimer(void);
-[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
-[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
-[; ;tmr1.h: 270: void TMR1_Reload(void);
-[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
-[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
-[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -13734,17 +13742,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart2.h: 95: void EUSART2_Initialize(void);
 [; ;eusart2.h: 115: uint8_t EUSART2_Read(void);
 [; ;eusart2.h: 135: void EUSART2_Write(uint8_t txData);
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
+[; ;eusart1.h: 94: void EUSART1_Initialize(void);
+[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
 [; ;mcc.h: 73: void SYSTEM_Initialize(void);
 [; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
 "63 ax.h
@@ -14043,12 +14043,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 1624 ]
-[; ;main.c: 134: if(0){
-"134
+[; ;main.c: 135: if(0){
+"135
 [e $ ! != -> 0 `i -> 0 `i 1626  ]
 {
-[; ;main.c: 135: for (int i = 0; i < 1; i++) {
-"135
+[; ;main.c: 136: for (int i = 0; i < 1; i++) {
+"136
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -14056,11 +14056,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1628  ]
 [e :U 1627 ]
 {
-[; ;main.c: 137: printf("Reading all ADC\r\n");
-"137
-[e ( _printf :s 3C ]
-[; ;main.c: 138: for (int adc = 0; adc < 10; adc++) {
+[; ;main.c: 138: printf("Reading all ADC\r\n");
 "138
+[e ( _printf :s 3C ]
+[; ;main.c: 139: for (int adc = 0; adc < 10; adc++) {
+"139
 {
 [v _adc `i ~T0 @X0 1 a ]
 [e = _adc -> 0 `i ]
@@ -14068,57 +14068,57 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1631  ]
 [e :U 1630 ]
 {
-[; ;main.c: 139: adc_values[adc] = ADC_GetConversion(adc) / 16;
-"139
-[e = *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux / ( _ADC_GetConversion (1 -> _adc `E15101 -> -> 16 `i `ui ]
-[; ;main.c: 140: printf("ADC %d : %ld\r\n", adc, adc_values[adc]);
+[; ;main.c: 140: adc_values[adc] = ADC_GetConversion(adc) / 16;
 "140
-[e ( _printf , , (. :s 4C _adc *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux ]
+[e = *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux / ( _ADC_GetConversion (1 -> _adc `E15132 -> -> 16 `i `ui ]
+[; ;main.c: 141: printf("ADC %d : %ld\r\n", adc, adc_values[adc]);
 "141
+[e ( _printf , , (. :s 4C _adc *U + &U _adc_values * -> -> _adc `ui `ux -> -> # *U &U _adc_values `ui `ux ]
+"142
 }
-"138
+"139
 [e ++ _adc -> 1 `i ]
 [e $ < _adc -> 10 `i 1630  ]
 [e :U 1631 ]
-"141
-}
-[; ;main.c: 141: }
-[; ;main.c: 142: delay_ms(50);
 "142
-[e ( _delay_ms (1 -> 50 `i ]
-"143
 }
-"135
+[; ;main.c: 142: }
+[; ;main.c: 143: delay_ms(50);
+"143
+[e ( _delay_ms (1 -> 50 `i ]
+"144
+}
+"136
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 1 `i 1627  ]
 [e :U 1628 ]
-"143
+"144
 }
 }
 [e :U 1626 ]
-[; ;main.c: 143: }}
-[; ;main.c: 144: delay_ms(500);
-"144
-[e ( _delay_ms (1 -> 500 `i ]
-[; ;main.c: 145: do { LATBbits.LATB3 = 0; } while(0);
+[; ;main.c: 144: }}
+[; ;main.c: 145: delay_ms(500);
 "145
+[e ( _delay_ms (1 -> 500 `i ]
+[; ;main.c: 146: do { LATBbits.LATB3 = 0; } while(0);
+"146
 [e :U 1635 ]
 {
 [e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 1634 ]
-[; ;main.c: 146: delay_ms(500);
-"146
-[e ( _delay_ms (1 -> 500 `i ]
+[; ;main.c: 147: delay_ms(500);
 "147
+[e ( _delay_ms (1 -> 500 `i ]
+"148
 }
 [e :U 1620 ]
 "132
 [e $U 1621  ]
 [e :U 1622 ]
-[; ;main.c: 147: }
-[; ;main.c: 151: }
-"151
+[; ;main.c: 148: }
+[; ;main.c: 152: }
+"152
 [e :UE 1538 ]
 }
 [p f _printf 8388752 ]

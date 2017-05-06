@@ -17993,7 +17993,6 @@ ADCON0bits.CHS = channel;
 ADCON0bits.ADON = 1;
 
 
-
 ADCON0bits.GO_nDONE = 1;
 }
 

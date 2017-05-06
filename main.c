@@ -131,6 +131,7 @@ void main(void) {
     SET_TX_SetLow();
     while (1) {
         LED10_SetHigh();
+
         if(false){
         for (int i = 0; i < 1; i++) {
             // read all ADC

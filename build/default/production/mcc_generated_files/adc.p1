@@ -13737,99 +13737,99 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.c: 87: ADCON0bits.ADON = 1;
 "87
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-[; ;adc.c: 91: ADCON0bits.GO_nDONE = 1;
-"91
+[; ;adc.c: 90: ADCON0bits.GO_nDONE = 1;
+"90
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-[; ;adc.c: 92: }
-"92
+[; ;adc.c: 91: }
+"91
 [e :UE 1538 ]
 }
-"94
+"93
 [v _ADC_IsConversionDone `(uc ~T0 @X0 1 ef ]
-"95
+"94
 {
-[; ;adc.c: 94: bool ADC_IsConversionDone()
-[; ;adc.c: 95: {
+[; ;adc.c: 93: bool ADC_IsConversionDone()
+[; ;adc.c: 94: {
 [e :U _ADC_IsConversionDone ]
 [f ]
-[; ;adc.c: 97: return (!ADCON0bits.GO_nDONE);
-"97
+[; ;adc.c: 96: return (!ADCON0bits.GO_nDONE);
+"96
 [e ) -> -> ! != -> . . _ADCON0bits 1 1 `i -> -> -> 0 `i `Vuc `i `i `uc ]
 [e $UE 1539  ]
-[; ;adc.c: 98: }
-"98
+[; ;adc.c: 97: }
+"97
 [e :UE 1539 ]
 }
-"100
+"99
 [v _ADC_GetConversionResult `(ui ~T0 @X0 1 ef ]
-"101
+"100
 {
-[; ;adc.c: 100: adc_result_t ADC_GetConversionResult(void)
-[; ;adc.c: 101: {
+[; ;adc.c: 99: adc_result_t ADC_GetConversionResult(void)
+[; ;adc.c: 100: {
 [e :U _ADC_GetConversionResult ]
 [f ]
-[; ;adc.c: 103: return ((ADRESH << 8) + ADRESL);
-"103
+[; ;adc.c: 102: return ((ADRESH << 8) + ADRESL);
+"102
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 1540  ]
-[; ;adc.c: 104: }
-"104
+[; ;adc.c: 103: }
+"103
 [e :UE 1540 ]
 }
-"106
+"105
 [v _ADC_GetConversion `(ui ~T0 @X0 1 ef1`E15092 ]
-"107
-{
-[; ;adc.c: 106: adc_result_t ADC_GetConversion(adc_channel_t channel)
-[; ;adc.c: 107: {
-[e :U _ADC_GetConversion ]
 "106
+{
+[; ;adc.c: 105: adc_result_t ADC_GetConversion(adc_channel_t channel)
+[; ;adc.c: 106: {
+[e :U _ADC_GetConversion ]
+"105
 [v _channel `E15092 ~T0 @X0 1 r1 ]
-"107
+"106
 [f ]
-[; ;adc.c: 109: ADCON0bits.CHS = channel;
-"109
+[; ;adc.c: 108: ADCON0bits.CHS = channel;
+"108
 [e = . . _ADCON0bits 1 2 -> _channel `uc ]
-[; ;adc.c: 112: ADCON0bits.ADON = 1;
-"112
+[; ;adc.c: 111: ADCON0bits.ADON = 1;
+"111
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-[; ;adc.c: 116: ADCON0bits.GO_nDONE = 1;
-"116
+[; ;adc.c: 115: ADCON0bits.GO_nDONE = 1;
+"115
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-[; ;adc.c: 119: while (ADCON0bits.GO_nDONE)
-"119
+[; ;adc.c: 118: while (ADCON0bits.GO_nDONE)
+"118
 [e $U 1542  ]
 [e :U 1543 ]
-[; ;adc.c: 120: {
-"120
+[; ;adc.c: 119: {
+"119
 {
-"121
+"120
 }
 [e :U 1542 ]
-"119
+"118
 [e $ != -> . . _ADCON0bits 1 1 `i -> -> -> 0 `i `Vuc `i 1543  ]
 [e :U 1544 ]
-[; ;adc.c: 121: }
-[; ;adc.c: 124: return ((ADRESH << 8) + ADRESL);
-"124
+[; ;adc.c: 120: }
+[; ;adc.c: 123: return ((ADRESH << 8) + ADRESL);
+"123
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 1541  ]
-[; ;adc.c: 125: }
-"125
+[; ;adc.c: 124: }
+"124
 [e :UE 1541 ]
 }
-"127
+"126
 [v _ADC_ISR `(v ~T0 @X0 1 ef ]
-"128
+"127
 {
-[; ;adc.c: 127: void ADC_ISR(void)
-[; ;adc.c: 128: {
+[; ;adc.c: 126: void ADC_ISR(void)
+[; ;adc.c: 127: {
 [e :U _ADC_ISR ]
 [f ]
-[; ;adc.c: 130: PIR1bits.ADIF = 0;
-"130
+[; ;adc.c: 129: PIR1bits.ADIF = 0;
+"129
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-[; ;adc.c: 131: }
-"131
+[; ;adc.c: 130: }
+"130
 [e :UE 1545 ]
 }

@@ -13654,8 +13654,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;pin_manager.h: 411: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 423: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 396: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 408: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -13685,6 +13685,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;tmr1.h: 99: void TMR1_Initialize(void);
+[; ;tmr1.h: 128: void TMR1_StartTimer(void);
+[; ;tmr1.h: 160: void TMR1_StopTimer(void);
+[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
+[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
+[; ;tmr1.h: 270: void TMR1_Reload(void);
+[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
+[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
+[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;i2c.h: 78: typedef enum
+[; ;i2c.h: 79: {
+[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
+[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
+[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
+[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
+[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
+[; ;i2c.h: 113: void I2C_Initialize(void);
+[; ;i2c.h: 133: void I2C_ISR ( void );
+[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
 [; ;adc.h: 71: typedef uint16_t adc_result_t;
 [; ;adc.h: 85: typedef enum
 [; ;adc.h: 86: {
@@ -13699,19 +13720,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc.h: 220: adc_result_t ADC_GetConversionResult(void);
 [; ;adc.h: 250: adc_result_t ADC_GetConversion(adc_channel_t channel);
 [; ;adc.h: 266: void ADC_ISR(void);
-[; ;tmr1.h: 99: void TMR1_Initialize(void);
-[; ;tmr1.h: 128: void TMR1_StartTimer(void);
-[; ;tmr1.h: 160: void TMR1_StopTimer(void);
-[; ;tmr1.h: 195: uint16_t TMR1_ReadTimer(void);
-[; ;tmr1.h: 234: void TMR1_WriteTimer(uint16_t timerVal);
-[; ;tmr1.h: 270: void TMR1_Reload(void);
-[; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
-[; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
-[; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
-[; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -13744,17 +13752,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart2.h: 95: void EUSART2_Initialize(void);
 [; ;eusart2.h: 115: uint8_t EUSART2_Read(void);
 [; ;eusart2.h: 135: void EUSART2_Write(uint8_t txData);
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
+[; ;eusart1.h: 94: void EUSART1_Initialize(void);
+[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
 [; ;mcc.h: 73: void SYSTEM_Initialize(void);
 [; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
 "51 mcc_generated_files/interrupt_manager.c

@@ -13685,8 +13685,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ax.h: 85: int writeAXData(int id, int address, int data);
 [; ;ax.h: 88: void handleByteReceived(uint8_t i2c_data_received);
 [; ;ax.h: 90: uint8_t getByteToSend(uint8_t i2c_data_received);
-[; ;pin_manager.h: 411: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 423: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 396: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 408: void PIN_MANAGER_IOC(void);
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;interrupt_manager.h: 122: void INTERRUPT_Initialize (void);
 [; ;tmr1.h: 99: void TMR1_Initialize(void);
@@ -13698,10 +13698,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.h: 309: void TMR1_StartSinglePulseAcquisition(void);
 [; ;tmr1.h: 348: uint8_t TMR1_CheckGateValueStatus(void);
 [; ;tmr1.h: 386: bool TMR1_HasOverflowOccured(void);
-[; ;eusart1.h: 94: void EUSART1_Initialize(void);
-[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
-[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
 [; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;i2c.h: 78: typedef enum
+[; ;i2c.h: 79: {
+[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
+[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
+[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
+[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
+[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
+[; ;i2c.h: 113: void I2C_Initialize(void);
+[; ;i2c.h: 133: void I2C_ISR ( void );
+[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -13734,17 +13742,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart2.h: 95: void EUSART2_Initialize(void);
 [; ;eusart2.h: 115: uint8_t EUSART2_Read(void);
 [; ;eusart2.h: 135: void EUSART2_Write(uint8_t txData);
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 113: void I2C_Initialize(void);
-[; ;i2c.h: 133: void I2C_ISR ( void );
-[; ;i2c.h: 140: extern volatile uint8_t I2C_slaveWriteData;
+[; ;eusart1.h: 94: void EUSART1_Initialize(void);
+[; ;eusart1.h: 114: uint8_t EUSART1_Read(void);
+[; ;eusart1.h: 134: void EUSART1_Write(uint8_t txData);
 [; ;mcc.h: 73: void SYSTEM_Initialize(void);
 [; ;mcc.h: 86: void OSCILLATOR_Initialize(void);
 "13 ax.c
@@ -14299,390 +14299,387 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ax.c: 143: EUSART1_Write(checksum);
 "143
 [e ( _EUSART1_Write (1 _checksum ]
-[; ;ax.c: 144: _delay((unsigned long)((100)*(64000000/4000000.0)));
-"144
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;ax.c: 145: do { LATDbits.LATD4 = 0; } while(0);
 "145
-[e :U 1663 ]
-{
-[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
-}
-[e :U 1662 ]
-"161
 [v _stop `i ~T0 @X0 1 a ]
-[; ;ax.c: 161: int stop = 6 + parametersToRead;
+[; ;ax.c: 145: int stop = 6 + parametersToRead;
 [e = _stop + -> 6 `i _parametersToRead ]
-[; ;ax.c: 163: for (int i = 0; i < stop; i++) {
-"163
+[; ;ax.c: 147: for (int i = 0; i < stop; i++) {
+"147
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 1667  ]
-[e :U 1664 ]
+[e $U 1664  ]
+[e :U 1661 ]
 {
-[; ;ax.c: 164: result[i] = 122;
-"164
-[e = *U + _result * -> _i `x -> -> # *U _result `i `x -> -> 122 `i `uc ]
-"165
+[; ;ax.c: 148: result[i] = 0X07;
+"148
+[e = *U + _result * -> _i `x -> -> # *U _result `i `x -> -> 7 `i `uc ]
+"149
 }
-"163
+"147
 [e ++ _i -> 1 `i ]
-[e :U 1667 ]
-[e $ < _i _stop 1664  ]
-[e :U 1665 ]
-"165
+[e :U 1664 ]
+[e $ < _i _stop 1661  ]
+[e :U 1662 ]
+"149
 }
-"167
+[; ;ax.c: 149: }
+[; ;ax.c: 159: _delay((unsigned long)((10)*(64000000/4000000.0)));
+"159
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;ax.c: 160: do { LATDbits.LATD4 = 0; } while(0);
+"160
+[e :U 1667 ]
+{
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+}
+[e :U 1666 ]
+"163
 [v _r0 `i ~T0 @X0 1 a ]
-[; ;ax.c: 165: }
-[; ;ax.c: 167: int r0 = EUSART1_Read();
+[; ;ax.c: 163: int r0 = EUSART1_Read();
 [e = _r0 -> ( _EUSART1_Read ..  `i ]
-[; ;ax.c: 168: while (r0 != 0xFF) {
-"168
+[; ;ax.c: 164: while (r0 != 0xFF) {
+"164
 [e $U 1668  ]
 [e :U 1669 ]
 {
-[; ;ax.c: 169: r0 = EUSART1_Read();
-"169
+[; ;ax.c: 165: r0 = EUSART1_Read();
+"165
 [e = _r0 -> ( _EUSART1_Read ..  `i ]
-"170
+"166
 }
 [e :U 1668 ]
-"168
+"164
 [e $ != _r0 -> 255 `i 1669  ]
 [e :U 1670 ]
-[; ;ax.c: 170: }
-[; ;ax.c: 171: result[0] = r0;
-"171
+[; ;ax.c: 166: }
+[; ;ax.c: 167: result[0] = r0;
+"167
 [e = *U + _result * -> -> 0 `i `x -> -> # *U _result `i `x -> _r0 `uc ]
-[; ;ax.c: 172: for (int i = 1; i < stop; i++) {
-"172
+[; ;ax.c: 170: for (int i = 1; i < stop; i++) {
+"170
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 1 `i ]
 [e $U 1674  ]
 [e :U 1671 ]
 {
-[; ;ax.c: 173: result[i] = EUSART1_Read();
-"173
+[; ;ax.c: 171: result[i] = EUSART1_Read();
+"171
 [e = *U + _result * -> _i `x -> -> # *U _result `i `x ( _EUSART1_Read ..  ]
-"174
-}
 "172
+}
+"170
 [e ++ _i -> 1 `i ]
 [e :U 1674 ]
 [e $ < _i _stop 1671  ]
 [e :U 1672 ]
-"174
+"172
 }
-[; ;ax.c: 174: }
-[; ;ax.c: 177: _delay((unsigned long)((200)*(64000000/4000000.0)));
-"177
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;ax.c: 178: return result[4];
-"178
+[; ;ax.c: 172: }
+[; ;ax.c: 188: return result[4];
+"188
 [e ) *U + _result * -> -> 4 `i `x -> -> # *U _result `i `x ]
 [e $UE 1649  ]
-[; ;ax.c: 180: }
-"180
+[; ;ax.c: 191: }
+"191
 [e :UE 1649 ]
 }
-"182
+"193
 [v _pingAX `(i ~T0 @X0 1 ef1`i ]
 {
-[; ;ax.c: 182: int pingAX(int id) {
+[; ;ax.c: 193: int pingAX(int id) {
 [e :U _pingAX ]
 [v _id `i ~T0 @X0 1 r1 ]
 [f ]
-"183
+"194
 [v _packet `uc ~T0 @X0 -> 20 `i a ]
-"184
-[v _result `uc ~T0 @X0 -> 20 `i a ]
-[; ;ax.c: 183: uint8_t packet[20];
-[; ;ax.c: 184: uint8_t result[20];
-[; ;ax.c: 185: packet[0] = 0xFF;
-"185
-[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 186: packet[1] = 0xFF;
-"186
-[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 187: packet[2] = id;
-"187
-[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
-"188
-[v _nbParameters `i ~T0 @X0 1 a ]
-[; ;ax.c: 188: int nbParameters = 0;
-[e = _nbParameters -> 0 `i ]
-"189
-[v _length `i ~T0 @X0 1 a ]
-[; ;ax.c: 189: int length = nbParameters + 2;
-[e = _length + _nbParameters -> 2 `i ]
-[; ;ax.c: 190: packet[3] = length;
-"190
-[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
-"191
-[v _instruction `i ~T0 @X0 1 a ]
-[; ;ax.c: 191: int instruction = 0x01;
-[e = _instruction -> 1 `i ]
-[; ;ax.c: 192: packet[4] = instruction;
-"192
-[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
 "195
-[v _error `i ~T0 @X0 1 a ]
-[; ;ax.c: 195: int error = sendAX(packet, 5, result, 0);
-[e = _error -> ( _sendAX (4 , , , &U _packet -> 5 `i &U _result -> 0 `i `i ]
-[; ;ax.c: 196: return error;
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 194: uint8_t packet[20];
+[; ;ax.c: 195: uint8_t result[20];
+[; ;ax.c: 196: packet[0] = 0xFF;
 "196
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 197: packet[1] = 0xFF;
+"197
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 198: packet[2] = id;
+"198
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"199
+[v _nbParameters `i ~T0 @X0 1 a ]
+[; ;ax.c: 199: int nbParameters = 0;
+[e = _nbParameters -> 0 `i ]
+"200
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 200: int length = nbParameters + 2;
+[e = _length + _nbParameters -> 2 `i ]
+[; ;ax.c: 201: packet[3] = length;
+"201
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"202
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 202: int instruction = 0x01;
+[e = _instruction -> 1 `i ]
+[; ;ax.c: 203: packet[4] = instruction;
+"203
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+"206
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 206: int error = sendAX(packet, 5, result, 0);
+[e = _error -> ( _sendAX (4 , , , &U _packet -> 5 `i &U _result -> 0 `i `i ]
+[; ;ax.c: 207: return error;
+"207
 [e ) _error ]
 [e $UE 1675  ]
-[; ;ax.c: 197: }
-"197
+[; ;ax.c: 208: }
+"208
 [e :UE 1675 ]
 }
-"199
+"210
 [v _readAXData `(i ~T0 @X0 1 ef2`i`i ]
 {
-[; ;ax.c: 199: int readAXData(int id, int address) {
+[; ;ax.c: 210: int readAXData(int id, int address) {
 [e :U _readAXData ]
 [v _id `i ~T0 @X0 1 r1 ]
 [v _address `i ~T0 @X0 1 r2 ]
 [f ]
-"200
-[v _size `i ~T0 @X0 1 a ]
-[; ;ax.c: 200: int size = getAddressSize(address);
-[e = _size ( _getAddressSize (1 _address ]
-"202
-[v _packet `uc ~T0 @X0 -> 20 `i a ]
-"203
-[v _result `uc ~T0 @X0 -> 20 `i a ]
-[; ;ax.c: 202: uint8_t packet[20];
-[; ;ax.c: 203: uint8_t result[20];
-[; ;ax.c: 204: packet[0] = 0xFF;
-"204
-[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 205: packet[1] = 0xFF;
-"205
-[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 206: packet[2] = id;
-"206
-[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
-"207
-[v _nbParameters `i ~T0 @X0 1 a ]
-[; ;ax.c: 207: int nbParameters = 2;
-[e = _nbParameters -> 2 `i ]
-"208
-[v _length `i ~T0 @X0 1 a ]
-[; ;ax.c: 208: int length = nbParameters + 2;
-[e = _length + _nbParameters -> 2 `i ]
-[; ;ax.c: 209: packet[3] = length;
-"209
-[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
-"210
-[v _instruction `i ~T0 @X0 1 a ]
-[; ;ax.c: 210: int instruction = 0x02;
-[e = _instruction -> 2 `i ]
-[; ;ax.c: 211: packet[4] = instruction;
 "211
-[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
-[; ;ax.c: 212: packet[5] = address;
-"212
-[e = *U + &U _packet * -> -> -> 5 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _address `uc ]
-[; ;ax.c: 213: packet[6] = size;
+[v _size `i ~T0 @X0 1 a ]
+[; ;ax.c: 211: int size = getAddressSize(address);
+[e = _size ( _getAddressSize (1 _address ]
 "213
-[e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _size `uc ]
+[v _packet `uc ~T0 @X0 -> 20 `i a ]
+"214
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 213: uint8_t packet[20];
+[; ;ax.c: 214: uint8_t result[20];
+[; ;ax.c: 215: packet[0] = 0xFF;
+"215
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 216: packet[1] = 0xFF;
 "216
-[v _error `i ~T0 @X0 1 a ]
-[; ;ax.c: 216: int error = sendAX(packet, 7, result, 1);
-[e = _error -> ( _sendAX (4 , , , &U _packet -> 7 `i &U _result -> 1 `i `i ]
-[; ;ax.c: 217: if (size == 1) {
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 217: packet[2] = id;
 "217
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"218
+[v _nbParameters `i ~T0 @X0 1 a ]
+[; ;ax.c: 218: int nbParameters = 2;
+[e = _nbParameters -> 2 `i ]
+"219
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 219: int length = nbParameters + 2;
+[e = _length + _nbParameters -> 2 `i ]
+[; ;ax.c: 220: packet[3] = length;
+"220
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"221
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 221: int instruction = 0x02;
+[e = _instruction -> 2 `i ]
+[; ;ax.c: 222: packet[4] = instruction;
+"222
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+[; ;ax.c: 223: packet[5] = address;
+"223
+[e = *U + &U _packet * -> -> -> 5 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _address `uc ]
+[; ;ax.c: 224: packet[6] = size;
+"224
+[e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _size `uc ]
+"227
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 227: int error = sendAX(packet, 7, result, 1);
+[e = _error -> ( _sendAX (4 , , , &U _packet -> 7 `i &U _result -> 1 `i `i ]
+[; ;ax.c: 228: if (size == 1) {
+"228
 [e $ ! == _size -> 1 `i 1677  ]
 {
-[; ;ax.c: 219: return result[5];
-"219
+[; ;ax.c: 230: return result[5];
+"230
 [e ) -> *U + &U _result * -> -> -> 5 `i `ui `ux -> -> # *U &U _result `ui `ux `i ]
 [e $UE 1676  ]
-"220
+"231
 }
-[; ;ax.c: 220: } else {
+[; ;ax.c: 231: } else {
 [e $U 1678  ]
 [e :U 1677 ]
 {
-[; ;ax.c: 222: return result[5] + result[6]*256;
-"222
+[; ;ax.c: 233: return result[5] + result[6]*256;
+"233
 [e ) + -> *U + &U _result * -> -> -> 5 `i `ui `ux -> -> # *U &U _result `ui `ux `i * -> *U + &U _result * -> -> -> 6 `i `ui `ux -> -> # *U &U _result `ui `ux `i -> 256 `i ]
 [e $UE 1676  ]
-"223
+"234
 }
 [e :U 1678 ]
-[; ;ax.c: 223: }
-[; ;ax.c: 224: }
-"224
+[; ;ax.c: 234: }
+[; ;ax.c: 235: }
+"235
 [e :UE 1676 ]
 }
-"226
+"237
 [v _writeAXData `(i ~T0 @X0 1 ef3`i`i`i ]
 {
-[; ;ax.c: 226: int writeAXData(int id, int address, int data) {
+[; ;ax.c: 237: int writeAXData(int id, int address, int data) {
 [e :U _writeAXData ]
 [v _id `i ~T0 @X0 1 r1 ]
 [v _address `i ~T0 @X0 1 r2 ]
 [v _data `i ~T0 @X0 1 r3 ]
 [f ]
-"227
-[v _size `i ~T0 @X0 1 a ]
-[; ;ax.c: 227: int size = getAddressSize(address);
-[e = _size ( _getAddressSize (1 _address ]
-"229
-[v _packet `uc ~T0 @X0 -> 20 `i a ]
-"230
-[v _result `uc ~T0 @X0 -> 20 `i a ]
-[; ;ax.c: 229: uint8_t packet[20];
-[; ;ax.c: 230: uint8_t result[20];
-[; ;ax.c: 231: packet[0] = 0xFF;
-"231
-[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 232: packet[1] = 0xFF;
-"232
-[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
-[; ;ax.c: 233: packet[2] = id;
-"233
-[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
-"234
-[v _length `i ~T0 @X0 1 a ]
-[; ;ax.c: 234: int length = size + 3;
-[e = _length + _size -> 3 `i ]
-[; ;ax.c: 235: packet[3] = length;
-"235
-[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
-"236
-[v _instruction `i ~T0 @X0 1 a ]
-[; ;ax.c: 236: int instruction = 0x03;
-[e = _instruction -> 3 `i ]
-[; ;ax.c: 237: packet[4] = instruction;
-"237
-[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
-[; ;ax.c: 238: packet[5] = address;
 "238
+[v _size `i ~T0 @X0 1 a ]
+[; ;ax.c: 238: int size = getAddressSize(address);
+[e = _size ( _getAddressSize (1 _address ]
+"240
+[v _packet `uc ~T0 @X0 -> 20 `i a ]
+"241
+[v _result `uc ~T0 @X0 -> 20 `i a ]
+[; ;ax.c: 240: uint8_t packet[20];
+[; ;ax.c: 241: uint8_t result[20];
+[; ;ax.c: 242: packet[0] = 0xFF;
+"242
+[e = *U + &U _packet * -> -> -> 0 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 243: packet[1] = 0xFF;
+"243
+[e = *U + &U _packet * -> -> -> 1 `i `ui `ux -> -> # *U &U _packet `ui `ux -> -> 255 `i `uc ]
+[; ;ax.c: 244: packet[2] = id;
+"244
+[e = *U + &U _packet * -> -> -> 2 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _id `uc ]
+"245
+[v _length `i ~T0 @X0 1 a ]
+[; ;ax.c: 245: int length = size + 3;
+[e = _length + _size -> 3 `i ]
+[; ;ax.c: 246: packet[3] = length;
+"246
+[e = *U + &U _packet * -> -> -> 3 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _length `uc ]
+"247
+[v _instruction `i ~T0 @X0 1 a ]
+[; ;ax.c: 247: int instruction = 0x03;
+[e = _instruction -> 3 `i ]
+[; ;ax.c: 248: packet[4] = instruction;
+"248
+[e = *U + &U _packet * -> -> -> 4 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _instruction `uc ]
+[; ;ax.c: 249: packet[5] = address;
+"249
 [e = *U + &U _packet * -> -> -> 5 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _address `uc ]
-[; ;ax.c: 239: if (size == 1) {
-"239
+[; ;ax.c: 250: if (size == 1) {
+"250
 [e $ ! == _size -> 1 `i 1680  ]
 {
-[; ;ax.c: 240: packet[6] = data;
-"240
+[; ;ax.c: 251: packet[6] = data;
+"251
 [e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> _data `uc ]
-"241
+"252
 }
-[; ;ax.c: 241: } else {
+[; ;ax.c: 252: } else {
 [e $U 1681  ]
 [e :U 1680 ]
 {
-[; ;ax.c: 242: packet[6] = data & 0xff;
-"242
+[; ;ax.c: 253: packet[6] = data & 0xff;
+"253
 [e = *U + &U _packet * -> -> -> 6 `i `ui `ux -> -> # *U &U _packet `ui `ux -> & _data -> 255 `i `uc ]
-[; ;ax.c: 243: packet[7] = (data >> 8);
-"243
+[; ;ax.c: 254: packet[7] = (data >> 8);
+"254
 [e = *U + &U _packet * -> -> -> 7 `i `ui `ux -> -> # *U &U _packet `ui `ux -> >> _data -> 8 `i `uc ]
-"244
+"255
 }
 [e :U 1681 ]
-"247
+"258
 [v _error `i ~T0 @X0 1 a ]
-[; ;ax.c: 244: }
-[; ;ax.c: 247: int error = sendAX(packet, 6 + size, result, 0);
+[; ;ax.c: 255: }
+[; ;ax.c: 258: int error = sendAX(packet, 6 + size, result, 0);
 [e = _error -> ( _sendAX (4 , , , &U _packet + -> 6 `i _size &U _result -> 0 `i `i ]
-[; ;ax.c: 248: return error;
-"248
+[; ;ax.c: 259: return error;
+"259
 [e ) _error ]
 [e $UE 1679  ]
-[; ;ax.c: 249: }
-"249
+[; ;ax.c: 260: }
+"260
 [e :UE 1679 ]
 }
-"252
+"263
 [v _readIndex `Vi ~T0 @X0 1 e ]
 [i _readIndex
 -> 0 `i
 ]
-[; ;ax.c: 252: volatile int readIndex = 0;
-"253
+[; ;ax.c: 263: volatile int readIndex = 0;
+"264
 [v _currentCommand `Vuc ~T0 @X0 1 e ]
 [i _currentCommand
 -> -U -> 1 `i `uc
 ]
-[; ;ax.c: 253: volatile uint8_t currentCommand = -1;
-"254
+[; ;ax.c: 264: volatile uint8_t currentCommand = -1;
+"265
 [v _parameter1 `Vuc ~T0 @X0 1 e ]
 [i _parameter1
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 254: volatile uint8_t parameter1 = 0;
-"255
+[; ;ax.c: 265: volatile uint8_t parameter1 = 0;
+"266
 [v _parameter2 `Vuc ~T0 @X0 1 e ]
 [i _parameter2
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 255: volatile uint8_t parameter2 = 0;
-"256
+[; ;ax.c: 266: volatile uint8_t parameter2 = 0;
+"267
 [v _parameter3 `Vuc ~T0 @X0 1 e ]
 [i _parameter3
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 256: volatile uint8_t parameter3 = 0;
-"257
+[; ;ax.c: 267: volatile uint8_t parameter3 = 0;
+"268
 [v _parameter4 `Vuc ~T0 @X0 1 e ]
 [i _parameter4
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 257: volatile uint8_t parameter4 = 0;
-"258
+[; ;ax.c: 268: volatile uint8_t parameter4 = 0;
+"269
 [v _parameter5 `Vuc ~T0 @X0 1 e ]
 [i _parameter5
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 258: volatile uint8_t parameter5 = 0;
-"259
+[; ;ax.c: 269: volatile uint8_t parameter5 = 0;
+"270
 [v _parameter6 `Vuc ~T0 @X0 1 e ]
 [i _parameter6
 -> -> 0 `i `uc
 ]
-[; ;ax.c: 259: volatile uint8_t parameter6 = 0;
-"261
+[; ;ax.c: 270: volatile uint8_t parameter6 = 0;
+"272
 [v _nbBytesToSend `Vi ~T0 @X0 1 e ]
 [i _nbBytesToSend
 -> 0 `i
 ]
-[; ;ax.c: 261: volatile int nbBytesToSend = 0;
-"262
+[; ;ax.c: 272: volatile int nbBytesToSend = 0;
+"273
 [v _bytesSent `Vi ~T0 @X0 1 e ]
 [i _bytesSent
 -> 0 `i
 ]
-[; ;ax.c: 262: volatile int bytesSent = 0;
-"263
+[; ;ax.c: 273: volatile int bytesSent = 0;
+"274
 [v _dataToSend `Vuc ~T0 @X0 -> 32 `i e ]
-[; ;ax.c: 263: volatile uint8_t dataToSend[32];
-"265
+[; ;ax.c: 274: volatile uint8_t dataToSend[32];
+"276
 [v _handleByteReceived `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;ax.c: 265: void handleByteReceived(uint8_t data) {
+[; ;ax.c: 276: void handleByteReceived(uint8_t data) {
 [e :U _handleByteReceived ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;ax.c: 267: if (readIndex == 0) {
-"267
+[; ;ax.c: 278: if (readIndex == 0) {
+"278
 [e $ ! == _readIndex -> 0 `i 1683  ]
 {
-[; ;ax.c: 268: currentCommand = data;
-"268
+[; ;ax.c: 279: currentCommand = data;
+"279
 [e = _currentCommand _data ]
-[; ;ax.c: 269: readIndex++;
-"269
+[; ;ax.c: 280: readIndex++;
+"280
 [e ++ _readIndex -> 1 `i ]
-[; ;ax.c: 271: for (int i = 0; i < 32; i++) {
-"271
+[; ;ax.c: 282: for (int i = 0; i < 32; i++) {
+"282
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -14690,134 +14687,134 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1685  ]
 [e :U 1684 ]
 {
-[; ;ax.c: 272: dataToSend[i] = 66;
-"272
+[; ;ax.c: 283: dataToSend[i] = 66;
+"283
 [e = *U + &U _dataToSend * -> -> _i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 66 `i `uc ]
-"273
+"284
 }
-"271
+"282
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 32 `i 1684  ]
 [e :U 1685 ]
-"273
+"284
 }
-"274
+"285
 }
-[; ;ax.c: 273: }
-[; ;ax.c: 274: } else if (readIndex == 1) {
+[; ;ax.c: 284: }
+[; ;ax.c: 285: } else if (readIndex == 1) {
 [e $U 1687  ]
 [e :U 1683 ]
 [e $ ! == _readIndex -> 1 `i 1688  ]
 {
-[; ;ax.c: 275: parameter1 = data;
-"275
+[; ;ax.c: 286: parameter1 = data;
+"286
 [e = _parameter1 _data ]
-[; ;ax.c: 276: readIndex++;
-"276
+[; ;ax.c: 287: readIndex++;
+"287
 [e ++ _readIndex -> 1 `i ]
-[; ;ax.c: 277: if (currentCommand == 10) {
-"277
+[; ;ax.c: 288: if (currentCommand == 10) {
+"288
 [e $ ! == -> _currentCommand `i -> 10 `i 1689  ]
 {
-[; ;ax.c: 278: setLedOn(parameter1);
-"278
+[; ;ax.c: 289: setLedOn(parameter1);
+"289
 [e ( _setLedOn (1 -> _parameter1 `i ]
-[; ;ax.c: 279: readIndex = 0;
-"279
+[; ;ax.c: 290: readIndex = 0;
+"290
 [e = _readIndex -> 0 `i ]
-"280
+"291
 }
-[; ;ax.c: 280: } else if (currentCommand == 11) {
+[; ;ax.c: 291: } else if (currentCommand == 11) {
 [e $U 1690  ]
 [e :U 1689 ]
 [e $ ! == -> _currentCommand `i -> 11 `i 1691  ]
 {
-[; ;ax.c: 281: setLedOff(parameter1);
-"281
+[; ;ax.c: 292: setLedOff(parameter1);
+"292
 [e ( _setLedOff (1 -> _parameter1 `i ]
-[; ;ax.c: 282: readIndex = 0;
-"282
+[; ;ax.c: 293: readIndex = 0;
+"293
 [e = _readIndex -> 0 `i ]
-"283
+"294
 }
 [e :U 1691 ]
-"285
+"296
 [e :U 1690 ]
 }
-[; ;ax.c: 283: }
-[; ;ax.c: 285: } else if (readIndex == 2) {
+[; ;ax.c: 294: }
+[; ;ax.c: 296: } else if (readIndex == 2) {
 [e $U 1692  ]
 [e :U 1688 ]
 [e $ ! == _readIndex -> 2 `i 1693  ]
 {
-[; ;ax.c: 286: parameter2 = data;
-"286
+[; ;ax.c: 297: parameter2 = data;
+"297
 [e = _parameter2 _data ]
-[; ;ax.c: 287: readIndex++;
-"287
+[; ;ax.c: 298: readIndex++;
+"298
 [e ++ _readIndex -> 1 `i ]
-"288
+"299
 }
-[; ;ax.c: 288: } else if (readIndex == 3) {
+[; ;ax.c: 299: } else if (readIndex == 3) {
 [e $U 1694  ]
 [e :U 1693 ]
 [e $ ! == _readIndex -> 3 `i 1695  ]
 {
-[; ;ax.c: 289: parameter3 = data;
-"289
-[e = _parameter3 _data ]
-[; ;ax.c: 290: readIndex++;
-"290
-[e ++ _readIndex -> 1 `i ]
-"291
-}
-[; ;ax.c: 291: } else if (readIndex == 4) {
-[e $U 1696  ]
-[e :U 1695 ]
-[e $ ! == _readIndex -> 4 `i 1697  ]
-{
-[; ;ax.c: 292: parameter4 = data;
-"292
-[e = _parameter4 _data ]
-[; ;ax.c: 293: readIndex++;
-"293
-[e ++ _readIndex -> 1 `i ]
-"294
-}
-[; ;ax.c: 294: } else if (readIndex == 5) {
-[e $U 1698  ]
-[e :U 1697 ]
-[e $ ! == _readIndex -> 5 `i 1699  ]
-{
-[; ;ax.c: 295: parameter5 = data;
-"295
-[e = _parameter5 _data ]
-[; ;ax.c: 296: readIndex++;
-"296
-[e ++ _readIndex -> 1 `i ]
-"297
-}
-[; ;ax.c: 297: } else if (readIndex == 6) {
-[e $U 1700  ]
-[e :U 1699 ]
-[e $ ! == _readIndex -> 6 `i 1701  ]
-{
-[; ;ax.c: 298: parameter6 = data;
-"298
-[e = _parameter6 _data ]
-[; ;ax.c: 299: readIndex++;
-"299
-[e ++ _readIndex -> 1 `i ]
+[; ;ax.c: 300: parameter3 = data;
 "300
-}
-[; ;ax.c: 300: } else {
-[e $U 1702  ]
-[e :U 1701 ]
-{
+[e = _parameter3 _data ]
 [; ;ax.c: 301: readIndex++;
 "301
 [e ++ _readIndex -> 1 `i ]
 "302
+}
+[; ;ax.c: 302: } else if (readIndex == 4) {
+[e $U 1696  ]
+[e :U 1695 ]
+[e $ ! == _readIndex -> 4 `i 1697  ]
+{
+[; ;ax.c: 303: parameter4 = data;
+"303
+[e = _parameter4 _data ]
+[; ;ax.c: 304: readIndex++;
+"304
+[e ++ _readIndex -> 1 `i ]
+"305
+}
+[; ;ax.c: 305: } else if (readIndex == 5) {
+[e $U 1698  ]
+[e :U 1697 ]
+[e $ ! == _readIndex -> 5 `i 1699  ]
+{
+[; ;ax.c: 306: parameter5 = data;
+"306
+[e = _parameter5 _data ]
+[; ;ax.c: 307: readIndex++;
+"307
+[e ++ _readIndex -> 1 `i ]
+"308
+}
+[; ;ax.c: 308: } else if (readIndex == 6) {
+[e $U 1700  ]
+[e :U 1699 ]
+[e $ ! == _readIndex -> 6 `i 1701  ]
+{
+[; ;ax.c: 309: parameter6 = data;
+"309
+[e = _parameter6 _data ]
+[; ;ax.c: 310: readIndex++;
+"310
+[e ++ _readIndex -> 1 `i ]
+"311
+}
+[; ;ax.c: 311: } else {
+[e $U 1702  ]
+[e :U 1701 ]
+{
+[; ;ax.c: 312: readIndex++;
+"312
+[e ++ _readIndex -> 1 `i ]
+"313
 }
 [e :U 1702 ]
 [e :U 1700 ]
@@ -14826,212 +14823,206 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 1694 ]
 [e :U 1692 ]
 [e :U 1687 ]
-[; ;ax.c: 302: }
-[; ;ax.c: 304: }
-"304
+[; ;ax.c: 313: }
+[; ;ax.c: 315: }
+"315
 [e :UE 1682 ]
 }
-"308
+"319
 [v _clearState `(v ~T0 @X0 1 ef ]
 {
-[; ;ax.c: 308: void clearState() {
+[; ;ax.c: 319: void clearState() {
 [e :U _clearState ]
 [f ]
-[; ;ax.c: 309: bytesSent = 0;
-"309
+[; ;ax.c: 320: bytesSent = 0;
+"320
 [e = _bytesSent -> 0 `i ]
-[; ;ax.c: 310: currentCommand = -1;
-"310
+[; ;ax.c: 321: currentCommand = -1;
+"321
 [e = _currentCommand -> -U -> 1 `i `uc ]
-[; ;ax.c: 311: parameter1 = 0;
-"311
+[; ;ax.c: 322: parameter1 = 0;
+"322
 [e = _parameter1 -> -> 0 `i `uc ]
-[; ;ax.c: 312: parameter2 = 0;
-"312
+[; ;ax.c: 323: parameter2 = 0;
+"323
 [e = _parameter2 -> -> 0 `i `uc ]
-[; ;ax.c: 313: parameter3 = 0;
-"313
+[; ;ax.c: 324: parameter3 = 0;
+"324
 [e = _parameter3 -> -> 0 `i `uc ]
-[; ;ax.c: 314: parameter4 = 0;
-"314
+[; ;ax.c: 325: parameter4 = 0;
+"325
 [e = _parameter4 -> -> 0 `i `uc ]
-[; ;ax.c: 315: parameter5 = 0;
-"315
+[; ;ax.c: 326: parameter5 = 0;
+"326
 [e = _parameter5 -> -> 0 `i `uc ]
-[; ;ax.c: 316: parameter6 = 0;
-"316
+[; ;ax.c: 327: parameter6 = 0;
+"327
 [e = _parameter6 -> -> 0 `i `uc ]
-[; ;ax.c: 317: readIndex = 0;
-"317
+[; ;ax.c: 328: readIndex = 0;
+"328
 [e = _readIndex -> 0 `i ]
-[; ;ax.c: 318: }
-"318
+[; ;ax.c: 329: }
+"329
 [e :UE 1703 ]
 }
-"320
+"331
 [v _getByteToSend `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;ax.c: 320: uint8_t getByteToSend(uint8_t i2c_data_received) {
+[; ;ax.c: 331: uint8_t getByteToSend(uint8_t i2c_data_received) {
 [e :U _getByteToSend ]
 [v _i2c_data_received `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;ax.c: 323: if (currentCommand == 20) {
-"323
+[; ;ax.c: 334: if (currentCommand == 20) {
+"334
 [e $ ! == -> _currentCommand `i -> 20 `i 1705  ]
 {
-"324
+"335
 [v _error `i ~T0 @X0 1 a ]
-[; ;ax.c: 324: int error = pingAX(parameter1);
+[; ;ax.c: 335: int error = pingAX(parameter1);
 [e = _error ( _pingAX (1 -> _parameter1 `i ]
-[; ;ax.c: 326: nbBytesToSend = 2;
-"326
-[e = _nbBytesToSend -> 2 `i ]
-[; ;ax.c: 327: dataToSend[0] = error;
-"327
+[; ;ax.c: 336: nbBytesToSend = 1;
+"336
+[e = _nbBytesToSend -> 1 `i ]
+[; ;ax.c: 337: dataToSend[0] = error;
+"337
 [e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> _error `uc ]
-[; ;ax.c: 328: dataToSend[1] = 0;
-"328
-[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
-[; ;ax.c: 330: clearState();
-"330
+[; ;ax.c: 339: clearState();
+"339
 [e ( _clearState ..  ]
-"331
+"340
 }
-[; ;ax.c: 331: } else if (currentCommand == 21) {
+[; ;ax.c: 340: } else if (currentCommand == 21) {
 [e $U 1706  ]
 [e :U 1705 ]
 [e $ ! == -> _currentCommand `i -> 21 `i 1707  ]
 {
-"333
-[v _value `i ~T0 @X0 1 a ]
-[; ;ax.c: 333: int value = readAXData(parameter1, parameter2);
-[e = _value ( _readAXData (2 , -> _parameter1 `i -> _parameter2 `i ]
-[; ;ax.c: 335: nbBytesToSend = 2;
-"335
-[e = _nbBytesToSend -> 2 `i ]
-"336
-[v _xlow `uc ~T0 @X0 1 a ]
-[; ;ax.c: 336: uint8_t xlow = value & 0xff;
-[e = _xlow -> & _value -> 255 `i `uc ]
-"337
-[v _xhigh `uc ~T0 @X0 1 a ]
-[; ;ax.c: 337: uint8_t xhigh = (value >> 8);
-[e = _xhigh -> >> _value -> 8 `i `uc ]
-[; ;ax.c: 338: dataToSend[0] = xlow;
-"338
-[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
-[; ;ax.c: 339: dataToSend[1] = xhigh;
-"339
-[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
-[; ;ax.c: 342: clearState();
 "342
-[e ( _clearState ..  ]
+[v _value `i ~T0 @X0 1 a ]
+[; ;ax.c: 342: int value = readAXData(parameter1, parameter2);
+[e = _value ( _readAXData (2 , -> _parameter1 `i -> _parameter2 `i ]
+[; ;ax.c: 343: nbBytesToSend = 2;
 "343
-}
-[; ;ax.c: 343: } else if (currentCommand == 22) {
-[e $U 1708  ]
-[e :U 1707 ]
-[e $ ! == -> _currentCommand `i -> 22 `i 1709  ]
-{
-"344
-[v _error `i ~T0 @X0 1 a ]
-[; ;ax.c: 344: int error = writeAXData(parameter1, parameter2, parameter3);
-[e = _error ( _writeAXData (3 , , -> _parameter1 `i -> _parameter2 `i -> _parameter3 `i ]
-[; ;ax.c: 346: nbBytesToSend = 2;
-"346
 [e = _nbBytesToSend -> 2 `i ]
-[; ;ax.c: 347: dataToSend[0] = error;
+"344
+[v _xlow `uc ~T0 @X0 1 a ]
+[; ;ax.c: 344: uint8_t xlow = value & 0xff;
+[e = _xlow -> & _value -> 255 `i `uc ]
+"345
+[v _xhigh `uc ~T0 @X0 1 a ]
+[; ;ax.c: 345: uint8_t xhigh = (value >> 8);
+[e = _xhigh -> >> _value -> 8 `i `uc ]
+[; ;ax.c: 346: dataToSend[0] = xlow;
+"346
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
+[; ;ax.c: 347: dataToSend[1] = xhigh;
 "347
-[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> _error `uc ]
-[; ;ax.c: 348: dataToSend[1] = 0;
-"348
-[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> -> 0 `i `uc ]
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
 [; ;ax.c: 350: clearState();
 "350
 [e ( _clearState ..  ]
 "351
 }
-[; ;ax.c: 351: } else if (currentCommand == 12) {
+[; ;ax.c: 351: } else if (currentCommand == 22) {
+[e $U 1708  ]
+[e :U 1707 ]
+[e $ ! == -> _currentCommand `i -> 22 `i 1709  ]
+{
+"352
+[v _error `i ~T0 @X0 1 a ]
+[; ;ax.c: 352: int error = writeAXData(parameter1, parameter2, parameter3 + (parameter4 << 8));
+[e = _error ( _writeAXData (3 , , -> _parameter1 `i -> _parameter2 `i + -> _parameter3 `i << -> _parameter4 `i -> 8 `i ]
+[; ;ax.c: 353: nbBytesToSend = 1;
+"353
+[e = _nbBytesToSend -> 1 `i ]
+[; ;ax.c: 354: dataToSend[0] = error;
+"354
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux -> _error `uc ]
+[; ;ax.c: 355: clearState();
+"355
+[e ( _clearState ..  ]
+"356
+}
+[; ;ax.c: 356: } else if (currentCommand == 12) {
 [e $U 1710  ]
 [e :U 1709 ]
 [e $ ! == -> _currentCommand `i -> 12 `i 1711  ]
 {
-[; ;ax.c: 354: adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
-"354
-[e = *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux / ( _ADC_GetConversion (1 -> _parameter1 `E15092 -> -> 16 `i `ui ]
-"356
-[v _value `i ~T0 @X0 1 a ]
-[; ;ax.c: 356: int value = adc_values[parameter1];
-[e = _value -> *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux `i ]
-[; ;ax.c: 358: nbBytesToSend = 2;
-"358
-[e = _nbBytesToSend -> 2 `i ]
+[; ;ax.c: 359: adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
 "359
-[v _xlow `uc ~T0 @X0 1 a ]
-[; ;ax.c: 359: uint8_t xlow = value & 0xff;
-[e = _xlow -> & _value -> 255 `i `uc ]
-"360
-[v _xhigh `uc ~T0 @X0 1 a ]
-[; ;ax.c: 360: uint8_t xhigh = (value >> 8);
-[e = _xhigh -> >> _value -> 8 `i `uc ]
-[; ;ax.c: 361: dataToSend[0] = xlow;
+[e = *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux / ( _ADC_GetConversion (1 -> _parameter1 `E15092 -> -> 16 `i `ui ]
 "361
-[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
-[; ;ax.c: 362: dataToSend[1] = xhigh;
+[v _value `i ~T0 @X0 1 a ]
+[; ;ax.c: 361: int value = adc_values[parameter1];
+[e = _value -> *U + &U _adc_values * -> _parameter1 `ux -> -> # *U &U _adc_values `ui `ux `i ]
+[; ;ax.c: 362: nbBytesToSend = 2;
 "362
-[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
-[; ;ax.c: 366: clearState();
+[e = _nbBytesToSend -> 2 `i ]
+"363
+[v _xlow `uc ~T0 @X0 1 a ]
+[; ;ax.c: 363: uint8_t xlow = value & 0xff;
+[e = _xlow -> & _value -> 255 `i `uc ]
+"364
+[v _xhigh `uc ~T0 @X0 1 a ]
+[; ;ax.c: 364: uint8_t xhigh = (value >> 8);
+[e = _xhigh -> >> _value -> 8 `i `uc ]
+[; ;ax.c: 365: dataToSend[0] = xlow;
+"365
+[e = *U + &U _dataToSend * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xlow ]
+[; ;ax.c: 366: dataToSend[1] = xhigh;
 "366
-[e ( _clearState ..  ]
-"367
-}
-[e :U 1711 ]
-"368
-[e :U 1710 ]
-[e :U 1708 ]
-[e :U 1706 ]
-[; ;ax.c: 367: }
-[; ;ax.c: 368: if (nbBytesToSend == 0) {
-[e $ ! == _nbBytesToSend -> 0 `i 1712  ]
-{
+[e = *U + &U _dataToSend * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataToSend `ui `ux _xhigh ]
 [; ;ax.c: 370: clearState();
 "370
 [e ( _clearState ..  ]
-[; ;ax.c: 371: return 0;
 "371
+}
+[e :U 1711 ]
+"372
+[e :U 1710 ]
+[e :U 1708 ]
+[e :U 1706 ]
+[; ;ax.c: 371: }
+[; ;ax.c: 372: if (nbBytesToSend == 0) {
+[e $ ! == _nbBytesToSend -> 0 `i 1712  ]
+{
+[; ;ax.c: 374: clearState();
+"374
+[e ( _clearState ..  ]
+[; ;ax.c: 375: return 0;
+"375
 [e ) -> -> 0 `i `uc ]
 [e $UE 1704  ]
-"372
+"376
 }
 [e :U 1712 ]
-"373
+"377
 [v _d `uc ~T0 @X0 1 a ]
-[; ;ax.c: 372: }
-[; ;ax.c: 373: uint8_t d = dataToSend[bytesSent];
+[; ;ax.c: 376: }
+[; ;ax.c: 377: uint8_t d = dataToSend[bytesSent];
 [e = _d *U + &U _dataToSend * -> -> _bytesSent `ui `ux -> -> # *U &U _dataToSend `ui `ux ]
-[; ;ax.c: 374: bytesSent++;
-"374
+[; ;ax.c: 378: bytesSent++;
+"378
 [e ++ _bytesSent -> 1 `i ]
-[; ;ax.c: 376: if (bytesSent > nbBytesToSend) {
-"376
+[; ;ax.c: 380: if (bytesSent > nbBytesToSend) {
+"380
 [e $ ! > _bytesSent _nbBytesToSend 1713  ]
 {
-[; ;ax.c: 378: clearState();
-"378
+[; ;ax.c: 382: clearState();
+"382
 [e ( _clearState ..  ]
-[; ;ax.c: 379: return 111;
-"379
+[; ;ax.c: 383: return 111;
+"383
 [e ) -> -> 111 `i `uc ]
 [e $UE 1704  ]
-"380
+"384
 }
 [e :U 1713 ]
-[; ;ax.c: 380: }
-[; ;ax.c: 382: return d;
-"382
+[; ;ax.c: 384: }
+[; ;ax.c: 386: return d;
+"386
 [e ) _d ]
 [e $UE 1704  ]
-[; ;ax.c: 384: }
-"384
+[; ;ax.c: 388: }
+"388
 [e :UE 1704 ]
 }

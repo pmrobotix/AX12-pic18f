@@ -13,7 +13,7 @@
   @Description
     This header file provides implementations for driver APIs for EUSART2.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -86,8 +86,8 @@ uint8_t EUSART2_Read(void)
     {
         // EUSART2 error - restart
 
-        RCSTA2bits.SPEN = 0; 
-        RCSTA2bits.SPEN = 1; 
+        RCSTA2bits.CREN = 0; 
+        RCSTA2bits.CREN = 1; 
     }
 
     return RCREG2;

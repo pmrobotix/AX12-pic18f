@@ -115,7 +115,7 @@ void setLedOff(int led) {
 
 
 // Get the adc value (12bits)
-// @param led :  0 - 9
+// @param adc :  0 - 9
 // @returns value : 0 - 4095
 
 int getADC(int adc) {
@@ -141,41 +141,52 @@ uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersT
         EUSART1_Write(buffer[i]);
     }
     EUSART1_Write(checksum);
-    __delay_us(100);
-    SET_TX_SetLow();
-
-    //  int r0 = EUSART1_Read();
-    //  while (r0 != 0xFF) {
-    //      r0 = EUSART1_Read();
-    //  }
-    //  int r1 = EUSART1_Read();
-    //  int r2 = EUSART1_Read();
-    //  int r3 = EUSART1_Read();
-    //  int r4 = EUSART1_Read();
-    //  int r5 = EUSART1_Read();
-
-
-
-
-
+   
     int stop = 6 + parametersToRead;
     // fill buffer with 122 
     for (int i = 0; i < stop; i++) {
-        result[i] = 122;
+        result[i] = 0X07;
     }
+    /*
+    int param0 = result[0];
+    int param1 = result[1];
+    int param2 = result[2];
+    int param3 = result[3];
+    int param4 = result[4];
+    int param5 = result[5];
+    int param6 = result[6];
+    */
+     __delay_us(10);
+     SET_TX_SetLow();
+     
     // read until 0xFF
     int r0 = EUSART1_Read();
     while (r0 != 0xFF) {
         r0 = EUSART1_Read();
     }
     result[0] = r0;
+    
+    //int nff = 0;
     for (int i = 1; i < stop; i++) {
         result[i] = EUSART1_Read();
     }
+    /*
+    int param0 = result[0];
+    int param1 = result[1];
+    int param2 = result[2];
+    int param3 = result[3];
+    int param4 = result[4];
+    int param5 = result[5];
+    int param6 = result[6];
+    if (param4 != 0x00)
+    {
+        int r = 1;
+    }*/
+    
+    //TODO verif CHECKSUM !!
 
+    return result[4]; //on retourne l'erreur du paquet
 
-    __delay_us(200);
-    return result[4];
 
 }
 
@@ -322,16 +333,13 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
 
     if (currentCommand == CMD_PING_AX) {
         int error = pingAX(parameter1);
-        //
-        nbBytesToSend = 2;
+        nbBytesToSend = 1;
         dataToSend[0] = error;
-        dataToSend[1] = 0;
-        //
+
         clearState();
     } else if (currentCommand == CMD_READ_AX) {
         //   printf("read AX %d %d\r\n",parameter1, parameter2);
         int value = readAXData(parameter1, parameter2);
-        //
         nbBytesToSend = 2;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
@@ -341,12 +349,9 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         //
         clearState();
     } else if (currentCommand == CMD_WRITE_AX) {
-        int error = writeAXData(parameter1, parameter2, parameter3);
-        //
-        nbBytesToSend = 2;
+        int error = writeAXData(parameter1, parameter2, parameter3 + (parameter4 << 8));
+        nbBytesToSend = 1;
         dataToSend[0] = error;
-        dataToSend[1] = 0;
-        //
         clearState();
     } else if (currentCommand == CMD_GET_ADC) {
 
@@ -354,7 +359,6 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
         //        printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
         int value = adc_values[parameter1];
-        //
         nbBytesToSend = 2;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);

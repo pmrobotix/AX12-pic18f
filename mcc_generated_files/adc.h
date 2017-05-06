@@ -13,7 +13,7 @@
   @Description
     This header file provides APIs for driver for ADC.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
