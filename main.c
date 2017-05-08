@@ -131,17 +131,6 @@ void main(void) {
     SET_TX_SetLow();
     while (1) {
         LED10_SetHigh();
-
-        if(false){
-        for (int i = 0; i < 1; i++) {
-            // read all ADC
-            printf("Reading all ADC\r\n");
-            for (int adc = 0; adc < 10; adc++) {
-                adc_values[adc] = ADC_GetConversion(adc) / 16;
-                printf("ADC %d : %ld\r\n", adc, adc_values[adc]);
-            }
-            delay_ms(50);
-        }}
         delay_ms(500);
         LED10_SetLow();
         delay_ms(500);

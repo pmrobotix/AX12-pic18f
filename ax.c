@@ -130,47 +130,52 @@ int getADC(int adc) {
  */
 uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
     uint8_t checksum = 0;
-
+    SET_TX_SetHigh();
     for (int i = 2; i < packetSize; i++) {
         checksum += buffer[i];
     }
     checksum = ~checksum;
     // Write to UART
-    SET_TX_SetHigh();
+
     for (int i = 0; i < packetSize; i++) {
         EUSART1_Write(buffer[i]);
     }
     EUSART1_Write(checksum);
-   
+
     int stop = 6 + parametersToRead;
     // fill buffer with 122 
     for (int i = 0; i < stop; i++) {
         result[i] = 0X07;
     }
     /*
-    int param0 = result[0];
-    int param1 = result[1];
-    int param2 = result[2];
-    int param3 = result[3];
-    int param4 = result[4];
-    int param5 = result[5];
-    int param6 = result[6];
-    */
-     __delay_us(10);
-     SET_TX_SetLow();
-     
+        int param0 = result[0];
+        int param1 = result[1];
+        int param2 = result[2];
+        int param3 = result[3];
+        int param4 = result[4];
+        int param5 = result[5];
+        int param6 = result[6];
+     */
+    __delay_us(10);
+    SET_TX_SetLow();
+
     // read until 0xFF
+    int count = 0;
     int r0 = EUSART1_Read();
     while (r0 != 0xFF) {
         r0 = EUSART1_Read();
+        count++;
+        //nb d'essai pour sortir de la boucle
+        if (count > 5) {
+            break;
+        }
     }
     result[0] = r0;
-    
-    //int nff = 0;
+
     for (int i = 1; i < stop; i++) {
         result[i] = EUSART1_Read();
     }
-    /*
+
     int param0 = result[0];
     int param1 = result[1];
     int param2 = result[2];
@@ -178,15 +183,25 @@ uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersT
     int param4 = result[4];
     int param5 = result[5];
     int param6 = result[6];
-    if (param4 != 0x00)
-    {
-        int r = 1;
-    }*/
-    
-    //TODO verif CHECKSUM !!
+
+    //verif timeout , on retourne result[4] qui vaut 252
+
+    //verif CHECKSUM !!
+    uint8_t checksumResult = 0;
+    for (int i = 2; i < stop - 1; i++) {
+        checksumResult += result[i];
+    }
+    checksumResult = ~checksumResult;
+    if (checksumResult != result[stop - 1]) {
+        return 252;
+    }
+
+    {// Wait to stabilize DATA [DO NOT REMOVE] 
+        SET_TX_SetHigh();
+        __delay_us(10);
+    }
 
     return result[4]; //on retourne l'erreur du paquet
-
 
 }
 
@@ -335,7 +350,6 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         int error = pingAX(parameter1);
         nbBytesToSend = 1;
         dataToSend[0] = error;
-
         clearState();
     } else if (currentCommand == CMD_READ_AX) {
         //   printf("read AX %d %d\r\n",parameter1, parameter2);
@@ -345,8 +359,6 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
         dataToSend[1] = xhigh;
-
-        //
         clearState();
     } else if (currentCommand == CMD_WRITE_AX) {
         int error = writeAXData(parameter1, parameter2, parameter3 + (parameter4 << 8));
@@ -354,9 +366,11 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         dataToSend[0] = error;
         clearState();
     } else if (currentCommand == CMD_GET_ADC) {
-
-        //
-        adc_values[parameter1] = ADC_GetConversion(parameter1) / 16;
+        uint16_t r = ADC_GetConversion(parameter1) / 16;
+        //filtre
+        if (r == 4095 || r == 4094)
+            r = 0;
+        adc_values[parameter1] = r;
         //        printf("ADC %d : %ld\r\n", parameter1, adc_values[parameter1]);
         int value = adc_values[parameter1];
         nbBytesToSend = 2;
@@ -364,9 +378,6 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
         dataToSend[1] = xhigh;
-
-
-        //
         clearState();
     }
     if (nbBytesToSend == 0) {
@@ -384,5 +395,4 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
     }
 
     return d;
-
 }

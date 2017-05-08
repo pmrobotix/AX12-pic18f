@@ -13,13 +13,13 @@
   @Description
     This header file provides implementations for driver APIs for EUSART1.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC18F46K80
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
-*/
+ */
 
 /*
     (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -41,19 +41,18 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 /**
   Section: Included Files
-*/
+ */
 #include "eusart1.h"
 
 /**
   Section: EUSART1 APIs
-*/
+ */
 
-void EUSART1_Initialize(void)
-{
+void EUSART1_Initialize(void) {
     // Set the EUSART1 module to the options selected in the user interface.
 
     // ABDOVF no_overflow; TXCKP async_noninverted_sync_fallingedge; BRG16 16bit_generator; WUE disabled; ABDEN disabled; RXDTP not_inverted; 
@@ -73,34 +72,32 @@ void EUSART1_Initialize(void)
 
 }
 
-
-uint8_t EUSART1_Read(void)
-{
-
-    while(!PIR1bits.RC1IF)
-    {
+uint8_t EUSART1_Read(void) {
+    int i = 0;
+    while (!PIR1bits.RC1IF) {
+        i++;
+        if (i > 500) { //timeout
+            RCSTA1bits.SPEN = 0;
+            RCSTA1bits.SPEN = 1;
+            return 252;
+        }
     }
 
-    
-    if(1 == RCSTA1bits.OERR)
-    {
-        // EUSART1 error - restart
 
-        RCSTA1bits.CREN = 0; 
-        RCSTA1bits.CREN = 1; 
+    if (1 == RCSTA1bits.OERR) {
+        RCSTA1bits.SPEN = 0;
+        RCSTA1bits.SPEN = 1;
     }
 
     return RCREG1;
 }
 
-void EUSART1_Write(uint8_t txData)
-{
-    while(0 == PIR1bits.TX1IF)
-    {
+void EUSART1_Write(uint8_t txData) {
+    while (0 == PIR1bits.TX1IF) {
     }
 
-    TXREG1 = txData;    // Write the data byte to the USART.
+    TXREG1 = txData; // Write the data byte to the USART.
 }
 /**
   End of File
-*/
+ */
