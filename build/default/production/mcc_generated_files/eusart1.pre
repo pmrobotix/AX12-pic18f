@@ -17964,6 +17964,7 @@ SPBRGH1 = 0x00;
 
 uint8_t EUSART1_Read(void) {
 int i = 0;
+
 while (!PIR1bits.RC1IF) {
 i++;
 if (i > 500) {

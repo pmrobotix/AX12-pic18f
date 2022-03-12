@@ -13747,7 +13747,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ax.h: 74: void setLedOff(int led);
 [; ;ax.h: 79: int getADC(int adc);
 [; ;ax.h: 82: int pingAX(int id);
-[; ;ax.h: 84: int readAXData(int id, int address);
+[; ;ax.h: 84: int readAXData(int id, int address, int *err);
 [; ;ax.h: 85: int writeAXData(int id, int address, int data);
 [; ;ax.h: 88: void handleByteReceived(uint8_t i2c_data_received);
 [; ;ax.h: 90: uint8_t getByteToSend(uint8_t i2c_data_received);

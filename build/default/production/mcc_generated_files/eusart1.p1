@@ -13697,84 +13697,84 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _i `i ~T0 @X0 1 a ]
 [; ;eusart1.c: 76: int i = 0;
 [e = _i -> 0 `i ]
-[; ;eusart1.c: 77: while (!PIR1bits.RC1IF) {
-"77
+[; ;eusart1.c: 78: while (!PIR1bits.RC1IF) {
+"78
 [e $U 1539  ]
 [e :U 1540 ]
 {
-[; ;eusart1.c: 78: i++;
-"78
-[e ++ _i -> 1 `i ]
-[; ;eusart1.c: 79: if (i > 500) {
+[; ;eusart1.c: 79: i++;
 "79
+[e ++ _i -> 1 `i ]
+[; ;eusart1.c: 80: if (i > 500) {
+"80
 [e $ ! > _i -> 500 `i 1542  ]
 {
-[; ;eusart1.c: 80: RCSTA1bits.SPEN = 0;
-"80
-[e = . . _RCSTA1bits 0 7 -> -> 0 `i `uc ]
-[; ;eusart1.c: 81: RCSTA1bits.SPEN = 1;
+[; ;eusart1.c: 81: RCSTA1bits.SPEN = 0;
 "81
-[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
-[; ;eusart1.c: 82: return 252;
+[e = . . _RCSTA1bits 0 7 -> -> 0 `i `uc ]
+[; ;eusart1.c: 82: RCSTA1bits.SPEN = 1;
 "82
+[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
+[; ;eusart1.c: 83: return 252;
+"83
 [e ) -> -> 252 `i `uc ]
 [e $UE 1538  ]
-"83
-}
-[e :U 1542 ]
 "84
 }
+[e :U 1542 ]
+"85
+}
 [e :U 1539 ]
-"77
+"78
 [e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 1540  ]
 [e :U 1541 ]
-[; ;eusart1.c: 83: }
 [; ;eusart1.c: 84: }
-[; ;eusart1.c: 87: if (1 == RCSTA1bits.OERR) {
-"87
+[; ;eusart1.c: 85: }
+[; ;eusart1.c: 88: if (1 == RCSTA1bits.OERR) {
+"88
 [e $ ! == -> 1 `i -> . . _RCSTA1bits 0 1 `i 1543  ]
 {
-[; ;eusart1.c: 88: RCSTA1bits.SPEN = 0;
-"88
-[e = . . _RCSTA1bits 0 7 -> -> 0 `i `uc ]
-[; ;eusart1.c: 89: RCSTA1bits.SPEN = 1;
+[; ;eusart1.c: 89: RCSTA1bits.SPEN = 0;
 "89
-[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
+[e = . . _RCSTA1bits 0 7 -> -> 0 `i `uc ]
+[; ;eusart1.c: 90: RCSTA1bits.SPEN = 1;
 "90
+[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
+"91
 }
 [e :U 1543 ]
-[; ;eusart1.c: 90: }
-[; ;eusart1.c: 92: return RCREG1;
-"92
+[; ;eusart1.c: 91: }
+[; ;eusart1.c: 93: return RCREG1;
+"93
 [e ) _RCREG1 ]
 [e $UE 1538  ]
-[; ;eusart1.c: 93: }
-"93
+[; ;eusart1.c: 94: }
+"94
 [e :UE 1538 ]
 }
-"95
+"96
 [v _EUSART1_Write `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;eusart1.c: 95: void EUSART1_Write(uint8_t txData) {
+[; ;eusart1.c: 96: void EUSART1_Write(uint8_t txData) {
 [e :U _EUSART1_Write ]
 [v _txData `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;eusart1.c: 96: while (0 == PIR1bits.TX1IF) {
-"96
+[; ;eusart1.c: 97: while (0 == PIR1bits.TX1IF) {
+"97
 [e $U 1545  ]
 [e :U 1546 ]
 {
-"97
+"98
 }
 [e :U 1545 ]
-"96
+"97
 [e $ == -> 0 `i -> . . _PIR1bits 0 4 `i 1546  ]
 [e :U 1547 ]
-[; ;eusart1.c: 97: }
-[; ;eusart1.c: 99: TXREG1 = txData;
-"99
-[e = _TXREG1 _txData ]
-[; ;eusart1.c: 100: }
+[; ;eusart1.c: 98: }
+[; ;eusart1.c: 100: TXREG1 = txData;
 "100
+[e = _TXREG1 _txData ]
+[; ;eusart1.c: 101: }
+"101
 [e :UE 1544 ]
 }

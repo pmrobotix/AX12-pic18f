@@ -18306,15 +18306,15 @@ for (int i = 2; i < stop - 1; i++) {
 checksumResult += result[i];
 }
 checksumResult = ~checksumResult;
-if (checksumResult != result[stop - 1]) {
-return 252;
-}
+
 
 {
 do { LATDbits.LATD4 = 1; } while(0);
 _delay((unsigned long)((10)*(64000000/4000000.0)));
 }
-
+if (checksumResult != result[stop - 1]) {
+return 252;
+}
 return result[4];
 
 }
@@ -18336,7 +18336,7 @@ int error = sendAX(packet, 5, result, 0);
 return error;
 }
 
-int readAXData(int id, int address) {
+int readAXData(int id, int address, int* error) {
 int size = getAddressSize(address);
 
 uint8_t packet[20];
@@ -18353,7 +18353,7 @@ packet[5] = address;
 packet[6] = size;
 
 
-int error = sendAX(packet, 7, result, 1);
+*error = sendAX(packet, 7, result, 1);
 if (size == 1) {
 
 return result[5];
@@ -18467,12 +18467,14 @@ dataToSend[0] = error;
 clearState();
 } else if (currentCommand == 21) {
 
-int value = readAXData(parameter1, parameter2);
-nbBytesToSend = 2;
+int error=0;
+int value = readAXData(parameter1, parameter2, &error);
+nbBytesToSend = 3;
 uint8_t xlow = value & 0xff;
 uint8_t xhigh = (value >> 8);
 dataToSend[0] = xlow;
 dataToSend[1] = xhigh;
+dataToSend[2] = error;
 clearState();
 } else if (currentCommand == 22) {
 int error = writeAXData(parameter1, parameter2, parameter3 + (parameter4 << 8));
