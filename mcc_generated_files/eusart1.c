@@ -74,6 +74,7 @@ void EUSART1_Initialize(void) {
 
 uint8_t EUSART1_Read(void) {
     int i = 0;
+   // RCSTA1bits.SREN = 1; 
     while (!PIR1bits.RC1IF) {
         i++;
         if (i > 500) { //timeout
