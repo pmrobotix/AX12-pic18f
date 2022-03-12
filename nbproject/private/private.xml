@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/cho10/Documents/MPLAB/AX12-pic18f/mcc_generated_files/eusart1.c</file>
-            <file>file:/C:/Users/cho10/Documents/MPLAB/AX12-pic18f/ax.c</file>
-            <file>file:/C:/Users/cho10/Documents/MPLAB/AX12-pic18f/main.c</file>
+            <file>file:/D:/PMX_DOC/90%20-%20PROG%20-%20BUILD/PIC/AX12-pic18f-master_/AX12-pic18f-master/mcc_generated_files/pin_manager.h</file>
+            <file>file:/D:/PMX_DOC/90%20-%20PROG%20-%20BUILD/PIC/AX12-pic18f-master_/AX12-pic18f-master/ax.h</file>
+            <file>file:/D:/PMX_DOC/90%20-%20PROG%20-%20BUILD/PIC/AX12-pic18f-master_/AX12-pic18f-master/mcc_generated_files/adc.c</file>
+            <file>file:/D:/PMX_DOC/90%20-%20PROG%20-%20BUILD/PIC/AX12-pic18f-master_/AX12-pic18f-master/ax.c</file>
+            <file>file:/D:/PMX_DOC/90%20-%20PROG%20-%20BUILD/PIC/AX12-pic18f-master_/AX12-pic18f-master/mcc_generated_files/eusart1.c</file>
         </group>
     </open-files>
 </project-private>

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=AX12-pic18f
+PROJECTNAME=AX12-pic18f-master
 
 # Active Configuration
 DEFAULTCONF=default

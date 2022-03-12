@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\AX12-pic18f.production.hex">
+  <executable name="dist/default/production\AX12-pic18f-master.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>65536</length>
-      <used>3845</used>
-      <free>61691</free>
+      <used>4331</used>
+      <free>61205</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>3649</length>
-      <used>231</used>
-      <free>3418</free>
+      <used>236</used>
+      <free>3413</free>
     </memory>
   </executable>
 </project>

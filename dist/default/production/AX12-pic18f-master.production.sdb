@@ -1,0 +1,1033 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F46K80 ]
+[d frameptr 4065 ]
+"82 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/adc.c
+[e E15090 . `uc
+channel_CTMU 28
+channel_Temp_diode 29
+channel_Vdd_core 30
+channel_1_024V_bandgap 31
+]
+"122 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.c
+[e E15090 . `uc
+channel_CTMU 28
+channel_Temp_diode 29
+channel_Vdd_core 30
+channel_1_024V_bandgap 31
+]
+"13
+[v _delay_ms delay_ms `(v  1 e 1 0 ]
+"24
+[v _getAddressSize getAddressSize `(i  1 e 2 0 ]
+"45
+[v _setLedOn setLedOn `(v  1 e 1 0 ]
+"80
+[v _setLedOff setLedOff `(v  1 e 1 0 ]
+"137
+[v _sendAX sendAX `(uc  1 e 1 0 ]
+"248
+[v _pingAX pingAX `(i  1 e 2 0 ]
+"273
+[v _readAXData readAXData `(i  1 e 2 0 ]
+"310
+[v _writeAXData writeAXData `(i  1 e 2 0 ]
+"357
+[v _handleByteReceived handleByteReceived `(v  1 e 1 0 ]
+"400
+[v _clearState clearState `(v  1 e 1 0 ]
+"412
+[v _getByteToSend getByteToSend `(uc  1 e 1 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"464 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+[v i2_printf printf `(i  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"52 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\main.c
+[v _main main `(v  1 e 1 0 ]
+"58 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"105
+[v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
+"126
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+"55 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+"75
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"96
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+"55 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart2.c
+[v _EUSART2_Initialize EUSART2_Initialize `(v  1 e 1 0 ]
+"77
+[v _EUSART2_Read EUSART2_Read `(uc  1 e 1 0 ]
+"96
+[v _EUSART2_Write EUSART2_Write `(v  1 e 1 0 ]
+[v i2_EUSART2_Write EUSART2_Write `(v  1 e 1 0 ]
+"110
+[v _putch putch `(v  1 e 1 0 ]
+[v i2_putch putch `(v  1 e 1 0 ]
+"79 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/i2c.c
+[v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
+"102
+[v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
+"51 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"57
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"111 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"124
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"51 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"63 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"89
+[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
+"344 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.c
+[v _readIndex readIndex `VEi  1 e 2 0 ]
+"345
+[v _currentCommand currentCommand `VEuc  1 e 1 0 ]
+"346
+[v _parameter1 parameter1 `VEuc  1 e 1 0 ]
+"347
+[v _parameter2 parameter2 `VEuc  1 e 1 0 ]
+"348
+[v _parameter3 parameter3 `VEuc  1 e 1 0 ]
+"349
+[v _parameter4 parameter4 `VEuc  1 e 1 0 ]
+"350
+[v _parameter5 parameter5 `VEuc  1 e 1 0 ]
+"351
+[v _parameter6 parameter6 `VEuc  1 e 1 0 ]
+"353
+[v _nbBytesToSend nbBytesToSend `VEi  1 e 2 0 ]
+"354
+[v _bytesSent bytesSent `VEi  1 e 2 0 ]
+"355
+[v _dataToSend dataToSend `VE[32]uc  1 e 32 0 ]
+"63 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.h
+[v _adc_values adc_values `VE[10]ui  1 e 20 0 ]
+"26910 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f46k80.h
+[v _WPUB WPUB `VEuc  1 e 1 @3931 ]
+"26972
+[v _ANCON1 ANCON1 `VEuc  1 e 1 @3932 ]
+"27072
+[v _ANCON0 ANCON0 `VEuc  1 e 1 @3933 ]
+"29807
+[v _TXREG2 TXREG2 `VEuc  1 e 1 @3961 ]
+"29827
+[v _RCREG2 RCREG2 `VEuc  1 e 1 @3962 ]
+"29847
+[v _SPBRG2 SPBRG2 `VEuc  1 e 1 @3963 ]
+"29867
+[v _SPBRGH2 SPBRGH2 `VEuc  1 e 1 @3964 ]
+"29887
+[v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @3965 ]
+[s S514 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"30169
+[s S523 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S527 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S530 . 1 `S514 1 . 1 0 `S523 1 . 1 0 `S527 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES530  1 e 1 @3970 ]
+"30490
+[v _LATA LATA `VEuc  1 e 1 @3977 ]
+"30592
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+[s S1197 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"30619
+[s S1206 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S1215 . 1 `S1197 1 . 1 0 `S1206 1 . 1 0 ]
+[v _LATBbits LATBbits `VES1215  1 e 1 @3978 ]
+"30704
+[v _LATC LATC `VEuc  1 e 1 @3979 ]
+[s S1157 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"30731
+[s S1166 . 1 `uc 1 LC0 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+`uc 1 LC2 1 0 :1:2 
+`uc 1 LC3 1 0 :1:3 
+`uc 1 LC4 1 0 :1:4 
+`uc 1 LC5 1 0 :1:5 
+`uc 1 LC6 1 0 :1:6 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S1175 . 1 `S1157 1 . 1 0 `S1166 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1175  1 e 1 @3979 ]
+"30816
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+[s S1084 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"30843
+[s S1093 . 1 `uc 1 LD0 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+`uc 1 LD2 1 0 :1:2 
+`uc 1 LD3 1 0 :1:3 
+`uc 1 LD4 1 0 :1:4 
+`uc 1 LD5 1 0 :1:5 
+`uc 1 LD6 1 0 :1:6 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S1102 . 1 `S1084 1 . 1 0 `S1093 1 . 1 0 ]
+[v _LATDbits LATDbits `VES1102  1 e 1 @3980 ]
+"30928
+[v _LATE LATE `VEuc  1 e 1 @3981 ]
+"31086
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"31143
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"31205
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"31267
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"31329
+[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+"31405
+[v _REFOCON REFOCON `VEuc  1 e 1 @3994 ]
+"31470
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
+[s S310 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 TMR1GIE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 PSPIE 1 0 :1:7 
+]
+"31628
+[s S319 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+[u S323 . 1 `S310 1 . 1 0 `S319 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES323  1 e 1 @3997 ]
+[s S236 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 TMR1GIF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+"31705
+[s S245 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+[u S249 . 1 `S236 1 . 1 0 `S245 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES249  1 e 1 @3998 ]
+[s S26 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP1IF 1 0 :1:1 
+`uc 1 CCP2IF 1 0 :1:2 
+`uc 1 CTMUIF 1 0 :1:3 
+`uc 1 TX2IF 1 0 :1:4 
+`uc 1 RC2IF 1 0 :1:5 
+]
+"32108
+[s S33 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIF 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIF 1 0 :1:4 
+]
+[u S38 . 1 `S26 1 . 1 0 `S33 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES38  1 e 1 @4004 ]
+"32209
+[v _RCSTA2 RCSTA2 `VEuc  1 e 1 @4006 ]
+[s S54 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"32245
+[s S63 . 1 `uc 1 RX9D2 1 0 :1:0 
+`uc 1 OERR2 1 0 :1:1 
+`uc 1 FERR2 1 0 :1:2 
+`uc 1 ADDEN2 1 0 :1:3 
+`uc 1 CREN2 1 0 :1:4 
+`uc 1 SREN2 1 0 :1:5 
+`uc 1 RX92 1 0 :1:6 
+`uc 1 SPEN2 1 0 :1:7 
+]
+[s S72 . 1 `uc 1 RCD82 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_92 1 0 :1:6 
+]
+[s S76 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC92 1 0 :1:6 
+]
+[u S79 . 1 `S54 1 . 1 0 `S63 1 . 1 0 `S72 1 . 1 0 `S76 1 . 1 0 ]
+[v _RCSTA2bits RCSTA2bits `VES79  1 e 1 @4006 ]
+"32345
+[v _BAUDCON1 BAUDCON1 `VEuc  1 e 1 @4007 ]
+"32591
+[v _T1GCON T1GCON `VEuc  1 e 1 @4010 ]
+[s S665 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_NOT_T1DONE 1 0 :1:3 
+]
+"32625
+[s S668 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nT1DONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S676 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[s S681 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_T1DONE 1 0 :1:3 
+]
+[s S684 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 nT1DONE 1 0 :1:3 
+]
+[u S687 . 1 `S665 1 . 1 0 `S668 1 . 1 0 `S676 1 . 1 0 `S681 1 . 1 0 `S684 1 . 1 0 ]
+[v _T1GCONbits T1GCONbits `VES687  1 e 1 @4010 ]
+"32695
+[v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
+"32750
+[s S164 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :2:1 
+`uc 1 ADEN 1 0 :1:3 
+`uc 1 . 1 0 :2:4 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S170 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 NOT_RC8 1 0 :1:6 
+]
+[s S173 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S176 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S179 . 1 `uc 1 RX9D1 1 0 :1:0 
+`uc 1 OERR1 1 0 :1:1 
+`uc 1 FERR1 1 0 :1:2 
+`uc 1 ADDEN1 1 0 :1:3 
+`uc 1 CREN1 1 0 :1:4 
+`uc 1 SREN1 1 0 :1:5 
+`uc 1 RX91 1 0 :1:6 
+`uc 1 SPEN1 1 0 :1:7 
+]
+[s S188 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S191 . 1 `S54 1 . 1 0 `S164 1 . 1 0 `S170 1 . 1 0 `S173 1 . 1 0 `S176 1 . 1 0 `S179 1 . 1 0 `S188 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES191  1 e 1 @4011 ]
+"33033
+[v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
+"33321
+[v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
+"33359
+[v _RCREG1 RCREG1 `VEuc  1 e 1 @4014 ]
+"33397
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"34043
+[v _BAUDCON2 BAUDCON2 `VEuc  1 e 1 @4025 ]
+"34175
+[v _TXSTA2 TXSTA2 `VEuc  1 e 1 @4026 ]
+"34761
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"34832
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"34936
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S773 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"34981
+[s S776 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+"34981
+[s S780 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+"34981
+[s S788 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+"34981
+[s S791 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+"34981
+[s S794 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+"34981
+[s S797 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+"34981
+[s S800 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+"34981
+[u S803 . 1 `S773 1 . 1 0 `S776 1 . 1 0 `S780 1 . 1 0 `S788 1 . 1 0 `S791 1 . 1 0 `S794 1 . 1 0 `S797 1 . 1 0 `S800 1 . 1 0 ]
+"34981
+"34981
+[v _ADCON0bits ADCON0bits `VES803  1 e 1 @4034 ]
+"35068
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"35088
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"35108
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
+"35203
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+[s S477 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"35223
+[s S483 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+"35223
+[u S488 . 1 `S477 1 . 1 0 `S483 1 . 1 0 ]
+"35223
+"35223
+[v _SSPCON1bits SSPCON1bits `VES488  1 e 1 @4038 ]
+"35273
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+[s S340 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"35350
+[s S343 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+"35350
+[s S346 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"35350
+[s S355 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+"35350
+[s S360 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+"35350
+[s S365 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+"35350
+[s S368 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+"35350
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+"35350
+[s S376 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+"35350
+[s S381 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+"35350
+[s S387 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+]
+"35350
+[s S393 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 NOT_A 1 0 :1:5 
+]
+"35350
+[u S398 . 1 `S340 1 . 1 0 `S343 1 . 1 0 `S346 1 . 1 0 `S355 1 . 1 0 `S360 1 . 1 0 `S365 1 . 1 0 `S368 1 . 1 0 `S371 1 . 1 0 `S376 1 . 1 0 `S381 1 . 1 0 `S387 1 . 1 0 `S393 1 . 1 0 ]
+"35350
+"35350
+[v _SSPSTATbits SSPSTATbits `VES398  1 e 1 @4039 ]
+"35505
+[v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
+"35575
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"35812
+[v _T1CON T1CON `VEuc  1 e 1 @4045 ]
+[s S617 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_T1SYNC 1 0 :1:2 
+]
+"35844
+[s S620 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 RD16 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 SOSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+"35844
+[s S627 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+"35844
+[s S633 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 . 1 0 :3:4 
+`uc 1 T1RD16 1 0 :1:7 
+]
+"35844
+[u S638 . 1 `S617 1 . 1 0 `S620 1 . 1 0 `S627 1 . 1 0 `S633 1 . 1 0 ]
+"35844
+"35844
+[v _T1CONbits T1CONbits `VES638  1 e 1 @4045 ]
+"35921
+[v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
+"35941
+[v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
+[s S897 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"36009
+[s S899 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+"36009
+[s S902 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+"36009
+[s S905 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+"36009
+[s S908 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+"36009
+[s S911 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_CM 1 0 :1:5 
+]
+"36009
+[s S914 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 nCM 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+"36009
+[s S923 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+`uc 1 CM 1 0 :1:5 
+]
+"36009
+[u S930 . 1 `S897 1 . 1 0 `S899 1 . 1 0 `S902 1 . 1 0 `S905 1 . 1 0 `S908 1 . 1 0 `S911 1 . 1 0 `S914 1 . 1 0 `S923 1 . 1 0 ]
+"36009
+"36009
+[v _RCONbits RCONbits `VES930  1 e 1 @4048 ]
+"36174
+[v _OSCCON2 OSCCON2 `VEuc  1 e 1 @4050 ]
+"36246
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+[s S973 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"37234
+[s S982 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"37234
+[s S991 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+"37234
+[u S995 . 1 `S973 1 . 1 0 `S982 1 . 1 0 `S991 1 . 1 0 ]
+"37234
+"37234
+[v _INTCONbits INTCONbits `VES995  1 e 1 @4082 ]
+"39321
+"39321
+[v _BCLIF BCLIF `VEb  1 e 0 @32011 ]
+"42341
+[v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
+"62 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/i2c.c
+[v _I2C_slaveWriteData I2C_slaveWriteData `VEuc  1 e 1 0 ]
+"98
+[v _junk junk `uc  1 e 1 0 ]
+"99
+[v _index_i2c index_i2c `ui  1 e 2 0 ]
+"100
+[v _first first `uc  1 e 1 0 ]
+"56 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEui  1 e 2 0 ]
+"52 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"94
+[v main@i i `i  1 a 2 15 ]
+"54
+[v main@adc adc `i  1 a 2 17 ]
+"91
+[v main@delay delay `i  1 a 2 19 ]
+"141
+} 0
+"464 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"466
+[v printf@ap ap `[1]*.39v  1 a 2 4 ]
+"499
+[v printf@c c `c  1 a 1 6 ]
+"464
+[v printf@f f `*.32Cuc  1 p 2 2 ]
+"1541
+} 0
+"110 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart2.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@txData txData `uc  1 a 1 wreg ]
+[v putch@txData txData `uc  1 a 1 wreg ]
+"112
+[v putch@txData txData `uc  1 a 1 1 ]
+"113
+} 0
+"96
+[v _EUSART2_Write EUSART2_Write `(v  1 e 1 0 ]
+{
+[v EUSART2_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART2_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART2_Write@txData txData `uc  1 a 1 0 ]
+"103
+} 0
+"13 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.c
+[v _delay_ms delay_ms `(v  1 e 1 0 ]
+{
+"18
+[v delay_ms@i i `i  1 a 2 13 ]
+"17
+[v delay_ms@n n `i  1 a 2 11 ]
+"13
+[v delay_ms@ms ms `i  1 p 2 8 ]
+"22
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"42
+} 0
+"111 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"122
+} 0
+"63 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"87
+} 0
+"89
+[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
+{
+"93
+} 0
+"51 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"87
+} 0
+"124 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"134
+} 0
+"51 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"55
+} 0
+"79 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/i2c.c
+[v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
+{
+"97
+} 0
+"55 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart2.c
+[v _EUSART2_Initialize EUSART2_Initialize `(v  1 e 1 0 ]
+{
+"74
+} 0
+"55 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+{
+"73
+} 0
+"58 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"79
+} 0
+"57 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"68
+} 0
+"102 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/i2c.c
+[v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
+{
+"168
+} 0
+"464 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\doprnt.c
+[v i2_printf printf `(i  1 e 2 0 ]
+{
+[v i2printf@ap printf `[1]*.39v  1 a 2 4 ]
+[v i2printf@c printf `c  1 a 1 6 ]
+[v i2printf@f f `*.32Cuc  1 p 2 2 ]
+"1541
+} 0
+"110 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart2.c
+[v i2_putch putch `(v  1 e 1 0 ]
+{
+[v i2putch@txData txData `uc  1 a 1 wreg ]
+[v i2putch@txData txData `uc  1 a 1 wreg ]
+"112
+[v i2putch@txData txData `uc  1 a 1 1 ]
+"113
+} 0
+"96
+[v i2_EUSART2_Write EUSART2_Write `(v  1 e 1 0 ]
+{
+[v i2EUSART2_Write@txData txData `uc  1 a 1 wreg ]
+[v i2EUSART2_Write@txData txData `uc  1 a 1 wreg ]
+[v i2EUSART2_Write@txData txData `uc  1 a 1 0 ]
+"103
+} 0
+"357 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.c
+[v _handleByteReceived handleByteReceived `(v  1 e 1 0 ]
+{
+[v handleByteReceived@data data `uc  1 a 1 wreg ]
+"363
+[v handleByteReceived@i i `i  1 a 2 4 ]
+"357
+[v handleByteReceived@data data `uc  1 a 1 wreg ]
+"359
+[v handleByteReceived@data data `uc  1 a 1 6 ]
+"396
+} 0
+"45
+[v _setLedOn setLedOn `(v  1 e 1 0 ]
+{
+[v setLedOn@led led `i  1 p 2 0 ]
+"78
+} 0
+"80
+[v _setLedOff setLedOff `(v  1 e 1 0 ]
+{
+[v setLedOff@led led `i  1 p 2 0 ]
+"114
+} 0
+"412
+[v _getByteToSend getByteToSend `(uc  1 e 1 0 ]
+{
+"437
+[v getByteToSend@r r `ui  1 a 2 74 ]
+"443
+[v getByteToSend@value_1498 value `i  1 a 2 70 ]
+"446
+[v getByteToSend@xhigh_1500 xhigh `uc  1 a 1 66 ]
+"445
+[v getByteToSend@xlow_1499 xlow `uc  1 a 1 65 ]
+"432
+[v getByteToSend@error_1495 error `i  1 a 2 61 ]
+"422
+[v getByteToSend@error_1490 error `i  1 a 2 72 ]
+"423
+[v getByteToSend@value value `i  1 a 2 68 ]
+"426
+[v getByteToSend@xhigh xhigh `uc  1 a 1 64 ]
+"425
+[v getByteToSend@xlow xlow `uc  1 a 1 63 ]
+"416
+[v getByteToSend@error error `i  1 a 2 59 ]
+"456
+[v getByteToSend@d d `uc  1 a 1 67 ]
+"466
+} 0
+"310
+[v _writeAXData writeAXData `(i  1 e 2 0 ]
+{
+"313
+[v writeAXData@packet packet `[20]uc  1 a 20 20 ]
+"314
+[v writeAXData@result result `[20]uc  1 a 20 0 ]
+"311
+[v writeAXData@size size `i  1 a 2 46 ]
+"331
+[v writeAXData@error error `i  1 a 2 44 ]
+"320
+[v writeAXData@instruction instruction `i  1 a 2 42 ]
+"318
+[v writeAXData@length length `i  1 a 2 40 ]
+"310
+[v writeAXData@id id `i  1 p 2 49 ]
+[v writeAXData@address address `i  1 p 2 51 ]
+[v writeAXData@data data `i  1 p 2 53 ]
+"341
+} 0
+"273
+[v _readAXData readAXData `(i  1 e 2 0 ]
+{
+"276
+[v readAXData@packet packet `[20]uc  1 a 20 20 ]
+"277
+[v readAXData@result result `[20]uc  1 a 20 0 ]
+"274
+[v readAXData@size size `i  1 a 2 48 ]
+"290
+[v readAXData@error error `i  1 a 2 46 ]
+"284
+[v readAXData@instruction instruction `i  1 a 2 44 ]
+"282
+[v readAXData@length length `i  1 a 2 42 ]
+"281
+[v readAXData@nbParameters nbParameters `i  1 a 2 40 ]
+"273
+[v readAXData@id id `i  1 p 2 49 ]
+[v readAXData@address address `i  1 p 2 51 ]
+[v readAXData@err err `*.39i  1 p 2 53 ]
+"308
+} 0
+"24
+[v _getAddressSize getAddressSize `(i  1 e 2 0 ]
+{
+[v getAddressSize@address address `i  1 p 2 0 ]
+"43
+} 0
+"248
+[v _pingAX pingAX `(i  1 e 2 0 ]
+{
+"249
+[v pingAX@packet packet `[20]uc  1 a 20 20 ]
+"250
+[v pingAX@result result `[20]uc  1 a 20 0 ]
+"261
+[v pingAX@error error `i  1 a 2 46 ]
+"257
+[v pingAX@instruction instruction `i  1 a 2 44 ]
+"255
+[v pingAX@length length `i  1 a 2 42 ]
+"254
+[v pingAX@nbParameters nbParameters `i  1 a 2 40 ]
+"248
+[v pingAX@id id `i  1 p 2 49 ]
+"271
+} 0
+"137
+[v _sendAX sendAX `(uc  1 e 1 0 ]
+{
+"230
+[v sendAX@i_1436 i `i  1 a 2 41 ]
+"213
+[v sendAX@i_1427 i `i  1 a 2 39 ]
+"165
+[v sendAX@i_1422 i `i  1 a 2 37 ]
+"158
+[v sendAX@i_1419 i `i  1 a 2 35 ]
+"152
+[v sendAX@i i `i  1 a 2 33 ]
+"163
+[v sendAX@stop stop `i  1 a 2 47 ]
+"193
+[v sendAX@r0 r0 `i  1 a 2 45 ]
+"192
+[v sendAX@header_found header_found `i  1 a 2 31 ]
+"191
+[v sendAX@count count `i  1 a 2 29 ]
+"226
+[v sendAX@param6 param6 `i  1 a 2 27 ]
+"225
+[v sendAX@param5 param5 `i  1 a 2 25 ]
+"224
+[v sendAX@param4 param4 `i  1 a 2 23 ]
+"223
+[v sendAX@param3 param3 `i  1 a 2 21 ]
+"222
+[v sendAX@param2 param2 `i  1 a 2 19 ]
+"221
+[v sendAX@param1 param1 `i  1 a 2 17 ]
+"220
+[v sendAX@param0 param0 `i  1 a 2 15 ]
+"229
+[v sendAX@checksumResult checksumResult `uc  1 a 1 44 ]
+"149
+[v sendAX@checksum checksum `uc  1 a 1 43 ]
+"137
+[v sendAX@buffer buffer `*.39uc  1 p 2 2 ]
+[v sendAX@packetSize packetSize `i  1 p 2 4 ]
+[v sendAX@result result `*.39uc  1 p 2 6 ]
+[v sendAX@parametersToRead parametersToRead `i  1 p 2 8 ]
+"246
+} 0
+"96 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/eusart1.c
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
+[v EUSART1_Write@txData txData `uc  1 a 1 0 ]
+"101
+} 0
+"75
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+{
+"76
+[v EUSART1_Read@i i `i  1 a 2 0 ]
+"94
+} 0
+"400 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\ax.c
+[v _clearState clearState `(v  1 e 1 0 ]
+{
+"410
+} 0
+"105 D:\PMX_DOC\90 - PROG - BUILD\PIC\AX12-pic18f-master_\AX12-pic18f-master\mcc_generated_files/adc.c
+[v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
+{
+[v ADC_GetConversion@channel channel `E15090  1 a 1 wreg ]
+[v ADC_GetConversion@channel channel `E15090  1 a 1 wreg ]
+"108
+[v ADC_GetConversion@channel channel `E15090  1 a 1 4 ]
+"124
+} 0
+"126
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+{
+"130
+} 0
