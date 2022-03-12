@@ -127,10 +127,28 @@ int getADC(int adc) {
  * packetSize : taille de la trame à envoyer (sans checksum)
  * result : parametres à lire
  * parametersToRead : nombre de parametres à lire
+ * 
+ * retourne 0 si pas d'erreur
+ * 251 si on ne trouve pas le premier octet du header à FF
+ * 252 si le deuxieme octet du header n'est pas FF
+ * 253 si le CRC est mauvais
+ * 
  */
 uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersToRead) {
+    
+    // On desactive la lecture asynchrone du port série pour ne pas recevoir de "parasites"
+    // SPEN : Serial Port Enable
+    // CREN : Continous Read Enable
+    
+    RCSTA1bits.SPEN = 0;
+    RCSTA1bits.SPEN = 1;
+    RCSTA1bits.CREN= 0;
+    
+    // Envoi de la trame
+    
     uint8_t checksum = 0;
     SET_TX_SetHigh();
+     __delay_us(10);
     for (int i = 2; i < packetSize; i++) {
         checksum += buffer[i];
     }
@@ -143,9 +161,9 @@ uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersT
     EUSART1_Write(checksum);
 
     int stop = 6 + parametersToRead;
-    // fill buffer with 122 
+    // fill buffer 
     for (int i = 0; i < stop; i++) {
-        result[i] = 0X07;
+        result[i] = 0X00;
     }
     /*
         int param0 = result[0];
@@ -156,24 +174,47 @@ uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersT
         int param5 = result[5];
         int param6 = result[6];
      */
+    
+    // Reception
+    
     __delay_us(10);
     SET_TX_SetLow();
-
+   
+     // On active le "continous read"
+    RCSTA1bits.SPEN = 0;
+    RCSTA1bits.SPEN = 1;
+    RCSTA1bits.CREN= 1;
+    
+    // L' AX12 doit repondre apres les 10us, 50us par exemple
+    
     // read until 0xFF
     int count = 0;
+    int header_found=0;
     int r0 = EUSART1_Read();
-    while (r0 != 0xFF) {
-        r0 = EUSART1_Read();
-        count++;
-        //nb d'essai pour sortir de la boucle
-        if (count > 5) {
-            break;
+    if(r0==0xFF){
+        header_found=1;
+    } else {
+        while (r0 != 0xFF) {
+            r0 = EUSART1_Read();
+           count++;
+           //nb d'essai pour sortir de la boucle
+           if (count > 5) {
+               break;
+          }
         }
     }
+    if(header_found==0){
+        // On a pas le début de la réponse du l'AX (FF)
+        return 251;
+    }
+    
     result[0] = r0;
-
+    
     for (int i = 1; i < stop; i++) {
         result[i] = EUSART1_Read();
+        if(result[1]!=0xFF){
+            return 250;
+        }
     }
 
     int param0 = result[0];
@@ -184,23 +225,22 @@ uint8_t sendAX(uint8_t* buffer, int packetSize, uint8_t* result, int parametersT
     int param5 = result[5];
     int param6 = result[6];
 
-    //verif timeout , on retourne result[4] qui vaut 252
-
     //verif CHECKSUM !!
     uint8_t checksumResult = 0;
     for (int i = 2; i < stop - 1; i++) {
         checksumResult += result[i];
     }
     checksumResult = ~checksumResult;
-    if (checksumResult != result[stop - 1]) {
-        return 252;
-    }
+   
 
     {// Wait to stabilize DATA [DO NOT REMOVE] 
         SET_TX_SetHigh();
         __delay_us(10);
     }
-
+    if (checksumResult != result[stop - 1]) {
+       // TODO verifier le calcul avec le port serie :  
+        return 253;
+    }
     return result[4]; //on retourne l'erreur du paquet
 
 }
@@ -219,10 +259,18 @@ int pingAX(int id) {
 
     // Send to AX
     int error = sendAX(packet, 5, result, 0);
+    if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 5, result, 0);  
+    } 
+    if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 5, result, 0);  
+    }
     return error;
 }
 
-int readAXData(int id, int address) {
+int readAXData(int id, int address, int* err) {
     int size = getAddressSize(address);
 
     uint8_t packet[20];
@@ -237,9 +285,19 @@ int readAXData(int id, int address) {
     packet[4] = instruction;
     packet[5] = address;
     packet[6] = size;
-
+   
     // Send to AX
-    int error = sendAX(packet, 7, result, 1);
+    int error = sendAX(packet, 7, result, size);
+    if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 7, result, size);    
+    }
+     if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 7, result, size);    
+    }
+    *err=error;
+    
     if (size == 1) {
         // 1
         return result[5];
@@ -271,6 +329,14 @@ int writeAXData(int id, int address, int data) {
 
     // Send to AX
     int error = sendAX(packet, 6 + size, result, 0);
+    if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 6 + size, result, 0);   
+    }
+    if(error!=0){
+        // pas de reponse, on retry
+        error = sendAX(packet, 6 + size, result, 0);   
+    }
     return error;
 }
 
@@ -353,12 +419,14 @@ uint8_t getByteToSend(uint8_t i2c_data_received) {
         clearState();
     } else if (currentCommand == CMD_READ_AX) {
         //   printf("read AX %d %d\r\n",parameter1, parameter2);
-        int value = readAXData(parameter1, parameter2);
-        nbBytesToSend = 2;
+        int error=0;
+        int value = readAXData(parameter1, parameter2, &error);
+        nbBytesToSend = 3;
         uint8_t xlow = value & 0xff;
         uint8_t xhigh = (value >> 8);
         dataToSend[0] = xlow;
         dataToSend[1] = xhigh;
+        dataToSend[2] = error;
         clearState();
     } else if (currentCommand == CMD_WRITE_AX) {
         int error = writeAXData(parameter1, parameter2, parameter3 + (parameter4 << 8));

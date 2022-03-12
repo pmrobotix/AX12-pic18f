@@ -81,7 +81,7 @@ extern "C" {
 
     int pingAX(int id);
 
-    int readAXData(int id, int address);
+    int readAXData(int id, int address, int *err);
     int writeAXData(int id, int address, int data);
 
     // callback I2C
